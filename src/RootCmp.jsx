@@ -11,6 +11,7 @@ import { UserDetails } from './pages/UserDetails'
 
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
+import { SideNav } from './cmps/SideNav.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { LoginSignup, Login, Signup } from './pages/LoginSignup.jsx'
 
@@ -20,6 +21,7 @@ export function RootCmp() {
         <div className="main-container">
             <AppHeader />
             <UserMsg />
+            <SideNav />
 
             <main>
                 <Routes>
