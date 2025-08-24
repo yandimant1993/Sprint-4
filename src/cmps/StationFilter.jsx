@@ -17,6 +17,7 @@ export function StationFilter({ filterBy, onSetFilter }) {
             case 'radio':
                 value = field === 'sortDir' ? +ev.target.value : ev.target.value
                 if (!filterToEdit.sortDir) filterToEdit.sortDir = 1
+                if (!filterToEdit.sortDir) filterToEdit.sortDir = 1
                 break
             case 'number':
                 value = +ev.target.value || ''
@@ -27,7 +28,9 @@ export function StationFilter({ filterBy, onSetFilter }) {
 
     function clearFilter() {
         setFilterToEdit({ ...filterToEdit, txt: '', minAddedAt: '' })
+        setFilterToEdit({ ...filterToEdit, txt: '', minAddedAt: '' })
     }
+
 
     function clearSort() {
         setFilterToEdit({ ...filterToEdit, sortField: '', sortDir: '' })

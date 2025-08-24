@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { loadStations, addStation, updateStation, removeStation, addStationMsg } from '../store/actions/station.actions'
-
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { stationService } from '../services/station'
 import { userService } from '../services/user/index.js'
@@ -10,7 +9,6 @@ import { userService } from '../services/user/index.js'
 import { StationList } from '../cmps/StationList'
 import { StationFilter } from '../cmps/StationFilter.jsx'
 import { SideNav } from '../cmps/SideNav.jsx'
-
 
 export function StationIndex() {
     const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
@@ -53,7 +51,6 @@ export function StationIndex() {
         }
     }
 
-    
     return (
         <>
             <section className="station-index">
@@ -61,7 +58,7 @@ export function StationIndex() {
                     <h2>Stations</h2>
                     {userService.getLoggedinUser() && <button onClick={onAddStation}>Add a Station</button>}
                 </header>
-                
+
                 <SideNav />
                 <StationList
                     stations={stations}
