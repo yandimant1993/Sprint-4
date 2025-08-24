@@ -15,6 +15,7 @@ import { SideNav } from '../cmps/SideNav.jsx'
 export function StationIndex() {
 
     
+
     const stations = useSelector(storeState => storeState.stationModule.stations)
 
     useEffect(() => {
@@ -54,7 +55,7 @@ export function StationIndex() {
         }
     }
 
-    
+
     return (
         <>
             <section className="station-index">
@@ -62,7 +63,7 @@ export function StationIndex() {
                     <h2>Stations</h2>
                     {userService.getLoggedinUser() && <button onClick={onAddStation}>Add a Station</button>}
                 </header>
-                
+
                 <SideNav />
                 <StationList
                     stations={stations}
