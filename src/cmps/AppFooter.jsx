@@ -13,11 +13,8 @@ export function AppFooter() {
 				<span className="local-services">Local Services</span> :
 				<span className="remote-services">Remote Services</span>}
 			<SongPreview />
-
 			<MediaPlayer />
 			<Controller />
-
-
 		</footer>
 	)
 }

@@ -9,8 +9,6 @@ import { userService } from '../services/user'
 
 import { StationList } from '../cmps/StationList'
 import { StationFilter } from '../cmps/StationFilter'
-import { AppHeader } from '../cmps/AppHeader.jsx'
-import { AppFooter } from '../cmps/AppFooter.jsx'
 import { SideNav } from '../cmps/SideNav.jsx'
 
 
@@ -61,21 +59,16 @@ export function StationIndex() {
         <>
             <section className="station-index">
                 <header>
-                    <AppHeader filterBy={filterBy} setFilterBy={setFilterBy} />
-
                     <h2>Stations</h2>
                     {userService.getLoggedinUser() && <button onClick={onAddStation}>Add a Station</button>}
                 </header>
-
+                
                 <SideNav />
-
                 <StationList
                     stations={stations}
                     onRemoveStation={onRemoveStation}
                     onUpdateStation={onUpdateStation} />
             </section>
-
-            <AppFooter />
         </>
     )
 }
