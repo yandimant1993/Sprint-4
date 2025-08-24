@@ -6,8 +6,9 @@ import { logout } from '../store/actions/user.actions'
 import { StationFilter } from './StationFilter.jsx'
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 
-export function AppHeader({ filterBy, setFilterBy }) {
+export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
+	const [filterBy, setFilterBy] = useSelector(storeState => storeState.stationModule.filterBy)
 	const navigate = useNavigate()
 
 	async function onLogout() {

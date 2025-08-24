@@ -4,17 +4,17 @@ import { useSelector } from 'react-redux'
 import { loadStations, addStation, updateStation, removeStation, addStationMsg } from '../store/actions/station.actions'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { stationService } from '../services/station/'
-import { userService } from '../services/user'
+import { stationService } from '../services/station'
+import { userService } from '../services/user/index.js'
 
 import { StationList } from '../cmps/StationList'
-import { StationFilter } from '../cmps/StationFilter'
+import { StationFilter } from '../cmps/StationFilter.jsx'
 import { SideNav } from '../cmps/SideNav.jsx'
 
 
 export function StationIndex() {
 
-    const [filterBy, setFilterBy] = useState(stationService.getDefaultFilter())
+    
     const stations = useSelector(storeState => storeState.stationModule.stations)
 
     useEffect(() => {

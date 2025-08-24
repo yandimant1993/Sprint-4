@@ -26,13 +26,14 @@ export function StationFilter({ filterBy, setFilterBy }) {
     }
 
     function clearFilter() {
-        setFilterToEdit({ ...filterToEdit, txt: '', minAddedAt: '', maxPrice: '' })
+        setFilterToEdit({ ...filterToEdit, txt: '', minAddedAt: ''})
     }
     
     function clearSort() {
         setFilterToEdit({ ...filterToEdit, sortField: '', sortDir: '' })
     }
 
+    console.log('filterToEdit: ',filterToEdit)
     return <section className="station-filter">
             <h3>Filter:</h3>
             <input

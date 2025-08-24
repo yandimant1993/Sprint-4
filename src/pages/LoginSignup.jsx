@@ -15,7 +15,6 @@ export function LoginSignup() {
                 <NavLink to="signup">Signup</NavLink>
             </nav>
             <Outlet/>
-            <h2>!!!</h2>
         </div>
     )
 }

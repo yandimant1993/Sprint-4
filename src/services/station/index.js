@@ -17,7 +17,7 @@ function getEmptyStation() {
 function getDefaultFilter() {
     return {
         txt: '',
-        minAddedAt: '',
+        // minAddedAt: '',
         sortField: '',
         sortDir: '',
     }

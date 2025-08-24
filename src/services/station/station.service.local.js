@@ -15,7 +15,7 @@ export const stationService = {
 window.cs = stationService
 
 
-async function query(filterBy = { txt: '', minAddedAt: 0 }) {
+async function query(filterBy = { txt: '' }) {
     var stations = await storageService.query(STORAGE_KEY)
     const { txt, minAddedAt, sortField, sortDir } = filterBy
 

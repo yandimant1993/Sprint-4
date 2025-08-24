@@ -1,12 +1,16 @@
+import { stationService } from "../../services/station"
+
 export const SET_STATIONS = 'SET_STATIONS'
 export const SET_STATION = 'SET_STATION'
 export const REMOVE_STATION = 'REMOVE_STATION'
 export const ADD_STATION = 'ADD_STATION'
 export const UPDATE_STATION = 'UPDATE_STATION'
 export const ADD_STATION_MSG = 'ADD_STATION_MSG'
+export const SET_FILTER_BY = 'SET_FILTER_BY'
 
 const initialState = {
     stations: [],
+    filterBy: stationService.getDefaultFilter(),
     station: null
 }
 
@@ -36,6 +40,11 @@ export function stationReducer(state = initialState, action) {
             if (action.msg && state.station) {
                 newState = { ...state, station: { ...state.station, msgs: [...state.station.msgs || [], action.msg] } }
                 break
+            }
+        case SET_FILTER_BY:
+            return {
+                ...state,
+                filterBy: { ...state.filterBy, ...action.filterBy },
             }
         default:
     }
