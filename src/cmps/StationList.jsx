@@ -11,6 +11,7 @@ export function StationList({ stations, onRemoveStation, onUpdateStation }) {
         return station.owner?._id === user._id
     }
 
+    if (!stations) return <p>Loading...</p>
     return <section>
         <ul className="station-list">
             {stations.map(station =>

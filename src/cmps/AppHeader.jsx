@@ -1,14 +1,15 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { StationFilter } from './StationFilter.jsx'
 import { LoginSignup } from '../pages/LoginSignup.jsx'
+import { setFilter } from '../store/actions/station.actions'
 
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
-	const [filterBy, setFilterBy] = useSelector(storeState => storeState.stationModule.filterBy)
+	const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
 	const navigate = useNavigate()
 
 	async function onLogout() {
@@ -21,9 +22,13 @@ export function AppHeader() {
 		}
 	}
 
+	function onSetFilter(filterBy) {
+		setFilter(filterBy)
+	}
+
 	return (
 		<header className="app-header full">
-			<StationFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+			<StationFilter filterBy={filterBy} onSetFilter={onSetFilter} />
 			<nav>
 				<NavLink to="/" className="logo">
 					E2E Demo

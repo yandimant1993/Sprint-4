@@ -1,6 +1,6 @@
 import { stationService } from '../../services/station'
 import { store } from '../store'
-import { ADD_STATION, REMOVE_STATION, SET_STATIONS, SET_STATION, UPDATE_STATION, ADD_STATION_MSG } from '../reducers/station.reducer'
+import { ADD_STATION, REMOVE_STATION, SET_STATIONS, SET_STATION, UPDATE_STATION, ADD_STATION_MSG, SET_FILTER_BY } from '../reducers/station.reducer'
 
 export async function loadStations() {
     try {
@@ -22,7 +22,6 @@ export async function loadStation(stationId) {
         throw err
     }
 }
-
 
 export async function removeStation(stationId) {
     try {
@@ -65,6 +64,10 @@ export async function addStationMsg(stationId, txt) {
         console.log('Cannot add station msg', err)
         throw err
     }
+}
+
+export function setFilter(filterBy) {
+    store.dispatch({ type: SET_FILTER_BY, filterBy })
 }
 
 // Command Creators:
