@@ -46,25 +46,22 @@ export function AppHeader() {
 				</div>
 			</div>
 
-		
+
 			<div className="header-center">
 				<div className="search-container">
 					<img src="/src/assets/spotify-icons/search.svg" alt="Search" className="search-icon" />
-					<input 
-						type="text" 
-						placeholder="What do you want to play?" 
+					<input
+						type="text"
+						placeholder="What do you want to play?"
 						className="search-input"
 					/>
 				</div>
 			</div>
 
-		
+
 			<div className="header-right">
-				
-				<button className="action-btn install">
-					<img src="/src/assets/spotify-icons/download.svg" alt="Install" />
-					Install App
-				</button>
+
+
 				<button className="action-btn notification">
 					<img src="/src/assets/spotify-icons/notification.svg" alt="Notifications" />
 				</button>
