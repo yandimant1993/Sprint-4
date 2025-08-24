@@ -8,13 +8,15 @@ export function AppFooter() {
 
 	return (
 		<footer className="app-footer full">
-
-			{import.meta.env.VITE_LOCAL ?
+			{/* {import.meta.env.VITE_LOCAL ?
 				<span className="local-services">Local Services</span> :
-				<span className="remote-services">Remote Services</span>}
-			<SongPreview />
-			<MediaPlayer />
-			<Controller />
+				<span className="remote-services">Remote Services</span>} */}
+
+			<div className="footer-content">
+				<SongPreview />
+				<MediaPlayer />
+				<Controller />
+			</div>
 		</footer>
 	)
 }

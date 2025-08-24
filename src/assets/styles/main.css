@@ -16,6 +16,8 @@
 @import "cmps/AppHeader.css";
 @import "cmps/AppFooter.css";
 @import "cmps/UserMsg.css";
+@import "cmps/Controller.css";
+@import "cmps/SongPreview.css";
 
 @import "cmps/station/StationIndex.css";
 @import "cmps/station/StationList.css";

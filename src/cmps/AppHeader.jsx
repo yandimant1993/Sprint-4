@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
+
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { StationFilter } from './StationFilter.jsx'
@@ -28,29 +29,66 @@ export function AppHeader() {
 
 	return (
 		<header className="app-header full">
-			<StationFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-			<nav>
-				<NavLink to="/" className="logo">
-					E2E Demo
-				</NavLink>
-				<NavLink to="about">About</NavLink>
-				<NavLink to="station">Stations</NavLink>
 
-				{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
+			<div className="header-left">
+				<div className="logo-container">
+					<NavLink to="/" className="logo">
+						<span className="logo-text">Spotify</span>
+					</NavLink>
+				</div>
+				<div className="nav-buttons">
+					<button className="nav-btn back" disabled>
+						<img src="/src/assets/spotify-icons/left-grey-bold.svg" alt="Back" />
+					</button>
+					<button className="nav-btn forward" disabled>
+						<img src="/src/assets/spotify-icons/slide-right.svg" alt="Forward" />
+					</button>
+				</div>
+			</div>
 
-				{!user && <NavLink to="auth/login" className="login-link">Login</NavLink>}
-				{user && (
-					<div className="user-info">
+		
+			<div className="header-center">
+				<div className="search-container">
+					<img src="/src/assets/spotify-icons/search.svg" alt="Search" className="search-icon" />
+					<input 
+						type="text" 
+						placeholder="What do you want to play?" 
+						className="search-input"
+					/>
+				</div>
+			</div>
+
+		
+			<div className="header-right">
+				
+				<button className="action-btn install">
+					<img src="/src/assets/spotify-icons/download.svg" alt="Install" />
+					Install App
+				</button>
+				<button className="action-btn notification">
+					<img src="/src/assets/spotify-icons/notification.svg" alt="Notifications" />
+				</button>
+				<button className="action-btn friends">
+					<img src="/src/assets/spotify-icons/friend-activity.svg" alt="Friends" />
+				</button>
+				{user ? (
+					<div className="user-profile">
 						<Link to={`user/${user._id}`}>
-							{user.imgUrl && <img src={user.imgUrl} />}
-							{user.fullname}
+							{user.imgUrl ? (
+								<img src={user.imgUrl} alt={user.fullname} />
+							) : (
+								<div className="profile-placeholder">
+									{user.fullname?.charAt(0)?.toUpperCase()}
+								</div>
+							)}
 						</Link>
-						<span className="score">{user.score?.toLocaleString()}</span>
-						<button onClick={onLogout}>logout</button>
-						<LoginSignup />
 					</div>
+				) : (
+					<button className="action-btn login" onClick={() => navigate('/auth/login')}>
+						Login
+					</button>
 				)}
-			</nav>
+			</div>
 		</header>
 	)
 }
