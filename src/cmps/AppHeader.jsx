@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
+import { StationFilter } from './StationFilter.jsx'
+import { LoginSignup } from '../pages/LoginSignup.jsx'
 
-export function AppHeader() {
+export function AppHeader({ filterBy, setFilterBy }) {
 	const user = useSelector(storeState => storeState.userModule.user)
 	const navigate = useNavigate()
 
@@ -20,6 +22,7 @@ export function AppHeader() {
 
 	return (
 		<header className="app-header full">
+			<StationFilter filterBy={filterBy} setFilterBy={setFilterBy} />
 			<nav>
 				<NavLink to="/" className="logo">
 					E2E Demo
@@ -28,7 +31,7 @@ export function AppHeader() {
 				<NavLink to="station">Stations</NavLink>
 
 
-                {user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
+				{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
 
 				{!user && <NavLink to="auth/login" className="login-link">Login</NavLink>}
 				{user && (
@@ -39,8 +42,10 @@ export function AppHeader() {
 						</Link>
 						<span className="score">{user.score?.toLocaleString()}</span>
 						<button onClick={onLogout}>logout</button>
+						<LoginSignup />
 					</div>
 				)}
+
 			</nav>
 		</header>
 	)

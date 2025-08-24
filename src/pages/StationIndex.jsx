@@ -9,10 +9,14 @@ import { userService } from '../services/user'
 
 import { StationList } from '../cmps/StationList'
 import { StationFilter } from '../cmps/StationFilter'
+import { AppHeader } from '../cmps/AppHeader.jsx'
+import { AppFooter } from '../cmps/AppFooter.jsx'
+import { SideNav } from '../cmps/SideNav.jsx'
+
 
 export function StationIndex() {
 
-    const [ filterBy, setFilterBy ] = useState(stationService.getDefaultFilter())
+    const [filterBy, setFilterBy] = useState(stationService.getDefaultFilter())
     const stations = useSelector(storeState => storeState.stationModule.stations)
 
     useEffect(() => {
@@ -22,7 +26,7 @@ export function StationIndex() {
     async function onRemoveStation(stationId) {
         try {
             await removeStation(stationId)
-            showSuccessMsg('Station removed')            
+            showSuccessMsg('Station removed')
         } catch (err) {
             showErrorMsg('Cannot remove station')
         }
@@ -36,12 +40,12 @@ export function StationIndex() {
             showSuccessMsg(`Station added (id: ${savedStation._id})`)
         } catch (err) {
             showErrorMsg('Cannot add station')
-        }        
+        }
     }
 
     async function onUpdateStation(station) {
         const addedat = +prompt('New addedat?', station.addedat) || 0
-        if(addedat === 0 || addedat === station.addedat) return
+        if (addedat === 0 || addedat === station.addedat) return
 
         const stationToSave = { ...station, addedat }
         try {
@@ -49,20 +53,28 @@ export function StationIndex() {
             showSuccessMsg(`Station updated, new addedat: ${savedStation.addedat}`)
         } catch (err) {
             showErrorMsg('Cannot update station')
-        }        
+        }
     }
 
     return (
-        <section className="station-index">
-            <header>
-                <h2>Stations</h2>
-                {userService.getLoggedinUser() && <button onClick={onAddStation}>Add a Station</button>}
-            </header>
-            <StationFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-            <StationList 
-                stations={stations}
-                onRemoveStation={onRemoveStation} 
-                onUpdateStation={onUpdateStation}/>
-        </section>
+        <>
+            <section className="station-index">
+                <header>
+                    <AppHeader filterBy={filterBy} setFilterBy={setFilterBy} />
+
+                    <h2>Stations</h2>
+                    {userService.getLoggedinUser() && <button onClick={onAddStation}>Add a Station</button>}
+                </header>
+
+                <SideNav />
+
+                <StationList
+                    stations={stations}
+                    onRemoveStation={onRemoveStation}
+                    onUpdateStation={onUpdateStation} />
+            </section>
+
+            <AppFooter />
+        </>
     )
 }

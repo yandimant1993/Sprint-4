@@ -1,11 +1,12 @@
 :root {
-  --clr1: #ce2e6c;
-  --clr2: #4f3a65;
-  --clr3: #574f7d;
-  --clr4: #95adbe;
-  --clr5: #dff0ea;
+  
+  --clr1: #2a2a2a;
+  --clr2: #1f1f1f;
+  --clr3: #191919;
+  --clr4: #000000;
 
-  --clr1-light: color-mix(in lab, var(--clr1), white 15%);
+  --clr-green: #1ed760;
+
 
   --gray1: #ddd;
   --gray2: #aaa;
