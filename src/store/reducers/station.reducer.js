@@ -51,7 +51,7 @@ export function stationReducer(state = initialState, action) {
     return newState
 }
 
-// unitTestReducer()
+unitTestReducer()
 
 function unitTestReducer() {
     var state = initialState

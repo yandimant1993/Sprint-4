@@ -7,10 +7,12 @@ import { stationService as remote } from './station.service.remote'
 
 function getEmptyStation() {
     return {
-        _id: makeId(),
         name: makeLorem(2),
-        addedat: getRandomIntInclusive(80, 240),
-        msgs: [],
+        addedat: Date.now(),
+        tags: [],
+        songs: [],
+        createdBy: null,
+        likedByUsers: [],
     }
 }
 

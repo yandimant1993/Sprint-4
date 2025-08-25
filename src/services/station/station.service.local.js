@@ -100,7 +100,9 @@ async function _createStations() {
                     fullname: 'Ava Stone',
                     imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
                 },
+                addedat: 1724476800000,
                 likedByUsers: [],
+                stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
                     {
                         id: 's001',
@@ -127,7 +129,9 @@ async function _createStations() {
                     fullname: 'Jasper Ray',
                     imgUrl: 'https://randomuser.me/api/portraits/men/42.jpg',
                 },
+                addedat: 1756012500000,
                 likedByUsers: [],
+                stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
                     {
                         id: 's003',
@@ -154,7 +158,9 @@ async function _createStations() {
                     fullname: 'Ava Stone',
                     imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
                 },
+                addedat: 1754198400000,
                 likedByUsers: [],
+                stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
                     {
                         id: 's005',
