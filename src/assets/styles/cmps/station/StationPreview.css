@@ -1,7 +1,7 @@
 .station-preview {
     color: var(--gray2);
-
-    > header {
+    
+    >header {
         font-size: 1.2em;
         color: var(--gray1);
     }

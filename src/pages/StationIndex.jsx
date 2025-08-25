@@ -58,12 +58,13 @@ export function StationIndex() {
                     <h2>Stations</h2>
                     {userService.getLoggedinUser() && <button onClick={onAddStation}>Add a Station</button>}
                 </header>
-
-                <SideNav stations={stations}/>
-                <StationList
-                    stations={stations}
-                    onRemoveStation={onRemoveStation}
-                    onUpdateStation={onUpdateStation} />
+                <section className="main-list">
+                    <SideNav stations={stations} />
+                    <StationList
+                        stations={stations}
+                        onRemoveStation={onRemoveStation}
+                        onUpdateStation={onUpdateStation} />
+                </section>
             </section>
         </>
     )
