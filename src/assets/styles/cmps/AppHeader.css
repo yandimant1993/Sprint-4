@@ -4,7 +4,7 @@
     justify-content: space-between;
     min-height: 4rem;
     background-color: #000000;
-    padding: 0 2rem;
+    padding: 0 1rem;
     border-bottom: 1px solid #282828;
 }
 
@@ -78,7 +78,17 @@
     justify-content: center;
     max-width: 600px;
     margin: 0 2rem;
+    position: relative;
+    /* allow absolute home icon without breaking centering */
+    left: 70px;
+    /* nudge the whole center area slightly to the right */
 }
+
+/* .search-icon:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+
+} */
 
 .search-container {
     position: relative;
@@ -96,6 +106,52 @@
     filter: brightness(0) saturate(100%) invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.7) contrast(1);
 }
 
+/* .home-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+} */
+
+.home-icon {
+    width: 48px;
+    height: 48px;
+    background-color: #242424;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-inline-end: .5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s;
+    /* default gap when not absolutely positioned */
+}
+
+.home-icon:hover {
+    background-color: rgba(255, 255, 255, 0.17);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.home-icon img {
+    width: 24px;
+    height: 24px;
+    /* match search icon color */
+    filter: brightness(0) saturate(100%) invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.7) contrast(1);
+}
+
+/* Center search: pin the home icon to the left so it doesn't push the search */
+.header-center .home-icon {
+    position: absolute;
+    left: -5px;
+    /* add small gap from the search */
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    /* override inline gap */
+}
+
+
+
 .search-input {
     width: 100%;
     height: 48px;
@@ -106,12 +162,20 @@
     color: #ffffff;
     font-size: 0.9rem;
     outline: none;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s;
 }
+
+.search-input:hover {
+    background-color: rgba(255, 255, 255, 0.17);
+    box-shadow: inset 0 0 0 0.8px rgba(255, 255, 255, 0.5);
+}
+
 
 .search-input::placeholder {
     color: #b3b3b3;
 }
+
+
 
 .search-input:focus {
     background-color: #2a2a2a;
@@ -132,15 +196,17 @@
     color: #ffffff;
     font-size: 0.9rem;
     font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
     text-decoration: none;
 }
+
 
 /* .action-btn.premium {
     background-color: #000000;

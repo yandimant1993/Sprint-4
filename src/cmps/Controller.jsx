@@ -6,12 +6,13 @@ export function MediaController() {
     const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
     const [isShuffled, setIsShuffled] = useState(false)
+    const [isActive, setIsisActive] = useState(false)
     const [isRepeating, setIsRepeating] = useState(false)
 
     const audioRef = useRef(null)
 
-    const mockDuration = 224 
-    const mockCurrentTime = 101 
+    const mockDuration = 224
+    const mockCurrentTime = 101
 
     useEffect(() => {
         setDuration(mockDuration)
@@ -38,19 +39,21 @@ export function MediaController() {
     return (
         <div className="media-controller">
             <div className="media-controls">
-                <button 
+                <button
                     className={`control-btn shuffle ${isShuffled ? 'active' : ''}`}
                     onClick={() => setIsShuffled(!isShuffled)}
                     title="Shuffle"
                 >
                     <img src="/src/assets/spotify-icons/shuffle.svg" alt="Shuffle" />
+                    <div className="active-dot "></div>
+
                 </button>
 
                 <button className="control-btn previous" title="Previous">
                     <img src="/src/assets/spotify-icons/previous.svg" alt="Previous" />
                 </button>
 
-                <button 
+                <button
                     className="control-btn play-pause"
                     onClick={handlePlayPause}
                     title={isPlaying ? 'Pause' : 'Play'}
@@ -66,12 +69,14 @@ export function MediaController() {
                     <img src="/src/assets/spotify-icons/next.svg" alt="Next" />
                 </button>
 
-                <button 
+                <button
                     className={`control-btn repeat ${isRepeating ? 'active' : ''}`}
                     onClick={() => setIsRepeating(!isRepeating)}
                     title="Repeat"
                 >
                     <img src="/src/assets/spotify-icons/repeat.svg" alt="Repeat" />
+                    <div className="active-dot"></div>
+
                 </button>
             </div>
 
@@ -86,7 +91,7 @@ export function MediaController() {
                         value={progressPercentage}
                         onChange={handleProgressChange}
                     />
-                    <div 
+                    <div
                         className="progress-fill"
                         style={{ width: `${progressPercentage}%` }}
                     ></div>
@@ -137,14 +142,14 @@ export function RightControls() {
             </button>
 
             <div className="volume-control">
-                <button 
-                    className="control-btn volume-btn" 
+                <button
+                    className="control-btn volume-btn"
                     onClick={toggleMute}
                     title={isMuted ? 'Unmute' : 'Mute'}
                 >
-                    <img 
-                        src={isMuted ? "/src/assets/spotify-icons/mute.svg" : "/src/assets/spotify-icons/volume-high.svg"} 
-                        alt="Volume" 
+                    <img
+                        src={isMuted ? "/src/assets/spotify-icons/mute.svg" : "/src/assets/spotify-icons/volume-high.svg"}
+                        alt="Volume"
                     />
                 </button>
 
@@ -157,7 +162,7 @@ export function RightControls() {
                         value={isMuted ? 0 : volume}
                         onChange={handleVolumeChange}
                     />
-                    <div 
+                    <div
                         className="volume-fill"
                         style={{ width: `${isMuted ? 0 : volume}%` }}
                     ></div>
