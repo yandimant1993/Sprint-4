@@ -55,7 +55,7 @@ export function StationIndex() {
         <>
             <section className="station-index">
                 <header>
-                    <h2>Stations</h2>
+                    <h2 className="placeholder">StationsIndex placeholder</h2>
                     {userService.getLoggedinUser() && <button onClick={onAddStation}>Add a Station</button>}
                 </header>
                 <section className="main-list">

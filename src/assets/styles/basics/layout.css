@@ -1,5 +1,5 @@
 
-.main-container {
+.app-container {
     display: grid;
     grid-template-columns: 1rem 1fr 1rem;
 
