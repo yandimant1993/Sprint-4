@@ -5,12 +5,15 @@
         background-color: var(--clr4);
 
         .details-header-container {
+            padding-block-end: 16px;
             margin-block-end: 16px;
+            background-color: var(--gray3);
 
             .btn-station-img-container {
                 width: 128px;
                 height: 128px;
                 margin: 42px 16px 0;
+                background-color: var(--clr1);
 
                 .btn-station-img {
                     width: 50%;
