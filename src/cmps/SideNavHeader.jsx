@@ -1,11 +1,12 @@
-import { SortStation } from "./SortStation"
-import { StationFilter } from "./StationFilter"
 import { useSelector } from 'react-redux'
 import { setFilter } from '../store/actions/station.actions'
 import { stationService } from "../services/station"
 import { useNavigate } from 'react-router-dom'
 
-export function SideNavHeader() {
+import { SortStation } from "./SortStation"
+import { StationFilter } from "./StationFilter"
+
+export function SideNavHeader({ setIsExpanded, isExpanded }) {
 	const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
 	const navigate = useNavigate()
 
@@ -19,8 +20,15 @@ export function SideNavHeader() {
 		}
 	}
 
+	function toggleExpand() {
+		setIsExpanded(prev => !prev)
+	}
+
 	return (
-		<section>
+		<section className="side-nav-header">
+			<button className="btn-sidenav-toggle" onClick={toggleExpand}>
+				{isExpanded ? 'Collapse' : 'Expand'}
+			</button>
 			<button className="btn-create-station" onClick={onCreateStation}>
 				Create station
 			</button>
