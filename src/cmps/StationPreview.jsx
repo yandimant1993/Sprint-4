@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom'
 
 export function StationPreview({ station }) {
+    console.log('station.songs',station.songs)
+    console.log('station',station)
     return (
         <article className="station-preview">
             <NavLink to={`/station/${station._id}`}>
-            {play}
+            {"play"}
             </NavLink>
             {station.stationImgUrl &&
                 <img 
@@ -13,6 +15,7 @@ export function StationPreview({ station }) {
                 className="station-picture" />
 }
             <p className="singer">{station.songs[0].performer}</p>
+
         </article>
     )
 }

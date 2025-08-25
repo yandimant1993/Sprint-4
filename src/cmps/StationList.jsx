@@ -5,6 +5,7 @@ export function StationList({ stations, onRemoveStation, onUpdateStation }) {
     
     function shouldShowActionBtns(station) {
         const user = userService.getLoggedinUser()
+        console.log('stations yaaaan',stations)
         
         if (!user) return false
         if (user.isAdmin) return true

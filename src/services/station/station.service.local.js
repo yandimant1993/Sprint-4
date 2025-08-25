@@ -36,7 +36,7 @@ async function query(filterBy = { txt: '' }) {
             (station1[sortField] - station2[sortField]) * +sortDir)
     }
 
-    stations = stations.map(({ _id, name, addedat, owner }) => ({ _id, name, addedat, owner }))
+    // stations = stations.map(({ _id, name, addedat, owner }) => ({ _id, name, addedat, owner }))
     return stations
 }
 
