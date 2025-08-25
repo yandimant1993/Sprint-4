@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { SongPreview } from './SongPreview'
 import { MediaPlayer } from './MediaPlayer'
 import { Controller } from './Controller'
+import { RightControls } from './RightControls'
 
 export function AppFooter() {
 	const [player, setPlayer] = useState(null)
@@ -37,7 +38,10 @@ export function AppFooter() {
 						onProgressChange={handleProgressChange}
 					/>
 				</div>
-				<div className="footer-right"></div>
+				<div className="footer-right">
+					<RightControls player={player} />
+
+				</div>
 			</div>
 
 			<MediaPlayer
@@ -49,3 +53,4 @@ export function AppFooter() {
 		</footer>
 	)
 }
+
