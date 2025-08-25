@@ -1,22 +1,51 @@
-import { useSelector } from 'react-redux'
+import { useState } from 'react'
 import { SongPreview } from './SongPreview'
 import { MediaPlayer } from './MediaPlayer'
-import { MediaController, RightControls } from './Controller'
+import { Controller } from './Controller'
 
 export function AppFooter() {
-	const count = useSelector(storeState => storeState.userModule.count)
+	const [player, setPlayer] = useState(null)
+	const [currentTime, setCurrentTime] = useState(0)
+	const [duration, setDuration] = useState(0)
+
+	const handlePlayerReady = (playerInstance) => {
+		setPlayer(playerInstance)
+	}
+
+	const handleTimeUpdate = (time) => {
+		setCurrentTime(time)
+	}
+
+	const handleDurationChange = (videoDuration) => {
+		setDuration(videoDuration)
+	}
+
+	const handleProgressChange = (newTime) => {
+		setCurrentTime(newTime)
+	}
 
 	return (
 		<footer className="app-footer full">
-			{/* {import.meta.env.VITE_LOCAL ?
-				<span className="local-services">Local Services</span> :
-				<span className="remote-services">Remote Services</span>} */}
-
 			<div className="footer-content">
 				<div className="footer-left"><SongPreview /></div>
-				<div className="footer-center"><MediaController /></div>
-				<div className="footer-right"><RightControls /></div>
+				<div className="footer-center">
+					<Controller
+						player={player}
+						currentTime={currentTime}
+						duration={duration}
+						onTimeUpdate={handleTimeUpdate}
+						onProgressChange={handleProgressChange}
+					/>
+				</div>
+				<div className="footer-right"></div>
 			</div>
+
+			<MediaPlayer
+				videoId="Si0roOzucDk"
+				onReady={handlePlayerReady}
+				onTimeUpdate={handleTimeUpdate}
+				onDurationChange={handleDurationChange}
+			/>
 		</footer>
 	)
 }

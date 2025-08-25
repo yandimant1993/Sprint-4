@@ -1,15 +1,13 @@
 import React from 'react'
 
 export function SongPreview() {
-
     const currentSong = {
-        title: "אין פה מקום - מתוך הופעה חיה בבארבי",
-        artist: "עידן רפאל חביב",
+        title: "טיפקס - בתוך נייר עיתון ~הקליפ הרשמי",
+        artist: "TeaPacks",
         image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
     }
 
     return (
-        
         <div className="song-preview">
             <div className="song-image">
                 <img

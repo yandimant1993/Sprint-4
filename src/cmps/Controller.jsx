@@ -1,23 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
 
-export function MediaController() {
+export function MediaController({ player, currentTime, duration, onTimeUpdate, onProgressChange }) {
     const [isPlaying, setIsPlaying] = useState(false)
-    const [currentTime, setCurrentTime] = useState(0)
-    const [duration, setDuration] = useState(0)
     const [isShuffled, setIsShuffled] = useState(false)
-    const [isActive, setIsisActive] = useState(false)
     const [isRepeating, setIsRepeating] = useState(false)
-
-    const audioRef = useRef(null)
-
-    const mockDuration = 224
-    const mockCurrentTime = 101
-
-    useEffect(() => {
-        setDuration(mockDuration)
-        setCurrentTime(mockCurrentTime)
-    }, [])
 
     const formatTime = (seconds) => {
         const mins = Math.floor(seconds / 60)
@@ -26,15 +12,38 @@ export function MediaController() {
     }
 
     const handlePlayPause = () => {
+        if (!player) return
+        if (isPlaying) {
+            player.pauseVideo()
+        } else {
+            player.playVideo()
+        }
         setIsPlaying(!isPlaying)
     }
 
     const handleProgressChange = (e) => {
+        if (!player || !duration) return
         const newTime = (e.target.value / 100) * duration
-        setCurrentTime(newTime)
+        player.seekTo(newTime, true)
+        if (onProgressChange) onProgressChange(newTime)
     }
 
     const progressPercentage = duration ? (currentTime / duration) * 100 : 0
+
+
+    useEffect(() => {
+        if (player) {
+            const handleStateChange = (event) => {
+
+                setIsPlaying(event.data === 1)
+            }
+
+            player.addEventListener('onStateChange', handleStateChange)
+            return () => {
+                player.removeEventListener('onStateChange', handleStateChange)
+            }
+        }
+    }, [player])
 
     return (
         <div className="media-controller">
@@ -46,7 +55,6 @@ export function MediaController() {
                 >
                     <img src="/src/assets/spotify-icons/shuffle.svg" alt="Shuffle" />
                     <div className="active-dot "></div>
-
                 </button>
 
                 <button className="control-btn previous" title="Previous">
@@ -54,7 +62,7 @@ export function MediaController() {
                 </button>
 
                 <button
-                    className="control-btn play-pause"
+                    className={`control-btn play-pause`}
                     onClick={handlePlayPause}
                     title={isPlaying ? 'Pause' : 'Play'}
                 >
@@ -76,7 +84,6 @@ export function MediaController() {
                 >
                     <img src="/src/assets/spotify-icons/repeat.svg" alt="Repeat" />
                     <div className="active-dot"></div>
-
                 </button>
             </div>
 
@@ -102,25 +109,37 @@ export function MediaController() {
     )
 }
 
-export function RightControls() {
+export function RightControls({ player }) {
     const [volume, setVolume] = useState(50)
     const [isMuted, setIsMuted] = useState(false)
 
     const handleVolumeChange = (e) => {
+        if (!player) return
         const newVolume = parseInt(e.target.value)
         setVolume(newVolume)
+        player.setVolume(newVolume)
         setIsMuted(newVolume === 0)
     }
 
     const toggleMute = () => {
+        if (!player) return
         if (isMuted) {
             setIsMuted(false)
             setVolume(50)
+            player.setVolume(50)
         } else {
             setIsMuted(true)
             setVolume(0)
+            player.setVolume(0)
         }
     }
+
+    useEffect(() => {
+        if (player) {
+            player.setVolume(volume)
+        }
+    }, [player, volume])
+
 
     return (
         <div className="right-controls">
@@ -176,12 +195,18 @@ export function RightControls() {
     )
 }
 
-// Backward-compatible Controller that renders both parts stacked
-export function Controller() {
+export function Controller({ player, currentTime, duration, onTimeUpdate, onProgressChange }) {
     return (
         <div className="media-controller">
-            <MediaController />
-            <RightControls />
+            <MediaController
+                player={player}
+                currentTime={currentTime}
+                duration={duration}
+                onTimeUpdate={onTimeUpdate}
+                onProgressChange={onProgressChange}
+            />
+            <RightControls player={player} />
         </div>
     )
 }
+
