@@ -37,6 +37,7 @@ async function query(filterBy = { txt: '' }) {
     }
 
     // stations = stations.map(({ _id, name, addedat, owner }) => ({ _id, name, addedat, owner }))
+    // console.log('stations',stations)
     return stations
 }
 
