@@ -41,7 +41,13 @@ export function AppHeader() {
 			</div>
 
 
+
 			<div className="header-center">
+				
+				<NavLink to="/" className="home-icon">
+					<img src="/src/assets/spotify-icons/home-line.svg" alt="home" />
+				</NavLink>
+
 				<div className="search-container">
 					<img src="/src/assets/spotify-icons/search.svg" alt="Search" className="search-icon" />
 					<input

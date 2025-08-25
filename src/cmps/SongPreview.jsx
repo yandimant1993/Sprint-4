@@ -25,7 +25,7 @@ export function SongPreview() {
                 <div className="song-artist-container">
                     <span className="song-artist">{currentSong.artist}</span>
                     <button className="add-song-btn" title="Add to Library">
-                        <img src="/src/assets/spotify-icons/plus.svg" alt="Add" />
+                        <img src="/src/assets/spotify-icons/add-like.svg" alt="Add" />
                     </button>
                 </div>
             </div>
