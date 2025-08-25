@@ -1,7 +1,8 @@
 import { userService } from '../services/user'
 import { StationPreview } from './StationPreview'
+import { NavLink } from 'react-router-dom'
 
-export function StationList({ stations}) {
+export function StationList({ stations }) {
 
     function shouldShowActionBtns(station) {
         const user = userService.getLoggedinUser()
@@ -10,20 +11,22 @@ export function StationList({ stations}) {
         if (user.isAdmin) return true
         return station.owner?._id === user._id
     }
-    console.log('stations',stations)
+    console.log('stations', stations)
     if (!stations) return <p>Loading...</p>
-    return <section>
-        <ul className="station-list">
-            {stations.map(station =>
-                <li key={station._id}>
-                    <StationPreview station={station} />
-                    {shouldShowActionBtns(station) && <div className="actions">
-                        {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
+    return (
+            <ul className="station-list">
+                {stations.map(station =>
+                    <NavLink to={`/station/${station._id}`}>
+                        <li key={station._id}>
+                            <StationPreview station={station} />
+                            {shouldShowActionBtns(station) && <div className="actions">
+                                {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
                         <button onClick={() => onRemoveStation(station._id)}>x</button> */}
-                        <button onClick={() => playStation(station._id)}>play</button>
-                    </div>}
-                </li>
-            )}
-        </ul>
-    </section>
+                                <button onClick={() => playStation(station._id)}>play</button>
+                            </div>}
+                        </li>
+                    </NavLink>
+                )}
+            </ul>
+    )
 }

@@ -1,7 +1,7 @@
 .station-list {
     --min-column-size: 220px;
-
     display: grid;
+
     grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
     gap: .5em;
 
@@ -24,4 +24,14 @@
             }
         }
     }
+}
+
+
+.station-list-container {
+
+    & .station-list {
+        display: flex;
+    }
+        
+    
 }
