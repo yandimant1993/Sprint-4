@@ -1,17 +1,17 @@
 :root {
-  
+
   --clr1: #2a2a2a;
   --clr2: #1f1f1f;
   --clr3: #191919;
-  --clr4: #000000;
+  --clr4: #121212;
+  --clr5: #000000;
 
   --clr-green: #1ed760;
 
-
+  --white: #fff;
   --gray1: #ddd;
-  --gray2: #aaa;
-  --gray3: #777;
-  --gray4: #333;
+  --gray2: #b3b3b3;
+  --gray3: #7c7c7c;
 
   --success: rgb(41, 189, 73);
   --error: rgb(216, 59, 59);

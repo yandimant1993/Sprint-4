@@ -14,9 +14,10 @@ import { LoginSignup, Login, Signup } from './pages/LoginSignup.jsx'
 export function RootCmp() {
     return (
         <Provider store={store}>
-            <div className="main-container">
+            <div className="app-container">
                 <AppHeader />
                 <UserMsg />
+                <div className="main-container flex column">
                 <SideNav />
                 <main>
                     <Routes>
@@ -28,6 +29,7 @@ export function RootCmp() {
                         </Route>
                     </Routes>
                 </main>
+                </div>
                 <AppFooter />
             </div>
         </Provider>

@@ -6,6 +6,11 @@
     gap: .5em;
 
     & li {
+        justify-content: center;
+        place-items: center;
+        height: 177.73px;
+        width: 228.58px;
+        cursor: pointer;
         display: grid;
         grid-template-columns: max-content auto;
         padding: .5em;
