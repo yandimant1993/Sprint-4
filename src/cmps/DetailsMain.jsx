@@ -3,7 +3,7 @@ import { SongList } from "./SongList";
 export function DetailsMain() {
     return (
         <>
-            <h2>Details Main</h2>
+            <h2 className="placeholder">DetailsMain Placeholder</h2>
             <SongList />
         </>
     )

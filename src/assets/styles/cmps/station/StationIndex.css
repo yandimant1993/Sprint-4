@@ -1,20 +1,50 @@
-.station-index {
-    & header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+.main-container {
 
-        padding-block: .3em;
-    }
+    .station-details {
+        min-width: 500px;
+        background-color: var(--clr4);
 
-    background-color: var(--gray4, #333);
+        .details-header-container {
+            margin-block-end: 16px;
 
-    & h2 {
-        margin: 0;
-        font-size: 1.3em;
-    }
+            .btn-station-img-container {
+                width: 128px;
+                height: 128px;
+                margin: 42px 16px 0;
 
-    & button {
-        margin-inline-end: 0;
+                .btn-station-img {
+                    width: 50%;
+                    height: 50%;
+                    place-self: center;
+                    color: var(--gray3);
+
+                    &:hover {
+                        color: var(--gray1);
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            .details-header-text {
+                height: fit-content;
+                align-self: end;
+
+                .station-name {
+                    margin: 0;
+                    font-size: 2rem;
+                    font-weight: 800;
+                }
+
+                .station-type,
+                .station-creator {
+                    font-size: 0.8125rem;
+                }
+
+                .station-creator {
+                    font-weight: bold;
+                    margin-block-start: 0.5rem;
+                }
+            }
+        }
     }
 }

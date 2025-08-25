@@ -18,7 +18,6 @@ export function StationDetails() {
     loadStation(stationId)
   }, [stationId])
 
-  if (!station) return
   async function onAddStationMsg(stationId) {
     try {
       await addStationMsg(stationId, 'bla bla ' + parseInt(Math.random() * 10))
@@ -26,21 +25,13 @@ export function StationDetails() {
     } catch (err) {
       showErrorMsg('Cannot add station msg')
     }
-
   }
 
+  if (!station) return
   return (
     <section className="station-details">
-      <h1>{station.name}</h1>
-      {station && <div>
-        <h3>{station.name}</h3>
-        <h4>{station.addedAt}</h4>
-        <pre> {JSON.stringify(station, null, 2)} </pre>
-      </div>
-      }
-      <DetailsHeader />
-      <DetailsMain />
-      <button onClick={() => { onAddStationMsg(station._id) }}>Add station msg</button>
+      <DetailsHeader station={station} />
+      <DetailsMain station={station} />
     </section>
   )
 }
