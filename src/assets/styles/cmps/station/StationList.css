@@ -30,6 +30,7 @@
 .station-list-container {
     flex-grow: 1;
     background-color: var(--gray2, #b3b3b3);
+    mix-blend-mode: multiply;
 
     & .station-list {
         display: flex;
