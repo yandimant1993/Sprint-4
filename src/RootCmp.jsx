@@ -17,9 +17,8 @@ export function RootCmp() {
             <div className="app-container">
                 <AppHeader />
                 <UserMsg />
-                <div className="main-container flex column">
-                <SideNav />
-                <main>
+                <main className="main-container flex">
+                    <SideNav />
                     <Routes>
                         <Route path="/" element={<StationIndex />} />
                         <Route path="station/:stationId" element={<StationDetails />} />
@@ -29,7 +28,6 @@ export function RootCmp() {
                         </Route>
                     </Routes>
                 </main>
-                </div>
                 <AppFooter />
             </div>
         </Provider>
