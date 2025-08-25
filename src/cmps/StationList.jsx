@@ -21,7 +21,7 @@ export function StationList({ stations, onRemoveStation, onUpdateStation }) {
                     {shouldShowActionBtns(station) && <div className="actions">
                         {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
                         <button onClick={() => onRemoveStation(station._id)}>x</button> */}
-                        <button onClick={() => playStation()(station._id)}>play</button>
+                        <button onClick={() => playStation(station._id)}>play</button>
                     </div>}
                 </li>
                 )}
