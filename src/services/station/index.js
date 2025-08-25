@@ -5,15 +5,19 @@ import { getRandomIntInclusive, makeId, makeLorem } from '../util.service'
 import { stationService as local } from './station.service.local'
 import { stationService as remote } from './station.service.remote'
 
+var count = 1
+
 function getEmptyStation() {
-    return {
-        name: makeLorem(2),
+    const station = {
+        name: `New Playlist #${count}`,
         addedAt: Date.now(),
         tags: [],
         songs: [],
         createdBy: null,
         likedByUsers: [],
     }
+    count++
+    return station
 }
 
 function getDefaultFilter() {

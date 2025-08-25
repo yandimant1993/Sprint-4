@@ -11,7 +11,6 @@ import { DetailsMain } from '../cmps/DetailsMain'
 
 
 export function StationDetails() {
-
   const { stationId } = useParams()
   const station = useSelector(storeState => storeState.stationModule.station)
 
@@ -19,6 +18,7 @@ export function StationDetails() {
     loadStation(stationId)
   }, [stationId])
 
+  if (!station) return
   async function onAddStationMsg(stationId) {
     try {
       await addStationMsg(stationId, 'bla bla ' + parseInt(Math.random() * 10))
@@ -31,8 +31,7 @@ export function StationDetails() {
 
   return (
     <section className="station-details">
-      <Link to="/station">Back to list</Link>
-      <h1>Station Details</h1>
+      <h1>{station.name}</h1>
       {station && <div>
         <h3>{station.name}</h3>
         <h4>{station.addedAt}</h4>
@@ -41,9 +40,7 @@ export function StationDetails() {
       }
       <DetailsHeader />
       <DetailsMain />
-      
       <button onClick={() => { onAddStationMsg(station._id) }}>Add station msg</button>
-
     </section>
   )
 }

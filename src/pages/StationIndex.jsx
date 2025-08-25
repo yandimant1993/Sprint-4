@@ -57,7 +57,6 @@ export function StationIndex() {
                 {userService.getLoggedinUser() && <button onClick={onAddStation}>Add a Station</button>}
             </header>
             <section className="main-list">
-                <SideNav stations={stations} />
                 <StationList
                     stations={stations}
                     onRemoveStation={onRemoveStation}
