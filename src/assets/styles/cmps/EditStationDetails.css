@@ -1,0 +1,74 @@
+.modal-overlay {
+  position: fixed;
+  width: 524px;
+  height: 384px;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.5);
+   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+  .modal-container {
+    min-width: 300px;
+    max-width: 500px;
+    padding: 24px;
+
+
+    background: var(--clr4);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+
+    .modal-header,
+    .modal-footer {
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    .modal-header {
+      height: 72px;
+      justify-content: space-between;
+
+      h2 {
+        margin: 0;
+      }
+    }
+
+    .modal-main {
+      display: grid;
+      grid-template: 32px 132px 32px auto/180px 1fr;
+      grid-template-areas:
+        "album-image title"
+        "album-image description"
+        ". save-button"
+        "disclaimer disclaimer";
+      grid-gap: 16px;
+      padding: 0 24px 24px;
+
+      .btn-station-img-container {
+        grid-area: album-image;
+      }
+
+      .station-name {
+        grid-area: title;
+      }
+
+      .station-description {
+        grid-area: description;
+      }
+
+      .btn-save-station {
+        grid-area: save-button;
+      }
+
+      .modal-disclaimer {
+        grid-area: disclaimer;
+      }
+    }
+  }
+}
