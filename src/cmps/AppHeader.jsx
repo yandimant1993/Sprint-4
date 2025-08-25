@@ -7,6 +7,7 @@ import { logout } from '../store/actions/user.actions'
 import { StationFilter } from './StationFilter.jsx'
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 import { setFilter } from '../store/actions/station.actions'
+// import { Svgs } from './Svgs.jsx'
 
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
@@ -33,18 +34,10 @@ export function AppHeader() {
 			<div className="header-left">
 				<div className="logo-container">
 					<NavLink to="/" className="logo">
-						<span className="logo-text">Spotify</span>
-						{/* <img src="/src/assets/spotify-icons/spotify-icon.svg" /> */}
+						<img src="/src/assets/spotify-icons/spotify-whit.png" />
 					</NavLink>
 				</div>
-				<div className="nav-buttons">
-					<button className="nav-btn back" disabled>
-						<img src="/src/assets/spotify-icons/left-grey-bold.svg" alt="Back" />
-					</button>
-					<button className="nav-btn forward" disabled>
-						<img src="/src/assets/spotify-icons/slide-right.svg" alt="Forward" />
-					</button>
-				</div>
+
 			</div>
 
 

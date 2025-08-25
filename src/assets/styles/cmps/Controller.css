@@ -4,7 +4,7 @@
     justify-content: space-between;
     width: 100%;
     max-width: 800px;
-    gap: 2rem;
+    /* gap: 2rem; */
 }
 
 .media-controls {
@@ -12,6 +12,7 @@
     align-items: center;
     gap: 1.5rem;
     flex-shrink: 0;
+    
 }
 
 .control-btn {
@@ -72,7 +73,7 @@
 /* Progress bar styling */
 .progress-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 0.5rem;
     flex: 1;
@@ -142,6 +143,7 @@
 /* Right side controls */
 .right-controls {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
     flex-shrink: 0;
@@ -153,9 +155,9 @@
 }
 
 .active-dot {
-    position: absolute;
-    bottom: -2px;
-    right: -2px;
+    position:relative;
+    bottom: -5px;
+    right: 2px;
     width: 6px;
     height: 6px;
     background-color: #1db954;

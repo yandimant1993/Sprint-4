@@ -8,33 +8,34 @@
     border-bottom: 1px solid #282828;
 }
 
-/* Left Side - Logo & Navigation */
-.header-left {
+
+/* .header-left {
     display: flex;
     align-items: center;
     gap: 1rem;
     flex-shrink: 0;
-}
+} */
 
-.logo-container {
+/* .logo-container {
     display: flex;
     align-items: center;
-}
+} */
 
-.logo {
+/* .logo {
     text-decoration: none;
-}
+} */
 
-.logo-text {
+/* .logo-text {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #1db954;
+    color: #ffffff;
     letter-spacing: -0.5px;
-}
+} */
 
 .logo img {
     height: 32px;
     width: auto;
+    background-color: white;
 }
 
 .nav-buttons {
@@ -42,7 +43,7 @@
     gap: 0.5rem;
 }
 
-.nav-btn {
+/* .nav-btn {
     background: none;
     border: none;
     width: 32px;
@@ -54,24 +55,23 @@
     cursor: pointer;
     transition: all 0.2s ease;
     background-color: rgba(0, 0, 0, 0.7);
-}
+} */
 
-.nav-btn:hover:not(:disabled) {
+/* .nav-btn:hover:not(:disabled) {
     background-color: rgba(255, 255, 255, 0.1);
-}
+} */
 
-.nav-btn:disabled {
+/* .nav-btn:disabled {
     opacity: 0.3;
     cursor: not-allowed;
-}
+} */
 
-.nav-btn img {
+/* .nav-btn img {
     width: 16px;
     height: 16px;
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1) contrast(1);
-}
+} */
 
-/* Center - Search Bar */
 .header-center {
     flex: 1;
     display: flex;
@@ -83,7 +83,7 @@
 .search-container {
     position: relative;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 .search-icon {
@@ -118,6 +118,7 @@
 }
 
 /* Right Side - User Actions */
+
 .header-right {
     display: flex;
     align-items: center;
@@ -141,25 +142,25 @@
     text-decoration: none;
 }
 
-.action-btn.premium {
+/* .action-btn.premium {
     background-color: #000000;
     color: #ffffff;
     border: 1px solid #ffffff;
-}
+} */
 
-.action-btn.premium:hover {
+/* .action-btn.premium:hover {
     background-color: #ffffff;
     color: #000000;
-}
+} */
 
-.action-btn.install {
+/* .action-btn.install {
     background-color: transparent;
     color: #ffffff;
-}
+} */
 
-.action-btn.install:hover {
+/* .action-btn.install:hover {
     background-color: rgba(255, 255, 255, 0.1);
-}
+} */
 
 .action-btn.notification,
 .action-btn.friends {
@@ -180,30 +181,30 @@
 }
 
 .action-btn.login {
-    background-color: #1db954;
+    background-color: var(--gray1);
     color: #000000;
     font-weight: 700;
 }
 
 .action-btn.login:hover {
-    background-color: #1ed760;
+    background-color: var(--gray1);
     transform: scale(1.05);
 }
 
-/* User Profile */
-.user-profile {
+
+/* .user-profile {
     display: flex;
     align-items: center;
-}
+} */
 
-.user-profile img {
+/* .user-profile img {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
-}
+} */
 
-.profile-placeholder {
+/* .profile-placeholder {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -214,14 +215,18 @@
     justify-content: center;
     font-weight: 600;
     font-size: 1rem;
-}
+} */
+
+
+
 
 /* Responsive Design */
+
 @media (max-width: 1024px) {
     .header-center {
         margin: 0 1rem;
     }
-    
+
     .search-container {
         max-width: 300px;
     }
@@ -231,20 +236,20 @@
     .app-header {
         padding: 0 1rem;
     }
-    
+
     .header-center {
         margin: 0 0.5rem;
     }
-    
+
     .search-container {
         max-width: 250px;
     }
-    
+
     .action-btn {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
     }
-    
+
     .action-btn.install {
         display: none;
     }
