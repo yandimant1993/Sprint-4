@@ -13,6 +13,7 @@ import { SideNav } from '../cmps/SideNav.jsx'
 export function StationIndex() {
     const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
     const stations = useSelector(storeState => storeState.stationModule.stations)
+    console.log('stations',stations)
 
     useEffect(() => {
         loadStations()

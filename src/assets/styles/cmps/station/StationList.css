@@ -5,16 +5,25 @@
     grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
     gap: .5em;
 
-    & li {
+    li {
         justify-content: center;
         place-items: center;
-        height: 177.73px;
-        width: 228.58px;
+        height: 228.58px;
+        width: 177.73px;
         cursor: pointer;
         display: grid;
         grid-template-columns: max-content auto;
         padding: .5em;
         background-color: var(--clr2);
+
+        &:hover {
+            background-color: rgb(149, 149, 149);
+
+            .svg-play {
+                opacity: 1;
+                transition: 0.7s;
+            }
+        }
 
         .actions {
             justify-self: end;
@@ -24,8 +33,8 @@
             }
         }
     }
-}
 
+}
 
 .station-list-container {
     flex-grow: 1;

@@ -98,5 +98,20 @@ export const Svgs = {
     >
       <path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732z" />
     </svg>
+  ),
+  play: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      data-encore-id="icon"
+      role="img"
+      aria-hidden="true"
+      className="e-91000-icon e-91000-baseline"
+      viewBox="0 0 24 24"
+    >
+      <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606" />
+    </svg>
   )
 }
+
+
+
