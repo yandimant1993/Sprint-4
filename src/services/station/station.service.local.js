@@ -25,18 +25,18 @@ async function query(filterBy = { txt: '' }) {
         stations = stations.filter(station => regex.test(station.name) || regex.test(station.description))
     }
     if (minAddedAt) {
-        stations = stations.filter(station => station.addedat >= minAddedAt)
+        stations = stations.filter(station => station.addedAt >= minAddedAt)
     }
     if (sortField === 'name') {
         stations.sort((station1, station2) =>
             station1[sortField].localeCompare(station2[sortField]) * +sortDir)
     }
-    if (sortField === 'addedat') {
+    if (sortField === 'addedAt') {
         stations.sort((station1, station2) =>
             (station1[sortField] - station2[sortField]) * +sortDir)
     }
 
-    // stations = stations.map(({ _id, name, addedat, owner }) => ({ _id, name, addedat, owner }))
+    // stations = stations.map(({ _id, name, addedAt, owner }) => ({ _id, name, addedAt, owner }))
     // console.log('stations',stations)
     return stations
 }
@@ -55,13 +55,13 @@ async function save(station) {
     if (station._id) {
         const stationToSave = {
             _id: station._id,
-            addedat: station.addedat
+            addedAt: station.addedAt
         }
         savedStation = await storageService.put(STORAGE_KEY, stationToSave)
     } else {
         const stationToSave = {
             name: station.name,
-            addedat: station.addedat,
+            addedAt: station.addedAt,
             // Later, owner is set by the backend
             owner: userService.getLoggedinUser(),
             msgs: []
@@ -101,7 +101,7 @@ async function _createStations() {
                     fullname: 'Ava Stone',
                     imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
                 },
-                addedat: 1724476800000,
+                addedAt: 1724476800000,
                 likedByUsers: [],
                 stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
@@ -130,7 +130,7 @@ async function _createStations() {
                     fullname: 'Jasper Ray',
                     imgUrl: 'https://randomuser.me/api/portraits/men/42.jpg',
                 },
-                addedat: 1756012500000,
+                addedAt: 1756012500000,
                 likedByUsers: [],
                 stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
@@ -159,7 +159,7 @@ async function _createStations() {
                     fullname: 'Ava Stone',
                     imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
                 },
-                addedat: 1754198400000,
+                addedAt: 1754198400000,
                 likedByUsers: [],
                 stationImgUrl: 'https://placebear.com/80/80',
                 songs: [

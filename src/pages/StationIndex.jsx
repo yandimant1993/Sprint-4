@@ -39,13 +39,13 @@ export function StationIndex() {
     }
 
     async function onUpdateStation(station) {
-        const addedat = +prompt('New addedat?', station.addedat) || 0
-        if (addedat === 0 || addedat === station.addedat) return
+        const addedAt = +prompt('New addedAt?', station.addedAt) || 0
+        if (addedAt === 0 || addedAt === station.addedAt) return
 
-        const stationToSave = { ...station, addedat }
+        const stationToSave = { ...station, addedAt }
         try {
             const savedStation = await updateStation(stationToSave)
-            showSuccessMsg(`Station updated, new addedat: ${savedStation.addedat}`)
+            showSuccessMsg(`Station updated, new addedAt: ${savedStation.addedAt}`)
         } catch (err) {
             showErrorMsg('Cannot update station')
         }

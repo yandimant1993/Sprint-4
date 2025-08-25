@@ -55,8 +55,8 @@ export function stationReducer(state = initialState, action) {
 
 function unitTestReducer() {
     var state = initialState
-    const station1 = { _id: 'b101', name: 'Station ' + parseInt('' + Math.random() * 10), addedat: 12, owner: null, msgs: [] }
-    const station2 = { _id: 'b102', name: 'Station ' + parseInt('' + Math.random() * 10), addedat: 13, owner: null, msgs: [] }
+    const station1 = { _id: 'b101', name: 'Station ' + parseInt('' + Math.random() * 10), addedAt: 12, owner: null, msgs: [] }
+    const station2 = { _id: 'b102', name: 'Station ' + parseInt('' + Math.random() * 10), addedAt: 13, owner: null, msgs: [] }
 
     state = stationReducer(state, { type: SET_STATIONS, stations: [station1] })
     console.log('After SET_STATIONS:', state)

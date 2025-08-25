@@ -8,7 +8,7 @@ import { stationService as remote } from './station.service.remote'
 function getEmptyStation() {
     return {
         name: makeLorem(2),
-        addedat: Date.now(),
+        addedAt: Date.now(),
         tags: [],
         songs: [],
         createdBy: null,
