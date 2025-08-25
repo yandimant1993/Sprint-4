@@ -34,6 +34,7 @@ export function AppHeader() {
 				<div className="logo-container">
 					<NavLink to="/" className="logo">
 						<span className="logo-text">Spotify</span>
+						{/* <img src="/src/assets/spotify-icons/spotify-icon.svg" /> */}
 					</NavLink>
 				</div>
 				<div className="nav-buttons">

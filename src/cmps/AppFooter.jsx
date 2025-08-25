@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { SongPreview } from './SongPreview'
 import { MediaPlayer } from './MediaPlayer'
-import { Controller } from './Controller'
+import { MediaController, RightControls } from './Controller'
 
 export function AppFooter() {
 	const count = useSelector(storeState => storeState.userModule.count)
@@ -13,9 +13,9 @@ export function AppFooter() {
 				<span className="remote-services">Remote Services</span>} */}
 
 			<div className="footer-content">
-				<SongPreview />
-				<MediaPlayer />
-				<Controller />
+				<div className="footer-left"><SongPreview /></div>
+				<div className="footer-center"><MediaController /></div>
+				<div className="footer-right"><RightControls /></div>
 			</div>
 		</footer>
 	)
