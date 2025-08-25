@@ -4,6 +4,7 @@ export const storageService = {
     post,
     put,
     remove,
+    saveAll
 }
 
 function query(entityType, delay = 500) {
@@ -32,7 +33,7 @@ function put(entityType, updatedEntity) {
     return query(entityType).then(entities => {
         const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
         if (idx < 0) throw new Error(`Update failed, cannot find entity with id: ${updatedEntity._id} in: ${entityType}`)
-        const entityToUpdate = {...entities[idx], ...updatedEntity}
+        const entityToUpdate = { ...entities[idx], ...updatedEntity }
         entities.splice(idx, 1, entityToUpdate)
         _save(entityType, entities)
         return entityToUpdate
@@ -46,6 +47,11 @@ function remove(entityType, entityId) {
         entities.splice(idx, 1)
         _save(entityType, entities)
     })
+}
+
+function saveAll(entityType, entities) {
+    _save(entityType, entities)
+    return Promise.resolve(entities)
 }
 
 // Private functions

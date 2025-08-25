@@ -13,7 +13,6 @@ export function StationList({ stations, onRemoveStation, onUpdateStation }) {
 
 
     if (!stations) return <p>Loading...</p>
-
     return <section>
         <ul className="station-list">
             {stations.map(station =>

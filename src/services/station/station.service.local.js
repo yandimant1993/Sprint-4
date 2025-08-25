@@ -1,6 +1,6 @@
 
 import { storageService } from '../async-storage.service'
-import { makeId, saveToStorage, loadFromStorage } from '../util.service'
+import { makeId } from '../util.service'
 import { userService } from '../user'
 
 const STORAGE_KEY = 'station'
@@ -14,7 +14,7 @@ export const stationService = {
 }
 window.cs = stationService
 
-// _createStations()
+_createStations()
 
 async function query(filterBy = { txt: '' }) {
     var stations = await storageService.query(STORAGE_KEY)
@@ -85,95 +85,97 @@ async function addStationMsg(stationId, txt) {
     return msg
 }
 
-function _createStations() {
-    let stations = loadFromStorage(STORAGE_KEY) || []
-    if (stations.length > 0) return
-    stations = [
-        {
-            name: 'Late Night Loops',
-            tags: ['Chill', 'Lofi', 'Beats'],
-            createdBy: {
-                _id: 'u201',
-                fullname: 'Ava Stone',
-                imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
-            },
-            likedByUsers: ['{minimal-user}', '{minimal-user}'],
-            songs: [
-                {
-                    id: 's001',
-                    title: 'Sunset Drive',
-                    performer: 'Sleepy Fish',
-                    url: 'https://youtube.com/watch?v=abc123',
-                    imgUrl: 'https://i.ytimg.com/vi/abc123/mqdefault.jpg',
-                    likedBy: ['{minimal-user}'],
-                    addedAt: 1635782910000,
-                },
-                {
-                    id: 's002',
-                    title: 'Rainy Nights',
-                    performer: 'Idealism',
-                    url: 'https://youtube.com/watch?v=def456',
-                    imgUrl: 'https://i.ytimg.com/vi/def456/mqdefault.jpg',
-                }
-            ]
-        },
-        {
+async function _createStations() {
+    try {
+        let stations = await storageService.query(STORAGE_KEY)
+        if (stations.length > 0) return
 
-            name: 'Indie Vibes',
-            tags: ['Indie Rock', 'New Releases'],
-            createdBy: {
-                _id: 'u202',
-                fullname: 'Jasper Ray',
-                imgUrl: 'https://randomuser.me/api/portraits/men/42.jpg',
-            },
-            likedByUsers: ['{minimal-user}'],
-            songs: [
-                {
-                    id: 's003',
-                    title: 'Electric Feel',
-                    performer: 'MGMT',
-                    url: 'https://youtube.com/watch?v=ghi789',
-                    imgUrl: 'https://i.ytimg.com/vi/ghi789/mqdefault.jpg',
-                    likedBy: ['{minimal-user}'],
-                    addedAt: 1641001234000,
+        stations = [
+            {
+                _id: '64f1cdd298b8c2a1d4a12f3a',
+                name: 'Late Night Loops',
+                tags: ['Chill', 'Lofi', 'Beats'],
+                createdBy: {
+                    _id: 'u101',
+                    fullname: 'Ava Stone',
+                    imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
                 },
-                {
-                    id: 's004',
-                    title: 'Youth',
-                    performer: 'Daughter',
-                    url: 'https://youtube.com/watch?v=jkl012',
-                    imgUrl: 'https://i.ytimg.com/vi/jkl012/mqdefault.jpg',
-                }
-            ]
-        },
-        {
-            name: 'Retro Synthwave',
-            tags: ['Synthwave', 'Retro', 'Instrumental'],
-            createdBy: {
-                _id: 'u203',
-                fullname: 'Nina Delgado',
-                imgUrl: 'https://randomuser.me/api/portraits/women/88.jpg',
+                likedByUsers: [],
+                songs: [
+                    {
+                        id: 's001',
+                        title: 'Sunset Drive',
+                        performer: 'Sleepy Fish',
+                        url: 'https://youtube.com/watch?v=abc123',
+                        imgUrl: 'https://i.ytimg.com/vi/abc123/mqdefault.jpg',
+                    },
+                    {
+                        id: 's002',
+                        title: 'Rainy Nights',
+                        performer: 'Idealism',
+                        url: 'https://youtube.com/watch?v=def456',
+                        imgUrl: 'https://i.ytimg.com/vi/def456/mqdefault.jpg',
+                    }
+                ]
             },
-            likedByUsers: [],
-            songs: [
-                {
-                    id: 's005',
-                    title: 'Nightcall',
-                    performer: 'Kavinsky',
-                    url: 'https://youtube.com/watch?v=mno345',
-                    imgUrl: 'https://i.ytimg.com/vi/mno345/mqdefault.jpg',
-                    likedBy: [],
-                    addedAt: 1628765420000,
+            {
+                _id: '64f1cdd298b8c2a1d4a12f3b',
+                name: 'Indie Vibes',
+                tags: ['Indie Rock', 'New Releases'],
+                createdBy: {
+                    _id: 'u102',
+                    fullname: 'Jasper Ray',
+                    imgUrl: 'https://randomuser.me/api/portraits/men/42.jpg',
                 },
-                {
-                    id: 's006',
-                    title: 'Turbo Killer',
-                    performer: 'Carpenter Brut',
-                    url: 'https://youtube.com/watch?v=pqr678',
-                    imgUrl: 'https://i.ytimg.com/vi/pqr678/mqdefault.jpg',
-                }
-            ]
-        }
-    ]
-    saveToStorage(STORAGE_KEY, stations)
+                likedByUsers: [],
+                songs: [
+                    {
+                        id: 's003',
+                        title: 'Electric Feel',
+                        performer: 'MGMT',
+                        url: 'https://youtube.com/watch?v=ghi789',
+                        imgUrl: 'https://i.ytimg.com/vi/ghi789/mqdefault.jpg',
+                    },
+                    {
+                        id: 's004',
+                        title: 'Youth',
+                        performer: 'Daughter',
+                        url: 'https://youtube.com/watch?v=jkl012',
+                        imgUrl: 'https://i.ytimg.com/vi/jkl012/mqdefault.jpg',
+                    }
+                ]
+            },
+            {
+                _id: '64f1cdd298b8c2a1d4a12f3c',
+                name: 'Retro Synthwave',
+                tags: ['Synthwave', 'Retro', 'Instrumental'],
+                createdBy: {
+                    _id: 'u101',
+                    fullname: 'Ava Stone',
+                    imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
+                },
+                likedByUsers: [],
+                songs: [
+                    {
+                        id: 's005',
+                        title: 'Nightcall',
+                        performer: 'Kavinsky',
+                        url: 'https://youtube.com/watch?v=mno345',
+                        imgUrl: 'https://i.ytimg.com/vi/mno345/mqdefault.jpg',
+                    },
+                    {
+                        id: 's006',
+                        title: 'Turbo Killer',
+                        performer: 'Carpenter Brut',
+                        url: 'https://youtube.com/watch?v=pqr678',
+                        imgUrl: 'https://i.ytimg.com/vi/pqr678/mqdefault.jpg',
+                    }
+                ]
+            }
+        ]
+        await storageService.saveAll(STORAGE_KEY, stations)
+        console.log('stations successfully added to localStorage')
+    } catch (err) {
+        console.error('Failed to create demo stations:', err)
+    }
 }
