@@ -11,7 +11,6 @@ export function StationList({ stations }) {
         if (user.isAdmin) return true
         return station.owner?._id === user._id
     }
-    console.log('stations', stations)
     if (!stations) return <p>Loading...</p>
     return (
         <ul className="station-list">
@@ -22,10 +21,11 @@ export function StationList({ stations }) {
                         {shouldShowActionBtns(station) && <div className="actions">
                             {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
                         <button onClick={() => onRemoveStation(station._id)}>x</button> */}
-                        </div>}
-                    </li>
-                </NavLink>
-            )}
-        </ul>
+
+                            </div>}
+                        </li>
+                    </NavLink>
+                )}
+            </ul>
     )
 }

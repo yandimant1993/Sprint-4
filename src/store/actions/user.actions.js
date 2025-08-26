@@ -91,7 +91,7 @@ export async function autoLoginUser() {
         if (demoUser) {
             store.dispatch({ type: SET_USER, user: demoUser })
             userService.saveLoggedinUser(demoUser)
-            socketService.login(demoUser._id)
+            // socketService.login(demoUser._id)
         }
     } catch (err) {
         console.error('Failed to auto-login demo user:', err)
