@@ -23,10 +23,10 @@ export async function loadStation(stationId) {
     }
 }
 
-export async function removeStation(stationId) {
+export async function removeStation(stationId, type) {
     try {
-        await stationService.remove(stationId)
-        store.dispatch(getCmdRemoveStation(stationId))
+        await stationService.remove(stationId, type)
+        store.dispatch(getCmdRemoveStation(stationId, type))
     } catch (err) {
         console.log('Cannot remove station', err)
         throw err

@@ -7,8 +7,8 @@ export function SideNavHeader({ setIsExpanded, isExpanded }) {
 
 	async function onCreateStation() {
 		try {
-			const emptyStation = stationService.getEmptyStation()
-			const savedStation = await stationService.save(emptyStation)
+			const newStation = stationService.getEmptyStation()
+			const savedStation = await stationService.save(newStation)
 			navigate(`/station/${savedStation._id}`)
 		} catch (err) {
 			console.error('Failed to create and navigate to station:', err)

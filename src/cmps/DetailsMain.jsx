@@ -12,7 +12,7 @@ export function DetailsMain() {
     async function onDeleteStation() {
         if (!station?._id) return
         try {
-            await removeStation(station._id)
+            await removeStation(station._id, station.type)
             navigate('/')
         } catch (err) {
             console.error('Failed to delete station:', err)

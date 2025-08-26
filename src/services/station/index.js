@@ -15,6 +15,7 @@ function getEmptyStation() {
         songs: [],
         createdBy: '',
         likedByUsers: [],
+        type: 'user',
         stationImgUrl: 'https://placebear.com/80/80'
     }
     count++

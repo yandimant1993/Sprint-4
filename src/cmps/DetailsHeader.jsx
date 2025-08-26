@@ -13,11 +13,13 @@ export function DetailsHeader({ station }) {
 
     const loggedinUser = userService.getLoggedinUser()
     const creatorName = station.createdBy?.fullname || loggedinUser?.fullname || 'Guest'
+    const isCreator = loggedinUser?._id === station.createdBy?._id
+
 
     async function handleSave(ev) {
         ev?.preventDefault?.()
         try {
-            const updatedStation = { ...station, name: editedName, description: description, }
+            const updatedStation = { ...station, name: editedName, description }
             await updateStation(updatedStation)
             setIsModalOpen(false)
         } catch (err) {
@@ -45,14 +47,24 @@ export function DetailsHeader({ station }) {
             </div>
 
             <div className="details-header-text">
-                <span className="station-type">Public Playlist</span>
-                <div className="station-name" onClick={() => setIsModalOpen(true)}>{station.name}</div>
+                <span className="station-type">
+                    {station.type === 'user' ? 'Your Playlist' : 'Public Playlist'}
+                </span>
+
+                <div
+                    className="station-name"
+                    onClick={() => isCreator && setIsModalOpen(true)}
+                    style={{ cursor: isCreator ? 'pointer' : 'default' }}
+                >
+                    {station.name}
+                </div>
+
                 <div className="station-creator">
                     {creatorName}
                 </div>
             </div>
 
-            {isModalOpen && (
+            {isCreator && isModalOpen && (
                 <EditStationDetails
                     station={station}
                     svgs={Svgs}

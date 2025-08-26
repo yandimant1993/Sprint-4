@@ -4,6 +4,7 @@ import { makeId } from '../util.service'
 import { userService } from '../user'
 
 const STORAGE_KEY = 'station'
+const USER_STATION_KEY = 'user'
 
 export const stationService = {
     query,
@@ -41,80 +42,61 @@ async function query(filterBy = { txt: '' }) {
     return stations
 }
 
+// async function getById(stationId) {
+//     try {
+//         return await storageService.get(STORAGE_KEY, stationId)
+//     } catch (err) {
+//         throw new Error(`Get failed, cannot find entity with id: ${stationId} in: ${STORAGE_KEY}`)
+//     }
+// }
+
 async function getById(stationId) {
+    if (!stationId) throw new Error('Station ID is required')
     try {
-        const station = await storageService.get(STORAGE_KEY, stationId).catch(() => null)
+        const station = await storageService.get(STORAGE_KEY, stationId)
         if (station) return station
+    } catch { }
+    try {
+        const station = await storageService.get(USER_STATION_KEY, stationId)
+        if (station) return station
+    } catch { }
 
-        const loggedInUser = userService.getLoggedinUser()
-        if (!loggedInUser) throw new Error('No logged-in user')
-
-        const user = await userService.getById(loggedInUser._id)
-        const userStation = user.stations?.find(station => station._id === stationId)
-
-        if (userStation) return userStation
-
-        throw new Error(`Station with ID "${stationId}" not found in global or user scope.`)
-    } catch (err) {
-        console.error(`getById failed:`, err)
-        throw err
-    }
+    throw new Error(`Station with ID ${stationId} not found in system or user stations`)
 }
 
+// async function remove(stationId) {
+//     try {
+//         return await storageService.remove(STORAGE_KEY, stationId)
+//     } catch (err) {
+//         throw new Error(`Remove failed, cannot find entity with id: ${stationId} in: ${STORAGE_KEY}`)
+//     }
+// }
 
-async function remove(stationId) {
-    await storageService.remove(STORAGE_KEY, stationId)
+async function remove(stationId, type = 'system') {
+    const key = type === 'system' ? STORAGE_KEY : USER_STATION_KEY
+    try {
+        await storageService.remove(key, stationId)
+    } catch (err) {
+        throw new Error(`Remove failed, cannot find entity with id: ${stationId} in: ${key}`)
+    }
 }
 
 async function save(station) {
+    console.log('station: ', station)
     try {
-        const loggedInUser = userService.getLoggedinUser()
-        if (!loggedInUser) throw new Error('No logged-in user')
+        const key = station.type === 'system' ? STORAGE_KEY : USER_STATION_KEY
 
-        if (!station._id) station._id = makeId()
+        if (station._id) {
 
-        const existingGlobal = await storageService.get(STORAGE_KEY, station._id).catch(() => null)
-
-        if (existingGlobal) {
-            return await storageService.put(STORAGE_KEY, station)
-        }
-
-        const user = await userService.getById(loggedInUser._id)
-        user.stations = user.stations || []
-
-        const idx = user.stations.findIndex(s => s._id === station._id)
-
-        if (idx !== -1) {
-            user.stations[idx] = station
+            return await storageService.put(key, station)
         } else {
-            const newStation = {
-                ...station,
-                addedAt: Date.now(),
-                createdBy: {
-                    _id: user._id,
-                    fullname: user.fullname,
-                    imgUrl: user.imgUrl,
-                },
-                stationImgUrl: station.stationImgUrl || 'https://placebear.com/80/80',
-                likedByUsers: [],
-            }
-            user.stations.push(newStation)
-            station = newStation
+            return await storageService.post(key, station)
         }
-        await storageService.put('user', user)
-
-        if (loggedInUser._id === user._id) {
-            userService.saveLoggedinUser(user)
-        }
-
-        return station
     } catch (err) {
-        console.error('Failed to save station:', err)
+        console.log('Error saving station:', err)
         throw err
     }
 }
-
-
 
 async function addStationMsg(stationId, txt) {
     // Later, this is all done by the backend
@@ -142,11 +124,12 @@ async function _createStations() {
                 name: 'Late Night Loops',
                 tags: ['Chill', 'Lofi', 'Beats'],
                 createdBy: {
-                    _id: 'u101',
+                    _id: 'u103',
                     fullname: 'Ava Stone',
-                    imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
+                    imgUrl: 'https://randomuser.me/api/portraits/women/70.jpg',
                 },
                 addedAt: 1724476800000,
+                type: 'system',
                 likedByUsers: [],
                 stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
@@ -177,6 +160,7 @@ async function _createStations() {
                 },
                 addedAt: 1756012500000,
                 likedByUsers: [],
+                type: 'system',
                 stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
                     {
@@ -207,6 +191,7 @@ async function _createStations() {
                 },
                 addedAt: 1754198400000,
                 likedByUsers: [],
+                type: 'user',
                 stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
                     {
@@ -219,7 +204,7 @@ async function _createStations() {
                     {
                         id: 's006',
                         title: 'Turbo Killer',
-                        performer: 'Carpenter Brut',
+                        performer: 'Stationpenter Brut',
                         url: 'https://youtube.com/watch?v=pqr678',
                         imgUrl: 'https://i.ytimg.com/vi/pqr678/mqdefault.jpg',
                     }
