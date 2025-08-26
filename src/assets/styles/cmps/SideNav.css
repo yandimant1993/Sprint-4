@@ -10,6 +10,11 @@
 
     &.collapsed {
         width: 80px;
+
+        .station-name,
+        .station-playlist {
+            display: none;
+        }
     }
 
     .sidenav-header {
@@ -39,7 +44,7 @@
         justify-content: space-between;
     }
 
-    /* .station-list {
+    .user-list {
         width: calc(100% - 2 * var(--spacepx-s));
         height: calc(4* var(--spacepx-sm));
         border-radius: var(--spacerem-s);
@@ -55,9 +60,9 @@
             grid-auto-flow: row;
             justify-content: space-between;
 
-&:hover {
-    background-color: var(--clr2);
-}
+            &:hover {
+                background-color: var(--clr2);
+            }
 
             .station-preview {
                 display: grid;
@@ -87,11 +92,10 @@
                     margin: var(--spacepx-s);
                 }
 
-                .name {
-                }
+                .name {}
             }
         }
-    } */
+    }
 }
 
 @media (max-width: 624px) {
