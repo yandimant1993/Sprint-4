@@ -8,20 +8,29 @@
     li {
         justify-content: center;
         place-items: center;
-        height: 228.58px;
-        width: 177.73px;
+        height: 246.36px;
+        width: 195.5px;
         cursor: pointer;
         display: grid;
         grid-template-columns: max-content auto;
         padding: .5em;
-        background-color: var(--clr2);
-
+        /* background-color: var(--clr2); */
+        border-radius: 10px;
+        
         &:hover {
-            background-color: rgb(149, 149, 149);
+            background-color: var(--clr2, #1f1f1f);
+            border-radius: 10px;
 
             .svg-play {
                 opacity: 1;
-                transition: 0.7s;
+                transition: 0.4s;
+                transform: translateY(-7px);
+
+                &:hover {
+                    background-color: var(--clr-lightgreen, #1ed760);
+                    scale: 1.05;
+                }
+
             }
         }
 
@@ -38,8 +47,7 @@
 
 .station-list-container {
     flex-grow: 1;
-    background-color: var(--gray2, #b3b3b3);
-    mix-blend-mode: multiply;
+    /* background-color: var(--gray2, #b3b3b3); */
 
     & .station-list {
         display: flex;

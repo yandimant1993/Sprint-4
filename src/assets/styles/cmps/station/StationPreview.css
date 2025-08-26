@@ -11,23 +11,22 @@
         margin-block: 0 0.2rem;
         font-size: .9em;
     }
-    
-    & img{
+
+    & img {
         border-radius: 7px;
         width: 157px;
         height: 154px;
     }
 
-    & svg{
+    & svg {
         padding: 12px;
     }
-
 }
 
 .svg-play {
     opacity: 0;
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     right: 5px;
     width: 48px;
     height: 48px;
