@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
+import { Navigate } from 'react-router-dom'
 
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
@@ -26,6 +27,7 @@ export function RootCmp() {
                             <Route path="login" element={<Login />} />
                             <Route path="signup" element={<Signup />} />
                         </Route>
+                        <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </main>
                 <AppFooter />

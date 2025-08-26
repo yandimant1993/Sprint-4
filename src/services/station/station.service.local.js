@@ -53,18 +53,18 @@ async function remove(stationId) {
 async function save(station) {
     var savedStation
     if (station._id) {
-        const stationToSave = {
-            _id: station._id,
-            addedAt: station.addedAt
-        }
-        savedStation = await storageService.put(STORAGE_KEY, stationToSave)
+        savedStation = await storageService.put(STORAGE_KEY, station)
     } else {
         const stationToSave = {
-            name: station.name,
-            addedAt: station.addedAt,
-            // Later, owner is set by the backend
-            owner: userService.getLoggedinUser(),
-            msgs: []
+            name: station.name || 'MyPlaylist',
+            description: station.description || '',
+            addedAt: Date.now(),
+            owner: userService.getLoggedinUser() || 'Guest',
+            msgs: [],
+            tags: station.tags || [],
+            songs: station.songs || [],
+            likedByUsers: [],
+            stationImgUrl: station.stationImgUrl || 'https://placebear.com/80/80'
         }
         savedStation = await storageService.post(STORAGE_KEY, stationToSave)
     }

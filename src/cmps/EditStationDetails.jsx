@@ -1,14 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-export function EditStationDetails({ station, svgs, onClose, onSave, editedName, setEditedName, description, setDescription }) {
+export function EditStationDetails({ station,
+    svgs,
+    onClose,
+    onSave,
+    editedName,
+    setEditedName,
+    description,
+    setDescription
+}) {
     const [isHovered, setIsHovered] = useState(false)
+
+    useEffect(() => {
+        if (!editedName) setEditedName(station.name || '')
+        if (!description) setDescription(station.description || '')
+    }, [station, setEditedName, setDescription])
 
     return (
         <div className="modal-overlay flex" onClick={onClose}>
             <div className="modal-container" onClick={ev => ev.stopPropagation()}>
                 <header className="modal-header flex">
                     <h2>Edit Details</h2>
-                    <button>X</button>
+                    <button onClick={onClose}>X</button>
                 </header>
 
                 <main className="modal-main">

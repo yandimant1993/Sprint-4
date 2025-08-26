@@ -46,29 +46,6 @@ export function DetailsHeader({ station }) {
                 <div className="station-creator">{station.createdBy?.fullname || 'Guest'}</div>
             </div>
 
-            {/* {isModalOpen && (
-                <Modal
-                    heading="Edit Station"
-                    onClose={() => setIsModalOpen(false)}
-                    footing={
-                        <>
-                            <button onClick={() => setIsModalOpen(false)}>Cancel</button>
-                            <button onClick={handleSave}>Save</button>
-                        </>
-                    }
-                >
-                    <form onSubmit={handleSave}>
-                        <label>
-                            Name:
-                            <input
-                                type="text"
-                                value={editedName}
-                                onChange={e => setEditedName(e.target.value)}
-                            />
-                        </label>
-                    </form>
-                </Modal>
-            )} */}
             {isModalOpen && (
                 <EditStationDetails
                     station={station}
