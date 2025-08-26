@@ -2,9 +2,11 @@ import { Routes, Route } from 'react-router'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 import { Navigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
+import { autoLoginUser } from './store/actions/user.actions'
 
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
@@ -13,6 +15,11 @@ import { UserMsg } from './cmps/UserMsg.jsx'
 import { LoginSignup, Login, Signup } from './pages/LoginSignup.jsx'
 
 export function RootCmp() {
+
+    useEffect(() => {
+        autoLoginUser()
+    }, [])
+
     return (
         <Provider store={store}>
             <div className="app-container">
