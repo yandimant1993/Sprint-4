@@ -156,7 +156,8 @@ async function _createStations() {
                 tags: ['Synthwave', 'Retro', 'Instrumental'],
                 createdBy: {
                     _id: 'u101',
-                    fullname: 'Ava Stone',
+                    username: 'aaa',
+                    fullname: 'Ava V',
                     imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
                 },
                 addedAt: 1754198400000,
