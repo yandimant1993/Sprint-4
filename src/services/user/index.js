@@ -8,7 +8,8 @@ function getEmptyUser() {
         username: '',
         password: '',
         fullname: '',
-        likedSongs: []
+        likedSongs: [],
+        stations: []
     }
 }
 

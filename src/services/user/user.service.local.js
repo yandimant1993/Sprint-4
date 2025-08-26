@@ -103,6 +103,7 @@ async function _createUsers() {
             password: '123',
             fullname: 'Ava V',
             imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
+            stations: []
         },
         {
             _id: 'u102',
@@ -110,6 +111,7 @@ async function _createUsers() {
             password: '123',
             fullname: 'Baba B',
             imgUrl: 'https://randomuser.me/api/portraits/men/42.jpg',
+            stations: []
         }
     ]
     await storageService.saveAll('user', users)

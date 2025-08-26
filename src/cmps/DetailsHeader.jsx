@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { updateStation } from '../store/actions/station.actions'
 import { Svgs } from './Svgs.jsx'
 import { EditStationDetails } from './EditStationDetails.jsx'
+import { userService } from '../services/user'
 
 export function DetailsHeader({ station }) {
     const [isHovered, setIsHovered] = useState(false)
