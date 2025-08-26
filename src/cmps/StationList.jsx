@@ -11,7 +11,6 @@ export function StationList({ stations }) {
         if (user.isAdmin) return true
         return station.owner?._id === user._id
     }
-    console.log('stations', stations)
     if (!stations) return <p>Loading...</p>
     return (
         <ul className="station-list">
