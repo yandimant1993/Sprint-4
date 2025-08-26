@@ -20,13 +20,16 @@
         &:hover {
             background-color: var(--clr2, #1f1f1f);
             border-radius: 10px;
+            
 
             .svg-play {
                 opacity: 1;
                 transition: 0.4s;
                 transform: translateY(-7px);
-
+                box-shadow: 1px 1px;
+                
                 &:hover {
+                    box-shadow: 1px 1px;
                     background-color: var(--clr-lightgreen, #1ed760);
                     scale: 1.05;
                 }
