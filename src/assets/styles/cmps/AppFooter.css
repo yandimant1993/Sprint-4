@@ -7,8 +7,8 @@
     min-height: 5rem;
     padding: .8rem 1rem;
     background-color: #000000;
-    /* Dark theme */
-    border-top: 1px solid #282828;
+
+    /* border-top: 1px solid #282828; */
 }
 
 .app-footer p {
