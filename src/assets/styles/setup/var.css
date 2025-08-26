@@ -18,6 +18,7 @@
   --error: rgb(216, 59, 59);
 
   /* sizes */
+  --spacepx-xs: 8px;
   --spacepx-s: 10px;
   --spacepx-sm: 16px;
 

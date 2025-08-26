@@ -110,6 +110,22 @@ export const Svgs = {
     >
       <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606" />
     </svg>
+  ),
+  addIcon: (
+    <svg
+      data-encore-id="icon"
+      role="img"
+      aria-hidden="true"
+      className="e-91000-icon e-91000-baseline gPxvvwdrTY6FbTx3mvl1"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      style={{
+        '--encore-icon-height': 'var(--encore-graphic-size-decorative-smaller)',
+        '--encore-icon-width': 'var(--encore-graphic-size-decorative-smaller)'
+      }}
+    >
+      <path d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75h5.75a.75.75 0 0 1 .75.75" />
+    </svg>
   )
 }
 
