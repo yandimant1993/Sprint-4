@@ -1,12 +1,6 @@
 * {
     box-sizing: border-box;
 }
-
-:root {
-    /* background-color: var(--clr5); */
-    color: var(--gray1);
-    background-color: var(  --clr1, #2a2a2a);
-}
    
 body {
     margin: 0 auto;
