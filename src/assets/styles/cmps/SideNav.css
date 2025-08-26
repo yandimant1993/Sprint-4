@@ -1,14 +1,70 @@
 .side-nav-container {
-    display: block;
-    max-width: 420px;
+    width: min(420px, 50vw);
     height: 100%;
-    margin: 10px 10px 10px auto;
+    grid-column: 1;
+    inset-inline-start: var(--spacepx-sm);
+    border-radius: var(--spacerem-s);
+    margin: var(--spacepx-s) var(--spacepx-s) var(--spacepx-s) auto;
     background-color: var(--clr4);
     transition: width 0.3s ease;
 
     &.collapsed {
         width: 80px;
     }
+
+    /* .station-list {
+        width: calc(100% - 2 * var(--spacepx-s));
+        height: calc(4* var(--spacepx-sm));
+        border-radius: var(--spacerem-s);
+        margin: 0 auto;
+
+        li {
+            display: grid;
+            background-color: transparent;
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            border-radius: var(--spacerem-s);
+            grid-auto-flow: row;
+            justify-content: space-between;
+
+&:hover {
+    background-color: var(--clr2);
+}
+
+            .station-preview {
+                display: grid;
+
+                grid-auto-flow: column;
+                place-items: center;
+
+                .svg-play {
+                    place-self: center;
+
+                    background-color: transparent;
+                    inset-block-end: -37px;
+                    inset-inline-start: 0;
+                    transform: translate(-100%, -100%);
+                    opacity: 1;
+
+                    &:hover {
+                        color: var(--clr3);
+                    }
+                }
+
+                .station-picture {
+                    height: calc(3* var(--spacepx-sm));
+                    width: calc(3* var(--spacepx-sm));
+                    border-radius: var(--spacerem-s);
+
+                    margin: var(--spacepx-s);
+                }
+
+                .name {
+                }
+            }
+        }
+    } */
 }
 
 @media (max-width: 624px) {
@@ -16,3 +72,9 @@
         display: none;
     }
 }
+
+/* .station-list */
+/* .station-preview */
+/* .svg-play */
+/* .station-picture */
+/* .name */

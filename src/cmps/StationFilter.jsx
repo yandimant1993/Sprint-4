@@ -45,16 +45,15 @@ export function StationFilter({ filterBy, onSetFilter }) {
         <form onSubmit={onSubmitFilter}>
 
             <section className="station-filter">
-                <h3>Filter:</h3>
-                <input
+                <h3>Filter WIP</h3>
+                {/* <input
                     type="text"
                     name="txt"
                     value={filterToEdit.txt}
                     placeholder="What do you want to play?"
                     onChange={handleChange}
                     required
-                />
-
+                /> */}
             </section>
         </form>
     )

@@ -15,4 +15,11 @@
 
   --success: rgb(41, 189, 73);
   --error: rgb(216, 59, 59);
+
+  /* sizes */
+  --spacepx-s: 10px;
+  --spacepx-sm: 16px;
+
+  --spacerem-s: 0.5rem;
+  --spacerem-sm: 1rem;
 }
