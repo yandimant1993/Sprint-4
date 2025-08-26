@@ -46,30 +46,44 @@ function getById(stationId) {
 }
 
 async function remove(stationId) {
-    // throw new Error('Nope')
     await storageService.remove(STORAGE_KEY, stationId)
 }
 
 async function save(station) {
-    var savedStation
-    if (station._id) {
-        savedStation = await storageService.put(STORAGE_KEY, station)
-    } else {
-        const stationToSave = {
+    const loggedInUser = userService.getLoggedinUser()
+
+    if (!station._id) {
+        const user = await userService.getById(loggedInUser._id)
+        const newStation = {
+            _id: makeId(),
             name: station.name || 'MyPlaylist',
             description: station.description || '',
             addedAt: Date.now(),
-            owner: userService.getLoggedinUser() || 'Guest',
-            msgs: [],
+            createdBy: {
+                _id: user._id,
+                fullname: user.fullname,
+                imgUrl: user.imgUrl,
+            },
             tags: station.tags || [],
             songs: station.songs || [],
             likedByUsers: [],
-            stationImgUrl: station.stationImgUrl || 'https://placebear.com/80/80'
+            stationImgUrl: station.stationImgUrl || 'https://placebear.com/80/80',
         }
-        savedStation = await storageService.post(STORAGE_KEY, stationToSave)
+
+        if (!user.stations) user.stations = []
+        user.stations.push(newStation)
+
+        await storageService.put('user', user)
+
+        const sessionUser = userService.getLoggedinUser()
+        if (sessionUser && sessionUser._id === user._id) {
+            userService.saveLoggedinUser(user)
+        }
+        return newStation
     }
-    return savedStation
+    return await storageService.put(STORAGE_KEY, station)
 }
+
 
 async function addStationMsg(stationId, txt) {
     // Later, this is all done by the backend

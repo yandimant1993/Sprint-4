@@ -12,6 +12,7 @@ export const userService = {
     update,
     getLoggedinUser,
     saveLoggedinUser,
+    getUserStations
 }
 
 async function getUsers() {
@@ -78,6 +79,10 @@ function saveLoggedinUser(user) {
     }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
+}
+
+function getUserStations(userId) {
+    return getById(userId).then(user => user.stations || [])
 }
 
 // To quickly create an admin user, uncomment the next line
