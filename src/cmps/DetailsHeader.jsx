@@ -59,8 +59,8 @@ export function DetailsHeader({ station }) {
                     {station.name}
                 </div>
 
-                <div className="station-creator">
-                    {creatorName}
+                <div className="station-creator flex">
+                    {creatorName} •<p> 6 songs, 19 min 28 sec</p>
                 </div>
             </div>
 

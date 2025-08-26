@@ -25,7 +25,7 @@ export function RootCmp() {
             <div className="app-container">
                 <AppHeader />
                 <UserMsg />
-                <main className="main-container flex full">
+                <main className="main-container grid">
                     <SideNav />
                     <Routes>
                         <Route path="/" element={<StationIndex />} />
