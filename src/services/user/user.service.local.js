@@ -16,6 +16,9 @@ export const userService = {
 
 async function getUsers() {
     const users = await storageService.query('user')
+    if (!users.length) {
+        users = await _createUsers()
+    }
     return users.map(user => {
         delete user.password
         return user
@@ -35,7 +38,7 @@ async function update({ _id, score }) {
     user.score = score
     await storageService.put('user', user)
 
-	// When admin updates other user's details, do not update loggedinUser
+    // When admin updates other user's details, do not update loggedinUser
     const loggedinUser = getLoggedinUser()
     if (loggedinUser._id === user._id) saveLoggedinUser(user)
 
@@ -66,15 +69,15 @@ function getLoggedinUser() {
 }
 
 function saveLoggedinUser(user) {
-	user = { 
-        _id: user._id, 
-        fullname: user.fullname, 
-        imgUrl: user.imgUrl, 
-        score: user.score, 
-        isAdmin: user.isAdmin 
+    user = {
+        _id: user._id,
+        fullname: user.fullname,
+        imgUrl: user.imgUrl,
+        score: user.score,
+        isAdmin: user.isAdmin
     }
-	sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-	return user
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
 }
 
 // To quickly create an admin user, uncomment the next line
@@ -91,3 +94,27 @@ async function _createAdmin() {
     const newUser = await storageService.post('user', userCred)
     console.log('newUser: ', newUser)
 }
+
+async function _createUsers() {
+    const users = [
+        {
+            _id: 'u101',
+            username: 'aaa',
+            password: '123',
+            fullname: 'Ava V',
+            imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
+        },
+        {
+            _id: 'u102',
+            username: 'bbb',
+            password: '123',
+            fullname: 'Baba B',
+            imgUrl: 'https://randomuser.me/api/portraits/men/42.jpg',
+        }
+    ]
+    await storageService.saveAll('user', users)
+    return users
+}
+
+// temp debug tool
+window.userService = userService

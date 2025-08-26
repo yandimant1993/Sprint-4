@@ -80,3 +80,20 @@ export async function loadUser(userId) {
         console.log('Cannot load user', err)
     }
 }
+
+export async function autoLoginUser() {
+    const loggedinUser = userService.getLoggedinUser()
+    if (loggedinUser) return
+
+    try {
+        const users = await userService.getUsers()
+        const demoUser = users[0]
+        if (demoUser) {
+            store.dispatch({ type: SET_USER, user: demoUser })
+            userService.saveLoggedinUser(demoUser)
+            socketService.login(demoUser._id)
+        }
+    } catch (err) {
+        console.error('Failed to auto-login demo user:', err)
+    }
+}
