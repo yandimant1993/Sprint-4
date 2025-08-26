@@ -4,7 +4,7 @@ import { MediaController } from './MediaController'
 
 
 
-export function Controller({ player, currentTime, duration, onTimeUpdate, onProgressChange }) {
+export function Controller({ player, currentTime, duration, onTimeUpdate, onProgressChange, onNext, onPrev }) {
     return (
         <div className="media-controller">
             <MediaController
@@ -13,6 +13,8 @@ export function Controller({ player, currentTime, duration, onTimeUpdate, onProg
                 duration={duration}
                 onTimeUpdate={onTimeUpdate}
                 onProgressChange={onProgressChange}
+                onNext={onNext}
+                onPrev={onPrev}
             />
             {/* <RightControls player={player} /> */}
         </div>
