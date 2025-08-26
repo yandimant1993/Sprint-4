@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-export function MediaController({ player, currentTime, duration, onProgressChange }) {
+export function MediaController({ player, currentTime, duration, onProgressChange, onNext, onPrev }) {
     const [isPlaying, setIsPlaying] = useState(false)
     const [isShuffled, setIsShuffled] = useState(false)
     const [isRepeating, setIsRepeating] = useState(false)
@@ -53,7 +53,7 @@ export function MediaController({ player, currentTime, duration, onProgressChang
                     {/* <div className="active-dot"></div> */}
                 </button>
 
-                <button className="control-btn previous" title="Previous">
+                <button className="control-btn previous" title="Previous" onClick={onPrev}>
                     <img src="/src/assets/spotify-icons/previous.svg" alt="Previous" />
                 </button>
 
@@ -69,7 +69,7 @@ export function MediaController({ player, currentTime, duration, onProgressChang
                     )}
                 </button>
 
-                <button className="control-btn next" title="Next">
+                <button className="control-btn next" title="Next" onClick={onNext}>
                     <img src="/src/assets/spotify-icons/next.svg" alt="Next" />
                 </button>
 

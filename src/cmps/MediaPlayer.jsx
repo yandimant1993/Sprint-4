@@ -41,7 +41,7 @@ export function MediaPlayer({ videoId: propVideoId, onReady, onTimeUpdate, onDur
     }
 
     const handleStateChange = (event) => {
-        if (event.data === 1) { // Playing
+        if (event.data === 1) { 
             const interval = setInterval(() => {
                 if (playerRef.current?.getCurrentTime) {
                     const time = playerRef.current.getCurrentTime()

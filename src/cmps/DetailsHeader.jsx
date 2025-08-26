@@ -3,12 +3,16 @@ import { useState } from 'react'
 import { updateStation } from '../store/actions/station.actions'
 import { Svgs } from './Svgs.jsx'
 import { EditStationDetails } from './EditStationDetails.jsx'
+import { userService } from '../services/user'
 
 export function DetailsHeader({ station }) {
     const [isHovered, setIsHovered] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [editedName, setEditedName] = useState(station.name)
     const [description, setDescription] = useState('')
+
+    const loggedinUser = userService.getLoggedinUser()
+    const creatorName = station.createdBy?.fullname || loggedinUser?.fullname || 'Guest'
 
     async function handleSave(ev) {
         ev?.preventDefault?.()
@@ -43,7 +47,9 @@ export function DetailsHeader({ station }) {
             <div className="details-header-text">
                 <span className="station-type">Public Playlist</span>
                 <div className="station-name" onClick={() => setIsModalOpen(true)}>{station.name}</div>
-                <div className="station-creator">{station.createdBy?.fullname || 'Guest'}</div>
+                <div className="station-creator">
+                    {creatorName}
+                </div>
             </div>
 
             {isModalOpen && (

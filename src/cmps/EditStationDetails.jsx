@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export function EditStationDetails({ station,
     svgs,
@@ -10,15 +10,28 @@ export function EditStationDetails({ station,
     setDescription
 }) {
     const [isHovered, setIsHovered] = useState(false)
+    const modalRef = useRef()
 
     useEffect(() => {
         setEditedName(station.name || '')
         setDescription(station.description || '')
     }, [station._id])
 
+    useEffect(() => {
+        function handleClickOutside(ev) {
+            if (modalRef.current && !modalRef.current.contains(ev.target)) {
+                onClose()
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [onClose])
+
     return (
         <div className="modal-overlay flex" onClick={onClose}>
-            <div className="modal-container" onClick={ev => ev.stopPropagation()}>
+            <div className="modal-container" ref={modalRef} onClick={ev => ev.stopPropagation()}>
                 <header className="modal-header flex">
                     <h2>Edit Details</h2>
                     <button onClick={onClose}>X</button>
