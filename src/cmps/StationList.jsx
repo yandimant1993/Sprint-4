@@ -11,16 +11,15 @@ export function StationList({ stations }) {
         if (user.isAdmin) return true
         return station.owner?._id === user._id
     }
-    console.log('stations', stations)
     if (!stations) return <p>Loading...</p>
     return (
-            <ul className="station-list">
-                {stations.map(station =>
-                    <NavLink to={`/station/${station._id}`}>
-                        <li key={station._id}>
-                            <StationPreview station={station} />
-                            {shouldShowActionBtns(station) && <div className="actions">
-                                {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
+        <ul className="station-list">
+            {stations.map(station =>
+                <NavLink to={`/station/${station._id}`}>
+                    <li key={station._id}>
+                        <StationPreview station={station} />
+                        {shouldShowActionBtns(station) && <div className="actions">
+                            {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
                         <button onClick={() => onRemoveStation(station._id)}>x</button> */}
 
                             </div>}

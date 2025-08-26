@@ -1,11 +1,24 @@
 import { Svgs } from "./Svgs"
+import { setCurrentStation, setIsPlaying } from "../store/actions/player.actions"
+import { useSelector } from "react-redux"
 
 export function StationPreview({ station }) {
+
+    const currentStation = useSelector(state => state.playerModule.currentStation)
+    const isPlaying = useSelector(state => state.playerModule.isPlaying)
+
+    const handlePlay = () => {
+        setCurrentStation(station)
+        setIsPlaying(true)
+    }
+
+    const isThisStationPlaying = currentStation?._id === station._id && isPlaying
+
     return (
 
-        <article className="station-preview">
+        <article className="station-preview" onClick={handlePlay}>
             <div className="svg-play">
-                {Svgs.play}
+                {isThisStationPlaying ? Svgs.pause : Svgs.play}
             </div>
             {station.stationImgUrl &&
                 <img

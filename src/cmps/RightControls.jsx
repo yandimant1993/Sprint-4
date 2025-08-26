@@ -37,7 +37,7 @@ export function RightControls({ player }) {
         <div className="right-controls">
             <button className="control-btn microphone" title="Microphone">
                 <img src="/src/assets/spotify-icons/now-playing.svg" alt="Microphone" />
-                <div className="active-dot"></div>
+                {/* <div className="active-dot"></div> */}
             </button>
 
             <button className="control-btn video-lyrics" title="Video/Lyrics">
@@ -59,7 +59,7 @@ export function RightControls({ player }) {
                     title={isMuted ? 'Unmute' : 'Mute'}
                 >
                     <img
-                        src={isMuted ? "/src/assets/spotify-icons/mute.svg" : "/src/assets/spotify-icons/volume-high.svg"}
+                        src={isMuted ? "/src/assets/spotify-icons/mute.svg" : "/src/assets/spotify-icons/volume-full.svg"}
                         alt="Volume"
                     />
                 </button>
