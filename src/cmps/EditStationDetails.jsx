@@ -12,9 +12,9 @@ export function EditStationDetails({ station,
     const [isHovered, setIsHovered] = useState(false)
 
     useEffect(() => {
-        if (!editedName) setEditedName(station.name || '')
-        if (!description) setDescription(station.description || '')
-    }, [station, setEditedName, setDescription])
+        setEditedName(station.name || '')
+        setDescription(station.description || '')
+    }, [station._id])
 
     return (
         <div className="modal-overlay flex" onClick={onClose}>
