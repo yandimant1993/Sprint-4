@@ -45,7 +45,7 @@ export function AppFooter() {
 			</div>
 
 			<MediaPlayer
-				videoId="eWYvErtwmzk"
+				videoId="DRXOUwYVkeQ"
 				onReady={handlePlayerReady}
 				onTimeUpdate={handleTimeUpdate}
 				onDurationChange={handleDurationChange}
