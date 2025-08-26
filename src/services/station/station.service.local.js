@@ -41,48 +41,79 @@ async function query(filterBy = { txt: '' }) {
     return stations
 }
 
-function getById(stationId) {
-    return storageService.get(STORAGE_KEY, stationId)
+async function getById(stationId) {
+    try {
+        const station = await storageService.get(STORAGE_KEY, stationId).catch(() => null)
+        if (station) return station
+
+        const loggedInUser = userService.getLoggedinUser()
+        if (!loggedInUser) throw new Error('No logged-in user')
+
+        const user = await userService.getById(loggedInUser._id)
+        const userStation = user.stations?.find(station => station._id === stationId)
+
+        if (userStation) return userStation
+
+        throw new Error(`Station with ID "${stationId}" not found in global or user scope.`)
+    } catch (err) {
+        console.error(`getById failed:`, err)
+        throw err
+    }
 }
+
 
 async function remove(stationId) {
     await storageService.remove(STORAGE_KEY, stationId)
 }
 
 async function save(station) {
-    const loggedInUser = userService.getLoggedinUser()
+    try {
+        const loggedInUser = userService.getLoggedinUser()
+        if (!loggedInUser) throw new Error('No logged-in user')
 
-    if (!station._id) {
-        const user = await userService.getById(loggedInUser._id)
-        const newStation = {
-            _id: makeId(),
-            name: station.name || 'MyPlaylist',
-            description: station.description || '',
-            addedAt: Date.now(),
-            createdBy: {
-                _id: user._id,
-                fullname: user.fullname,
-                imgUrl: user.imgUrl,
-            },
-            tags: station.tags || [],
-            songs: station.songs || [],
-            likedByUsers: [],
-            stationImgUrl: station.stationImgUrl || 'https://placebear.com/80/80',
+        if (!station._id) station._id = makeId()
+
+        const existingGlobal = await storageService.get(STORAGE_KEY, station._id).catch(() => null)
+
+        if (existingGlobal) {
+            return await storageService.put(STORAGE_KEY, station)
         }
 
-        if (!user.stations) user.stations = []
-        user.stations.push(newStation)
+        const user = await userService.getById(loggedInUser._id)
+        user.stations = user.stations || []
 
+        const idx = user.stations.findIndex(s => s._id === station._id)
+
+        if (idx !== -1) {
+            user.stations[idx] = station
+        } else {
+            const newStation = {
+                ...station,
+                addedAt: Date.now(),
+                createdBy: {
+                    _id: user._id,
+                    fullname: user.fullname,
+                    imgUrl: user.imgUrl,
+                },
+                stationImgUrl: station.stationImgUrl || 'https://placebear.com/80/80',
+                likedByUsers: [],
+            }
+            user.stations.push(newStation)
+            station = newStation
+        }
         await storageService.put('user', user)
 
-        const sessionUser = userService.getLoggedinUser()
-        if (sessionUser && sessionUser._id === user._id) {
+        if (loggedInUser._id === user._id) {
             userService.saveLoggedinUser(user)
         }
-        return newStation
+
+        return station
+    } catch (err) {
+        console.error('Failed to save station:', err)
+        throw err
     }
-    return await storageService.put(STORAGE_KEY, station)
 }
+
 
 
 async function addStationMsg(stationId, txt) {
