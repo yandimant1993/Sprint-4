@@ -16,23 +16,31 @@ export function StationPreview({ station }) {
         }
     }
 
+    function truncateWords(text, limit) {
+        if (!text) return ""
+        const words = text.split(" ")
+        if (words.length <= limit) return text
+        return words.slice(0, limit).join(" ") + "..."
+    }
+
     const isThisStationPlaying = currentStation?._id === station._id && isPlaying
 
     return (
-
         <article className="station-preview" onClick={handlePlayPause}>
-            <div className="svg-play">
-                {isThisStationPlaying ? Svgs.pause : Svgs.play}
-            </div>
             {station.stationImgUrl &&
                 <img
                     src={station.stationImgUrl}
                     alt={station.name}
                     className="station-picture" />
             }
+            <div className="svg-play">
+                {isThisStationPlaying ? Svgs.pause : Svgs.play}
+            </div>
 
             {station.songs &&
-            <p className="station-description">{station.name}</p>}
+                <p className="station-description">
+                    {truncateWords(station.description, 5)}
+                </p>}
         </article>
     )
 }

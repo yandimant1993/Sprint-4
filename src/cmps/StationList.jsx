@@ -13,19 +13,22 @@ export function StationList({ stations }) {
     }
     if (!stations) return <p>Loading...</p>
     return (
-        <ul className="station-list">
-            {stations.map(station =>
+        <>
+            <span className='your-mixes'>Your Top Mixes</span>
+            <ul className="station-list">
+                {stations.map(station =>
                     <li>
                         <NavLink to={`/station/${station._id}`} key={station._id}>
-                        <StationPreview station={station} />
-                        {shouldShowActionBtns(station) && <div className="actions">
-                            {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
+                            <StationPreview station={station} />
+                            {shouldShowActionBtns(station) && <div className="actions">
+                                {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
                         <button onClick={() => onRemoveStation(station._id)}>x</button> */}
 
-                        </div>}
-                </NavLink>
+                            </div>}
+                        </NavLink>
                     </li>
-            )}
-        </ul>
+                )}
+            </ul>
+        </>
     )
 }

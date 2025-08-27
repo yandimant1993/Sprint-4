@@ -1,27 +1,31 @@
 .station-preview {
     color: var(--gray2);
     position: relative;
-
+    display: flex;
+    flex-direction: column;
+    
     >header {
         font-size: 1.2em;
         color: var(--gray1);
     }
-
+    
     & p {
-        margin-block: 1.2em 1.2em;
-        font-size: .9em;
+        /* margin-block: 1.2em 1.2em; */
+        margin: 4px 51px 12px 12px;
+        font-size: 0.875em;
+        color: var(--gray2, #b3b3b3);
     }
-
+    
     & img {
         border-radius: 7px;
         width: 171.5px;
         height: 171.5px
     }
-
+    
     & svg {
         padding: 12px;
     }
-
+    
     .svg-play {
         opacity: 0;
         position: absolute;
@@ -31,5 +35,11 @@
         height: 48px;
         border-radius: 50%;
         background-color: var(--clr-green, #1db954);
+        
     }
 }
+    
+    
+    
+    
+    

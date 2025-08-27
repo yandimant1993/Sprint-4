@@ -1,11 +1,11 @@
 .station-list {
-    
+
     --min-column-size: 220px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
     gap: .5em;
     gap: 32px;
-    
+
     li {
         height: 246px;
         width: 196px;
@@ -49,10 +49,19 @@
     flex-grow: 1;
     padding: 28px;
     /* background-color: var(--gray2, #b3b3b3); */
+    background-color: var(  --clr4, #121212);
+    border-radius: 8px;
 
     & .station-list {
         display: flex;
     }
+}
 
+.your-mixes {
+    font-weight: 700;
+    color: var( --white, #fff);
+}
 
+.station-picture {
+  margin: 20px auto 0 auto; 
 }
