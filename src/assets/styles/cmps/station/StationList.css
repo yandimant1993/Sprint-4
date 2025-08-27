@@ -1,11 +1,13 @@
 .station-list {
     --min-column-size: 220px;
     display: grid;
-
     grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
     gap: .5em;
-
+    gap: 32px;
+    
     li {
+        height: 246px;
+        width: 196px;
         justify-content: center;
         place-items: center;
         cursor: pointer;
@@ -28,7 +30,6 @@
                     background-color: var(--clr-lightgreen, #1ed760);
                     scale: 1.05;
                 }
-
             }
         }
 
@@ -45,6 +46,7 @@
 
 .station-list-container {
     flex-grow: 1;
+    padding: 28px;
     /* background-color: var(--gray2, #b3b3b3); */
 
     & .station-list {
