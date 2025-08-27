@@ -81,13 +81,13 @@
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1) contrast(1);
 }
 
-/* Hover effects */
+
 .song-preview:hover .song-title {
     text-decoration: underline;
     cursor: pointer;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
     .song-preview {
         min-width: 150px;

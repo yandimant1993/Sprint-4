@@ -5,18 +5,7 @@
     width: 100%;
     max-width: 800px;
     flex-direction: column;
-
-    /* gap: 2rem; */
 }
-
-/* 
-.media-controls {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-
-
-} */
 
 .control-btn {
     background: none;
@@ -34,7 +23,6 @@
 
 .control-btn:hover {
     color: #ffffff;
-    /* background-color: rgba(255, 255, 255, 0.1); */
 }
 
 .control-btn.active {
@@ -55,7 +43,6 @@
     filter: brightness(0) saturate(100%) invert(67%) sepia(61%) saturate(2476%) hue-rotate(120deg) brightness(95%) contrast(101%);
 }
 
-/* Play/Pause button styling */
 .control-btn.play-pause {
     background-color: #ffffff;
     color: #000000;
@@ -72,27 +59,6 @@
 .control-btn.play-pause img {
     filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0) contrast(1);
 }
-
-
-/* .progress-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    flex: 1;
-    max-width: 700px;
-} */
-
-
-
-/* .time {
-    color: #b3b3b3;
-    font-size: 0.8rem;
-    font-family: monospace;
-    min-width: 35px;
-} */
-
-
 
 .progress-bar {
     position: relative;
@@ -126,10 +92,9 @@
     width: 15px;
     height: 15px;
     display: block;
-    background-color:green;
+    background-color: green;
     border-radius: 50%;
 }
-
 
 .progress-bar:hover .progress-fill {
     background-color: var(--clr-green);
@@ -149,7 +114,6 @@
     cursor: pointer;
     z-index: 2;
 }
-
 
 .progress-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -181,7 +145,6 @@
 
 }
 
-/* Right side controls */
 .right-controls {
     display: flex;
     /* justify-content: space-between; */
@@ -190,7 +153,6 @@
     flex-shrink: 0;
 }
 
-/* Video/Lyrics with active dot */
 .control-btn.video-lyrics {
     position: relative;
 }
@@ -205,7 +167,6 @@
     border-radius: 50%;
 }
 
-/* Volume control */
 .volume-control {
     display: flex;
     align-items: center;
@@ -229,17 +190,7 @@
     background-color: #ffffff;
     border-radius: 2px;
     transition: width 0.1s ease;
-
 }
-
-/* .volume-fill::after {
-    content: "";
-    width: 15px;
-    height: 15px;
-    display: block;
-    background-color: rgb(255, 6, 6);
-    border-radius: 50%;
-} */
 
 .volume-range {
     appearance: none;
@@ -278,7 +229,7 @@
     border: none;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
     .media-controller {
         flex-direction: column;

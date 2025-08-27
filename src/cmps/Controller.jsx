@@ -16,7 +16,6 @@ export function Controller({ player, currentTime, duration, onTimeUpdate, onProg
                 onNext={onNext}
                 onPrev={onPrev}
             />
-            {/* <RightControls player={player} /> */}
         </div>
     )
 }

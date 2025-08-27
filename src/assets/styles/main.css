@@ -8,13 +8,12 @@
 
 @import "RootCmp.css";
 
+/* COMPONENTS */
 @import "cmps/AboutUs.css";
 @import "cmps/HomePage.css";
 @import "cmps/UserDetails.css";
 @import "cmps/LoginSignup.css";
 @import "cmps/SideNav.css";
-
-
 @import "cmps/AppHeader.css";
 @import "cmps/AppFooter.css";
 @import "cmps/UserMsg.css";
@@ -24,6 +23,7 @@
 @import "cmps/Tooltip.css";
 @import "cmps/UserStationList.css";
 
+/* PAGES */
 @import "cmps/station/StationIndex.css";
 @import "cmps/station/StationList.css";
 @import "cmps/station/StationPreview.css";
