@@ -3,8 +3,6 @@
     --min-column-size: 220px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
-    gap: .5em;
-    gap: 32px;
 
     li {
         height: 246px;
@@ -14,6 +12,8 @@
         cursor: pointer;
         border-radius: 10px;
         grid-auto-columns: minmax(200px, 1fr);
+        
+
 
         &:hover {
             background-color: var(--clr2, #1f1f1f);
@@ -24,10 +24,9 @@
                 opacity: 1;
                 transition: 0.3s;
                 transform: translateY(-7px);
-                box-shadow: 1px 1px;
-
+                box-shadow: 0 8px 8px rgba(0,0,0,.3);
+                
                 &:hover {
-                    box-shadow: 1px 1px;
                     background-color: var(--clr-lightgreen, #1ed760);
                     scale: 1.05;
                 }
@@ -47,9 +46,9 @@
 
 .station-list-container {
     flex-grow: 1;
-    padding: 28px;
+    padding: 12px 28px 28px 28px;
     /* background-color: var(--gray2, #b3b3b3); */
-    background-color: var(  --clr4, #121212);
+    background-color: var(--clr4, #121212);
     border-radius: 8px;
 
     & .station-list {
@@ -59,9 +58,19 @@
 
 .your-mixes {
     font-weight: 700;
-    color: var( --white, #fff);
+    color: var(--white, #fff);
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-inline-start: 12px;
+    margin-block-start: 12px;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .station-picture {
-  margin: 20px auto 0 auto; 
+    margin: 12px 12px 0 12px;
+
+
 }
