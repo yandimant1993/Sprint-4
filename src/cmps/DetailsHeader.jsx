@@ -29,21 +29,14 @@ export function DetailsHeader({ station }) {
 
     return (
         <section className="details-header-container flex">
-            <div className="btn-station-img-container grid">
-                <div
-                    className="btn-station-img"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                >
-                    {isHovered ? (
-                        <>
-                            {Svgs.editIcon}
-                            <span className="hover-text">Choose Photo! WIP</span>
-                        </>
-                    ) : (
-                        Svgs.stationNewImg
-                    )}
+            <div className="btn-station-img-container grid"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}>
+                
+                <div className="btn-station-img">
+                    {isHovered ? Svgs.editIcon : Svgs.stationNewImg}
                 </div>
+                <p className="hover-text">Choose Photo</p>
             </div>
 
             <div className="details-header-text">

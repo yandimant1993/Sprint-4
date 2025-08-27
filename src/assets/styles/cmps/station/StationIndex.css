@@ -9,27 +9,50 @@
         border-radius: var(--spacerem-s);
 
         .details-header-container {
-            padding-block-end: 16px;
-            margin-block-end: 16px;
+            padding-block-end: var(--spacepx-sm);
+            margin-block-end: var(--spacepx-sm);
             border-start-start-radius: var(--spacerem-s);
             border-start-end-radius: var(--spacerem-s);
-            background-color: var(--clr2);
+            background-color: var(--clr1);
 
             .btn-station-img-container {
+                position: relative;
                 width: 128px;
                 height: 128px;
-                margin: 42px 16px 0;
-                background-color: var(--clr1);
+                border-radius: 4px;
+                margin: calc(var(--spacepx-sm)*3) var(--spacepx-sm) 0;
+                background-color: var(--clr2);
 
                 .btn-station-img {
+                    position: absolute;
                     width: calc(var(--spacepx-sm)*3);
                     height: calc(var(--spacepx-sm)*3);
-                    place-self: center;
                     color: var(--gray3);
 
-                    &:hover {
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                .hover-text {
+                    position: absolute;
+                    width: 80%;
+                    margin: 0;
+                    inset-block-end: 18px;
+
+                    left: 50%;
+                    transform: translateX(-50%);
+                    opacity: 0;
+                }
+
+                &:hover {
+
+                    >* {
                         color: var(--gray1);
-                        font-size: 1rem;
+                    }
+
+                    .hover-text {
+                        opacity: 1;
                     }
                 }
             }
@@ -40,13 +63,9 @@
 
                 .station-name {
                     margin: 0;
-                    font-size: 2rem;
+                    font-size: calc(var(--spacerem-sm)*2);
                     font-weight: 800;
                     cursor: pointer;
-
-                    &:hover {
-                        cursor: pointer;
-                    }
                 }
 
                 .station-type,
@@ -56,7 +75,7 @@
 
                 .station-creator {
                     font-weight: bold;
-                    margin-block-start: 0.5rem;
+                    margin-block-start: var(--spacerem-s);
                 }
             }
         }
