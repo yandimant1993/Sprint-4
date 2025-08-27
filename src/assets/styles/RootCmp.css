@@ -1,5 +1,10 @@
-.app-container>main {
-    min-height: calc(100vh - 9rem);
+.app-container {
+    grid-auto-rows: auto 1fr auto;
+    height: 100vh;
     background-color: var(--clr5);
     color: var(--gray1);
+    grid-template-areas:
+        "header header"
+        "main main"
+        "footer footer";
 }

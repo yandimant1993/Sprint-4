@@ -21,15 +21,15 @@
     & svg {
         padding: 12px;
     }
-}
 
-.svg-play {
-    opacity: 0;
-    position: absolute;
-    bottom: 52px;
-    right: 5px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background-color: var(--clr-green, #1db954);
+    .svg-play {
+        opacity: 0;
+        position: absolute;
+        bottom: 54px;
+        right: 10px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: var(--clr-green, #1db954);
+    }
 }
