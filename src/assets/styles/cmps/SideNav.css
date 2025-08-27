@@ -3,8 +3,6 @@
     height: 100%;
     grid-column: 1;
     border-radius: var(--spacerem-s);
-    margin: var(--spacepx-s) var(--spacepx-s) var(--spacepx-s) auto;
-    margin-inline-start: var(--spacepx-sm);
     background-color: var(--clr4);
     transition: width 0.3s ease;
 

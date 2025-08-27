@@ -2,15 +2,32 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 4rem;
+    height: 4rem;
     background-color: #000000;
-    padding: 0 1rem;
+    padding: calc(var(--spacepx-sm) / 2);
+    margin: -8px;
     /* border-bottom: 1px solid #282828; */
 
     /* avishai: */
     img {
         max-height: 60px;
         max-width: 60px;
+        border-radius: 50%;
+    
+    }
+    .logo-container {
+        margin-inline-start: 20px;
+   
+        img {
+            height: 32px;
+            width: 32px;
+            background-color: white;
+        }
+    }
+    
+    .nav-buttons {
+        display: flex;
+        gap: 0.5rem;
     }
 }
 
@@ -38,16 +55,6 @@
     letter-spacing: -0.5px;
 } */
 
-.logo img {
-    height: 32px;
-    width: auto;
-    background-color: white;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 0.5rem;
-}
 
 /* .nav-btn {
     background: none;
@@ -86,7 +93,7 @@
     margin: 0 2rem;
     position: relative;
     /* allow absolute home icon without breaking centering */
-    left: 100px;
+    left: 250px;
     /* nudge the whole center area slightly to the right */
 }
 

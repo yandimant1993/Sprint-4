@@ -3,6 +3,7 @@
     grid-auto-rows: auto 1fr auto;
     height: 100vh;
     padding: calc(var(--spacepx-sm) / 2);
+    margin: calc(-1 * var(--spacepx-sm) / 2);
     gap: calc(var(--spacepx-sm) / 2);
 
     grid-template-areas:
@@ -10,6 +11,6 @@
         "main main"
         "footer footer";
 
-    background-color: var(--clr5);
+    background-color: green;
     color: var(--gray1);
 }
