@@ -13,18 +13,19 @@
         max-height: 60px;
         max-width: 60px;
         border-radius: 50%;
-    
+
     }
+
     .logo-container {
         margin-inline-start: 20px;
-   
+
         img {
             height: 32px;
             width: 32px;
             background-color: white;
         }
     }
-    
+
     .nav-buttons {
         display: flex;
         gap: 0.5rem;
@@ -93,7 +94,7 @@
     margin: 0 2rem;
     position: relative;
     /* allow absolute home icon without breaking centering */
-    left: 250px;
+    left: 95px;
     /* nudge the whole center area slightly to the right */
 }
 
@@ -111,11 +112,10 @@
 
 .search-icon {
     position: absolute;
-    left: 1rem;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 25px;
-    height: 25px;
+    width: 45px;
     filter: brightness(0) saturate(100%) invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.7) contrast(1);
 }
 
@@ -156,14 +156,13 @@
 /* Center search: pin the home icon to the left so it doesn't push the search */
 .header-center .home-icon {
     position: absolute;
-    left: -5px;
+    left: -9px;
     /* add small gap from the search */
     top: 50%;
     transform: translateY(-50%);
     margin: 0;
     /* override inline gap */
 }
-
 
 
 .search-input {
@@ -203,16 +202,17 @@
     align-items: center;
     /* gap: 1rem; */
     flex-shrink: 0;
+    right: -100px;
 }
 
 .action-btn {
     background: none;
     border: none;
     color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 600;
-    width: 40px;
-    height: 40px;
+    font-size: 0.8rem;
+    /* font-weight: 600; */
+    /* width: 40px;
+    height: 40px; */
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -246,7 +246,7 @@
 .action-btn.notification,
 .action-btn.friends {
     background: none;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     border-radius: 50%;
 }
 
@@ -273,17 +273,18 @@
 }
 
 
-/* .user-profile {
+.user-profile {
     display: flex;
     align-items: center;
-} */
+}
 
-/* .user-profile img {
-    width: 32px;
-    height: 32px;
+.user-profile img {
+
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
-} */
+}
 
 /* .profile-placeholder {
     width: 32px;

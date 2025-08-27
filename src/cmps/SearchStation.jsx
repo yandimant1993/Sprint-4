@@ -29,7 +29,7 @@ export function SearchStation({ onSelectVideo }) {
     return (
         <div className="search-container">
             <div className="search-input-wrapper">
-                <img src="/src/assets/spotify-icons/search.svg" alt="Search" className="search-icon" />
+                <img src="/src/assets/spotify-icons/search-iocn-input.svg" alt="Search" className="search-icon" />
                 <input
                     onChange={handleChange}
                     type="text"
