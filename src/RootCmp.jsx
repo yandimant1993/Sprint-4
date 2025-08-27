@@ -39,7 +39,7 @@ export function RootCmp() {
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 {/* </main> */}
-                <AppFooter searchedVideoId={searchedVideoId} />
+                {/* <AppFooter searchedVideoId={searchedVideoId} /> */}
             </div>
         </Provider>
     )

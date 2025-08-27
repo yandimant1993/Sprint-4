@@ -13,7 +13,7 @@ function getEmptyStation() {
         addedAt: Date.now(),
         tags: [],
         songs: [],
-        createdBy: '',
+        // createdBy: '',
         likedByUsers: [],
         type: 'user',
         stationImgUrl: 'https://placebear.com/80/80'

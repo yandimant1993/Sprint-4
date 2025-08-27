@@ -11,7 +11,8 @@ export const stationService = {
     getById,
     save,
     remove,
-    addStationMsg
+    addStationMsg,
+    getUserStations
 }
 window.cs = stationService
 
@@ -64,6 +65,20 @@ async function getById(stationId) {
     throw new Error(`Station with ID ${stationId} not found in system or user stations`)
 }
 
+async function getUserStations() {
+    const {_id: userId} = userService.getLoggedinUser()
+    // console.log('userId', userId)
+    try {
+        const stations = await query()
+        // console.log('stations', stations)
+        const userStations = stations.filter(station => station.createdBy._id === userId)
+        // console.log('userStations', userStations)
+        return userStations
+    } catch (error) {
+
+    }
+}
+
 // async function remove(stationId) {
 //     try {
 //         return await storageService.remove(STORAGE_KEY, stationId)
@@ -83,14 +98,17 @@ async function remove(stationId, type = 'system') {
 
 async function save(station) {
     console.log('station: ', station)
+    const { _id, fullname, imgUrl } = userService.getLoggedinUser()
+
     try {
-        const key = station.type === 'system' ? STORAGE_KEY : USER_STATION_KEY
+        // const key = station.type === 'system' ? STORAGE_KEY : USER_STATION_KEY
 
         if (station._id) {
 
-            return await storageService.put(key, station)
+            return await storageService.put(STORAGE_KEY, station)
         } else {
-            return await storageService.post(key, station)
+            station.createdBy = { _id, fullname, imgUrl }
+            return await storageService.post(STORAGE_KEY, station)
         }
     } catch (err) {
         console.log('Error saving station:', err)
@@ -220,3 +238,5 @@ async function _createStations() {
         console.error('Failed to create demo stations:', err)
     }
 }
+
+
