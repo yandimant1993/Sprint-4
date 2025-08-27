@@ -1,0 +1,54 @@
+.user-list {
+    width: calc(100% - 2 * var(--spacepx-s));
+    height: calc(4* var(--spacepx-sm));
+    border-radius: var(--spacerem-s);
+    margin: 0 auto;
+
+    .user-station {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        border-radius: var(--spacerem-s);
+        background-color: transparent;
+
+        &:hover {
+            background-color: var(--clr2);
+        }
+
+        .svg-play {
+            place-self: center;
+
+            background-color: transparent;
+            inset-block-end: -37px;
+            inset-inline-start: 0;
+            transform: translate(-100%, -100%);
+            opacity: 1;
+
+            &:hover {
+                color: var(--clr3);
+            }
+        }
+
+        .user-station-picture {
+            height: calc(3* var(--spacepx-sm));
+            width: calc(3* var(--spacepx-sm));
+            border-radius: var(--spacerem-s);
+
+            margin: var(--spacepx-s);
+        }
+
+        .user-station-details {
+         
+
+            .user-station-name {}
+
+            .user-station-playlist {}
+        }
+    }
+}
+
+/* .user-list
+    .user-station
+    .station-picture
+    .station-name
+    .station-playlist */
