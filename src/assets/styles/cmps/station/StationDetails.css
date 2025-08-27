@@ -75,9 +75,49 @@
         }
     }
 
-    .songs-table {
-        width: 100%;
+    .songs-list {
+        grid-auto-flow: row;
+
+        .songs-list-header,
+        .songs-list-row {
+            grid-auto-flow: column;
+            grid-template-columns: 12px repeat(4, 1fr) 0.5fr;
+            gap: var(--spacepx-sm);
+            width: 100%;
+            padding-inline: calc(var(--spacepx-sm)/2);
+
+            .song-list-number {
+                justify-self: end;
+
+            }
+
+            .song-list-title {
+                justify-self: start;
+
+                img {
+                    margin-inline-end: 12px;
+                }
+            }
+
+            .song-list-album {
+                justify-self: start;
+            }
+
+            .song-list-date {
+                justify-self: start;
+            }
+
+
+            .song-list-time {
+                justify-self: start;
+            }
+
+            .song-list-display {
+                display: none;
+            }
+        }
     }
+
 }
 
 .modal-delete-station {
