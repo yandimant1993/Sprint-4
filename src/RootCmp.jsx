@@ -27,7 +27,6 @@ export function RootCmp() {
             <div className="app-container">
                 <AppHeader onSelectVideo={setSearchedVideoId} />
                 <UserMsg />
-                <main className="main-container grid">
                     <SideNav />
                     <Routes>
                         <Route path="/" element={<StationIndex />} />
@@ -38,7 +37,6 @@ export function RootCmp() {
                         </Route>
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
-                </main>
                 <AppFooter searchedVideoId={searchedVideoId} />
             </div>
         </Provider>

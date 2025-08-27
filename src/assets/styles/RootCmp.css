@@ -11,6 +11,6 @@
         "main main"
         "footer footer";
 
-    background-color: green;
+    background-color: var(--clr5);
     color: var(--gray1);
 }
