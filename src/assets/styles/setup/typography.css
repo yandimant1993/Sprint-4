@@ -1,8 +1,8 @@
 @font-face {
-    /* font-family: caveat; */
-    /* src: url(../../fonts/Caveat/Caveat-Regular.ttf); */
+    font-family: circularsp;
+    src: url(../../fonts/circularsp/circularsp-heb.woff2);
 }
 @font-face {
-    /* font-family: montserrat; */
-    /* src: url(../../fonts/Montserrat/Montserrat-Regular.ttf); */
+    font-family: spotifymix;
+    src: url(../../fonts/spotify-mix-regular/spotifymixui-regular.woff2);
 }
