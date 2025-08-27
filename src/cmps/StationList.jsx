@@ -15,16 +15,16 @@ export function StationList({ stations }) {
     return (
         <ul className="station-list">
             {stations.map(station =>
-                <NavLink to={`/station/${station._id}`} key={station._id}>
                     <li>
+                        <NavLink to={`/station/${station._id}`} key={station._id}>
                         <StationPreview station={station} />
                         {shouldShowActionBtns(station) && <div className="actions">
                             {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
                         <button onClick={() => onRemoveStation(station._id)}>x</button> */}
 
                         </div>}
-                    </li>
                 </NavLink>
+                    </li>
             )}
         </ul>
     )

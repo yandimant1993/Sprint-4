@@ -122,6 +122,7 @@ async function _createStations() {
             {
                 _id: '64f1cdd298b8c2a1d4a12f3a',
                 name: 'Late Night Loops',
+                description: "Ed Sheeran and acoustic guitars on the beach. Songs that feel like vacation",
                 tags: ['Chill', 'Lofi', 'Beats'],
                 createdBy: {
                     _id: 'u103',
@@ -152,6 +153,7 @@ async function _createStations() {
             {
                 _id: '64f1cdd298b8c2a1d4a12f3b',
                 name: 'Indie Vibes',
+                description: "High-energy beats with Drake and David Guetta. Perfect pump for your workout",
                 tags: ['Indie Rock', 'New Releases'],
                 createdBy: {
                     _id: 'u102',
@@ -182,6 +184,7 @@ async function _createStations() {
             {
                 _id: '64f1cdd298b8c2a1d4a12f3c',
                 name: 'Retro Synthwave',
+                description: "Soft piano with Ludovico Einaudi and Lo-Fi beats. Relax and stay concentrated",
                 tags: ['Synthwave', 'Retro', 'Instrumental'],
                 createdBy: {
                     _id: 'u101',

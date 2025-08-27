@@ -32,8 +32,8 @@ export function StationPreview({ station }) {
             }
 
             {station.songs &&
-                <p className="name">{station.name}</p>}
-
+            <p className="station-description">{station.description}</p>}
+                
         </article>
     )
 }

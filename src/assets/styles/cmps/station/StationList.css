@@ -8,26 +8,21 @@
     li {
         justify-content: center;
         place-items: center;
-        height: 246.36px;
-        width: 195.5px;
         cursor: pointer;
-        display: grid;
-        grid-template-columns: max-content auto;
-        padding: .5em;
-        /* background-color: var(--clr2); */
         border-radius: 10px;
-        
+        grid-auto-columns: minmax(200px, 1fr);
+
         &:hover {
             background-color: var(--clr2, #1f1f1f);
             border-radius: 10px;
-            
+
 
             .svg-play {
                 opacity: 1;
-                transition: 0.4s;
+                transition: 0.3s;
                 transform: translateY(-7px);
                 box-shadow: 1px 1px;
-                
+
                 &:hover {
                     box-shadow: 1px 1px;
                     background-color: var(--clr-lightgreen, #1ed760);
