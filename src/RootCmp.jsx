@@ -27,18 +27,18 @@ export function RootCmp() {
             <div className="app-container">
                 <AppHeader onSelectVideo={setSearchedVideoId} />
                 <UserMsg />
-                <main className="main-container grid">
-                    <SideNav />
-                    <Routes>
-                        <Route path="/" element={<StationIndex />} />
-                        <Route path="station/:stationId" element={<StationDetails />} />
-                        <Route path="auth" element={<LoginSignup />}>
-                            <Route path="login" element={<Login />} />
-                            <Route path="signup" element={<Signup />} />
-                        </Route>
-                        <Route path="*" element={<Navigate to="/" replace />} />
-                    </Routes>
-                </main>
+                {/* <main className="main-container grid"> */}
+                <SideNav />
+                <Routes>
+                    <Route path="/" element={<StationIndex />} />
+                    <Route path="station/:stationId" element={<StationDetails />} />
+                    <Route path="auth" element={<LoginSignup />}>
+                        <Route path="login" element={<Login />} />
+                        <Route path="signup" element={<Signup />} />
+                    </Route>
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+                {/* </main> */}
                 <AppFooter searchedVideoId={searchedVideoId} />
             </div>
         </Provider>

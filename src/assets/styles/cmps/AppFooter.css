@@ -62,21 +62,26 @@
     justify-content: flex-end;
     align-items: center;
     min-width: 0;
+    margin-top: 5px;
 }
 
 /* Fine-tune inner elements */
-.media-controller {
+
+/* .media-controller {
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* gap: .5rem; */
+    gap: .5rem;
     align-items: center;
-}
+} */
 
 .media-controls {
     display: flex;
     align-items: center;
-    /* gap: .7rem; */
+    margin-left: .9rem;
+    transform: translateY(4px);
+
+
 }
 
 .control-btn {
@@ -90,15 +95,15 @@
     position: relative;
 }
 
+
 .control-btn:hover {
     /* background-color: rgba(255, 255, 255, 0.1); */
     transform: scale(1.05);
 }
 
-.media-controls .control-btn img {
-    width: 17px;
-    height: 17px;
-}
+/* .control-btn .previous img {
+    transform: translateY(1rem)
+} */
 
 /* .media-controls .play-pause {
     width: 40px;
@@ -116,8 +121,8 @@
 } */
 
 .media-controls .play-pause img {
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 19px;
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1) contrast(1);
 }
 
@@ -129,14 +134,14 @@
     cursor: pointer;
 }
 
-/* .progress-container {
+.progress-container {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: .5rem;
-    width: 100%;
+    width: 680px;
     max-width: 700px;
-} */
+}
 
 
 /* .progress-slider {
@@ -182,10 +187,10 @@
 } */
 
 .time {
-    font-size: .8rem;
+    font-size: 13px;
     color: #cfcfcf;
     font-weight: 500;
-    min-width: 2.5rem;
+    min-width: 35px;
     text-align: center;
 }
 
@@ -204,9 +209,16 @@
 }
 
 .right-controls .control-btn img {
-    width: 17px;
-    height: 17px;
+    width: var(--spacepx-sm);
+    height: var(--spacepx-sm);
 }
+
+.media-controls .control-btn img {
+    width: var(--spacepx-sm);
+    height: var(--spacepx-sm);
+}
+
+
 
 .active-dot {
     width: 6px;
@@ -304,9 +316,9 @@
         gap: .6rem;
     }
 
-    /* .progress-container {
+    .progress-container {
         max-width: 500px;
-    } */
+    }
 
     /* .volume-slider {
         width: 80px;

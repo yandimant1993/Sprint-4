@@ -5,20 +5,23 @@
     min-width: 180px;
     max-width: 250px;
 
+
 }
 
 .song-image {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     border-radius: 4px;
     overflow: hidden;
     flex-shrink: 0;
+
 }
 
 .song-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+
 }
 
 .song-info {
