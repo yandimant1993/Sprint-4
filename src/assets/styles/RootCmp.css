@@ -2,10 +2,14 @@
     grid-auto-columns: 428px 1fr;
     grid-auto-rows: auto 1fr auto;
     height: 100vh;
-    background-color: var(--clr5);
-    color: var(--gray1);
+    padding: calc(var(--spacepx-sm) / 2);
+    gap: calc(var(--spacepx-sm) / 2);
+
     grid-template-areas:
         "header header"
         "main main"
         "footer footer";
+
+    background-color: var(--clr5);
+    color: var(--gray1);
 }
