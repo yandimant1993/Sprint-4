@@ -18,19 +18,43 @@
     .sidenav-header {
         justify-content: space-between;
         align-items: start;
-        height: 103px;
+        height: 2.25rem;
+        padding: 12px var(--spacepx-sm) calc(var(--spacepx-sm) / 2);
+
+        .btn-sidenav-toggle {
+            font-size: var(--spacerem-sm);
+            padding: var(--spacepx-s);
+            margin: 0;
+            background-color: transparent;
+        }
 
         .btn-create-station {
             align-items: center;
             justify-content: space-evenly;
             border-radius: var(--spacerem-sm);
             width: calc(var(--spacepx-sm) * 5);
-
+            margin: 0 8px 0 0;
+            width: 100px;
+            font-weight: 800;
+            height: 2.25rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--clr2);
+            
             svg {
                 margin-inline-end: calc(var(--spacerem-sm) / 4);
+                width: 16px;
+                flex-shrink: 0;
+            }
+
+            &:hover {
+                transition: 0.3s;
+                background-color: var(--clr1)
             }
         }
+
+
     }
+    
 
     *> {
         width: calc(100% - 2 * var(--spacepx-s));
