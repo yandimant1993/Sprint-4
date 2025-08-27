@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 import { Navigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
@@ -16,6 +16,8 @@ import { LoginSignup, Login, Signup } from './pages/LoginSignup.jsx'
 
 export function RootCmp() {
 
+    const [searchedVideoId, setSearchedVideoId] = useState(null)
+
     useEffect(() => {
         autoLoginUser()
     }, [])
@@ -23,7 +25,7 @@ export function RootCmp() {
     return (
         <Provider store={store}>
             <div className="app-container">
-                <AppHeader />
+                <AppHeader onSelectVideo={setSearchedVideoId} />
                 <UserMsg />
                 <main className="main-container grid">
                     <SideNav />
@@ -37,7 +39,7 @@ export function RootCmp() {
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </main>
-                <AppFooter />
+                <AppFooter searchedVideoId={searchedVideoId} />
             </div>
         </Provider>
     )

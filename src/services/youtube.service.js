@@ -1,35 +1,49 @@
-async function getVideos(term) {
-    const cache = storageService.load(STORAGE_KEY) || {}
+import { loadFromStorage, saveToStorage } from "./util.service.js"
+import axios from "axios";
 
-    if (cache[term]) return cache[term]
+const YT_API_KEY = 'AIzaSyDyMCSjBIjpOulqFGvOBM5QVlyLq-DP_3s'
+const VIDEO_STORAGE_KEY = 'videosDB';
+
+
+export async function getVideos(term, maxResults = 10) {
+    const searchVideosMap = loadFromStorage(VIDEO_STORAGE_KEY) || {};
+
+    if (searchVideosMap[term]) {
+        return Promise.resolve(searchVideosMap[term]);
+    }
 
     try {
-        const { data } = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+        const { data } = await axios.get(`https://www.googleapis.com/youtube/v3/search?&key=${YT_API_KEY}&q=${term}`, {
             params: {
                 part: 'snippet',
                 videoEmbeddable: true,
                 videoSyndicated: true,
                 type: 'video',
-                key: YOUTUBE_KEY,
+                key: YT_API_KEY,
                 q: term,
-                maxResults: 10
-            }
-        })
+                maxResults,
+            },
+        });
 
-        console.log('data', data)
 
-        const videos = data.items.map(item => ({
-            id: item.id.videoId,
-            title: item.snippet.title,
-            thumbnail: item.snippet.thumbnails.default.url
-        }))
+        const videos = data.items
+            .filter(item => item.id.videoId)
+            .map(item => ({
+                id: item.id.videoId,
+                title: item.snippet.title,
+                thumbnail: item.snippet.thumbnails.default.url,
+            }));
 
-        cache[term] = videos
-        storageService.save(STORAGE_KEY, cache)
+        searchVideosMap[term] = videos;
+        saveToStorage(VIDEO_STORAGE_KEY, searchVideosMap)
 
-        return videos
+        return videos;
     } catch (err) {
         console.error('Error fetching videos', err)
-        return []
+        return [];
     }
 }
+
+// const videos = getVideos('react tutorials', 15)
+// console.log(videos)
+// console.log('params:', data)

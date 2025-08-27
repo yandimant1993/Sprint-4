@@ -7,11 +7,13 @@ import { logout } from '../store/actions/user.actions'
 import { StationFilter } from './StationFilter.jsx'
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 import { setFilter } from '../store/actions/station.actions'
+import { SearchStation } from './SearchStation.jsx'
 // import { Svgs } from './Svgs.jsx'
 
-export function AppHeader() {
+export function AppHeader({ onSelectVideo }) {
 	const user = useSelector(storeState => storeState.userModule.user)
 	const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
+
 	const navigate = useNavigate()
 
 	async function onLogout() {
@@ -47,7 +49,7 @@ export function AppHeader() {
 				<NavLink to="/" className="home-icon">
 					<img src="/src/assets/spotify-icons/home-solid.svg" alt="home" />
 				</NavLink>
-
+				{/* 
 				<div className="search-container">
 					<img src="/src/assets/spotify-icons/search.svg" alt="Search" className="search-icon" />
 					<input
@@ -55,7 +57,10 @@ export function AppHeader() {
 						placeholder="What do you want to play?"
 						className="search-input"
 					/>
-				</div>
+				</div> */}
+
+				<SearchStation onSelectVideo={onSelectVideo} />
+
 			</div>
 
 

@@ -5,7 +5,7 @@
     justify-content: center;
 
     min-height: 5rem;
-    padding: .8rem 1rem;
+    padding: 0 var(--spacepx-sm);
     background-color: #000000;
 
     /* border-top: 1px solid #282828; */
@@ -119,6 +119,14 @@
     width: 20px;
     height: 20px;
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1) contrast(1);
+}
+
+.video-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    cursor: pointer;
 }
 
 /* .progress-container {
