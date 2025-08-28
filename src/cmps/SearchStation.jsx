@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getVideos } from "../services/youtube.service";
+import { getVideos } from "../services/player/youtube.service";
 
 export function SearchStation({ onSelectVideo }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ term: '' });

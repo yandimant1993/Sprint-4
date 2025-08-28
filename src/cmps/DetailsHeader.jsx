@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import ColorThief from 'colorthief'
-import astrixImg from '../assets/img/arjaRam.jpeg'
-// import astrixImg from '../assets/img/Astrix-H.e-art.png'
+// import astrixImg from '../assets/img/arjaRam.jpeg'
+import astrixImg from '../assets/img/Astrix-H.e-art.png'
 
 import { updateStation } from '../store/actions/station.actions'
 import { Svgs } from './Svgs.jsx'
@@ -38,7 +38,7 @@ export function DetailsHeader({ station }) {
         }
     }, [])
 
-    const headerBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.13), rgba(0, 0, 0, 0.85)), rgb(${dominantColor.join(',')})`
+    const headerBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.75)), rgb(${dominantColor.join(',')})`
 
 
     async function handleSave(ev) {

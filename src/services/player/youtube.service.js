@@ -1,4 +1,4 @@
-import { loadFromStorage, saveToStorage } from "./util.service.js"
+import { loadFromStorage, saveToStorage } from "../util.service.js"
 import axios from "axios";
 
 const YT_API_KEY = 'AIzaSyDyMCSjBIjpOulqFGvOBM5QVlyLq-DP_3s'
