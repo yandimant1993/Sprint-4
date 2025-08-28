@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+
 import { updateStation } from '../store/actions/station.actions'
 import { Svgs } from './Svgs.jsx'
 import { EditStationDetails } from './EditStationDetails.jsx'
@@ -32,7 +33,7 @@ export function DetailsHeader({ station }) {
             <div className="btn-station-img-container grid"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}>
-                
+
                 <div className="btn-station-img">
                     {isHovered ? Svgs.editIcon : Svgs.stationNewImg}
                 </div>
@@ -72,3 +73,4 @@ export function DetailsHeader({ station }) {
         </section>
     )
 }
+
