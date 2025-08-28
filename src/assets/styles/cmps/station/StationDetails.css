@@ -12,10 +12,10 @@
 
         .btn-station-img-container {
             position: relative;
-            width: 128px;
-            height: 128px;
+            width: 232px;
+            height: 232px;
             border-radius: 4px;
-            margin: calc(var(--spacepx-sm)*3) var(--spacepx-sm) 0;
+            margin: calc(var(--spacepx-s)*2) calc(var(--spacepx-sm)*1.5) 0;
             background-color: var(--clr2);
 
             .btn-station-img {
@@ -57,20 +57,26 @@
             align-self: end;
 
             .station-name {
-                margin: 0;
-                font-size: calc(var(--spacerem-sm)*2);
+                margin: 0 0 10px -4px;
+                line-height: 1.2;
+                font-size: calc(var(--spacerem-sm)*6);
                 font-weight: 800;
-                cursor: pointer;
             }
 
             .station-type,
             .station-creator {
                 font-size: 0.875rem;
+                margin: 0;
             }
 
             .station-creator {
                 font-weight: bold;
-                margin-block-start: var(--spacerem-s);
+                /* margin-block-start: var(--spacerem-s); */
+
+                .station-details-info {
+                    margin: 0;
+
+                }
             }
         }
     }

@@ -40,9 +40,9 @@ export function DetailsHeader({ station }) {
             </div>
 
             <div className="details-header-text">
-                <span className="station-type">
-                    {station.type === 'user' ? 'Your Playlist' : 'Public Playlist'}
-                </span>
+                <p className="station-type">
+                    Public Playlist
+                </p>
 
                 <div
                     className="station-name"
@@ -53,7 +53,7 @@ export function DetailsHeader({ station }) {
                 </div>
 
                 <div className="station-creator flex">
-                    <span>{creatorName}&nbsp;•&nbsp;</span><p> 6 songs, 19 min 28 sec</p>
+                    <p className="station-details-info"><span>{creatorName}&nbsp;•&nbsp;</span> 6 songs, 19 min 28 sec</p>
                 </div>
             </div>
 
