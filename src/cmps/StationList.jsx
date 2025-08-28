@@ -3,6 +3,7 @@ import { StationPreview } from './StationPreview'
 import { NavLink } from 'react-router-dom'
 
 export function StationList({ stations }) {
+
     function shouldShowActionBtns(station) {
         const user = userService.getLoggedinUser()
 
@@ -10,12 +11,16 @@ export function StationList({ stations }) {
         if (user.isAdmin) return true
         return station.owner?._id === user._id
     }
+
+    const filteredUserStations = stations.filter(station => station.type !== 'user')
+    console.log('filteredUserStations',filteredUserStations)
+
     if (!stations) return <p>Loading...</p>
     return (
         <>
             <span className='your-mixes'>Your Top Mixes</span>
             <ul className="station-list">
-                {stations.map(station =>
+                {filteredUserStations.map(station =>
                     <li>
                         <NavLink
                             to={`/station/${station._id}`}
