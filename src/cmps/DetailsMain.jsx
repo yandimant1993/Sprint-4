@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Svgs } from "./Svgs"
 import { setCurrentStation, setIsPlaying } from "../store/actions/player.actions"
 import { removeStation } from "../store/actions/station.actions"
+import { ContextMenu } from "./ContextMenu";
 import { SongList } from "./SongList"
 
 const songs = [
@@ -52,10 +53,14 @@ const songs = [
 
 export function DetailsMain() {
     const navigate = useNavigate()
+
     const station = useSelector(storeState => storeState.stationModule.station)
-    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
     const currentStation = useSelector(state => state.playerModule.currentStation)
     const isPlaying = useSelector(state => state.playerModule.isPlaying)
+
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false)
+    const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 })
 
     async function onDeleteStation() {
         if (!station?._id) return
@@ -66,6 +71,12 @@ export function DetailsMain() {
             console.error('Failed to delete station:', err)
         }
     }
+
+    const handleContextMenu = (e) => {
+        e.preventDefault()
+        setMenuPosition({ x: e.clientX, y: e.clientY })
+        setMenuOpen(true)
+    };
 
     const handlePlayPause = () => {
         if (currentStation?._id === station._id) {
