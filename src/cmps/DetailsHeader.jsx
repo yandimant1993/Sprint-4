@@ -8,7 +8,7 @@ import { userService } from '../services/user'
 
 export function DetailsHeader({ station }) {
     const [isHovered, setIsHovered] = useState(false)
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(true)
     const [editedName, setEditedName] = useState(station.name)
     const [description, setDescription] = useState('')
 

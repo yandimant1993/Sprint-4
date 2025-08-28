@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Svgs } from './Svgs'
 
 export function EditStationDetails({ station,
     svgs,
@@ -29,25 +30,36 @@ export function EditStationDetails({ station,
         }
     }, [onClose])
 
+    function handleClick() {
+        console.log('clicked edit image')
+    }
+
     return (
-        <div className="modal-overlay flex" onClick={onClose}>
-            <div className="modal-container" ref={modalRef} onClick={ev => ev.stopPropagation()}>
-                <header className="modal-header flex">
-                    <h2>Edit Details</h2>
-                    <button onClick={onClose}>X</button>
+        <div className="edit-station-modal-overlay flex" onClick={onClose}>
+            <div className="edit-station-modal-container" ref={modalRef} onClick={ev => ev.stopPropagation()}>
+                <header className="edit-station-modal-header flex">
+                    <p className="edit-details-h">Edit Details</p>
+                    <button className="btn-edit-close-modal" onClick={onClose}>{Svgs.xIcon}</button>
                 </header>
 
-                <main className="modal-main">
-                    <div className="btn-station-img-container grid">
+                <main className="edit-station-main grid">
+                    <div className="btn-edit-station-img-container grid">
                         <div
-                            className="btn-station-img"
+                            className="btn-edit-station-img"
+                            style={{
+                                backgroundImage: station.stationImgUrl
+                                    ? `url(${station.stationImgUrl})`
+                                    : 'none',
+                            }}
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
+                            onClick={handleClick}
+                            role="button"
                         >
                             {isHovered ? (
                                 <>
                                     {svgs.editIcon}
-                                    <span className="hover-text">Choose Photo! WIP</span>
+                                    <span className="edit-station-img-hover-text">Choose Photo</span>
                                 </>
                             ) : (
                                 svgs.stationNewImg
@@ -59,16 +71,16 @@ export function EditStationDetails({ station,
                         className="station-name"
                         placeholder={station.name}
                         value={editedName}
-                        onChange={(e) => setEditedName(e.target.value)}
+                        onChange={(ev) => setEditedName(ev.target.value)}
                     />
                     <textarea
                         className="station-description"
                         placeholder="Add a description..."
                         value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        onChange={(ev) => setDescription(ev.target.value)}
                     />
                     <button onClick={onSave} className="btn-save-station">Save</button>
-                    <p className="modal-disclaimer">By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.</p>
+                    <p className="station-disclaimer">By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.</p>
                 </main>
             </div>
         </div>

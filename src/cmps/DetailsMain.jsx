@@ -8,7 +8,6 @@ import { removeStation } from "../store/actions/station.actions"
 import { ContextMenu } from "./ContextMenu";
 import { SongList } from "./SongList"
 
-
 const initialSongs = [
     {
         id: 's001',

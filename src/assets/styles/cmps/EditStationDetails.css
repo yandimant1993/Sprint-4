@@ -1,4 +1,4 @@
-.modal-overlay {
+.edit-station-modal-overlay {
   position: fixed;
   width: 524px;
   height: 384px;
@@ -7,14 +7,14 @@
   justify-content: center;
 
   background: rgba(0, 0, 0, 0.5);
-   top: 50%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
 
-  .modal-container {
-    min-width: 300px;
-    max-width: 500px;
+  .edit-station-modal-container {
+    width: 100%;
+    height: 100%;
     padding: 24px;
 
 
@@ -24,41 +24,99 @@
     text-align: center;
     animation: fadeIn 0.3s ease-in-out;
 
-    .modal-header,
-    .modal-footer {
-      padding: 10px;
+    .edit-station-modal-header,
+    .edit-station-modal-footer {
+      padding: 0;
+      margin: 0;
       font-weight: bold;
+      align-items: flex-start;
+
     }
 
-    .modal-header {
-      height: 72px;
+    .edit-station-modal-header {
+      height: 50px;
       justify-content: space-between;
+
+      .btn-edit-close-modal {
+        padding: 0;
+      }
 
       h2 {
         margin: 0;
       }
     }
 
-    .modal-main {
-      display: grid;
-      grid-template: 32px 132px 32px auto/180px 1fr;
+    .edit-station-main {
+      height: 100%;
+      width: 100%;
+      gap: var(--spacepx-sm);
+
+      grid-template-columns: 180px 1fr;
+      grid-template-rows: 40px 120px auto auto;
       grid-template-areas:
         "album-image title"
         "album-image description"
         ". save-button"
         "disclaimer disclaimer";
-      grid-gap: 16px;
-      padding: 0 24px 24px;
 
-      .btn-station-img-container {
+      .btn-edit-station-img-container {
+        height: 180px;
+        width: 180px;
+        grid-row: span 2;
         grid-area: album-image;
+
+        .btn-edit-station-img {
+          position: relative;
+          height: 180px;
+          width: 180px;
+          background-size: cover;
+          place-items: center;
+
+          :first-child {
+            position: absolute;
+            width: calc(var(--spacepx-sm)*3);
+            height: calc(var(--spacepx-sm)*3);
+            color: var(--gray3);
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            .edit-station-img-hover-text {
+              position: absolute;
+              width: 80%;
+              margin: 0;
+              inset-block-end: 18px;
+
+              bottom: 25%;
+              left: 50%;
+              transform: translateX(-50%);
+              opacity: 0;
+
+              &:hover {
+
+                >* {
+                  color: var(--gray1);
+                }
+
+                .hover-text {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
       }
 
       .station-name {
+        height: fit-content;
+        min-height: 40px;
         grid-area: title;
       }
 
       .station-description {
+        margin-bottom: -4px;
+        grid-column: 2;
         grid-area: description;
       }
 
@@ -66,7 +124,7 @@
         grid-area: save-button;
       }
 
-      .modal-disclaimer {
+      .station-disclaimer {
         grid-area: disclaimer;
       }
     }
