@@ -17,8 +17,10 @@ export function SideNav() {
     const [isExpanded, setIsExpanded] = useState(true)
     // console.log('userStations', userStations)
 
-     const { _id: userId } = userService.getLoggedinUser()
-     const userStations = stations.filter(station => station.createdBy._id === userId)
+    const loggedInUser = userService.getLoggedinUser()
+    if (!loggedInUser) return <span>Loading...</span>
+    const { _id: userId } = loggedInUser
+    const userStations = stations.filter(station => station.createdBy._id === userId)
 
     const navigate = useNavigate()
 
@@ -31,7 +33,7 @@ export function SideNav() {
             console.error('Failed to create and navigate to station:', err)
         }
     }
-    
+
     if (!userStations) return <span>Loading...</span>
 
     return (
@@ -41,7 +43,7 @@ export function SideNav() {
                 {/* <StationFilter filterBy={filterBy} onSetFilter={setFilter} /> */}
                 {/* <SortStation /> */}
             </div>
-            {userStations.length && <UserStationList stations={userStations} isExpanded={isExpanded}/>}
+            {userStations.length && <UserStationList stations={userStations} isExpanded={isExpanded} />}
         </section>
     )
 }

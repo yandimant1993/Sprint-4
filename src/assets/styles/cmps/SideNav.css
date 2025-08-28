@@ -6,7 +6,7 @@
     background-color: var(--clr4);
 
     &.collapsed {
-        width: 80px;
+        width: 72px;
 
         .station-name,
         .station-playlist {
@@ -19,7 +19,7 @@
             flex-direction: column;
 
             margin-block: -2px;
-            gap: 28px;
+            gap: 26px;
 
             .btn-create-station {
                 display: grid;
@@ -34,7 +34,7 @@
             }
 
             :nth-child(2) {
-                padding: 8px;
+                padding: var(--spacepx-s);
                 border-radius: 50%;
                 margin: 0;
 

@@ -7,11 +7,9 @@ export function UserStationList({ stations, isExpanded }) {
     const [isPinned, setIsPinned] = useState(false)
     const navigate = useNavigate()
 
-
     const loggedinUser = userService.getLoggedinUser()
     if (!loggedinUser) return
     const filteredUserStations = stations.filter(station => station.createdBy?._id === loggedinUser._id)
-    console.log('filteredUserStations',filteredUserStations)
 
     function onNavigate(userStation) {
         navigate(`/station/${userStation._id}`)

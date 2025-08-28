@@ -13,7 +13,6 @@ export function StationList({ stations }) {
     }
 
     const filteredUserStations = stations.filter(station => station.type !== 'user')
-    console.log('filteredUserStations',filteredUserStations)
 
     if (!stations) return <p>Loading...</p>
     return (
