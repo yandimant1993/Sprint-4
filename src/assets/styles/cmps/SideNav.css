@@ -4,7 +4,6 @@
     grid-column: 1;
     border-radius: var(--spacerem-s);
     background-color: var(--clr4);
-    transition: width 0.3s ease;
 
     &.collapsed {
         width: 80px;
@@ -19,12 +18,19 @@
             align-items: center;
             flex-direction: column;
 
+            margin-block: -2px;
+            gap: 28px;
+
             .btn-create-station {
                 display: grid;
                 height: fit-content;
                 width: fit-content;
                 place-items: center;
                 margin-block-end: 10px;
+            }
+
+            :first-child {
+                height: calc(var(--spacerem-sm)*1.5);
             }
 
             :nth-child(2) {

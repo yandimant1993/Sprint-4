@@ -8,7 +8,7 @@ export function SideNavHeader({ setIsExpanded, isExpanded, createStation }) {
 	return (
 		<section className="sidenav-header flex">
 			<button className="btn-sidenav-toggle" onClick={toggleExpand}>
-				{isExpanded ? 'Your Library' : 'Expand'}
+				{isExpanded ? 'Your Library' : Svgs.expandSidenavIcon}
 			</button>
 			<button className="btn-create-station flex" onClick={createStation}>
 				{Svgs.addIcon}
