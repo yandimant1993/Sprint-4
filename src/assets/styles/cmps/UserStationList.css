@@ -12,6 +12,7 @@
         gap: 12px;
         padding: calc(var(--spacepx-sm) /2);
         background-color: transparent;
+        cursor: pointer;
 
         &:hover {
             background-color: var(--clr2);
