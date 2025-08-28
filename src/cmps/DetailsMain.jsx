@@ -6,7 +6,7 @@ import { Svgs } from "./Svgs"
 import { setCurrentStation, setIsPlaying } from "../store/actions/player.actions"
 import { removeStation } from "../store/actions/station.actions"
 import { SongList } from "./SongList"
-import { songService } from "../services/songs/song.service.local"
+
 
 const initialSongs = [
     {
