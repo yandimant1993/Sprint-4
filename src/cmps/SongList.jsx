@@ -1,4 +1,4 @@
-export function SongList({songs, onRemoveSong}) {
+export function SongList({ songs, onRemoveSong }) {
 
    return (
       <section className="songs-list grid">
@@ -24,7 +24,7 @@ export function SongList({songs, onRemoveSong}) {
                <div className="song-list-date">{getRelativeTime(song.dateAdded)}</div>
                <div className="song-list-duration">{song.duration || '--:--'}</div>
                <div className="song-list-display"></div>
-               <button className="song-remove" onClick={onRemoveSong}>Delete Song</button>
+               <button className="song-remove" onClick={() => onRemoveSong(song.id)}>Delete Song</button>
             </div>
          ))}
       </section>

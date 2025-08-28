@@ -77,6 +77,7 @@ export function RightControls({ player }) {
                         className="volume-fill"
                         style={{ width: `${isMuted ? 0 : volume}%` }}
                     ></div>
+
                 </div>
             </div>
 

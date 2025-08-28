@@ -7,8 +7,9 @@ import { setCurrentStation, setIsPlaying } from "../store/actions/player.actions
 import { removeStation } from "../store/actions/station.actions"
 import { ContextMenu } from "./ContextMenu";
 import { SongList } from "./SongList"
+import { songService } from "../services/songs/song.service.local"
 
-const songs = [
+const initialSongs = [
     {
         id: 's001',
         title: 'Sunset Drive',
@@ -57,6 +58,8 @@ export function DetailsMain() {
     const station = useSelector(storeState => storeState.stationModule.station)
     const currentStation = useSelector(state => state.playerModule.currentStation)
     const isPlaying = useSelector(state => state.playerModule.isPlaying)
+    const [songs, setSongs] = useState(initialSongs)
+    // console.log('songs',songs)
 
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
@@ -89,8 +92,14 @@ export function DetailsMain() {
 
     const isThisStationPlaying = currentStation?._id === station._id && isPlaying
 
-    function onRemoveSong() {
-        console.log('clicked on removesong')
+    async function onRemoveSong(songId) {
+        try {
+            // const filteredSonArr = songService.remove(songId)
+            console.log('filteredSongArr',filteredSongArr)
+        } catch (error) {
+
+        }
+
     }
 
     return (
