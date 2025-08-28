@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import ColorThief from 'colorthief'
-// import astrixImg from '../assets/img/arjaRam.jpeg'
 import astrixImg from '../assets/img/Astrix-H.e-art.png'
 
 import { updateStation } from '../store/actions/station.actions'
@@ -58,9 +57,6 @@ export function DetailsHeader({ station }) {
             className="details-header-container flex"
             style={{
                 background: headerBackground,
-                padding: '16px',
-                borderRadius: '8px',
-                color: 'white'
             }}
         >
             <img
@@ -71,21 +67,14 @@ export function DetailsHeader({ station }) {
             />
 
             <div className="btn-station-img-container grid"
+                id="btn-station-img-container"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
                 <div
                     className="btn-station-img"
-                    style={{
-                        width: '230px',
-                        height: '230px',
-                        backgroundImage: `url(${astrixImg})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        borderRadius: '4px',
-                        position: 'relative',
-                    }}
                 >
+                    {!isHovered && Svgs.stationNewImg}
                     {isHovered && (
                         <div className="overlay flex-center">
                             {Svgs.editIcon}
@@ -95,12 +84,12 @@ export function DetailsHeader({ station }) {
                 </div>
             </div>
 
-            <div className="details-header-text" style={{ marginLeft: '16px' }}>
+            <div className="details-header-text grid">
                 <p className="station-type">Public Playlist</p>
                 <div
-                    className="station-name"
+                    className="details-station station-name"
                     onClick={() => isCreator && setIsModalOpen(true)}
-                    style={{ cursor: isCreator ? 'pointer' : 'default', fontWeight: '800', fontSize: '24px' }}
+                    style={{ cursor: isCreator ? 'pointer' : 'default' }}
                 >
                     {station.name}
                 </div>
