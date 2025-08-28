@@ -3,7 +3,6 @@ import { StationPreview } from './StationPreview'
 import { NavLink } from 'react-router-dom'
 
 export function StationList({ stations }) {
-
     function shouldShowActionBtns(station) {
         const user = userService.getLoggedinUser()
 
