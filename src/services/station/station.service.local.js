@@ -4,7 +4,7 @@ import { makeId } from '../util.service'
 import { userService } from '../user'
 
 const STORAGE_KEY = 'station'
-const USER_STATION_KEY = 'user'
+// const USER_STATION_KEY = 'user'
 
 export const stationService = {
     query,
@@ -39,70 +39,63 @@ async function query(filterBy = { txt: '' }) {
     }
 
     // stations = stations.map(({ _id, name, addedAt, owner }) => ({ _id, name, addedAt, owner }))
-    // console.log('stations',stations)
     return stations
 }
 
-// async function getById(stationId) {
-//     try {
-//         return await storageService.get(STORAGE_KEY, stationId)
-//     } catch (err) {
-//         throw new Error(`Get failed, cannot find entity with id: ${stationId} in: ${STORAGE_KEY}`)
-//     }
-// }
-
 async function getById(stationId) {
-    if (!stationId) throw new Error('Station ID is required')
     try {
-        const station = await storageService.get(STORAGE_KEY, stationId)
-        if (station) return station
-    } catch { }
-    try {
-        const station = await storageService.get(USER_STATION_KEY, stationId)
-        if (station) return station
-    } catch { }
-
-    throw new Error(`Station with ID ${stationId} not found in system or user stations`)
+        return await storageService.get(STORAGE_KEY, stationId)
+    } catch (err) {
+        throw new Error(`Get failed, cannot find entity with id: ${stationId} in: ${STORAGE_KEY}`)
+    }
 }
+
+// async function getById(stationId) {
+//     if (!stationId) throw new Error('Station ID is required')
+//     try {
+//         const station = await storageService.get(STORAGE_KEY, stationId)
+//         if (station) return station
+//     } catch { }
+//     try {
+//         const station = await storageService.get(USER_STATION_KEY, stationId)
+//         if (station) return station
+//     } catch { }
+
+//     throw new Error(`Station with ID ${stationId} not found in system or user stations`)
+// }
 
 async function getUserStations() {
     const {_id: userId} = userService.getLoggedinUser()
-    // console.log('userId', userId)
     try {
         const stations = await query()
-        // console.log('stations', stations)
         const userStations = stations.filter(station => station.createdBy._id === userId)
-        // console.log('userStations', userStations)
         return userStations
     } catch (error) {
 
     }
 }
 
-// async function remove(stationId) {
-//     try {
-//         return await storageService.remove(STORAGE_KEY, stationId)
-//     } catch (err) {
-//         throw new Error(`Remove failed, cannot find entity with id: ${stationId} in: ${STORAGE_KEY}`)
-//     }
-// }
-
-async function remove(stationId, type = 'system') {
-    const key = type === 'system' ? STORAGE_KEY : USER_STATION_KEY
+async function remove(stationId) {
     try {
-        await storageService.remove(key, stationId)
+        return await storageService.remove(STORAGE_KEY, stationId)
     } catch (err) {
-        throw new Error(`Remove failed, cannot find entity with id: ${stationId} in: ${key}`)
+        throw new Error(`Remove failed, cannot find entity with id: ${stationId} in: ${STORAGE_KEY}`)
     }
 }
 
+// async function remove(stationId, type = 'system') {
+//     const key = type === 'system' ? STORAGE_KEY : USER_STATION_KEY
+//     try {
+//         await storageService.remove(key, stationId)
+//     } catch (err) {
+//         throw new Error(`Remove failed, cannot find entity with id: ${stationId} in: ${key}`)
+//     }
+// }
+
 async function save(station) {
-    console.log('station: ', station)
     const { _id, fullname, imgUrl } = userService.getLoggedinUser()
 
     try {
-        // const key = station.type === 'system' ? STORAGE_KEY : USER_STATION_KEY
-
         if (station._id) {
 
             return await storageService.put(STORAGE_KEY, station)

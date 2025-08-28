@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom'
-import { stationService } from "../services/station"
 import { Svgs } from './Svgs.jsx'
 
 export function SideNavHeader({ setIsExpanded, isExpanded, createStation }) {

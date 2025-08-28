@@ -31,7 +31,6 @@
         }
 
         .btn-create-station {
-            align-items: center;
             justify-content: space-evenly;
             border-radius: var(--spacerem-sm);
             width: calc(var(--spacepx-sm) * 5);
