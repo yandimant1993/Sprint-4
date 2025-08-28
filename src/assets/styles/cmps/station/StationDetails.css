@@ -36,9 +36,10 @@
                 margin: 0;
                 inset-block-end: 18px;
 
+                bottom: 25%;
                 left: 50%;
                 transform: translateX(-50%);
-                /* opacity: 0; */
+                opacity: 0;
             }
 
             &:hover {
@@ -72,11 +73,9 @@
 
             .station-creator {
                 font-weight: bold;
-                /* margin-block-start: var(--spacerem-s); */
 
                 .station-details-info {
                     margin: 0;
-
                 }
             }
         }

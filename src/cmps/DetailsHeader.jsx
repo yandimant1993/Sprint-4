@@ -33,7 +33,6 @@ export function DetailsHeader({ station }) {
             <div className="btn-station-img-container grid"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}>
-
                 <div className="btn-station-img">
                     {isHovered ? Svgs.editIcon : Svgs.stationNewImg}
                 </div>
