@@ -120,6 +120,7 @@ async function _createUsers() {
         }
     ]
     await storageService.saveAll('user', users)
+    console.log('hi')
     return users
 }
 
