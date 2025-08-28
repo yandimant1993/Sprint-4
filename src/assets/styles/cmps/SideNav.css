@@ -5,6 +5,11 @@
     border-radius: var(--spacerem-s);
     background-color: var(--clr4);
 
+    *> {
+        width: calc(100% - 2 * var(--spacepx-s));
+        margin: 0 auto;
+    }
+
     &.collapsed {
         width: 72px;
 
@@ -18,7 +23,7 @@
             align-items: center;
             flex-direction: column;
 
-            margin-block: -2px;
+            margin-block: -2px 15px;
             gap: 26px;
 
             .btn-create-station {
@@ -46,54 +51,57 @@
                 }
             }
         }
+
+           .sidenav-filter-sort {
+            height: 0;
+        }
     }
 
-    .sidenav-header {
-        justify-content: space-between;
-        align-items: start;
-        height: 2.25rem;
-        padding: 12px var(--spacepx-sm) calc(var(--spacepx-sm) / 2);
-
-        .btn-sidenav-toggle {
-            font-size: var(--spacerem-sm);
-            padding: var(--spacepx-s);
-            margin: 0;
-            font-weight: bold;
-            background-color: transparent;
-        }
-
-        .btn-create-station {
-            justify-content: space-evenly;
-            border-radius: var(--spacerem-sm);
-            width: calc(var(--spacepx-sm) * 5);
-            margin: 0 8px 0 0;
-            width: 100px;
-            font-weight: 800;
+    &.expanded {
+        .sidenav-header {
+            justify-content: space-between;
+            align-items: start;
             height: 2.25rem;
-            padding: 0.5rem 1rem;
-            background-color: var(--clr2);
+            padding: 12px var(--spacepx-sm) calc(var(--spacepx-sm) / 2);
 
-            svg {
-                margin-inline-end: calc(var(--spacerem-sm) / 4);
-                width: 16px;
-                flex-shrink: 0;
+            .btn-sidenav-toggle {
+                font-size: var(--spacerem-sm);
+                padding: var(--spacepx-s);
+                margin: 0;
+                font-weight: bold;
+                background-color: transparent;
             }
 
-            &:hover {
-                transition: 0.3s;
-                background-color: var(--clr1)
+            .btn-create-station {
+                justify-content: space-evenly;
+                border-radius: var(--spacerem-sm);
+                width: calc(var(--spacepx-sm) * 5);
+                margin: 0 8px 0 0;
+                width: 100px;
+                font-weight: 800;
+                height: 2.25rem;
+                padding: 0.5rem 1rem;
+                background-color: var(--clr2);
+
+                svg {
+                    margin-inline-end: calc(var(--spacerem-sm) / 4);
+                    width: 16px;
+                    flex-shrink: 0;
+                }
+
+                &:hover {
+                    transition: 0.3s;
+                    background-color: var(--clr1)
+                }
             }
+
         }
-    }
 
-    *> {
-        width: calc(100% - 2 * var(--spacepx-s));
-        margin: 0 auto;
-    }
+        .sidenav-filter-sort {
+            height: 34px;
+            justify-content: space-between;
+        }
 
-    .sidenav-filter-sort {
-        height: 34px;
-        justify-content: space-between;
     }
 
 }
