@@ -91,9 +91,13 @@
     content: "";
     width: 15px;
     height: 15px;
-    display: block;
-    background-color: green;
+    display: none;
+    background-color: rgb(255, 255, 255);
     border-radius: 50%;
+}
+
+.progress-bar:hover .progress-fill::after {
+    display: block;
 }
 
 .progress-bar:hover .progress-fill {
