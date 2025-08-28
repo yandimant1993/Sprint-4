@@ -13,7 +13,8 @@ export const stationService = {
     remove,
     addStationMsg,
     getUserStations,
-    removeSong
+    removeSong,
+    addSong
 }
 window.cs = stationService
 
@@ -94,16 +95,21 @@ async function remove(stationId) {
 // }
 
 async function removeSong(songId, stationId) {
-    const stations = await storageService.query(STORAGE_KEY) // get all the stations
-    console.log('stations', stations)
-    const station = stations.find(station => station._id === stationId)
+    const station = await getById(stationId) // get all the stations
     console.log('station', station)
-    if (!station) throw new Error('Station not found!')
-    const updatedStation = { ...station, songs: station.songs.filter(song => song.id !== songId) }
-    console.log('updatedStation', updatedStation)
-    // station.songs = station.songs.filter(song => song.id !== songId)
-    await storageService.put(STORAGE_KEY, updatedStation)
-    return updatedStation
+    station.songs = station.songs.filter(song => song.id !== songId)
+    const savedStation = await save(station)
+    return savedStation
+}
+
+async function addSong(song, stationId) {
+    const station = await getById(stationId)
+    console.log('station', station)
+    // console.log('stations',stations)
+    // if (!station) throw new Error('Station not found!')
+    station.songs.push(song)
+    const savedStation = await save(station)
+    return savedStation
 }
 
 async function save(station) {
@@ -220,7 +226,7 @@ async function _createStations() {
             },
             {
                 _id: '64f1cdd298b8c2a1d4a12f3c',
-                name: 'Retro Synthwave',
+                name: 'Loved Songs',
                 description: "Soft piano with Ludovico Einaudi and Lo-Fi beats. Relax and stay concentrated",
                 tags: ['Synthwave', 'Retro', 'Instrumental'],
                 createdBy: {
@@ -251,6 +257,23 @@ async function _createStations() {
                         imgUrl: 'https://placehold.co/40x40'
                     }
                 ]
+            },
+            {
+                _id: '64f1cdd298b8c2a1d4a12f3c',
+                name: 'Loved Songs',
+                description: "Soft piano with Ludovico Einaudi and Lo-Fi beats. Relax and stay concentrated",
+                tags: ['Synthwave', 'Retro', 'Instrumental'],
+                createdBy: {
+                    _id: 'u101',
+                    username: 'aaa',
+                    fullname: 'Ava V',
+                    imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
+                },
+                addedAt: 1754198400000,
+                likedByUsers: [],
+                type: 'user',
+                stationImgUrl: 'https://placebear.com/80/80',
+                songs: []
             }
         ]
         await storageService.saveAll(STORAGE_KEY, stations)
