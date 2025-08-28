@@ -17,6 +17,7 @@
             border-radius: 4px;
             margin: calc(var(--spacepx-s)*2) calc(var(--spacepx-sm)*1.5) 0;
             background-color: var(--clr2);
+            text-align: center;
 
             .btn-station-img {
                 position: absolute;
@@ -37,7 +38,7 @@
 
                 left: 50%;
                 transform: translateX(-50%);
-                opacity: 0;
+                /* opacity: 0; */
             }
 
             &:hover {
@@ -78,6 +79,24 @@
 
                 }
             }
+        }
+    }
+
+    .station-details-controller {
+
+        & svg {
+            padding: 12px;
+            cursor: pointer;
+        }
+
+        .svg-play {
+            bottom: 56px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--clr-green, #1db954);
+
         }
     }
 
