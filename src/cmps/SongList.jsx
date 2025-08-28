@@ -1,4 +1,6 @@
-export function SongList({ songs, onRemoveSong }) {
+
+import { IoAddCircle } from "react-icons/io5";
+export function SongList({ songs, onRemoveSong,onAddSong }) {
 
    return (
       <section className="songs-list grid">
@@ -24,6 +26,7 @@ export function SongList({ songs, onRemoveSong }) {
                <div className="song-list-date">{getRelativeTime(song.dateAdded)}</div>
                <div className="song-list-duration">{song.duration || '--:--'}</div>
                <div className="song-list-display"></div>
+               <button className="song-add" onClick={() => onAddSong(song)}>Add</button>
                <button className="song-remove" onClick={() => onRemoveSong(song.id)}>Delete Song</button>
             </div>
          ))}
