@@ -70,7 +70,8 @@
     cursor: pointer;
 }
 
-.progress-fill {
+.progress-fill,
+.volume-fill {
     position: absolute;
     top: 0;
     left: 0;
@@ -87,20 +88,24 @@
     justify-content: end;
 }
 
-.progress-fill::after {
+.progress-fill::after,
+.volume-fill::after {
     content: "";
-    width: 15px;
-    height: 15px;
+    width: 13px;
+    height: 13px;
     display: none;
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
+
 }
 
-.progress-bar:hover .progress-fill::after {
+.progress-bar:hover .progress-fill::after,
+.volume-range:hover .volume-fill::after {
     display: block;
 }
 
-.progress-bar:hover .progress-fill {
+.progress-bar:hover .progress-fill,
+.volume-range:hover .volume-fill {
     background-color: var(--clr-green);
 }
 
@@ -186,16 +191,6 @@
     overflow: hidden;
 }
 
-.volume-fill {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: #ffffff;
-    border-radius: 2px;
-    transition: width 0.1s ease;
-}
-
 .volume-range {
     appearance: none;
     position: absolute;
@@ -228,7 +223,6 @@
     height: 12px;
     background: #ffffff;
     border-radius: 50%;
-    /* border-radius: 2px; */
     cursor: pointer;
     border: none;
 }
