@@ -17,7 +17,9 @@ export function StationList({ stations }) {
             <ul className="station-list">
                 {stations.map(station =>
                     <li>
-                        <NavLink to={`/station/${station._id}`} key={station._id}>
+                        <NavLink
+                            to={`/station/${station._id}`}
+                            key={station._id}>
                             <StationPreview station={station} />
                             {shouldShowActionBtns(station) && <div className="actions">
                                 {/* <button onClick={() => onUpdateStation(station)}>Edit</button>

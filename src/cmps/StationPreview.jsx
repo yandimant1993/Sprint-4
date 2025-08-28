@@ -9,7 +9,7 @@ export function StationPreview({ station }) {
     const isPlaying = useSelector(state => state.playerModule.isPlaying)
 
 
-    const handlePlayPause = () => {
+    const handlePlayPause = (ev) => {
         if (currentStation?._id === station._id) {
             setIsPlaying(!isPlaying)
         } else {
@@ -27,23 +27,32 @@ export function StationPreview({ station }) {
 
     const isThisStationPlaying = currentStation?._id === station._id && isPlaying
 
-    return (
+return (
+    <article className="station-preview">
+        {station.stationImgUrl &&
+            <img
+                src={station.stationImgUrl}
+                alt={station.name}
+                className="station-picture"
+            />
+        }
 
-        <article className="station-preview">
-            {station.stationImgUrl &&
-                <img
-                    src={station.stationImgUrl}
-                    alt={station.name}
-                    className="station-picture" />
-            }
-            <div className="svg-play" onClick={handlePlayPause}>
-                {isThisStationPlaying ? Svgs.pause : Svgs.play}
-            </div>
+        <div
+            className="svg-play"
+            onClick={(ev) => {
+                ev.preventDefault()
+                ev.stopPropagation()
+                handlePlayPause()
+            }}
+        >
+            {isThisStationPlaying ? Svgs.pause : Svgs.play}
+        </div>
 
-            {station.songs &&
-                <p className="station-description">
-                    {truncateWords(station.description, 5)}
-                </p>}
-        </article>
-    )
+        {station.songs &&
+            <p className="station-description">
+                {truncateWords(station.description, 5)}
+            </p>
+        }
+    </article>
+)
 }

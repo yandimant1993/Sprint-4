@@ -11,6 +11,7 @@
     
     & p {
         /* margin-block: 1.2em 1.2em; */
+        min-height: 39px;
         margin: 4px 51px 12px 12px;
         font-size: 0.875em;
         color: var(--gray2, #b3b3b3);
