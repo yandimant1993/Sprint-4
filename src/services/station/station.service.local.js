@@ -12,7 +12,8 @@ export const stationService = {
     save,
     remove,
     addStationMsg,
-    getUserStations
+    getUserStations,
+    removeSong
 }
 window.cs = stationService
 
@@ -65,7 +66,7 @@ async function getById(stationId) {
 // }
 
 async function getUserStations() {
-    const {_id: userId} = userService.getLoggedinUser()
+    const { _id: userId } = userService.getLoggedinUser()
     try {
         const stations = await query()
         const userStations = stations.filter(station => station.createdBy._id === userId)
@@ -91,6 +92,19 @@ async function remove(stationId) {
 //         throw new Error(`Remove failed, cannot find entity with id: ${stationId} in: ${key}`)
 //     }
 // }
+
+async function removeSong(songId, stationId) {
+    const stations = await storageService.query(STORAGE_KEY) // get all the stations
+    console.log('stations', stations)
+    const station = stations.find(station => station._id === stationId)
+    console.log('station', station)
+    if (!station) throw new Error('Station not found!')
+    const updatedStation = { ...station, songs: station.songs.filter(song => song.id !== songId) }
+    console.log('updatedStation', updatedStation)
+    // station.songs = station.songs.filter(song => song.id !== songId)
+    await storageService.put(STORAGE_KEY, updatedStation)
+    return updatedStation
+}
 
 async function save(station) {
     const { _id, fullname, imgUrl } = userService.getLoggedinUser()
@@ -148,16 +162,26 @@ async function _createStations() {
                     {
                         id: 's001',
                         title: 'Sunset Drive',
-                        performer: 'Sleepy Fish',
-                        url: 'https://youtube.com/watch?v=abc123',
-                        imgUrl: 'https://i.ytimg.com/vi/abc123/mqdefault.jpg',
+                        album: 'Lofi Nights',
+                        dateAdded: '2025-08-01T12:30:00Z',
+                        duration: '3:24',
+                        imgUrl: 'https://placehold.co/40x40',
                     },
                     {
                         id: 's002',
                         title: 'Rainy Nights',
-                        performer: 'Idealism',
-                        url: 'https://youtube.com/watch?v=def456',
-                        imgUrl: 'https://i.ytimg.com/vi/def456/mqdefault.jpg',
+                        album: 'Quiet Storm',
+                        dateAdded: '2025-08-05T09:15:00Z',
+                        duration: '4:12',
+                        imgUrl: 'https://placehold.co/40x40',
+                    },
+                    {
+                        id: 's003',
+                        title: 'Electric Feel',
+                        album: 'Indie Classics',
+                        dateAdded: '2025-08-10T14:05:00Z',
+                        duration: '3:49',
+                        imgUrl: 'https://placehold.co/40x40'
                     }
                 ]
             },
@@ -177,18 +201,20 @@ async function _createStations() {
                 stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
                     {
-                        id: 's003',
-                        title: 'Electric Feel',
-                        performer: 'MGMT',
-                        url: 'https://youtube.com/watch?v=ghi789',
-                        imgUrl: 'https://i.ytimg.com/vi/ghi789/mqdefault.jpg',
-                    },
-                    {
                         id: 's004',
                         title: 'Youth',
-                        performer: 'Daughter',
-                        url: 'https://youtube.com/watch?v=jkl012',
-                        imgUrl: 'https://i.ytimg.com/vi/jkl012/mqdefault.jpg',
+                        album: 'Acoustic Moods',
+                        dateAdded: '2025-08-15T18:22:00Z',
+                        duration: '4:01',
+                        imgUrl: 'https://placehold.co/40x40'
+                    },
+                    {
+                        id: 's005',
+                        title: 'Nightcall',
+                        album: 'Synthwave Drive',
+                        dateAdded: '2025-08-20T11:00:00Z',
+                        duration: '5:05',
+                        imgUrl: 'https://placehold.co/40x40'
                     }
                 ]
             },
@@ -209,18 +235,20 @@ async function _createStations() {
                 stationImgUrl: 'https://placebear.com/80/80',
                 songs: [
                     {
-                        id: 's005',
-                        title: 'Nightcall',
-                        performer: 'Kavinsky',
-                        url: 'https://youtube.com/watch?v=mno345',
-                        imgUrl: 'https://i.ytimg.com/vi/mno345/mqdefault.jpg',
+                        id: 's001',
+                        title: 'Sunset Drive',
+                        album: 'Lofi Nights',
+                        dateAdded: '2025-08-01T12:30:00Z',
+                        duration: '3:24',
+                        imgUrl: 'https://placehold.co/40x40'
                     },
                     {
-                        id: 's006',
-                        title: 'Turbo Killer',
-                        performer: 'Stationpenter Brut',
-                        url: 'https://youtube.com/watch?v=pqr678',
-                        imgUrl: 'https://i.ytimg.com/vi/pqr678/mqdefault.jpg',
+                        id: 's002',
+                        title: 'Rainy Nights',
+                        album: 'Quiet Storm',
+                        dateAdded: '2025-08-05T09:15:00Z',
+                        duration: '4:12',
+                        imgUrl: 'https://placehold.co/40x40'
                     }
                 ]
             }
