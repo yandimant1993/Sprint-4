@@ -1,14 +1,16 @@
 .user-list {
-    width: calc(100% - 2 * var(--spacepx-s));
+    width: calc(100% - var(--spacepx-sm));
     height: calc(4* var(--spacepx-sm));
     border-radius: var(--spacerem-s);
     margin: 0 auto;
 
     .user-station {
         display: flex;
-        height: 100%;
+        height: fit-content;
         width: 100%;
         border-radius: var(--spacerem-s);
+        gap: 12px;
+        padding: calc(var(--spacepx-sm) /2);
         background-color: transparent;
 
         &:hover {
@@ -29,20 +31,27 @@
             }
         }
 
-        .user-station-picture {
+        .user-station-img {
             height: calc(3* var(--spacepx-sm));
             width: calc(3* var(--spacepx-sm));
             border-radius: var(--spacerem-s);
-
-            margin: var(--spacepx-s);
         }
 
         .user-station-details {
-         
+            flex-direction: column;
+            gap: 2px;
+            align-items: flex-start;
 
-            .user-station-name {}
+            /* .user-station-name {} */
 
-            .user-station-playlist {}
+            .user-station-playlist {
+                color: var(--gray2); 
+                font-size: 0.875rem;
+
+                .user-station-playlist-info {
+                    margin: 0;
+                }
+            }
         }
     }
 }
