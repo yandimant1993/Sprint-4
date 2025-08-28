@@ -12,8 +12,12 @@
         cursor: pointer;
         border-radius: 10px;
         grid-auto-columns: minmax(200px, 1fr);
-        
 
+        .svg-play {
+            transform: translateY(0);
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0;
+        }
 
         &:hover {
             background-color: var(--clr2, #1f1f1f);
@@ -22,10 +26,9 @@
 
             .svg-play {
                 opacity: 1;
-                transition: 0.3s;
                 transform: translateY(-7px);
-                box-shadow: 0 8px 8px rgba(0,0,0,.3);
-                
+                box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+
                 &:hover {
                     background-color: var(--clr-lightgreen, #1ed760);
                     scale: 1.05;
