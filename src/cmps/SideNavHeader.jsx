@@ -14,6 +14,12 @@ export function SideNavHeader({ setIsExpanded, isExpanded, createStation }) {
 				{Svgs.addIcon}
 				{isExpanded && ' Create'}
 			</button>
+			<input
+				type="text"
+				placeholder="Search in Playlist"
+				// value={filter}
+				onChange={(e) => setFilter(e.target.value)}
+			/>
 		</section>
 	)
 }
