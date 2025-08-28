@@ -48,7 +48,7 @@ export function SideNav() {
                 {/* <StationFilter filterBy={filterBy} onSetFilter={setFilter} /> */}
                 {/* <SortStation /> */}
             </div>
-            {userStations.length && <UserStationList stations={userStations} />}
+            {userStations.length && <UserStationList stations={userStations} isExpanded={isExpanded}/>}
         </section>
     )
 }

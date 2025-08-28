@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from "react-router"
 import { Svgs } from "./Svgs"
 
-export function UserStationList({ stations, isCollapsed }) {
+export function UserStationList({ stations, isExpanded }) {
     const [isHovered, setIsHovered] = useState(false)
     const [isPinned, setIsPinned] = useState(false)
     const navigate = useNavigate()
@@ -12,22 +12,22 @@ export function UserStationList({ stations, isCollapsed }) {
     if (!loggedinUser) return
     const filteredUserStations = stations.filter(station => station.createdBy?._id === loggedinUser._id)
 
-function onNavigate(userStation) {
-    navigate(`/station/${userStation._id}`)
-}
+    function onNavigate(userStation) {
+        navigate(`/station/${userStation._id}`)
+    }
 
     return (
         <ul className="user-list">
             {filteredUserStations.map(userStation => (
-                <li className={`user-station ${isCollapsed ? 'collapsed' : ''}`} key={userStation._id} onClick={() => onNavigate(userStation)}>
+                <li className={`user-station ${isExpanded ? 'collapsed' : ''}`} key={userStation._id} onClick={() => onNavigate(userStation)}>
                     <img src={userStation.stationImgUrl} alt={userStation.name} className="user-station-img" />
-                    {!isCollapsed && (
+                    {isExpanded && (
                         <div className="user-station-details flex">
 
                             <div className="user-station-name">{userStation.name}</div>
                             <div className="user-station-playlist flex">
                                 <div>
-                                    
+
                                     {/* WIP {Svgs?.isPinned} */}
                                 </div>
                                 <div>
