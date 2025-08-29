@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getVideos } from "../services/player/youtube.service";
+import { SearchStationResult } from './SearchStationResult';
 
 export function SearchStation({ onSelectVideo }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ term: '' });
@@ -39,8 +40,11 @@ export function SearchStation({ onSelectVideo }) {
                     value={filterByToEdit.term}
                 />
             </div>
-
-            {videos.length > 0 && (
+            <SearchStationResult
+                videos={videos}
+                onVideoClick={handleVideoClick}
+            />
+            {/* {videos.length > 0 && (
                 <div className="search-results">
                     {videos.map(video => (
                         <div key={video.id} className="video-item" onClick={() => handleVideoClick(video)}>
@@ -49,7 +53,7 @@ export function SearchStation({ onSelectVideo }) {
                         </div>
                     ))}
                 </div>
-            )}
+            )} */}
         </div>
     );
 }
