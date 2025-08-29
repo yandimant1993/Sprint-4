@@ -2,7 +2,7 @@
     width: calc(100% - var(--spacepx-sm));
     height: calc(4* var(--spacepx-sm));
     border-radius: var(--spacerem-s);
-    margin: 75px auto;
+    margin: -27px auto;
 
     .user-station {
         display: flex;

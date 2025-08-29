@@ -5,9 +5,49 @@
     border-radius: var(--spacerem-s);
     background-color: var(--clr4);
 
+    .button-playlist {
+        margin: 25px 0px 0px 12px;
+
+        .playlist {
+            border-radius: 9999px;
+            background-color: white;
+            color: black;
+            font-weight: 400;
+            margin-inline-start: 1px;
+        }
+    }
+
     *> {
         width: calc(100% - 2 * var(--spacepx-s));
         margin: 0 auto;
+    }
+
+    .header-input {
+        margin: 7px 0px 0px 13px;
+
+        .input-svg-container {
+            position: relative;
+
+            >:nth-child(1) {
+                position: absolute;
+                height: 15px;
+                width: 15px;
+                top: 7px;
+                color: white;
+                left: 5px;
+                margin-inline-start: 7px;
+            }
+        }
+
+        input {
+            color: whitesmoke;
+            padding: 0 0.8rem 0 3rem;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            height: 30px;
+            background-color: #242424;
+            border: none;
+        }
     }
 
     &.collapsed {
@@ -52,7 +92,7 @@
             }
         }
 
-           .sidenav-filter-sort {
+        .sidenav-filter-sort {
             height: 0;
         }
     }
