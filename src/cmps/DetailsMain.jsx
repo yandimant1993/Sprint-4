@@ -6,7 +6,7 @@ import { setCurrentStation, setIsPlaying } from "../store/actions/player.actions
 import { stationService } from "../services/station/station.service.local"
 import { removeStation } from "../store/actions/station.actions"
 import { Svgs } from "./Svgs"
-import { SongList } from "./SongList"
+import { StationSongsList } from "./StationSongsList"
 import { ContextMenu } from "./ContextMenu"
 
 export function DetailsMain() {
@@ -110,7 +110,7 @@ export function DetailsMain() {
                 </div>
             )}
 
-            <SongList songs={songs} onRemoveSong={onRemoveSong} onAddSong={onAddSong} />
+            <StationSongsList songs={songs} onRemoveSong={onRemoveSong} onAddSong={onAddSong} />
         </>
     )
 }

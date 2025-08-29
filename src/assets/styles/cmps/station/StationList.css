@@ -53,6 +53,8 @@
     /* background-color: var(--gray2, #b3b3b3); */
     background-color: var(--clr4, #121212);
     border-radius: 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     & .station-list {
         display: flex;

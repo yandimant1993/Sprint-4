@@ -1,5 +1,4 @@
 import { Svgs } from './Svgs.jsx'
-import React from 'react'
 
 export function SideNavHeader({ setIsExpanded, isExpanded, createStation }) {
 	function toggleExpand() {
@@ -7,7 +6,7 @@ export function SideNavHeader({ setIsExpanded, isExpanded, createStation }) {
 	}
 
 	return (
-		<React.Fragment>
+		<>
 			<section className="sidenav-header flex">
 				<button className="btn-sidenav-toggle" onClick={toggleExpand}>
 					{isExpanded ? 'Your Library' : Svgs.expandSidenavIcon}
@@ -25,12 +24,12 @@ export function SideNavHeader({ setIsExpanded, isExpanded, createStation }) {
 					{Svgs.searchIcon}
 					<input
 						type="text"
-						placeholder="Enter Playlist"
+						placeholder="Search in Your Library"
 						// value={filter}
 						onChange={(e) => setFilter(e.target.value)}
 					/>
 				</div>
 			</div>
-		</React.Fragment>
+		</>
 	)
 }

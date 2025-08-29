@@ -2,6 +2,7 @@
     min-width: 500px;
     background-color: var(--clr4);
     border-radius: var(--spacerem-s);
+    overflow: auto;
 
     .details-header-container {
         padding:
@@ -129,6 +130,10 @@
             &svg {
                 padding: 0;
             }
+
+            &:hover {
+                scale: var(--scale-s);
+            }
         }
     }
 
@@ -138,11 +143,13 @@
 
         .songs-list-header,
         .songs-list-row {
-            grid-auto-flow: column;
-            grid-template-columns: 12px repeat(4, 1fr) 0.5fr;
+            position: relative;
             width: 100%;
-            gap: var(--spacepx-sm);
             padding-inline: var(--spacepx-sm);
+
+            grid-auto-flow: column;
+            grid-template-columns: 12px 1fr 180px 120px;
+            gap: var(--spacepx-sm);
 
             .song-list-number {
                 justify-self: end;
@@ -171,6 +178,23 @@
 
             .song-list-display {
                 display: none;
+            }
+
+            .hover-btns-actions {
+                position: absolute;
+                inset-inline-end: 12px;
+                gap: 8px;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            &:hover {
+                background-color: var(--clr1);
+
+                .hover-btns-actions {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
             }
         }
     }

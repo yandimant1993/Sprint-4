@@ -1,6 +1,6 @@
 
 import { IoAddCircle } from "react-icons/io5";
-export function SongList({ songs, onRemoveSong,onAddSong }) {
+export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
 
    return (
       <section className="songs-list grid">
@@ -26,8 +26,10 @@ export function SongList({ songs, onRemoveSong,onAddSong }) {
                <div className="song-list-date">{getRelativeTime(song.dateAdded)}</div>
                <div className="song-list-duration">{song.duration || '--:--'}</div>
                <div className="song-list-display"></div>
-               <button className="song-add" onClick={() => onAddSong(song)}>Add</button>
-               <button className="song-remove" onClick={() => onRemoveSong(song.id)}>Delete Song</button>
+               <div className="hover-btns-actions flex">
+                  <button className="btn-song-add" onClick={() => onAddSong(song)}>+</button>
+                  <button className="btn-song-remove" onClick={() => onRemoveSong(song.id)}>-</button>
+               </div>
             </div>
          ))}
       </section>
