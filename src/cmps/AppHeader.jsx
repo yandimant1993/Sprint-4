@@ -62,17 +62,17 @@ export function AppHeader({ onSelectVideo }) {
 			</div>
 
 
-			<div className="header-right">
-
-
-				<button className="action-btn notification">
-					<img src="/src/assets/spotify-icons/notification.svg" alt="Notifications" />
-				</button>
-				<button className="action-btn friends">
-					<img src="/src/assets/spotify-icons/friend-activity.svg" alt="Friends" />
-				</button>
+			<section className="header-right">
+				<div className="header-user-actions flex">
+					<button className="action-btn notification">
+						<img src="/src/assets/spotify-icons/notification.svg" alt="Notifications" />
+					</button>
+					<button className="action-btn friends">
+						<img src="/src/assets/spotify-icons/friend-activity.svg" alt="Friends" />
+					</button>
+				</div>
 				{user ? (
-					<div className="user-profile">
+					<div className="user-profile flex">
 						<Link to={`user/${user._id}`}>
 							{user.imgUrl ? (
 								<img src={user.imgUrl} alt={user.fullname} />
@@ -88,7 +88,7 @@ export function AppHeader({ onSelectVideo }) {
 						Login
 					</button>
 				)}
-			</div>
+			</section>
 		</header>
 	)
 }
