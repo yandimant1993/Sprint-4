@@ -76,9 +76,9 @@ export function DetailsHeader({ station }) {
                 >
                     {!isHovered && Svgs.stationNewImg}
                     {isHovered && (
-                        <div className="overlay flex-center">
+                        <div className="station-img-edit flex">
                             {Svgs.editIcon}
-                            <span className="hover-text">Choose Photo</span>
+                            <span className="station-img-edit-text">Choose Photo</span>
                         </div>
                     )}
                 </div>

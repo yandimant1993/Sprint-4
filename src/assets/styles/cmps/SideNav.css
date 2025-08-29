@@ -95,6 +95,12 @@
         .sidenav-filter-sort {
             height: 0;
         }
+
+        .button-playlist,
+        .header-input {
+            display: none;
+        }
+
     }
 
     &.expanded {
