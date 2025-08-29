@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getVideos } from "../services/player/youtube.service";
 import { SearchStationResult } from './SearchStationResult';
 
-export function SearchStation({ onSelectVideo }) {
+export function SearchDetailsSongs({ onSelectVideo }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ term: '' });
     const [videos, setVideos] = useState([]);
 
@@ -28,32 +28,20 @@ export function SearchStation({ onSelectVideo }) {
     }
 
     return (
-        <div className="search-container">
-            <div className="search-input-wrapper">
+        <div className="search-details-song">
+            <div className="search-details-input">
                 <img src="/src/assets/spotify-icons/search-iocn-input.svg" alt="Search" className="search-icon" />
                 <input
                     onChange={handleChange}
                     type="text"
-                    placeholder="What do you want to play?"
-                    className="search-input"
+                    placeholder="Search for songs"
+                    className="search-details-input"
                     name="term"
                     value={filterByToEdit.term}
                 />
             </div>
-            <SearchStationResult
-                videos={videos}
-                onVideoClick={handleVideoClick}
-            />
-            {/* {videos.length > 0 && (
-                <div className="search-results">
-                    {videos.map(video => (
-                        <div key={video.id} className="video-item" onClick={() => handleVideoClick(video)}>
-                            <img src={video.thumbnail} alt={video.title} />
-                            <p>{video.title}</p>
-                        </div>
-                    ))}
-                </div>
-            )} */}
+
+
         </div>
     );
 }

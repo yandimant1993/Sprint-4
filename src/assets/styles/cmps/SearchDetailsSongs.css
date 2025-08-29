@@ -1,0 +1,39 @@
+.search-details-song {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    filter: brightness(0) saturate(100%) invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.7) contrast(1);
+}
+
+.search-details-input {
+    width: 100%;
+    max-width: 350px;
+    height: 46px;
+    background-color: #242424;
+    border: none;
+    border-radius: 4px;
+    padding: 0 1rem 0 3rem;
+    /* color: #ffffff; */
+    font-size: 1rem;
+    outline: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s, border 0.3s;
+
+    &::placeholder {
+        color: #b3b3b3;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .search-details-song {
+        max-width: 300px;
+    }
+}

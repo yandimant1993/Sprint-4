@@ -6,12 +6,13 @@ import ColorThief from 'colorthief'
 import { loadStation } from '../store/actions/station.actions'
 import { DetailsHeader } from '../cmps/DetailsHeader'
 import { DetailsMain } from '../cmps/DetailsMain'
-import { RecommendedTrack } from '../cmps/RecommendedTrack'
+import { SearchStationResult } from '../cmps/SearchStationResult'
+import { SearchDetailsSongs } from '../cmps/SearchDetailsSongs'
 
-export function StationDetails() {
+export function StationDetails(onSelectVideo, videos, handleVideoClick) {
   const { stationId } = useParams()
   const station = useSelector(storeState => storeState.stationModule.station)
-  const [bgColor, setBgColor] = useState([0, 0, 0]) 
+  const [bgColor, setBgColor] = useState([0, 0, 0])
 
   useEffect(() => {
     loadStation(stationId)
@@ -20,7 +21,7 @@ export function StationDetails() {
   useEffect(() => {
     if (!station?.imgUrl) return
     const img = new Image()
-    img.crossOrigin = "anonymous" 
+    img.crossOrigin = "anonymous"
     img.src = station.imgUrl
     img.onload = () => {
       const colorThief = new ColorThief()
@@ -40,8 +41,14 @@ export function StationDetails() {
   return (
     <section className="station-details" style={bgStyle}>
       <DetailsHeader station={station} />
-      <DetailsMain station={station} />
-      <RecommendedTrack station={station} />
+      <DetailsMain station={station} /><br />
+
+      <h1>Let's find something for your playlist</h1>
+      <SearchDetailsSongs onSelectVideo={onSelectVideo} />
+      <SearchStationResult
+        videos={videos}
+        onVideoClick={handleVideoClick}
+      />
     </section>
   )
 }
