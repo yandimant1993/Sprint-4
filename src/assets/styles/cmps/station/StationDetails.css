@@ -22,24 +22,29 @@
 
             .btn-station-img {
                 position: absolute;
-                width: calc(var(--spacepx-sm)*3);
-                height: calc(var(--spacepx-sm)*3);
                 color: var(--gray3);
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-            }
 
-            .hover-text {
-                position: absolute;
-                width: 80%;
-                margin: 0;
-                inset-block-end: 18px;
+                svg {
+                    width: calc(var(--spacepx-sm)*4);
+                    height: calc(var(--spacepx-sm)*4);
+                }
 
-                bottom: 25%;
-                left: 50%;
-                transform: translateX(-50%);
-                opacity: 0;
+                .station-img-edit-text {
+                    position: absolute;
+                    width: 250%;
+                    margin: 0;
+                    inset-block-end: 18px;
+
+                    bottom: -60%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    opacity: 0;
+                    cursor: default;
+                }
+
             }
 
             &:hover {
@@ -48,8 +53,19 @@
                     color: var(--gray1);
                 }
 
-                .hover-text {
-                    opacity: 1;
+                .btn-station-img {
+                    top: 48%;
+                    left: 50%;
+                    transform: translate(-48%, -50%);
+
+                    svg {
+                        width: calc(var(--spacepx-sm)*3);
+                        height: calc(var(--spacepx-sm)*3);
+                    }
+
+                    .station-img-edit-text {
+                        opacity: 1;
+                    }
                 }
             }
         }
@@ -57,13 +73,13 @@
         /* text */
         .details-header-text {
             height: fit-content;
-            gap: 5px;
             align-self: end;
 
             .details-station.station-name {
-                margin: 0;
+                margin: 0 0 8px 0;
                 line-height: 1.2;
                 font-size: calc(var(--spacerem-sm)*6);
+                font-family: spotifymix-title;
                 font-weight: 800;
             }
 
