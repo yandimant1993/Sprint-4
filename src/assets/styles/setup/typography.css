@@ -2,7 +2,18 @@
     font-family: circularsp;
     src: url(../../fonts/circularsp/circularsp-heb.woff2);
 }
+
 @font-face {
-    font-family: spotifymix;
+    font-family: spotifymix-regular;
     src: url(../../fonts/spotify-mix-regular/spotifymixui-regular.woff2);
+}
+
+@font-face {
+    font-family: spotifymix-title;
+    src: url(../../fonts/spotify-mix-title/SpotifyMixUITitleVariable.woff2);
+}
+
+@font-face {
+    font-family: spotifymix-bold;
+    src: url(../../fonts/spotify-mix-bold/SpotifyMixUI-Bold.woff2);
 }

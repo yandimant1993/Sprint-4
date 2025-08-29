@@ -1,0 +1,33 @@
+.context-menu {
+    position: absolute;
+    flex-direction: column;
+
+    max-width: 350px;
+    min-width: 280px;
+    height: fit-content;
+    max-height: calc(100vh - 24px);
+    padding: 4px;
+
+    border-radius: 4px;
+    box-shadow: 0 16px 24px rgba(0, 0, 0, .3), 0 6px 8px rgba(0, 0, 0, .2);
+    background-color: var(--clr2);
+    overflow-y: auto;
+    z-index: 1000;
+
+    .context-menu-option {
+        position: relative;
+        height: fit-content;
+        width: 100%;
+        padding: var(--spacepx-s) calc(var(--spacepx-s)*4);
+        gap: 12px;
+
+        text-align: start;
+        cursor: pointer;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+            background-color: var(--clr1);
+        }
+    }
+}

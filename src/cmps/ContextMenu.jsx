@@ -1,30 +1,40 @@
 import { useEffect } from "react";
 
-export function ContextMenu({ isOpen, position, onClose, children }) {
+export function ContextMenu({ isOpen, position, onClose, items }) {
     useEffect(() => {
-        function handleKeyDown(ev) {
-            if (ev.key === "Escape") onClose();
+        function handleClickOutside() {
+            if (isOpen) onClose()
         }
         if (isOpen) {
-            window.addEventListener("keydown", handleKeyDown);
+            setTimeout(() => {
+                window.addEventListener("click", handleClickOutside);
+            }, 0)
         }
-        return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [isOpen, onClose]);
+        return () => window.removeEventListener("click", handleClickOutside)
+    }, [isOpen, onClose])
 
-    if (!isOpen) return null;
+    if (!isOpen) return null
 
     return (
-        <div
-            className="fixed inset-0 z-50"
-            onClick={onClose}
+        <ul
+            className="context-menu flex"
+            style={{ top: position.y, left: position.x }}
+            onClick={(ev) => {
+                ev.stopPropagation()
+            }}
         >
-            <div
-                className="absolute bg-white border rounded shadow-md z-50"
-                style={{ top: position.y, left: position.x, minWidth: "160px" }}
-                onClick={(ev) => ev.stopPropagation()}
-            >
-                {children}
-            </div>
-        </div>
-    );
+            {items.map((item, idx) => (
+                <li
+                    key={idx}
+                    className={`context-menu-option ${item.label} flex`}
+                    onClick={() => {
+                        item.onClick()
+                        onClose()
+                    }}
+                >
+                    {item.label}
+                </li>
+            ))}
+        </ul>
+    )
 }

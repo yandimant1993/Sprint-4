@@ -24,4 +24,7 @@
 
   --spacerem-s: 0.5rem;
   --spacerem-sm: 1rem;
+
+  /* scale */
+  --scale-s: 1.05;
 }

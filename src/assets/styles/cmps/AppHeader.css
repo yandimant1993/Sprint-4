@@ -119,63 +119,66 @@
 .header-right {
     display: flex;
     align-items: center;
-    /* gap: 1rem; */
     flex-shrink: 0;
     right: -100px;
-}
 
-.action-btn {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 0.8rem;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
+    .header-user-actions {
+        padding-inline: var(--spacepx-sm);
 
-.action-btn.notification,
-.action-btn.friends {
-    background: none;
-    border-radius: 50%;
-}
+        .action-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 0.8rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
 
-.action-btn.notification:hover,
-.action-btn.friends:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+        .action-btn.notification,
+        .action-btn.friends {
+            background: none;
+            border-radius: 50%;
+            margin: 0;
+        }
 
-.action-btn img {
-    width: 16px;
-    height: 16px;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1) contrast(1);
-}
+        .action-btn.notification:hover,
+        .action-btn.friends:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
-.action-btn.login {
-    background-color: var(--gray1);
-    color: #000000;
-    font-weight: 700;
-}
+        .action-btn img {
+            width: 16px;
+            height: 16px;
+            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1) contrast(1);
+        }
 
-.action-btn.login:hover {
-    background-color: var(--gray1);
-    transform: scale(1.05);
+        .action-btn.login {
+            background-color: var(--gray1);
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .action-btn.login:hover {
+            background-color: var(--gray1);
+            transform: scale(1.05);
+        }
+    }
 }
 
 
 .user-profile {
-    display: flex;
     align-items: center;
+
 }
 
 .user-profile img {
-
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
 }
