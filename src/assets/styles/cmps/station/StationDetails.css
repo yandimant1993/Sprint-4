@@ -101,7 +101,7 @@
     }
 
     .station-details-controller {
-        padding: calc(var(--spacepx-sm)*1.5) calc(var(--spacepx-sm)*1.5) calc(var(--spacepx-sm)*2);
+        padding: calc(var(--spacepx-sm)*1.5);
         align-items: center;
 
 
@@ -136,69 +136,6 @@
             }
         }
     }
-
-    .songs-list {
-        grid-auto-flow: row;
-        padding-inline: calc(var(--spacepx-sm)*1.8);
-
-        .songs-list-header,
-        .songs-list-row {
-            position: relative;
-            width: 100%;
-            padding-inline: var(--spacepx-sm);
-
-            grid-auto-flow: column;
-            grid-template-columns: 12px 1fr 180px 120px;
-            gap: var(--spacepx-sm);
-
-            .song-list-number {
-                justify-self: end;
-
-            }
-
-            .song-list-title {
-                justify-self: start;
-
-                img {
-                    margin-inline-end: 12px;
-                }
-            }
-
-            .song-list-album {
-                justify-self: start;
-            }
-
-            .song-list-date {
-                justify-self: start;
-            }
-
-            .song-list-time {
-                justify-self: start;
-            }
-
-            .song-list-display {
-                display: none;
-            }
-
-            .hover-btns-actions {
-                position: absolute;
-                inset-inline-end: 12px;
-                gap: 8px;
-                opacity: 0;
-                pointer-events: none;
-            }
-
-            &:hover {
-                background-color: var(--clr1);
-
-                .hover-btns-actions {
-                    opacity: 1;
-                    pointer-events: auto;
-                }
-            }
-        }
-    }
-
 }
 
 .modal-delete-station {
