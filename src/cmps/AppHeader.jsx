@@ -6,6 +6,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { setFilter } from '../store/actions/station.actions'
 import { SearchStation } from './SearchStation.jsx'
+import { Svgs } from './Svgs.jsx'
 
 
 export function AppHeader({ onSelectVideo }) {

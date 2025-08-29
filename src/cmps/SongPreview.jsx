@@ -1,26 +1,27 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 export function SongPreview() {
-    const currentStation = useSelector(state => state.playerModule.currentStation)
-
-    if (!currentStation) return null
+    const currentSong = {
+        title: "כנפיים | טונה מארח את מרגול | Coke Studio #1",
+        artist: "Tuna",
+        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    }
 
     return (
         <div className="song-preview">
             <div className="song-image">
                 <img
-                    src={currentStation.imgUrl}
-                    alt={currentStation.title}
+                    src={currentSong.image}
+                    alt={currentSong.title}
                     onError={(e) => {
                         e.target.src = '/src/assets/img/sunflowers.jpg'
                     }}
                 />
             </div>
             <div className="song-info">
-                <div className="song-title">{currentStation.title}</div>
+                <div className="song-title">{currentSong.title}</div>
                 <div className="song-artist-container">
-                    <span className="song-artist">{currentStation.artist}</span>
+                    <span className="song-artist">{currentSong.artist}</span>
                     <button className="add-song-btn" title="Add to Library">
                         <img src="/src/assets/spotify-icons/add-like.svg" alt="Add" />
                     </button>
@@ -29,38 +30,3 @@ export function SongPreview() {
         </div>
     )
 }
-
-
-
-// import React from 'react'
-
-// export function SongPreview() {
-//     const currentSong = {
-//         title: "כנפיים | טונה מארח את מרגול | Coke Studio #1",
-//         artist: "Tuna",
-//         image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-//     }
-
-//     return (
-//         <div className="song-preview">
-//             <div className="song-image">
-//                 <img
-//                     src={currentSong.image}
-//                     alt={currentSong.title}
-//                     onError={(e) => {
-//                         e.target.src = '/src/assets/img/sunflowers.jpg'
-//                     }}
-//                 />
-//             </div>
-//             <div className="song-info">
-//                 <div className="song-title">{currentSong.title}</div>
-//                 <div className="song-artist-container">
-//                     <span className="song-artist">{currentSong.artist}</span>
-//                     <button className="add-song-btn" title="Add to Library">
-//                         <img src="/src/assets/spotify-icons/add-like.svg" alt="Add" />
-//                     </button>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }

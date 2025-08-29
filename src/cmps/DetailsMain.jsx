@@ -55,6 +55,7 @@ export function DetailsMain() {
     async function onRemoveSong(songId) {
         try {
             const updatedStation = await stationService.removeSong(songId, station._id)
+            console.log('updatedStation', updatedStation)
             setSongs(updatedStation.songs)
             console.log('song removed!')
 

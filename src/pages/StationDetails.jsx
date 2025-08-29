@@ -6,6 +6,7 @@ import ColorThief from 'colorthief'
 import { loadStation } from '../store/actions/station.actions'
 import { DetailsHeader } from '../cmps/DetailsHeader'
 import { DetailsMain } from '../cmps/DetailsMain'
+import { RecommendedTrack } from '../cmps/RecommendedTrack'
 
 export function StationDetails() {
   const { stationId } = useParams()
@@ -40,6 +41,7 @@ export function StationDetails() {
     <section className="station-details" style={bgStyle}>
       <DetailsHeader station={station} />
       <DetailsMain station={station} />
+      <RecommendedTrack station={station} />
     </section>
   )
 }

@@ -112,6 +112,7 @@ export function DetailsHeader({ station }) {
                     setDescription={setDescription}
                 />
             )}
+
         </section>
     )
 }
