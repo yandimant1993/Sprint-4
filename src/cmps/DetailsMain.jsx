@@ -7,7 +7,7 @@ import { stationService } from "../services/station/station.service.local"
 import { removeStation } from "../store/actions/station.actions"
 import { Svgs } from "./Svgs"
 import { SongList } from "./SongList"
-// import { ContextMenu } from "./ContextMenu"
+import { ContextMenu } from "./ContextMenu"
 
 export function DetailsMain() {
     const navigate = useNavigate()
@@ -18,9 +18,9 @@ export function DetailsMain() {
 
     const [songs, setSongs] = useState(station.songs || [])
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
-    // WIP
-    // const [menuOpen, setMenuOpen] = useState(false)
-    // const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 })
+
+    const [menuOpen, setMenuOpen] = useState(false)
+    const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 })
 
     async function onDeleteStation() {
         if (!station?._id) return
@@ -32,11 +32,14 @@ export function DetailsMain() {
         }
     }
 
-    // const handleContextMenu = (ev) => {
-    //     ev.preventDefault()
-    //     setMenuPosition({ x: ev.clientX, y: ev.clientY })
-    //     setMenuOpen(true)
-    // }
+
+    function handleContextMenu(ev) {
+        const rect = ev.currentTarget.getBoundingClientRect()
+        setMenuPosition({ x: rect.left, y: rect.bottom })
+        setMenuOpen(true)
+    }
+
+
 
     const handlePlayPause = () => {
         if (currentStation?._id === station._id) {
@@ -72,10 +75,22 @@ export function DetailsMain() {
                         {isThisStationPlaying ? Svgs.pause : Svgs.play}
                     </div>
                 }
-                <button className="btn-delete-station" onClick={() => setIsDeleteModalOpen(true)}>
+                <button className="btn-context-menu" onClick={handleContextMenu}>
                     {Svgs.threeDotsIcon}
                 </button>
             </section>
+
+            <ContextMenu
+                isOpen={menuOpen}
+                position={menuPosition}
+                onClose={() => setMenuOpen(false)}
+                items={[
+                    {
+                        label: "Delete station",
+                        onClick: () => setIsDeleteModalOpen(true),
+                    },
+                ]}
+            />
 
             {isDeleteModalOpen && (
                 <div className="modal-delete-station flex" onClick={() => setIsDeleteModalOpen(false)}>
