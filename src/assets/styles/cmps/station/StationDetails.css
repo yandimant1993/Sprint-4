@@ -4,7 +4,8 @@
     border-radius: var(--spacerem-s);
 
     .details-header-container {
-        padding: 20px 20px 20px 24px;
+        padding:
+            calc(var(--spacepx-s)*2) calc(var(--spacepx-s)*2) calc(var(--spacepx-sm)*1.5) calc(var(--spacepx-sm)*1.5);
         border-start-start-radius: var(--spacerem-s);
         border-start-end-radius: var(--spacerem-s);
         gap: calc(var(--spacepx-sm)*1.5);
@@ -83,34 +84,49 @@
     }
 
     .station-details-controller {
+        padding: calc(var(--spacepx-sm)*1.5) calc(var(--spacepx-sm)*1.5) calc(var(--spacepx-sm)*2);
+        align-items: center;
 
-        & svg {
-            padding: 12px;
-            cursor: pointer;
-        }
 
         .svg-play {
             position: relative;
-            bottom: -55px;
-            right: -24px;
-            width: 54px;
-            height: 54px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
+            margin-inline-end: 24px;
             background-color: var(--clr-green, #1db954);
 
+            & svg {
+                padding: 14px;
+                cursor: pointer;
+            }
+        }
+
+        .btn-delete-station {
+            margin: 0;
+            padding: 0;
+            width: 2.125rem;
+            height: 100%;
+            color: var(--gray1);
+            background-color: transparent;
+
+            &svg {
+                padding: 0;
+            }
         }
     }
 
     .songs-list {
         grid-auto-flow: row;
+        padding-inline: calc(var(--spacepx-sm)*1.8);
 
         .songs-list-header,
         .songs-list-row {
             grid-auto-flow: column;
             grid-template-columns: 12px repeat(4, 1fr) 0.5fr;
-            gap: var(--spacepx-sm);
             width: 100%;
-            padding-inline: calc(var(--spacepx-sm)/2);
+            gap: var(--spacepx-sm);
+            padding-inline: var(--spacepx-sm);
 
             .song-list-number {
                 justify-self: end;
@@ -132,7 +148,6 @@
             .song-list-date {
                 justify-self: start;
             }
-
 
             .song-list-time {
                 justify-self: start;

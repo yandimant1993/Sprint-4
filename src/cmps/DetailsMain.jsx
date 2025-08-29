@@ -2,14 +2,12 @@ import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 
-import { Svgs } from "./Svgs"
 import { setCurrentStation, setIsPlaying } from "../store/actions/player.actions"
-import { removeStation } from "../store/actions/station.actions"
-import { ContextMenu } from "./ContextMenu";
-import { SongList } from "./SongList"
-// import { removeSong } from "../services/station/station.service.local.js"
 import { stationService } from "../services/station/station.service.local"
-
+import { removeStation } from "../store/actions/station.actions"
+import { Svgs } from "./Svgs"
+import { SongList } from "./SongList"
+// import { ContextMenu } from "./ContextMenu"
 
 export function DetailsMain() {
     const navigate = useNavigate()
@@ -17,13 +15,12 @@ export function DetailsMain() {
     const station = useSelector(storeState => storeState.stationModule.station)
     const currentStation = useSelector(state => state.playerModule.currentStation)
     const isPlaying = useSelector(state => state.playerModule.isPlaying)
+
     const [songs, setSongs] = useState(station.songs || [])
-    // console.log('songs', songs)
-
-
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
-    const [menuOpen, setMenuOpen] = useState(false)
-    const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 })
+    // WIP
+    // const [menuOpen, setMenuOpen] = useState(false)
+    // const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 })
 
     async function onDeleteStation() {
         if (!station?._id) return
@@ -35,11 +32,11 @@ export function DetailsMain() {
         }
     }
 
-    const handleContextMenu = (e) => {
-        e.preventDefault()
-        setMenuPosition({ x: e.clientX, y: e.clientY })
-        setMenuOpen(true)
-    };
+    // const handleContextMenu = (ev) => {
+    //     ev.preventDefault()
+    //     setMenuPosition({ x: ev.clientX, y: ev.clientY })
+    //     setMenuOpen(true)
+    // }
 
     const handlePlayPause = () => {
         if (currentStation?._id === station._id) {
@@ -53,10 +50,8 @@ export function DetailsMain() {
     const isThisStationPlaying = currentStation?._id === station._id && isPlaying
 
     async function onRemoveSong(songId) {
-        console.log('songId', songId)
         try {
             const updatedStation = await stationService.removeSong(songId, station._id)
-            console.log('updatedStation', updatedStation)
             setSongs(updatedStation.songs)
             console.log('song removed!')
 
@@ -72,11 +67,13 @@ export function DetailsMain() {
     return (
         <>
             <section className="station-details-controller flex">
-                <div className="svg-play" onClick={handlePlayPause}>
-                    {isThisStationPlaying ? Svgs.pause : Svgs.play}
-                </div>
+                {station?.songs?.length > 0 &&
+                    <div className="svg-play" onClick={handlePlayPause}>
+                        {isThisStationPlaying ? Svgs.pause : Svgs.play}
+                    </div>
+                }
                 <button className="btn-delete-station" onClick={() => setIsDeleteModalOpen(true)}>
-                    Delete Station
+                    {Svgs.threeDotsIcon}
                 </button>
             </section>
 

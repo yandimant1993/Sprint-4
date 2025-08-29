@@ -16,7 +16,6 @@ export function StationDetails() {
     loadStation(stationId)
   }, [stationId])
 
-
   useEffect(() => {
     if (!station?.imgUrl) return
     const img = new Image()
