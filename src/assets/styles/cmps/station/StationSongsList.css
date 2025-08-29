@@ -1,0 +1,102 @@
+.songs-list {
+    grid-auto-flow: row;
+    padding-inline: calc(var(--spacepx-sm)*1.8);
+
+    .songs-list-header {
+        min-height: 36px;
+        border-block-end: 1px solid var(--clr1);
+        margin-block-end: calc(var(--spacepx-s)*2);
+
+        .song-list-duration {
+            margin-inline-end: 10px;
+            place-items: center;
+            display: grid;
+
+            svg {
+                min-height: calc(var(--spacepx-s)*2);
+            }
+        }
+    }
+
+    .songs-list-row {
+        min-height: calc(var(--spacerem-sm) * 3.375);
+
+        .song-list-title {
+            img {
+                margin-inline: 5px 12px;
+            }
+        }
+
+        .song-list-duration {
+            margin-inline-end: 8px;
+
+
+        }
+
+        &:hover {
+            background-color: var(--clr1);
+
+            .hover-btns-actions {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+
+    .songs-list-header,
+    .songs-list-row {
+        position: relative;
+        width: 100%;
+        padding-inline: var(--spacepx-sm);
+
+        grid-auto-flow: column;
+        grid-template-columns: calc(var(--spacerem-s)*1.2) 53fr 42fr 25fr 10fr;
+        gap: var(--spacepx-sm);
+        align-items: center;
+
+        >* {
+            font-size: calc(var(--spacerem-sm) * 0.875);
+        }
+
+        .song-list-number {
+            justify-self: end;
+        }
+
+        .song-list-title {
+            justify-self: start;
+
+            img {
+                margin-inline-end: 12px;
+            }
+        }
+
+        .song-list-album {
+            justify-self: start;
+        }
+
+        .song-list-date {
+            justify-self: start;
+        }
+
+        .song-list-duration {
+            justify-self: end;
+            margin-inline-end: 26px;
+        }
+
+        .song-list-display {
+            display: none;
+        }
+
+        .hover-btns-actions {
+            position: absolute;
+            inset-inline-end: 12px;
+            gap: 8px;
+            opacity: 0;
+            pointer-events: none;
+
+            >* {
+                background-color: transparent;
+            }
+        }
+    }
+}
