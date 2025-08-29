@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { setFilter } from '../store/actions/station.actions'
-import { SearchStation } from './SearchStation.jsx'
-import { Svgs } from './Svgs.jsx'
+import { SearchStationSongs } from './SearchStationSong'
 
 
 export function AppHeader({ onSelectVideo }) {
@@ -58,7 +57,7 @@ export function AppHeader({ onSelectVideo }) {
 					/>
 				</div> */}
 
-				<SearchStation onSelectVideo={onSelectVideo} />
+				<SearchStationSongs onSelectVideo={onSelectVideo} />
 
 			</div>
 
