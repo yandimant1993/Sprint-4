@@ -9,7 +9,8 @@ import { userService } from '../services/user'
 
 export function DetailsHeader({ station }) {
     const [isHovered, setIsHovered] = useState(false)
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    // remember to change state to false after css:
+    const [isModalOpen, setIsModalOpen] = useState(true) 
     const [editedName, setEditedName] = useState(station.name)
     const [description, setDescription] = useState('')
 
@@ -100,7 +101,8 @@ export function DetailsHeader({ station }) {
                 </div>
             </div>
 
-            {isCreator && isModalOpen && (
+            {/* {isCreator && isModalOpen && ( */}
+            {isModalOpen && (
                 <EditStationDetails
                     station={station}
                     svgs={Svgs}
