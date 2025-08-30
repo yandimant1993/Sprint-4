@@ -13,7 +13,7 @@ export function SideNavHeader({ setIsExpanded, isExpanded, createStation }) {
 				</button>
 				<button className="btn-create-station flex" onClick={createStation}>
 					{Svgs.addIcon}
-					{isExpanded && ' Create'}
+					{isExpanded && <span className="btn-create-station-text grid">Create</span>}
 				</button>
 			</section>
 			<div className="button-playlist">
