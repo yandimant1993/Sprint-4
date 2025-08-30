@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Svgs } from './Svgs'
-
+import { uploadService } from '../services/upload.service'
 export function EditStationDetails({ station,
     svgs,
     onClose,
@@ -10,8 +10,11 @@ export function EditStationDetails({ station,
     description,
     setDescription
 }) {
-    const [isHovered, setIsHovered] = useState(false)
+    const fileInputRef = useRef(null)
     const modalRef = useRef()
+    // true for ui dev:
+    const [isHovered, setIsHovered] = useState(true)
+    const [, forceUpdate] = useState(0)
 
     useEffect(() => {
         setEditedName(station.name || '')
@@ -34,6 +37,22 @@ export function EditStationDetails({ station,
         console.log('clicked edit image')
     }
 
+    function handleFileClick() {
+        fileInputRef.current.click()
+    }
+
+    async function handleFileUpload(ev) {
+        try {
+            const { imgUrl } = await uploadService.uploadImgLocal(ev)
+            station.stationImgUrl = imgUrl
+
+            forceUpdate(n => n + 1)
+            await stationService.save(station)
+        } catch (err) {
+            console.error('Failed to upload local image', err)
+        }
+    }
+
     return (
         <div className="edit-station-modal-overlay flex" onClick={onClose}>
             <div className="edit-station-modal-container" ref={modalRef} onClick={ev => ev.stopPropagation()}>
@@ -41,30 +60,47 @@ export function EditStationDetails({ station,
                     <h3 className="edit-details-h">Edit details</h3>
                     <button className="btn-edit-close-modal" onClick={onClose}>{Svgs.xIcon}</button>
                 </header>
-
                 <main className="edit-station-main grid">
-                    <div className="btn-edit-station-img-container">
+                    <div className="btn-edit-station-img-container" onClick={handleFileClick}>
                         <div
                             className="btn-edit-station-img"
-                            style={{
-                                backgroundImage: station.stationImgUrl ? `url(${station.stationImgUrl})` : 'none',
-                            }}
+                            style={{ backgroundImage: station.stationImgUrl ? `url(${station.stationImgUrl})` : 'none' }}
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
-                            onClick={handleClick}
                             role="button"
                         >
+                            {station.stationImgUrl && isHovered && (
+                                <button
+                                    className="btn-remove-img flex"
+                                    onClick={ev => {
+                                        ev.stopPropagation()
+                                        station.stationImgUrl = ''
+                                        setIsHovered(false)
+                                        forceUpdate(n => n + 1)
+                                    }}
+                                    title="Remove Image"
+                                >
+                                    {Svgs.threeDotsIcon}
+                                </button>
+                            )}
                             <div className="edit-station-img">
                                 {isHovered ? (
                                     <>
                                         {Svgs.editIcon}
-                                        < span className="edit-station-img-text">Choose Photo</span>
+                                        <span className="edit-station-img-text">Choose Photo</span>
                                     </>
                                 ) : (
                                     Svgs.stationNewImg
                                 )}
                             </div>
                         </div>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            ref={fileInputRef}
+                            style={{ display: 'none' }}
+                            onChange={handleFileUpload}
+                        />
                     </div>
                     <div className="station-name-input">
                         <label htmlFor="station-name" className="station-name-label">Name</label>

@@ -9,7 +9,7 @@ import { userService } from '../services/user'
 
 export function DetailsHeader({ station }) {
     const [isHovered, setIsHovered] = useState(false)
-    // remember to change state to false after css:
+    // true only for ui dev:
     const [isModalOpen, setIsModalOpen] = useState(true)
     const [editedName, setEditedName] = useState(station.name)
     const [description, setDescription] = useState('')
@@ -38,6 +38,11 @@ export function DetailsHeader({ station }) {
         }
     }, [])
 
+    useEffect(() => {
+        setEditedName(station.name || '')
+        setDescription(station.description || '')
+    }, [station])
+
     const headerBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.75)), rgb(${dominantColor.join(',')})`
 
 
@@ -52,7 +57,6 @@ export function DetailsHeader({ station }) {
         }
     }
 
-
     return (
         <section
             className="details-header-container flex"
@@ -62,27 +66,31 @@ export function DetailsHeader({ station }) {
         >
             <img
                 ref={imgRef}
-                src={astrixImg}
+                src={station.stationImgUrl || astrixImg}
                 alt="Station"
                 style={{ display: 'none' }}
             />
 
-            <div className="btn-station-img-container grid"
-                id="btn-station-img-container"
+            <div
+                className="btn-station-img-container grid"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
                 <div
-                    className="btn-station-img"
+                    className={`btn-station-img ${station.stationImgUrl ? 'has-img' : 'no-img'}`}
+                    style={
+                        !station.stationImgUrl
+                            ? { background: `linear-gradient(to bottom, rgba(${dominantColor.join(',')}, 0.3), rgba(0,0,0,0.6))` }
+                            : { backgroundImage: `url(${station.stationImgUrl})` }
+                    }
                 >
-                    {isHovered ? (
+                    {isHovered && (
                         <div className="station-img-edit flex">
                             {Svgs.editIcon}
                             <span className="station-img-edit-text">Choose Photo</span>
                         </div>
-                    ) : (
-                        Svgs.stationNewImg
                     )}
+                    {!station.stationImgUrl && !isHovered && Svgs.stationNewImg}
                 </div>
             </div>
 

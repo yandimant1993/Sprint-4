@@ -1,5 +1,6 @@
 export const uploadService = {
 	uploadImg,
+	uploadImgLocal
 }
 
 async function uploadImg(ev) {
@@ -8,12 +9,12 @@ async function uploadImg(ev) {
 	const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
 	const formData = new FormData()
-	
-    // Building the request body
+
+	// Building the request body
 	formData.append('file', ev.target.files[0])
 	formData.append('upload_preset', UPLOAD_PRESET)
-	
-    // Sending a post method request to Cloudinary API
+
+	// Sending a post method request to Cloudinary API
 	try {
 		const res = await fetch(UPLOAD_URL, { method: 'POST', body: formData })
 		const imgData = await res.json()
@@ -22,4 +23,18 @@ async function uploadImg(ev) {
 		console.error(err)
 		throw err
 	}
+}
+
+function uploadImgLocal(ev) {
+	return new Promise((resolve, reject) => {
+		const file = ev.target.files[0]
+		if (!file) return reject('No file selected')
+
+		const reader = new FileReader()
+		reader.onload = () => {
+			resolve({ imgUrl: reader.result, width: 0, height: 0 })
+		}
+		reader.onerror = (err) => reject(err)
+		reader.readAsDataURL(file)
+	})
 }
