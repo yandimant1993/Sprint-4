@@ -85,7 +85,9 @@ export function EditStationDetails({ station,
                             onChange={(ev) => setDescription(ev.target.value)}
                         />
                     </div>
-                    <button onClick={onSave} className="btn-save-station">Save</button>
+                    <div className="btn-save-details flex">
+                        <div onClick={onSave} className="btn-save-details-shape">Save</div>
+                    </div>
                     <p className="station-disclaimer">By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.</p>
                 </main>
             </div>

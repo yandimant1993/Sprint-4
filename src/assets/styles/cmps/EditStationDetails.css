@@ -44,10 +44,9 @@
 
       .btn-edit-close-modal {
         width: calc(var(--spacepx-s)*2);
-        height: calc(var(--spacepx-s)*2);
         padding: 0;
         background-color: transparent;
-        margin: -8px -8px 0 0;
+        margin: 3px -2px 0 0;
       }
     }
 
@@ -57,7 +56,7 @@
       gap: var(--spacepx-sm);
 
       grid-template-columns: 180px 1fr;
-      grid-template-rows: 40px 120px auto auto;
+      grid-template: 32px 132px 32px auto/180px 1fr;
       grid-template-areas:
         "album-image title"
         "album-image description"
@@ -65,15 +64,14 @@
         "disclaimer disclaimer";
 
       .btn-edit-station-img-container {
-        height: 180px;
-        width: 180px;
-        grid-row: span 2;
         grid-area: album-image;
+        height: 180px;
+        margin: 0;
+        position: relative;
+        width: 180px;
 
         .btn-edit-station-img {
           position: relative;
-          height: 180px;
-          width: 180px;
           background-size: cover;
           place-items: center;
 
@@ -132,12 +130,21 @@
         }
 
         .station-name.input-app {
-          width: 100%;
           height: fit-content;
           min-height: 40px;
           padding-inline: 12px;
           font-weight: 400;
           color: var(white);
+
+          background: hsla(0, 0%, 100%, .1);
+          border: 1px solid transparent;
+          border-radius: 4px;
+          color: #fff;
+          font-family: inherit;
+          font-size: 14px;
+          height: 40px;
+          padding: 0 12px;
+          width: 100%;
 
           &:focus {
             background-color: var(--clr2);
@@ -148,6 +155,7 @@
 
       .station-description-input {
         position: relative;
+        margin-top: 8px;
         grid-area: description;
 
         .station-description-label {
@@ -167,8 +175,13 @@
         .station-description {
           width: 100%;
           height: 100%;
-          padding: 12px;
-          margin-bottom: -8px;
+          padding: 8px 8px 28px;
+          border: 1px solid transparent;
+          border-radius: 4px;
+
+          background-color: hsla(0, 0%, 100%, .1);
+          font-weight: 400;
+          resize: none;
 
           &:focus {
             background-color: var(--clr2);
@@ -177,11 +190,35 @@
         }
       }
 
-      .btn-save-station {
+      .btn-save-details {
+        position: relative;
+        min-height: 34px;
+        color: var(--clr3);
+        background-color: white;
+        font-size: 1rem;
+        font-weight: bold;
+
+        justify-self: flex-end;
+        align-items: center;
         grid-area: save-button;
+
+        .btn-save-details-shape {
+          position: absolute;
+          margin: 0 0 0 0;
+          padding: 12px 32px;
+          border-radius: 2rem;
+
+          bottom: -5px;
+          right: 0px;
+          color: var(--clr3);
+          background-color: white;
+        }
       }
 
       .station-disclaimer {
+        text-align: left;
+        font-size: 12px;
+        font-weight: bold;
         grid-area: disclaimer;
       }
     }
