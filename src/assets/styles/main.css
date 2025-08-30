@@ -24,6 +24,7 @@
 @import "cmps/Tooltip.css";
 @import "cmps/ContextMenu.css";
 @import "cmps/UserStationList.css";
+@import "cmps/SearchSongList.css";
 
 /* STATION */
 @import "cmps/station/StationIndex.css";
