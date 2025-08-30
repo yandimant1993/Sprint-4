@@ -2,7 +2,7 @@
 import { IoAddCircle } from "react-icons/io5";
 import { Svgs } from "./Svgs";
 export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
-   
+
    function handleDropdownClick() {
       console.log('Dropdown clicked')
    }
@@ -23,7 +23,7 @@ export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
       if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
       return `just now`
    }
-
+   
    return (
       <section className="songs-list grid">
          <div className="songs-list-header grid">
@@ -41,8 +41,11 @@ export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
             <div className="songs-list-row grid" key={song.id || index}>
                <div className="song-list-number">{index + 1}</div>
                <div className="song-list-title flex">
-                  <img src={song.imgUrl} alt={song.title} width="40" height="40" />
-                  {song.title}
+                  <img src={song.imgUrl} alt={song.title} width="40" height="40" className="song-img" />
+                  <div className="song-info-text grid">
+                     <span className="song-title">{song.title}</span>
+                     <span className="song-artist">{song.artist}</span>
+                  </div>
                </div>
                <div className="song-list-album">{song.album}</div>
                <div className="song-list-date">{getRelativeTime(song.dateAdded)}</div>

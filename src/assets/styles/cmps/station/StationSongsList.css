@@ -2,6 +2,7 @@
     grid-auto-flow: row;
     padding-inline: calc(var(--spacepx-sm)*1.8);
 
+    /* only header */
     .songs-list-header {
         min-height: 36px;
         border-block-end: 1px solid var(--clr1);
@@ -13,24 +14,37 @@
             display: grid;
 
             svg {
-                min-height: calc(var(--spacepx-s)*2);
+                min-height: var(--spacerem-sm);
             }
         }
     }
 
+    /* only row */
     .songs-list-row {
         min-height: calc(var(--spacerem-sm) * 3.375);
 
         .song-list-title {
+            min-height: 44px;
+            align-items: center;
+
             img {
                 margin-inline: 5px 12px;
+            }
+
+            .song-info-text {
+                .song-title {
+                    font-size: 1rem;
+                }
+
+                .song-artist {
+                    font-size: 0.875rem;
+                    margin-block-end: 2px;
+                }
             }
         }
 
         .song-list-duration {
             margin-inline-end: 8px;
-
-
         }
 
         &:hover {
@@ -43,6 +57,7 @@
         }
     }
 
+    /* both header and row */
     .songs-list-header,
     .songs-list-row {
         position: relative;
@@ -59,14 +74,17 @@
         }
 
         .song-list-number {
-            justify-self: end;
+            font-size: 1rem;
+            justify-self: start;
         }
 
         .song-list-title {
             justify-self: start;
+            margin-inline-start: 4px;
+            gap: 12px;
 
             img {
-                margin-inline-end: 12px;
+                margin: 0;
             }
         }
 
