@@ -1,10 +1,18 @@
 
 import { IoAddCircle } from "react-icons/io5";
+import { useState } from "react";
 import { Svgs } from "./Svgs";
+
 export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
+   const [hoveredIndex, setHoveredIndex] = useState(null)
+   const [isLiked, setIsLiked] = useState(false)
 
    function handleDropdownClick() {
       console.log('Dropdown clicked')
+   }
+
+   function handleAddRemoveClick() {
+      console.log('Hi')
    }
 
    function getRelativeTime(dateStr) {
@@ -23,7 +31,7 @@ export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
       if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
       return `just now`
    }
-   
+
    return (
       <section className="songs-list grid">
          <div className="songs-list-header grid">
@@ -38,8 +46,13 @@ export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
          </div>
 
          {songs.map((song, index) => (
-            <div className="songs-list-row grid" key={song.id || index}>
-               <div className="song-list-number">{index + 1}</div>
+            <div className="songs-list-row grid" key={song.id || index}
+               onMouseEnter={() => setHoveredIndex(index)}
+               onMouseLeave={() => setHoveredIndex(null)}
+            >
+               <div className="song-list-number" onClick={handleAddRemoveClick}>
+                  {hoveredIndex === index ? Svgs.play : index + 1}
+               </div>
                <div className="song-list-title flex">
                   <img src={song.imgUrl} alt={song.title} width="40" height="40" className="song-img" />
                   <div className="song-info-text grid">
@@ -51,8 +64,8 @@ export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
                <div className="song-list-date">{getRelativeTime(song.dateAdded)}</div>
                <div className="song-list-duration">{song.duration || '--:--'}</div>
                <div className="hover-btns-actions flex">
-                  <button className="btn-song-add" onClick={() => onAddSong(song)}>+</button>
-                  <button className="btn-song-remove" onClick={() => onRemoveSong(song.id)}>-</button>
+                  <button className="btn-song-add" onClick={() => onAddSong(song)}>{Svgs.checkIcon}</button>
+                  <button className="btn-song-remove" onClick={() => onRemoveSong(song.id)}>{Svgs.threeDotsIcon}</button>
                </div>
             </div>
          ))}
