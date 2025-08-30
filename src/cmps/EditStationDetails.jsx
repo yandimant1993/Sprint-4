@@ -8,12 +8,11 @@ export function EditStationDetails({ station,
     editedName,
     setEditedName,
     description,
-    setDescription
+    setDescription,
 }) {
     const fileInputRef = useRef(null)
     const modalRef = useRef()
-    // true for ui dev:
-    const [isHovered, setIsHovered] = useState(true)
+    const [isHovered, setIsHovered] = useState(false)
     const [, forceUpdate] = useState(0)
 
     useEffect(() => {
