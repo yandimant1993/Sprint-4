@@ -43,27 +43,27 @@ export function EditStationDetails({ station,
                 </header>
 
                 <main className="edit-station-main grid">
-                    <div className="btn-edit-station-img-container grid">
+                    <div className="btn-edit-station-img-container">
                         <div
                             className="btn-edit-station-img"
                             style={{
-                                backgroundImage: station.stationImgUrl
-                                    ? `url(${station.stationImgUrl})`
-                                    : 'none',
+                                backgroundImage: station.stationImgUrl ? `url(${station.stationImgUrl})` : 'none',
                             }}
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
                             onClick={handleClick}
                             role="button"
                         >
-                            {isHovered ? (
-                                <>
-                                    {svgs.editIcon}
-                                    <span className="edit-station-img-hover-text">Choose Photo</span>
-                                </>
-                            ) : (
-                                svgs.stationNewImg
-                            )}
+                            <div className="edit-station-img">
+                                {isHovered ? (
+                                    <>
+                                        {Svgs.editIcon}
+                                        < span className="edit-station-img-text">Choose Photo</span>
+                                    </>
+                                ) : (
+                                    Svgs.stationNewImg
+                                )}
+                            </div>
                         </div>
                     </div>
                     <div className="station-name-input">
@@ -90,7 +90,7 @@ export function EditStationDetails({ station,
                     </div>
                     <p className="station-disclaimer">By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.</p>
                 </main>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }

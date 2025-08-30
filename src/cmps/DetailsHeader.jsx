@@ -10,7 +10,7 @@ import { userService } from '../services/user'
 export function DetailsHeader({ station }) {
     const [isHovered, setIsHovered] = useState(false)
     // remember to change state to false after css:
-    const [isModalOpen, setIsModalOpen] = useState(true) 
+    const [isModalOpen, setIsModalOpen] = useState(true)
     const [editedName, setEditedName] = useState(station.name)
     const [description, setDescription] = useState('')
 
@@ -75,12 +75,13 @@ export function DetailsHeader({ station }) {
                 <div
                     className="btn-station-img"
                 >
-                    {!isHovered && Svgs.stationNewImg}
-                    {isHovered && (
+                    {isHovered ? (
                         <div className="station-img-edit flex">
                             {Svgs.editIcon}
                             <span className="station-img-edit-text">Choose Photo</span>
                         </div>
+                    ) : (
+                        Svgs.stationNewImg
                     )}
                 </div>
             </div>

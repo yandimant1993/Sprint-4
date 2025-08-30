@@ -64,48 +64,66 @@
         "disclaimer disclaimer";
 
       .btn-edit-station-img-container {
-        grid-area: album-image;
-        height: 180px;
-        margin: 0;
         position: relative;
         width: 180px;
+        height: 180px;
+        border-radius: 4px;
+        background-color: var(--clr2);
+        text-align: center;
+
+        overflow: hidden;
+        grid-area: album-image;
 
         .btn-edit-station-img {
           position: relative;
+          width: 100%;
+          height: 100%;
           background-size: cover;
-          place-items: center;
+          background-position: center;
+          background-repeat: no-repeat;
 
-          :first-child {
+          .edit-station-img {
             position: absolute;
-            width: calc(var(--spacepx-sm)*3);
-            height: calc(var(--spacepx-sm)*3);
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             color: var(--gray3);
 
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            height: 74px;
+            width: 74px;
+          }
 
-            .edit-station-img-hover-text {
-              position: absolute;
-              width: 80%;
-              margin: 0;
-              inset-block-end: 18px;
+          svg {
+            width: 48px;
+            height: 48px;
+          }
 
-              bottom: 25%;
-              left: 50%;
-              transform: translateX(-50%);
-              opacity: 0;
+          .edit-station-img-text {
+            margin-top: 8px;
+            width: 200%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
 
-              &:hover {
+        }
 
-                >* {
-                  color: var(--gray1);
-                }
+        &:hover {
+  
+          .btn-edit-station-img {
+            >* {
+              color: white;
+            }
 
-                .hover-text {
-                  opacity: 1;
-                }
-              }
+            svg {
+              width: calc(var(--spacepx-sm)*3);
+              height: calc(var(--spacepx-sm)*3);
+            }
+
+            .edit-station-img-text {
+              opacity: 1;
             }
           }
         }
