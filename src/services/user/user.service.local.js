@@ -135,7 +135,7 @@ async function _createAdmin() {
 }
 
 async function _createUsers() {
-    const station = await stationService.save({ ...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked' })
+    const station = await stationService.save({ ...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked', stationImgUrl: './src/assets/img/liked-songs.jpg'})
     const likedStationId = station._id
     const users = [
         {
