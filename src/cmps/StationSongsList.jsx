@@ -5,9 +5,9 @@ import { Svgs } from "./Svgs"
 import { userService } from '../services/user'
 
 
-export function StationSongsList({ onToggleLikedSong, onSelectSong }) {
+export function StationSongsList({ onToggleLikedSong, onSelectSong,songs }) {
    const [hoveredIndex, setHoveredIndex] = useState(null)
-   const songs = useSelector(state => state.playerModule.songs || [])
+   // const songs = useSelector(state => state.playerModule.songs || [])
    const dispatch = useDispatch()
    const user = userService.getLoggedinUser()
 
