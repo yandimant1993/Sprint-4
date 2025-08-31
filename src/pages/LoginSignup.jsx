@@ -10,10 +10,10 @@ import { ImgUploader } from '../cmps/ImgUploader'
 export function LoginSignup() {
     return (
         <div className="login-page">
-            <nav>
+            {/* <nav>
                 <NavLink to="login">Login</NavLink>
                 <NavLink to="signup">Signup</NavLink>
-            </nav>
+            </nav> */}
             <Outlet />
         </div>
     )
@@ -49,16 +49,22 @@ export function Login() {
     }
 
     return (
-            <form className="login-form" onSubmit={onLogin}>
-                <select
-                    name="username"
-                    value={credentials.username}
-                    onChange={handleChange}>
-                    <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                </select>
-                <button>Login</button>
-            </form>
+        <div className="login-up">
+            <div className="spotift-login">
+                <img src="/src/assets/spotify-icons/spotify-whit.png"></img>
+            </div>
+            <ul className="sign-in-list">
+                <li className="sign-in-google">Continue With Google</li>
+                <li className="sign-in-google">Continue With Facebook</li>
+                <li className="sign-in-google">Continue With Apple</li>
+
+            </ul>
+            <div className="email-username">Email or Username</div>
+            <input type="text" className="input-email-username" />
+            <div className="continue-button">
+                <button className="continue">Continue</button>
+            </div>
+        </div>
     )
 }
 
