@@ -88,7 +88,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ColorThief from 'colorthief'
 
 import { loadStation, removeStation, updateStation } from '../store/actions/station.actions'
@@ -101,6 +101,7 @@ import { DetailsMain } from '../cmps/DetailsMain'
 import { SearchStationResult } from '../cmps/SearchStationResult'
 import { SearchDetailsSongs } from '../cmps/SearchDetailsSongs'
 import { Svgs } from '../cmps/Svgs'
+import { UPDATE_STATION } from '../store/reducers/station.reducer'
 
 export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
   const { stationId } = useParams()
@@ -112,6 +113,7 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
   const [bgColor, setBgColor] = useState([40, 40, 40])
   const [songs, setSongs] = useState([])
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     loadStation(stationId)
@@ -134,7 +136,6 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
     }
   }, [station?.stationImgUrl, station?.songs])
 
-  // 🔹 Play/Pause toggle
   const handlePlayPause = () => {
     if (currentStation?._id === station._id) {
       setIsPlaying(!isPlaying)
@@ -144,7 +145,6 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
     }
   }
 
-  // 🔹 Delete station
   async function onDeleteStation() {
     if (!station?._id) return
     try {
@@ -155,7 +155,6 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
     }
   }
 
-  // 🔹 Remove song
   async function onRemoveSong(songId) {
     try {
       const updatedStation = await stationService.removeSong(songId, station._id)
@@ -165,13 +164,19 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
     }
   }
 
-  // 🔹 Toggle liked song
   async function onToggleLikedSong(song) {
+    console.log('song: ', song)
     try {
-      await userService.toggleLikedSongs(song)
+      const updatedStation = await userService.toggleLikedSongs(song)
+      dispatch({ type: UPDATE_STATION, station: updatedStation })
     } catch (err) {
       console.error('Failed to toggle liked song:', err)
     }
+  }
+
+  function onAddSong(song) {
+    const updatedStation = { ...station, songs: [...station.songs, song] }
+    updateStation(updatedStation)
   }
 
   if (!station) return null
@@ -187,7 +192,7 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
       <DetailsHeader
         station={station}
         dominantColor={bgColor}
-        svgs={Svgs}
+        Svgs={Svgs}
         onSave={updateStation}
       />
 
@@ -201,6 +206,7 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
         onDeleteStation={onDeleteStation}
         isDeleteModalOpen={isDeleteModalOpen}
         setIsDeleteModalOpen={setIsDeleteModalOpen}
+        Svgs={Svgs}
       />
 
       <br />

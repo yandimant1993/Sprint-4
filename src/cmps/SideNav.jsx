@@ -12,19 +12,26 @@ import { useNavigate } from "react-router"
 import { userService } from "../services/user"
 
 export function SideNav() {
+    const navigate = useNavigate()
     const stations = useSelector(storeState => storeState.stationModule.stations)
+    console.log('Hi')
     // const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
     const [isExpanded, setIsExpanded] = useState(true)
 
-    // console.log('userStations', userStations)
-
-    const loggedInUser = userService.getLoggedinUser()
-    if (!loggedInUser) return <span>Loading...</span>
-    const { _id: userId } = loggedInUser
+    const loggedinUser = userService.getLoggedinUser()
+    if (!loggedinUser) return <span>Loading...</span>
+    const { _id: userId } = loggedinUser
     const userStations = stations.filter(station => station.createdBy._id === userId)
 
-    const navigate = useNavigate()
-
+    async function getCurrUser() {
+        try {
+            const users = await userService.getUsers()
+            const user = users.filter(user => user._id === userId)
+            console.log('user: ', user)
+        } catch {
+            console.log('hi')
+        }
+    }
 
     async function onCreateStation() {
         try {

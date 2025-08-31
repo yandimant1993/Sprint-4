@@ -14,6 +14,7 @@ import { SideNav } from './cmps/SideNav.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { LoginSignup, Login, Signup } from './pages/LoginSignup.jsx'
 import { UserDetails } from "./pages/UserDetails.jsx"
+import './services/user'
 
 export function RootCmp() {
 

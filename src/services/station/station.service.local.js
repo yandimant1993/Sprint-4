@@ -145,10 +145,10 @@ async function addStationMsg(stationId, txt) {
 
 async function _createStations() {
     try {
-        let stations = await storageService.query(STORAGE_KEY)
-        if (stations.length > 0) return
+        let stations = await storageService.query(STORAGE_KEY) || []
+        if (stations.filter(({type}) => type !== 'liked').length > 0) return
 
-        stations = [
+        stations.push(
             {
                 _id: '64f1cdd298b8c2a1d4a12f3a',
                 name: 'Late Night Loops',
@@ -230,7 +230,7 @@ async function _createStations() {
             },
             {
                 _id: '64f1cdd298b8c2a1d4a12f3c',
-                name: 'Loved Songs',
+                name: 'Ava\'s Songs',
                 description: "Soft piano with Ludovico Einaudi and Lo-Fi beats. Relax and stay concentrated",
                 tags: ['Synthwave', 'Retro', 'Instrumental'],
                 createdBy: {
@@ -264,7 +264,7 @@ async function _createStations() {
                     }
                 ]
             },
-        ]
+        )
         await storageService.saveAll(STORAGE_KEY, stations)
         console.log('stations successfully added to localStorage')
     } catch (err) {
