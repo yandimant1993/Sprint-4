@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { userService } from '../services/user'
 import { login, signup } from '../store/actions/user.actions'
 import { ImgUploader } from '../cmps/ImgUploader'
+import { Signup } from './SignUp'
 
 export function LoginSignup() {
     return (
@@ -38,8 +39,13 @@ export function Login() {
         if (ev) ev.preventDefault()
 
         if (!credentials.username) return
-        await login(credentials)
-        navigate('/')
+        const user = await login(credentials)
+        if (user)
+            navigate('/')
+        else{
+            console.log('hi')
+            navigate('/auth/signup')
+        }
     }
 
     function handleChange(ev) {
@@ -50,7 +56,7 @@ export function Login() {
 
     return (
         <div className="login-up">
-            <div className="spotift-login">
+            <div className="spotify-login">
                 <img src="/src/assets/spotify-icons/spotify-whit.png"></img>
             </div>
             <ul className="sign-in-list">
@@ -60,71 +66,25 @@ export function Login() {
 
             </ul>
             <div className="email-username">Email or Username</div>
-            <input type="text" className="input-email-username" />
+            <input
+                type="text"
+                className="input-email-username"
+                onChange={handleChange}
+                value={credentials.username}
+                name="username" />
+            <input
+                type="password"
+                className="input-password"
+                onChange={handleChange}
+                value={credentials.password}
+                name="password" />
             <div className="continue-button">
-                <button className="continue">Continue</button>
+                <button className="continue" onClick={(ev) => onLogin(ev)}>Continue</button>
+            </div>
+            <div className="no-user">
+                <span>Don't have an account?</span> <NavLink to={'/auth/signup'}> Sign up for spotifly</NavLink>
             </div>
         </div>
     )
 }
 
-export function Signup() {
-    const [credentials, setCredentials] = useState(userService.getEmptyUser())
-    const navigate = useNavigate()
-
-    function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
-    }
-
-    function handleChange(ev) {
-        const type = ev.target.type
-
-        const field = ev.target.name
-        const value = ev.target.value
-        setCredentials({ ...credentials, [field]: value })
-    }
-
-    async function onSignup(ev = null) {
-        if (ev) ev.preventDefault()
-
-        if (!credentials.username || !credentials.password || !credentials.fullname) return
-        await signup(credentials)
-        clearState()
-        navigate('/')
-    }
-
-    function onUploaded(imgUrl) {
-        setCredentials({ ...credentials, imgUrl })
-    }
-
-    return (
-        <form className="signup-form" onSubmit={onSignup}>
-            <input
-                type="text"
-                name="fullname"
-                value={credentials.fullname}
-                placeholder="Fullname"
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="text"
-                name="username"
-                value={credentials.username}
-                placeholder="Username"
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="password"
-                name="password"
-                value={credentials.password}
-                placeholder="Password"
-                onChange={handleChange}
-                required
-            />
-            <ImgUploader onUploaded={onUploaded} />
-            <button>Signup</button>
-        </form>
-    )
-}
