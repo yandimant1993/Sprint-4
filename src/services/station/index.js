@@ -9,7 +9,7 @@ var count = 1
 
 function getEmptyStation() {
     const station = {
-        name: `MyPlaylist #${count}`,
+        name: `MyPlaylist #${count}` || '',
         addedAt: Date.now(),
         tags: [],
         songs: [],

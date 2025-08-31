@@ -14,24 +14,13 @@ import { userService } from "../services/user"
 export function SideNav() {
     const navigate = useNavigate()
     const stations = useSelector(storeState => storeState.stationModule.stations)
-    console.log('Hi')
     // const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
     const [isExpanded, setIsExpanded] = useState(true)
 
     const loggedinUser = userService.getLoggedinUser()
-    if (!loggedinUser) return <span>Loading...</span>
-    const { _id: userId } = loggedinUser
+    const { _id: userId, likedStationId: userLikedStation } = loggedinUser
     const userStations = stations.filter(station => station.createdBy._id === userId)
-
-    async function getCurrUser() {
-        try {
-            const users = await userService.getUsers()
-            const user = users.filter(user => user._id === userId)
-            console.log('user: ', user)
-        } catch {
-            console.log('hi')
-        }
-    }
+    const likedStation = stations.find(station => station._id === userLikedStation)
 
     async function onCreateStation() {
         try {
@@ -43,7 +32,7 @@ export function SideNav() {
         }
     }
 
-    if (!userStations) return <span>Loading...</span>
+    if (!userStations || !loggedinUser || !likedStation) return <span>No playlists found</span>
 
     return (
         <section className={`sidenav-container ${isExpanded ? 'expanded' : 'collapsed'}`}>
@@ -52,7 +41,7 @@ export function SideNav() {
                 {/* <StationFilter filterBy={filterBy} onSetFilter={setFilter} /> */}
                 {/* <SortStation /> */}
             </div>
-            {userStations.length && <UserStationList stations={userStations} isExpanded={isExpanded} />}
+            {userStations.length && <UserStationList stations={userStations} likedStation={likedStation} isExpanded={isExpanded} />}
         </section>
     )
 }

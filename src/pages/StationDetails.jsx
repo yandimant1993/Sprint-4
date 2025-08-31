@@ -207,6 +207,7 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
         isDeleteModalOpen={isDeleteModalOpen}
         setIsDeleteModalOpen={setIsDeleteModalOpen}
         Svgs={Svgs}
+        dominantColor={bgColor}
       />
 
       <br />

@@ -12,7 +12,7 @@ export function StationList({ stations }) {
         return station.owner?._id === user._id
     }
 
-    const filteredUserStations = stations.filter(station => station.type !== 'user')
+    const filteredUserStations = stations.filter(station => station.type === 'system')
 
     if (!stations) return <p>Loading...</p>
     return (
@@ -26,9 +26,6 @@ export function StationList({ stations }) {
                             key={station._id}>
                             <StationPreview station={station} />
                             {shouldShowActionBtns(station) && <div className="actions">
-                                {/* <button onClick={() => onUpdateStation(station)}>Edit</button>
-                        <button onClick={() => onRemoveStation(station._id)}>x</button> */}
-
                             </div>}
                         </NavLink>
                     </li>

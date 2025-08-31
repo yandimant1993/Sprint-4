@@ -57,7 +57,7 @@ async function login(userCred) {
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     userCred.score = 10000
-    const {_id: stationId} = await stationService.save(stationService.getEmptyStation())
+    const { _id: stationId } = await stationService.save(stationService.getEmptyStation())
     userCred.likedStationId = stationId
 
     const user = await storageService.post('user', userCred)
@@ -92,7 +92,7 @@ function getUserStations(userId) {
 
 async function toggleLikedSongs(song) {
     const loggedinUser = getLoggedinUser()
-    console.log('loggedinUser: ',loggedinUser)
+    console.log('loggedinUser: ', loggedinUser)
     if (!loggedinUser) throw new Error('No logged-in user found')
 
     const user = await storageService.get('user', loggedinUser._id)
@@ -100,7 +100,7 @@ async function toggleLikedSongs(song) {
 
     // const songIdx = user.likedSongIds.findIndex(likedSong => likedSong.id === song.id)
     const isLiked = user.likedSongIds.includes(song.id)
-    console.log('isLiked: ',isLiked)
+    console.log('isLiked: ', isLiked)
 
     if (isLiked) {
         user.likedSongIds = user.likedSongIds.filter(sId => sId !== song.id)
@@ -110,7 +110,7 @@ async function toggleLikedSongs(song) {
         console.log(`Added "${song.title}" to likedSongIds`)
     }
 
-    console.log('user: ',user)
+    console.log('user: ', user)
 
     const updatedUser = await storageService.put('user', user)
     const method = isLiked ? 'removeSong' : 'addSong'
@@ -136,7 +136,7 @@ async function _createAdmin() {
 }
 
 async function _createUsers() {
-    const station = await stationService.save({...stationService.getEmptyStation(), type: 'liked'})
+    const station = await stationService.save({ ...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked' })
     const likedStationId = station._id
     const users = [
         {
