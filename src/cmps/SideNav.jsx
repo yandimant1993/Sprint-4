@@ -17,14 +17,14 @@ export function SideNav() {
     // const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
     const [isExpanded, setIsExpanded] = useState(true)
 
-    const loggedinUser = userService.getLoggedinUser()
-    if (!loggedinUser) return (
-        <section className={`sidenav-container ${isExpanded ? 'expanded' : 'collapsed'}`}>
-            <SideNavHeader createStation={onCreateStation} setIsExpanded={setIsExpanded} isExpanded={isExpanded} />
-        </section>
-    )
+    const loggedinUser = userService.getLoggedinUser() || {}
+    // if (!loggedinUser) return (
+    //     <section className={`sidenav-container ${isExpanded ? 'expanded' : 'collapsed'}`}>
+    //         <SideNavHeader createStation={onCreateStation} setIsExpanded={setIsExpanded} isExpanded={isExpanded} />
+    //     </section>
+    // )
     const { _id: userId, likedStationId: userLikedStation } = loggedinUser
-    const userStations = stations.filter(station => station.createdBy._id === userId)
+    const userStations = stations.filter(station => station.type !== 'liked' && station.createdBy._id === userId)
     const likedStation = stations.find(station => station._id === userLikedStation)
 
     async function onCreateStation() {
@@ -37,7 +37,6 @@ export function SideNav() {
         }
     }
 
-    if (!userStations || !likedStation) return <span>No playlists found</span>
 
     return (
         <section className={`sidenav-container ${isExpanded ? 'expanded' : 'collapsed'}`}>
@@ -46,7 +45,7 @@ export function SideNav() {
                 {/* <StationFilter filterBy={filterBy} onSetFilter={setFilter} /> */}
                 {/* <SortStation /> */}
             </div>
-            {userStations.length && <UserStationList stations={userStations} likedStation={likedStation} isExpanded={isExpanded} />}
+            {(!userStations.length && !likedStation) ? <span>No playlists found</span> : <UserStationList stations={userStations} likedStation={likedStation} isExpanded={isExpanded} />}
         </section>
     )
 }

@@ -21,7 +21,7 @@
     border: none;
     border-radius: 4px;
     padding: 0 1rem 0 3rem;
-    /* color: #ffffff; */
+    color: #ffffff;
     font-size: 1rem;
     outline: none;
     transition: background-color 0.3s ease, box-shadow 0.3s, border 0.3s;

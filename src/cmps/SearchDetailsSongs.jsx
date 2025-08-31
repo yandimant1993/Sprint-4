@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getVideos } from "../services/player/youtube.service"
 import { SearchStationResult } from './SearchStationResult'
 
-export function SearchDetailsSongs({ onSelectVideo }) {
+export function SearchDetailsSongs({ onSelectVideo, stationId }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ term: '' })
     const [videos, setVideos] = useState([])
 
@@ -15,12 +15,12 @@ export function SearchDetailsSongs({ onSelectVideo }) {
         const fetchVideos = async () => {
             const result = await getVideos(filterByToEdit.term, 10)
             setVideos(result)
+            console.log('result:', result)
         }
 
         const timeoutId = setTimeout(fetchVideos, 500)
         return () => clearTimeout(timeoutId)
     }, [filterByToEdit.term])
-
     function handleChange({ target }) {
         const { value, name: field } = target
         setFilterByToEdit(prev => ({ ...prev, [field]: value }))
@@ -47,6 +47,7 @@ export function SearchDetailsSongs({ onSelectVideo }) {
             <SearchStationResult
                 videos={videos}
                 onVideoClick={handleVideoClick}
+                stationId={stationId}
             />
         </div>
     )

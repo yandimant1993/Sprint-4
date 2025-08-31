@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getVideos } from "../services/player/youtube.service"
-import { SearchStationResult } from './SearchStationResult'
+import { SearchHeaderResults } from './SearchHeaderResults'
 
 export function SearchStationSongs({ onSelectVideo }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ term: '' })
@@ -44,11 +44,10 @@ export function SearchStationSongs({ onSelectVideo }) {
                 />
             </div>
 
-            <SearchStationResult
+            <SearchHeaderResults
                 videos={videos}
                 onVideoClick={handleVideoClick}
             />
-
         </div>
     )
 }
