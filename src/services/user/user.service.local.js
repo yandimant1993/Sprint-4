@@ -12,11 +12,12 @@ export const userService = {
     update,
     getLoggedinUser,
     saveLoggedinUser,
-    getUserStations
+    getUserStations,
+    toggleLikedSongs
 }
 
 async function getUsers() {
-    const users = await storageService.query('user')
+    let users = await storageService.query('user')
     if (!users.length) {
         users = await _createUsers()
     }
@@ -85,6 +86,29 @@ function getUserStations(userId) {
     return getById(userId).then(user => user.stations || [])
 }
 
+async function toggleLikedSongs(song) {
+    const loggedinUser = getLoggedinUser()
+    if (!loggedinUser) throw new Error('No logged-in user found')
+
+    const user = await storageService.get('user', loggedinUser._id)
+    if (!user.likedSongs) user.likedSongs = []
+
+    const songIdx = user.likedSongs.findIndex(likedSong => likedSong.id === song.id)
+
+    if (songIdx > -1) {
+        user.likedSongs.splice(songIdx, 1)
+        console.log(`Removed "${song.title}" from likedSongs`)
+    } else {
+        user.likedSongs.push(song)
+        console.log(`Added "${song.title}" to likedSongs`)
+    }
+
+    const updatedUser = await storageService.put('user', user)
+    saveLoggedinUser(updatedUser)
+
+    return updatedUser
+}
+
 // To quickly create an admin user, uncomment the next line
 // _createAdmin()
 async function _createAdmin() {
@@ -108,7 +132,8 @@ async function _createUsers() {
             password: '123',
             fullname: 'Ava V',
             imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
-            stations: []
+            stations: [],
+            likedSongs: []
         },
         {
             _id: 'u102',
@@ -116,11 +141,11 @@ async function _createUsers() {
             password: '123',
             fullname: 'Baba B',
             imgUrl: 'https://randomuser.me/api/portraits/men/42.jpg',
-            stations: []
+            stations: [],
+            likedSongs: []
         }
     ]
     await storageService.saveAll('user', users)
-    console.log('hi')
     return users
 }
 

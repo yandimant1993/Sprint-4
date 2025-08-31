@@ -3,9 +3,13 @@ import { IoAddCircle } from "react-icons/io5";
 import { useState } from "react";
 import { Svgs } from "./Svgs";
 
-export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
+export function StationSongsList({ songs, onRemoveSong, onToggleLikedSong }) {
    const [hoveredIndex, setHoveredIndex] = useState(null)
-   const [isLiked, setIsLiked] = useState(false)
+   const user = userService.getLoggedinUser()
+
+   function isLiked(songId) {
+      return user?.likedSongs?.some(likedSong => likedSong.id === songId)
+   }
 
    function handleDropdownClick() {
       console.log('Dropdown clicked')
@@ -64,7 +68,8 @@ export function StationSongsList({ songs, onRemoveSong, onAddSong }) {
                <div className="song-list-date">{getRelativeTime(song.dateAdded)}</div>
                <div className="song-list-duration">{song.duration || '--:--'}</div>
                <div className="hover-btns-actions flex">
-                  <button className="btn-song-add" onClick={() => onAddSong(song)}>{Svgs.checkIcon}</button>
+                  {isLiked(song.id) ? (<button className="btn-song-toggle-liked check-positive" onClick={() => onToggleLikedSong(song)}>{Svgs.checkIcon}</button>)
+                     : ((<button className="btn-song-toggle-liked" onClick={() => onToggleLikedSong(song)}>{Svgs.addIcon}</button>))}
                   <button className="btn-song-remove" onClick={() => onRemoveSong(song.id)}>{Svgs.threeDotsIcon}</button>
                </div>
             </div>

@@ -5,6 +5,8 @@ import { useEffect, useState } from "react"
 import { setCurrentStation, setIsPlaying } from "../store/actions/player.actions"
 import { stationService } from "../services/station/station.service.local"
 import { removeStation } from "../store/actions/station.actions"
+import { userService } from "../services/user"
+
 import { Svgs } from "./Svgs"
 import { StationSongsList } from "./StationSongsList"
 import { ContextMenu } from "./ContextMenu"
@@ -60,12 +62,21 @@ export function DetailsMain() {
             console.log('song removed!')
 
         } catch (error) {
-            // console.log('failed to delete song!')
+            console.log('failed to delete song!')
         }
     }
 
-    async function onAddSong(song) {
-        const updatedStation = await stationService.addSong(song)
+    // async function onAddSong(song) {
+    //     const updatedStation = await stationService.addSong(song)
+    // }
+
+    async function onToggleLikedSong(song) {
+        try {
+            const updatedUser = await userService.toggleLikedSongs(song)
+            console.log('Updated user with likedSongs:', updatedUser)
+        } catch (err) {
+            console.error('Failed to toggle liked song:', err)
+        }
     }
 
     return (
@@ -110,7 +121,7 @@ export function DetailsMain() {
                 </div>
             )}
 
-            <StationSongsList songs={songs} onRemoveSong={onRemoveSong} onAddSong={onAddSong} />
+            <StationSongsList songs={songs} onRemoveSong={onRemoveSong} onToggleLikedSong={onToggleLikedSong} />
         </>
     )
 }

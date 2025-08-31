@@ -14,7 +14,7 @@ export const stationService = {
     addStationMsg,
     getUserStations,
     removeSong,
-    addSong
+    addSong,
 }
 window.cs = stationService
 
@@ -105,7 +105,6 @@ async function removeSong(songId, stationId) {
 async function addSong(song, stationId) {
     const station = await getById(stationId)
     console.log('station', station)
-    // console.log('stations',stations)
     // if (!station) throw new Error('Station not found!')
     station.songs.push(song)
     const savedStation = await save(station)
@@ -265,23 +264,6 @@ async function _createStations() {
                     }
                 ]
             },
-            {
-                _id: '64f1cdd298b8c2a1d4a12f3d',
-                name: 'Loved Songs',
-                description: "Soft piano with Ludovico Einaudi and Lo-Fi beats. Relax and stay concentrated",
-                tags: ['Synthwave', 'Retro', 'Instrumental'],
-                createdBy: {
-                    _id: 'u101',
-                    username: 'aaa',
-                    fullname: 'Ava V',
-                    imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
-                },
-                addedAt: 1754198400000,
-                likedByUsers: [],
-                type: 'user',
-                stationImgUrl: 'https://placebear.com/80/80',
-                songs: []
-            }
         ]
         await storageService.saveAll(STORAGE_KEY, stations)
         console.log('stations successfully added to localStorage')

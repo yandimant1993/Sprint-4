@@ -71,11 +71,14 @@
                 opacity: 1;
                 pointer-events: auto;
 
-                .btn-song-add {
+                .btn-song-toggle-liked {
                     height: 22px;
                     width: 17px;
                     padding: 0;
-                    color: var(--clr-green);
+
+                    &.check-positive {
+                        color: var(--clr-green);
+                    }
                 }
 
                 .btn-song-remove {

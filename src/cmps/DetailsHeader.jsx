@@ -18,7 +18,9 @@ export function DetailsHeader({ station }) {
     const loggedinUser = userService.getLoggedinUser()
     const creatorName = station.createdBy?.fullname || loggedinUser?.fullname || 'Guest'
     const isCreator = loggedinUser?._id === station.createdBy?._id
-
+    const numOfSongs = station.songs?.length || 0
+    const stationDuration = userService.getTotalSongsDuration(station)
+   
     useEffect(() => {
         const img = imgRef.current
 
@@ -115,7 +117,9 @@ export function DetailsHeader({ station }) {
                 </div>
                 <div className="station-creator flex">
                     <p className="station-details-info">
-                        <span>{creatorName}&nbsp;•&nbsp;</span>6 songs, 19 min 28 sec
+                        <span className="station-creator-name">{creatorName}&nbsp;•&nbsp;</span>
+                        <span className="station-info">{numOfSongs} {numOfSongs === 1 ? 'Song' : 'Songs'}, {stationDuration}</span>
+
                     </p>
                 </div>
             </div>

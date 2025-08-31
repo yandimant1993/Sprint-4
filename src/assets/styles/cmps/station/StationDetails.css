@@ -80,6 +80,7 @@
         .details-header-text {
             height: fit-content;
             align-self: end;
+            color: var(--white);
 
             .details-station.station-name {
                 margin: 0 0 8px 0;
@@ -100,6 +101,10 @@
 
                 .station-details-info {
                     margin: 0;
+
+                    .station-info{
+                        color: var(--gray2);
+                    }
                 }
             }
         }
@@ -122,6 +127,11 @@
                 padding: 14px;
                 cursor: pointer;
             }
+
+            &:hover {
+                scale: 1.05;
+                background-color: var(--clr-lightgreen);
+            }
         }
 
         .btn-context-menu {
@@ -129,7 +139,7 @@
             padding: 0;
             width: 2.125rem;
             height: 100%;
-            color: var(--gray1);
+            color: var(--gray2);
             background-color: transparent;
 
             &svg {
@@ -138,6 +148,7 @@
 
             &:hover {
                 scale: var(--scale-s);
+                color: var(--white);
             }
         }
     }
