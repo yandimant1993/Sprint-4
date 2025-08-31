@@ -20,7 +20,7 @@ export function StationList({ stations }) {
             <span className='your-mixes'>Your Top Mixes</span>
             <ul className="station-list">
                 {filteredUserStations.map(station =>
-                    <li>
+                    <li key={station._id}>
                         <NavLink
                             to={`/station/${station._id}`}
                             key={station._id}>
