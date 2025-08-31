@@ -48,11 +48,11 @@ export function StationIndex() {
     }
 
     return (
-            <section className="station-list-container">
-                <StationList
-                    stations={stations}
-                    onRemoveStation={onRemoveStation}
-                    onUpdateStation={onUpdateStation} />
-            </section>
+        <section className="station-list-container">
+            <StationList
+                stations={stations}
+                onRemoveStation={onRemoveStation}
+                onUpdateStation={onUpdateStation} />
+        </section>
     )
 }

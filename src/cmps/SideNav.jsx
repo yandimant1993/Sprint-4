@@ -15,6 +15,7 @@ export function SideNav() {
     const stations = useSelector(storeState => storeState.stationModule.stations)
     // const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
     const [isExpanded, setIsExpanded] = useState(true)
+
     // console.log('userStations', userStations)
 
     const loggedInUser = userService.getLoggedinUser()
@@ -23,6 +24,7 @@ export function SideNav() {
     const userStations = stations.filter(station => station.createdBy._id === userId)
 
     const navigate = useNavigate()
+
 
     async function onCreateStation() {
         try {
