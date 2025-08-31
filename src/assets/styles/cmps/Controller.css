@@ -72,18 +72,14 @@
 
 .progress-fill,
 .volume-fill {
+    display: grid;
     position: absolute;
     top: 0;
-    left: 8px;
+    left: 0;
     bottom: 0;
     height: 100%;
     background-color: #ffffff;
-    /* background: #1db954; */
-    transition: width 0.1s ease;
-    border-radius: 2px;
-    transition: width 0.1s ease;
-    /* border-radius: 999px; */
-    display: grid;
+    border-radius: 999px;
     align-content: center;
     justify-content: end;
 }
@@ -93,20 +89,20 @@
     content: "";
     width: 13px;
     height: 13px;
+    right: 0;
     display: none;
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
-
 }
 
 
 .progress-bar:hover .progress-fill::after,
-.volume-range:hover .volume-fill::after {
+.volume-bar:hover .volume-fill::after {
     display: block;
 }
 
 .progress-bar:hover .progress-fill,
-.volume-range:hover .volume-fill {
+.volume-bar:hover .volume-fill {
     background-color: var(--clr-green);
 }
 
@@ -183,31 +179,31 @@
     gap: 0.5rem;
 }
 
-.volume-slider {
+.volume-bar {
     position: relative;
     width: 80px;
     height: 4px;
     background-color: #4f4f4f;
-    border-radius: 2px;
-    overflow: hidden;
+    border-radius: 999px;
+    cursor: pointer;
 }
 
-.volume-range {
+.volume-slider {
     appearance: none;
     position: absolute;
     top: 0;
-    inset: 0;
     left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    opacity: 1;
+    opacity: 0;
     background: transparent;
-    cursor: pointer;
     outline: none;
+    cursor: pointer;
     z-index: 2;
 }
 
-.volume-range::-webkit-slider-thumb {
+.volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 12px;
@@ -219,7 +215,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.volume-range::-moz-range-thumb {
+.volume-slider::-moz-range-thumb {
     width: 12px;
     height: 12px;
     background: #ffffff;
@@ -250,7 +246,7 @@
     } */
 
 
-    .volume-slider {
+    .volume-bar {
         width: 80px;
     }
 }

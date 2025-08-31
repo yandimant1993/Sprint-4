@@ -64,10 +64,10 @@ export function RightControls({ player }) {
                     />
                 </button>
 
-                <div className="volume-slider">
+                <div className="volume-bar">
                     <input
                         type="range"
-                        className="volume-range"
+                        className="volume-slider"
                         min="0"
                         max="100"
                         value={isMuted ? 0 : volume}

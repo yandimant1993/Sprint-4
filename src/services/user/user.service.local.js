@@ -59,7 +59,7 @@ async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     let user = await storageService.post('user', userCred)
     saveLoggedinUser(user)
-    const {_id: stationId} =  await stationService.save({...stationService.getEmptyStation(), type: 'liked'})
+    const {_id: stationId} =  await stationService.save({...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked', stationImgUrl: './src/assets/img/liked-songs.jpg'})
     user.likedStationId = stationId
     user = await storageService.put('user', userCred)
     return saveLoggedinUser(user)
