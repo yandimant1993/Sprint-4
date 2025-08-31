@@ -7,7 +7,7 @@ export function StationSongsList({ songs, onRemoveSong, onToggleLikedSong }) {
    const user = userService.getLoggedinUser()
 
    function isLiked(songId) {
-      return user?.likedSongs?.some(likedSong => likedSong.id === songId)
+      return user?.likedSongIds?.includes(songId)
    }
 
    function handleDropdownClick() {

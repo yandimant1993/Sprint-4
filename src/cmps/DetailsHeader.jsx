@@ -129,7 +129,7 @@
 //                 isModalOpen && (
 //                     <EditStationDetails
 //                         station={station}
-//                         svgs={Svgs}
+//                         Svgs={Svgs}
 //                         onClose={() => setIsModalOpen(false)}
 //                         onSave={handleSave}
 //                         editedName={editedName}
@@ -151,7 +151,7 @@ import { useState, useEffect } from 'react'
 import { EditStationDetails } from './EditStationDetails.jsx'
 import { userService } from '../services/user'
 
-export function DetailsHeader({ station, dominantColor, svgs, onSave }) {
+export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
   const [isHovered, setIsHovered] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editedName, setEditedName] = useState(station.name)
@@ -199,11 +199,11 @@ export function DetailsHeader({ station, dominantColor, svgs, onSave }) {
           <div className="station-img-edit flex">
             {isHovered && (
               <>
-                {svgs.editIcon}
+                {Svgs.editIcon}
                 <span className="station-img-edit-text">Choose Photo</span>
               </>
             )}
-            {!station.stationImgUrl && !isHovered && svgs.stationNewImg}
+            {!station.stationImgUrl && !isHovered && Svgs.stationNewImg}
           </div>
         </div>
       </div>
@@ -230,7 +230,7 @@ export function DetailsHeader({ station, dominantColor, svgs, onSave }) {
       {isCreator && isModalOpen && (
         <EditStationDetails
           station={station}
-          svgs={svgs}
+          Svgs={Svgs}
           onClose={() => setIsModalOpen(false)}
           onSave={handleSave}
           editedName={editedName}

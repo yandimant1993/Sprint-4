@@ -1,5 +1,5 @@
 import { storageService } from '../async-storage.service'
-
+import { stationService } from '../station'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
@@ -77,7 +77,9 @@ function saveLoggedinUser(user) {
         fullname: user.fullname,
         imgUrl: user.imgUrl,
         score: user.score,
-        isAdmin: user.isAdmin
+        isAdmin: user.isAdmin,
+        likedSongIds: user.likedSongIds || [],
+        likedStationId: user.likedStationId || ''
     }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
@@ -89,25 +91,32 @@ function getUserStations(userId) {
 
 async function toggleLikedSongs(song) {
     const loggedinUser = getLoggedinUser()
+    console.log('loggedinUser: ',loggedinUser)
     if (!loggedinUser) throw new Error('No logged-in user found')
 
     const user = await storageService.get('user', loggedinUser._id)
-    if (!user.likedSongs) user.likedSongs = []
+    if (!user.likedSongIds) user.likedSongIds = []
 
-    const songIdx = user.likedSongs.findIndex(likedSong => likedSong.id === song.id)
+    // const songIdx = user.likedSongIds.findIndex(likedSong => likedSong.id === song.id)
+    const isLiked = user.likedSongIds.includes(song.id)
+    console.log('isLiked: ',isLiked)
 
-    if (songIdx > -1) {
-        user.likedSongs.splice(songIdx, 1)
-        console.log(`Removed "${song.title}" from likedSongs`)
+    if (isLiked) {
+        user.likedSongIds = user.likedSongIds.filter(sId => sId !== song.id)
+        console.log(`Removed "${song.title}" from likedSongIds`)
     } else {
-        user.likedSongs.push(song)
-        console.log(`Added "${song.title}" to likedSongs`)
+        user.likedSongIds.push(song.id)
+        console.log(`Added "${song.title}" to likedSongIds`)
     }
 
+    console.log('user: ',user)
+
     const updatedUser = await storageService.put('user', user)
+    const method = isLiked ? 'removeSong' : 'addSong'
+    const savedStation = await stationService[method](song, loggedinUser.likedStationId)
     saveLoggedinUser(updatedUser)
 
-    return updatedUser
+    return savedStation
 }
 
 // To quickly create an admin user, uncomment the next line
@@ -126,6 +135,8 @@ async function _createAdmin() {
 }
 
 async function _createUsers() {
+    const station = await stationService.save({...stationService.getEmptyStation(), type: 'liked'})
+    const likedStationId = station._id
     const users = [
         {
             _id: 'u101',
@@ -134,7 +145,8 @@ async function _createUsers() {
             fullname: 'Ava V',
             imgUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
             stations: [],
-            likedSongs: []
+            likedSongIds: [],
+            likedStationId
         },
         {
             _id: 'u102',
@@ -143,7 +155,8 @@ async function _createUsers() {
             fullname: 'Baba B',
             imgUrl: 'https://randomuser.me/api/portraits/men/42.jpg',
             stations: [],
-            likedSongs: []
+            likedSongIds: [],
+            likedStationId: ''
         }
     ]
     await storageService.saveAll('user', users)

@@ -12,7 +12,9 @@ import { useNavigate } from "react-router"
 import { userService } from "../services/user"
 
 export function SideNav() {
+    const navigate = useNavigate()
     const stations = useSelector(storeState => storeState.stationModule.stations)
+    console.log('Hi')
     // const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
     const [isExpanded, setIsExpanded] = useState(true)
     const navigate = useNavigate()
