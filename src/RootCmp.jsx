@@ -12,9 +12,10 @@ import { AppHeader } from './cmps/AppHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
 import { SideNav } from './cmps/SideNav.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
-import { LoginSignup, Login, Signup } from './pages/LoginSignup.jsx'
+import { LoginSignup, Login } from './pages/Login.jsx'
+// import { Signup } from './pages/SignUp.jsx'
 import { UserDetails } from "./pages/UserDetails.jsx"
-import './services/user'
+import { Signup } from './pages/SignUp.jsx'
 
 export function RootCmp() {
 
@@ -23,7 +24,7 @@ export function RootCmp() {
 
 
     useEffect(() => {
-        autoLoginUser()
+        // autoLoginUser()
     }, [])
 
     return (

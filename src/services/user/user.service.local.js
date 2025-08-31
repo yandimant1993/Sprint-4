@@ -18,14 +18,15 @@ export const userService = {
 
 async function getUsers() {
     let users = await storageService.query('user')
-    if (!users.length) {
-        users = await _createUsers()
-    }
+    // if (!users.length) {
+    //     users = await _createUsers()
     return users.map(user => {
         delete user.password
         return user
     })
+    // }
 }
+
 
 async function getById(userId) {
     return await storageService.get('user', userId)
@@ -56,9 +57,7 @@ async function login(userCred) {
 
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-    userCred.score = 10000
-    const { _id: stationId } = await stationService.save(stationService.getEmptyStation())
-    userCred.likedStationId = stationId
+    
 
     const user = await storageService.post('user', userCred)
     return saveLoggedinUser(user)
