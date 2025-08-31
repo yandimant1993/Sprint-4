@@ -10,7 +10,6 @@ import { SearchStationSongs } from './SearchStationSong'
 
 export function AppHeader({ onSelectVideo }) {
 	const user = null 
-	console.log('user',user)
 	const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
 
 	const navigate = useNavigate()
@@ -48,15 +47,6 @@ export function AppHeader({ onSelectVideo }) {
 				<NavLink to="/" className="home-icon">
 					<img src="/src/assets/spotify-icons/home-solid.svg" alt="home" />
 				</NavLink>
-				{/* 
-				<div className="search-container">
-					<img src="/src/assets/spotify-icons/search.svg" alt="Search" className="search-icon" />
-					<input
-						type="text"
-						placeholder="What do you want to play?"
-						className="search-input"
-					/>
-				</div> */}
 
 				<SearchStationSongs onSelectVideo={onSelectVideo} />
 

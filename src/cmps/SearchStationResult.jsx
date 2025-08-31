@@ -1,7 +1,9 @@
 import { useDispatch } from "react-redux";
-import { addSong } from "../store/actions/player.actions";
+// import { addSong } from "../store/actions/player.actions";
+import { stationService } from "../services/station";
+// import { userService } from "../services/user";
 
-export function SearchStationResult({ videos = [], onVideoClick }) {
+export function SearchStationResult({ videos = [], onVideoClick,stationId  }) {
   const dispatch = useDispatch();
   const safeVideos = Array.isArray(videos) ? videos : [];
 
@@ -37,7 +39,7 @@ export function SearchStationResult({ videos = [], onVideoClick }) {
   className="btn-song-add"
   onClick={(e) => {
     e.stopPropagation();
-    dispatch(addSong(video)); 
+   stationService.addSong(video,stationId)
   }}
 >
   Add
@@ -49,6 +51,7 @@ export function SearchStationResult({ videos = [], onVideoClick }) {
   );
 }
 
+ 
 
 
 

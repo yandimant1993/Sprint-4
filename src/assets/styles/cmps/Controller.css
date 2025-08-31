@@ -99,6 +99,7 @@
 
 }
 
+
 .progress-bar:hover .progress-fill::after,
 .volume-range:hover .volume-fill::after {
     display: block;
