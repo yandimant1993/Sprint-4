@@ -13,10 +13,13 @@ import { AppFooter } from './cmps/AppFooter.jsx'
 import { SideNav } from './cmps/SideNav.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { LoginSignup, Login, Signup } from './pages/LoginSignup.jsx'
+import { UserDetails } from "./pages/UserDetails.jsx"
 
 export function RootCmp() {
 
     const [searchedVideoId, setSearchedVideoId] = useState(null)
+    const [isVisible, setIsVisible] = useState(true)
+
 
     useEffect(() => {
         autoLoginUser()
@@ -27,16 +30,17 @@ export function RootCmp() {
             <div className="app-container">
                 <AppHeader onSelectVideo={setSearchedVideoId} />
                 <UserMsg />
-                    <SideNav />
-                    <Routes>
-                        <Route path="/" element={<StationIndex />} />
-                        <Route path="station/:stationId" element={<StationDetails />} />
-                        <Route path="auth" element={<LoginSignup />}>
-                            <Route path="login" element={<Login />} />
-                            <Route path="signup" element={<Signup />} />
-                        </Route>
-                        <Route path="*" element={<Navigate to="/" replace />} />
-                    </Routes>
+                <SideNav />
+                <Routes>
+                    <Route path="/" element={<StationIndex />} />
+                    <Route path="station/:stationId" element={<StationDetails />} />
+                    <Route path="user/:userId" element={<UserDetails />} />
+                    <Route path="auth" element={<LoginSignup />}>
+                        <Route path="login" element={<Login />} />
+                        <Route path="signup" element={<Signup />} />
+                    </Route>
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
                 <AppFooter searchedVideoId={searchedVideoId} />
             </div>
         </Provider>

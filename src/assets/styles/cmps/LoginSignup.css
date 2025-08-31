@@ -25,6 +25,17 @@
 	}
 }
 
+.login-page {
+	z-index: 9999;
+	grid-row: 1 / -1;
+	grid-column: 1 / -1;
+	background-color: green;
+}
+
+/* .sidenav-container{
+	display: none;
+} */
+
 .login-page nav {
 	display: flex;
 	align-items: center;
@@ -34,7 +45,7 @@
 	margin-block: 100px 0.5em;
 
 
-	> a {
+	>a {
 		font-size: 0.8em;
 		color: var(--clr4);
 

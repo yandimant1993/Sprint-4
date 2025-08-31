@@ -9,7 +9,8 @@ import { SearchStationSongs } from './SearchStationSong'
 
 
 export function AppHeader({ onSelectVideo }) {
-	const user = useSelector(storeState => storeState.userModule.user)
+	const user = null 
+	console.log('user',user)
 	const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
 
 	const navigate = useNavigate()
