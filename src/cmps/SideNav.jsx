@@ -18,6 +18,11 @@ export function SideNav() {
     const [isExpanded, setIsExpanded] = useState(true)
 
     const loggedinUser = userService.getLoggedinUser()
+    if (!loggedinUser) return (
+        <section className={`sidenav-container ${isExpanded ? 'expanded' : 'collapsed'}`}>
+            <SideNavHeader createStation={onCreateStation} setIsExpanded={setIsExpanded} isExpanded={isExpanded} />
+        </section>
+    )
     const { _id: userId, likedStationId: userLikedStation } = loggedinUser
     const userStations = stations.filter(station => station.createdBy._id === userId)
     const likedStation = stations.find(station => station._id === userLikedStation)
@@ -32,7 +37,7 @@ export function SideNav() {
         }
     }
 
-    if (!userStations || !loggedinUser || !likedStation) return <span>No playlists found</span>
+    if (!userStations || !likedStation) return <span>No playlists found</span>
 
     return (
         <section className={`sidenav-container ${isExpanded ? 'expanded' : 'collapsed'}`}>
