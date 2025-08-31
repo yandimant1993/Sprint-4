@@ -23,17 +23,6 @@ export function StationIndex() {
         }
     }
 
-    async function onAddStation() {
-        const station = stationService.getEmptyStation()
-        station.name = prompt('Name?', 'Some Name')
-        try {
-            const savedStation = await addStation(station)
-            showSuccessMsg(`Station added (id: ${savedStation._id})`)
-        } catch (err) {
-            showErrorMsg('Cannot add station')
-        }
-    }
-
     async function onUpdateStation(station) {
         const addedAt = +prompt('New addedAt?', station.addedAt) || 0
         if (addedAt === 0 || addedAt === station.addedAt) return

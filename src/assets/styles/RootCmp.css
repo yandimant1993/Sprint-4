@@ -8,7 +8,7 @@
 
     grid-template-areas:
         "header header"
-        "main main"
+        "sidenav main"
         "footer footer";
 
     background-color: var(--clr5);

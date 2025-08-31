@@ -1,12 +1,12 @@
 import { loadFromStorage, saveToStorage } from "../util.service.js"
-import axios from "axios";
+import axios from "axios"
 
 const YT_API_KEY = 'AIzaSyDyMCSjBIjpOulqFGvOBM5QVlyLq-DP_3s'
-const VIDEO_STORAGE_KEY = 'videosDB';
+const VIDEO_STORAGE_KEY = 'videosDB'
 
 
 export async function getVideos(term, maxResults = 10) {
-    const searchVideosMap = loadFromStorage(VIDEO_STORAGE_KEY) || {};
+    const searchVideosMap = loadFromStorage(VIDEO_STORAGE_KEY) || {}
 
     if (searchVideosMap[term]) {
         return Promise.resolve(searchVideosMap[term]);
@@ -23,8 +23,7 @@ export async function getVideos(term, maxResults = 10) {
                 q: term,
                 maxResults,
             },
-        });
-
+        })
 
         const videos = data.items
             .filter(item => item.id.videoId)
@@ -32,15 +31,15 @@ export async function getVideos(term, maxResults = 10) {
                 id: item.id.videoId,
                 title: item.snippet.title,
                 thumbnail: item.snippet.thumbnails.default.url,
-            }));
+            }))
 
         searchVideosMap[term] = videos;
         saveToStorage(VIDEO_STORAGE_KEY, searchVideosMap)
 
-        return videos;
+        return videos
     } catch (err) {
         console.error('Error fetching videos', err)
-        return [];
+        return []
     }
 }
 

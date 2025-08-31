@@ -52,3 +52,10 @@ object {
     padding: var(--spacexp-s);
     background-color: var(--clr2);
 }
+
+.input-app {
+    background-color: var(--clr1);
+    color: var(--gray2);
+    border: none;
+    font-family: spotifymix-regular;
+}

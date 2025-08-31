@@ -1,0 +1,104 @@
+.songs-list-result-row,
+.video-item {
+    width: 100%;
+    padding-inline: calc(var(--spacepx-sm) * 1.8);
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: calc(var(--spacerem-s) * 1.2) 53fr 42fr 25fr 10fr;
+    gap: var(--spacepx-sm);
+    align-items: center;
+    min-height: calc(var(--spacerem-sm) * 3.375);
+    font-size: calc(var(--spacerem-sm) * 0.875);
+    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.songs-list-result-row:hover,
+.songs-list-row:hover,
+.video-item:hover {
+    background-color: var(--clr1);
+    transform: translateY(-1px);
+}
+
+.song-list-title-res,
+.song-list-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-self: start;
+    min-height: 44px;
+    margin-inline-start: 4px;
+}
+
+.song-list-title-res img,
+.song-list-title img {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin: 0;
+}
+
+.song-info-text-res,
+.song-info-text {
+    display: grid;
+}
+
+.song-title,
+.song-title-res {
+    font-size: 1rem;
+}
+
+.song-artist,
+.song-artist-res {
+    font-size: 0.875rem;
+    margin-block-end: 2px;
+}
+
+.song-list-album-res,
+.song-list-album,
+.song-list-date-res,
+.song-list-date,
+.song-list-duration-res,
+.song-list-duration {
+    justify-self: start;
+}
+
+.song-list-duration-res,
+.song-list-duration {
+    justify-self: end;
+    margin-inline-end: 26px;
+}
+
+.hover-btns-actions-res,
+.hover-btns-actions {
+    position: absolute;
+    inset-inline-end: 12px;
+    gap: 8px;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+}
+
+.songs-list-result-row:hover .hover-btns-actions-res,
+.songs-list-row:hover .hover-btns-actions,
+.video-item:hover .hover-btns-actions-res {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.song-list-display-res,
+.song-list-display {
+    display: none;
+}
+
+
+.songs-list-result-row:hover .hover-btns-actions-res .btn-song-add,
+.songs-list-result-row:hover .hover-btns-actions-res .btn-song-remove {
+    height: 22px;
+    padding: 0;
+}

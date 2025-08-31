@@ -17,7 +17,7 @@
     height: 100%;
     padding: 24px;
 
-    background: var(--clr4);
+    background: var(--clr2);
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -33,15 +33,20 @@
     }
 
     .edit-station-modal-header {
-      height: 50px;
+      height: 53px;
       justify-content: space-between;
 
-      .btn-edit-close-modal {
-        padding: 0;
+      .edit-details-h {
+        margin: 0;
+        font-size: calc(var(--spacerem-sm) *1.4);
+        letter-spacing: 1.1;
       }
 
-      h2 {
-        margin: 0;
+      .btn-edit-close-modal {
+        width: calc(var(--spacepx-s)*2);
+        padding: 0;
+        background-color: transparent;
+        margin: 3px -2px 0 0;
       }
     }
 
@@ -51,7 +56,7 @@
       gap: var(--spacepx-sm);
 
       grid-template-columns: 180px 1fr;
-      grid-template-rows: 40px 120px auto auto;
+      grid-template: 32px 132px 32px auto/180px 1fr;
       grid-template-areas:
         "album-image title"
         "album-image description"
@@ -59,73 +64,204 @@
         "disclaimer disclaimer";
 
       .btn-edit-station-img-container {
-        height: 180px;
+        position: relative;
         width: 180px;
-        grid-row: span 2;
+        height: 180px;
+        border-radius: 4px;
+        background-color: var(--clr2);
+        text-align: center;
+
+        overflow: hidden;
         grid-area: album-image;
 
         .btn-edit-station-img {
           position: relative;
-          height: 180px;
-          width: 180px;
+          width: 100%;
+          height: 100%;
           background-size: cover;
-          place-items: center;
+          background-position: center;
+          background-repeat: no-repeat;
 
-          :first-child {
+          .edit-station-img {
             position: absolute;
-            width: calc(var(--spacepx-sm)*3);
-            height: calc(var(--spacepx-sm)*3);
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             color: var(--gray3);
 
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            height: 74px;
+            width: 74px;
+          }
 
-            .edit-station-img-hover-text {
-              position: absolute;
-              width: 80%;
-              margin: 0;
-              inset-block-end: 18px;
+          svg {
+            width: 48px;
+            height: 48px;
+          }
 
-              bottom: 25%;
-              left: 50%;
-              transform: translateX(-50%);
-              opacity: 0;
+          .edit-station-img-text {
+            margin-top: 8px;
+            width: 200%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
 
-              &:hover {
+          .btn-remove-img {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            margin: 0;
+            padding: 4px;
+            background: rgba(128, 128, 128, 0.7);
+            border: none;
+            border-radius: 50%;
 
-                >* {
-                  color: var(--gray1);
-                }
+            top: 8px;
+            right: 8px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
 
-                .hover-text {
-                  opacity: 1;
-                }
-              }
+          }
+        }
+
+        &:hover {
+          background-color: rgba(0, 0, 0, .7);
+
+          .btn-edit-station-img {
+            >* {
+              color: white;
+            }
+
+            svg {
+              width: calc(var(--spacepx-sm)*3);
+              height: calc(var(--spacepx-sm)*3);
+            }
+
+            .edit-station-img-text {
+              opacity: 1;
             }
           }
         }
       }
 
-      .station-name {
-        height: fit-content;
-        min-height: 40px;
+      .station-name-input {
+        position: relative;
         grid-area: title;
+
+        .station-name-label {
+          position: absolute;
+          top: -10px;
+          inset-inline-start: 10px;
+          font-size: 0.75rem;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        &:focus-within .station-name-label {
+          opacity: 1;
+          z-index: 2
+        }
+
+        .station-name.input-app {
+          height: fit-content;
+          min-height: 40px;
+          padding-inline: 12px;
+          font-weight: 400;
+          color: var(white);
+
+          background: hsla(0, 0%, 100%, .1);
+          border: 1px solid transparent;
+          border-radius: 4px;
+          color: #fff;
+          font-family: inherit;
+          font-size: 14px;
+          height: 40px;
+          padding: 0 12px;
+          width: 100%;
+
+          &:focus {
+            background-color: var(--clr2);
+            border: 1px solid var(--gray3);
+          }
+        }
       }
 
-      .station-description {
-        margin-bottom: -4px;
-        grid-column: 2;
+      .station-description-input {
+        position: relative;
+        margin-top: 8px;
         grid-area: description;
+
+        .station-description-label {
+          position: absolute;
+          top: -10px;
+          inset-inline-start: 10px;
+          font-size: 0.75rem;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        &:focus-within .station-description-label {
+          opacity: 1;
+          z-index: 2;
+        }
+
+        .station-description {
+          width: 100%;
+          height: 100%;
+          padding: 8px 8px 28px;
+          border: 1px solid transparent;
+          border-radius: 4px;
+
+          background-color: hsla(0, 0%, 100%, .1);
+          font-weight: 400;
+          resize: none;
+
+          &:focus {
+            background-color: var(--clr2);
+            border: 1px solid var(--gray3);
+          }
+        }
       }
 
-      .btn-save-station {
+      .btn-save-details {
+        position: relative;
+        min-height: 34px;
+        color: var(--clr3);
+        background-color: white;
+        font-size: 1rem;
+        font-weight: bold;
+
+        justify-self: flex-end;
+        align-items: center;
         grid-area: save-button;
+
+        .btn-save-details-shape {
+          position: absolute;
+          margin: 0 0 0 0;
+          padding: 12px 32px;
+          border-radius: 2rem;
+
+          bottom: -5px;
+          right: 0px;
+          color: var(--clr3);
+          background-color: white;
+        }
       }
 
       .station-disclaimer {
+        text-align: left;
+        font-size: 12px;
+        font-weight: bold;
         grid-area: disclaimer;
       }
     }
+  }
+
+  .btn-save-details-shape {
+    cursor: pointer;
   }
 }

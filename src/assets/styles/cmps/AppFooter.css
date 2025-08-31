@@ -75,13 +75,7 @@
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1) contrast(1);
 }
 
-.video-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 4px;
-    cursor: pointer;
-}
+
 
 .progress-container {
     display: grid;

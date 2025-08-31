@@ -167,6 +167,7 @@ async function _createStations() {
                 songs: [
                     {
                         id: 's001',
+                        artist: 'Luffi',
                         title: 'Sunset Drive',
                         album: 'Lofi Nights',
                         dateAdded: '2025-08-01T12:30:00Z',
@@ -175,6 +176,7 @@ async function _createStations() {
                     },
                     {
                         id: 's002',
+                        artist: 'Kyortush',
                         title: 'Rainy Nights',
                         album: 'Quiet Storm',
                         dateAdded: '2025-08-05T09:15:00Z',
@@ -183,6 +185,7 @@ async function _createStations() {
                     },
                     {
                         id: 's003',
+                        artist: 'Leeroy Jenkins',
                         title: 'Electric Feel',
                         album: 'Indie Classics',
                         dateAdded: '2025-08-10T14:05:00Z',
@@ -208,6 +211,7 @@ async function _createStations() {
                 songs: [
                     {
                         id: 's004',
+                        artist: 'Leeroy Jenkins',
                         title: 'Youth',
                         album: 'Acoustic Moods',
                         dateAdded: '2025-08-15T18:22:00Z',
@@ -216,6 +220,7 @@ async function _createStations() {
                     },
                     {
                         id: 's005',
+                        artist: 'Leeroy Jenkins',
                         title: 'Nightcall',
                         album: 'Synthwave Drive',
                         dateAdded: '2025-08-20T11:00:00Z',
@@ -242,6 +247,7 @@ async function _createStations() {
                 songs: [
                     {
                         id: 's001',
+                        artist: 'Leeroy Jenkins',
                         title: 'Sunset Drive',
                         album: 'Lofi Nights',
                         dateAdded: '2025-08-01T12:30:00Z',
@@ -250,6 +256,7 @@ async function _createStations() {
                     },
                     {
                         id: 's002',
+                        artist: 'Leeroy Jenkins',
                         title: 'Rainy Nights',
                         album: 'Quiet Storm',
                         dateAdded: '2025-08-05T09:15:00Z',
@@ -259,7 +266,7 @@ async function _createStations() {
                 ]
             },
             {
-                _id: '64f1cdd298b8c2a1d4a12f3c',
+                _id: '64f1cdd298b8c2a1d4a12f3d',
                 name: 'Loved Songs',
                 description: "Soft piano with Ludovico Einaudi and Lo-Fi beats. Relax and stay concentrated",
                 tags: ['Synthwave', 'Retro', 'Instrumental'],

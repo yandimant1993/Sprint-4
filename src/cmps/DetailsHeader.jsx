@@ -12,33 +12,45 @@ export function DetailsHeader({ station }) {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [editedName, setEditedName] = useState(station.name)
     const [description, setDescription] = useState('')
+    const [dominantColor, setDominantColor] = useState([40, 40, 40])
+    const imgRef = useRef(null)
 
     const loggedinUser = userService.getLoggedinUser()
     const creatorName = station.createdBy?.fullname || loggedinUser?.fullname || 'Guest'
     const isCreator = loggedinUser?._id === station.createdBy?._id
 
-    const [dominantColor, setDominantColor] = useState([0, 0, 0])
-    const imgRef = useRef(null)
-
     useEffect(() => {
         const img = imgRef.current
-        if (!img) return
 
-        img.onload = () => {
-            const colorThief = new ColorThief()
-            const color = colorThief.getColor(img)
-            setDominantColor(color)
+        if (!station.stationImgUrl) {
+            setDominantColor([40, 40, 40])
+            return
         }
+        if (!img || !station.stationImgUrl) return
 
-        if (img.complete) {
-            const colorThief = new ColorThief()
-            const color = colorThief.getColor(img)
-            setDominantColor(color)
+        const colorThief = new ColorThief()
+        const extractColor = () => {
+            if (img.naturalWidth === 0 || img.naturalHeight === 0) return
+            try {
+                const color = colorThief.getColor(img)
+                setDominantColor(color)
+            } catch (err) {
+                console.warn("Color extraction failed:", err)
+            }
         }
-    }, [])
+        img.addEventListener("load", extractColor)
+
+        if (img.complete) extractColor()
+
+        return () => img.removeEventListener("load", extractColor)
+    }, [station.stationImgUrl])
+
+    useEffect(() => {
+        setEditedName(station.name || '')
+        setDescription(station.description || '')
+    }, [station])
 
     const headerBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.75)), rgb(${dominantColor.join(',')})`
-
 
     async function handleSave(ev) {
         ev?.preventDefault?.()
@@ -51,7 +63,6 @@ export function DetailsHeader({ station }) {
         }
     }
 
-
     return (
         <section
             className="details-header-container flex"
@@ -59,28 +70,37 @@ export function DetailsHeader({ station }) {
                 background: headerBackground,
             }}
         >
-            <img
-                ref={imgRef}
-                src={astrixImg}
-                alt="Station"
-                style={{ display: 'none' }}
-            />
+            {station.stationImgUrl && (
+                <img
+                    ref={imgRef}
+                    src={station.stationImgUrl}
+                    alt="Station"
+                    style={{ display: 'none' }}
+                />
+            )}
 
-            <div className="btn-station-img-container grid"
-                id="btn-station-img-container"
+            <div
+                className="btn-station-img-container grid"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
                 <div
-                    className="btn-station-img"
+                    className={`btn-station-img ${station.stationImgUrl ? 'has-img' : 'no-img'}`}
+                    style={
+                        station.stationImgUrl
+                            ? { backgroundImage: `url(${station.stationImgUrl})` }
+                            : { backgroundColor: `rgb(${dominantColor.join(',')})` }
+                    }
                 >
-                    {!isHovered && Svgs.stationNewImg}
-                    {isHovered && (
-                        <div className="station-img-edit flex">
-                            {Svgs.editIcon}
-                            <span className="station-img-edit-text">Choose Photo</span>
-                        </div>
-                    )}
+                    <div className="station-img-edit flex">
+                        {isHovered && (
+                            <>
+                                {Svgs.editIcon}
+                                <span className="station-img-edit-text">Choose Photo</span>
+                            </>
+                        )}
+                        {!station.stationImgUrl && !isHovered && Svgs.stationNewImg}
+                    </div>
                 </div>
             </div>
 
@@ -100,99 +120,24 @@ export function DetailsHeader({ station }) {
                 </div>
             </div>
 
-            {isCreator && isModalOpen && (
-                <EditStationDetails
-                    station={station}
-                    svgs={Svgs}
-                    onClose={() => setIsModalOpen(false)}
-                    onSave={handleSave}
-                    editedName={editedName}
-                    setEditedName={setEditedName}
-                    description={description}
-                    setDescription={setDescription}
-                />
-            )}
-
-        </section>
+            {/* {isCreator && isModalOpen && ( */}
+            {
+                isModalOpen && (
+                    <EditStationDetails
+                        station={station}
+                        svgs={Svgs}
+                        onClose={() => setIsModalOpen(false)}
+                        onSave={handleSave}
+                        editedName={editedName}
+                        setEditedName={setEditedName}
+                        description={description}
+                        setDescription={setDescription}
+                        dominantColor={dominantColor}
+                        setDominantColor={setDominantColor}
+                    />
+                )
+            }
+        </section >
     )
 }
-
-
-
-
-
-
-// import { useState } from 'react'
-
-
-// import { updateStation } from '../store/actions/station.actions'
-// import { Svgs } from './Svgs.jsx'
-// import { EditStationDetails } from './EditStationDetails.jsx'
-// import { userService } from '../services/user'
-
-// export function DetailsHeader({ station }) {
-//     const [isHovered, setIsHovered] = useState(false)
-//     const [isModalOpen, setIsModalOpen] = useState(false)
-//     const [editedName, setEditedName] = useState(station.name)
-//     const [description, setDescription] = useState('')
-
-//     const loggedinUser = userService.getLoggedinUser()
-//     const creatorName = station.createdBy?.fullname || loggedinUser?.fullname || 'Guest'
-//     const isCreator = loggedinUser?._id === station.createdBy?._id
-
-//     async function handleSave(ev) {
-//         ev?.preventDefault?.()
-//         try {
-//             const updatedStation = { ...station, name: editedName, description }
-//             await updateStation(updatedStation)
-//             setIsModalOpen(false)
-//         } catch (err) {
-//             console.error('Failed to update station:', err)
-//         }
-//     }
-
-//     return (
-//         <section className="details-header-container flex">
-//             <div className="btn-station-img-container grid"
-//                 onMouseEnter={() => setIsHovered(true)}
-//                 onMouseLeave={() => setIsHovered(false)}>
-//                 <div className="btn-station-img">
-//                     {isHovered ? Svgs.editIcon : Svgs.stationNewImg}
-//                 </div>
-//                 <p className="hover-text">Choose Photo</p>
-//             </div>
-
-//             <div className="details-header-text">
-//                 <p className="station-type">
-//                     Public Playlist
-//                 </p>
-
-//                 <div
-//                     className="station-name"
-//                     onClick={() => isCreator && setIsModalOpen(true)}
-//                     style={{ cursor: isCreator ? 'pointer' : 'default' }}
-//                 >
-//                     {station.name}
-//                 </div>
-
-//                 <div className="station-creator flex">
-//                     <p className="station-details-info"><span>{creatorName}&nbsp;•&nbsp;</span> 6 songs, 19 min 28 sec</p>
-//                 </div>
-//             </div>
-
-//             {isCreator && isModalOpen && (
-//                 <EditStationDetails
-//                     station={station}
-//                     svgs={Svgs}
-//                     onClose={() => setIsModalOpen(false)}
-//                     onSave={handleSave}
-//                     editedName={editedName}
-//                     setEditedName={setEditedName}
-//                     description={description}
-//                     setDescription={setDescription}
-//                 />
-//             )}
-//         </section>
-//     )
-// }
 

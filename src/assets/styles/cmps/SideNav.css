@@ -4,50 +4,11 @@
     grid-column: 1;
     border-radius: var(--spacerem-s);
     background-color: var(--clr4);
-
-    .button-playlist {
-        margin: 25px 0px 0px 12px;
-
-        .playlist {
-            border-radius: 9999px;
-            background-color: white;
-            color: black;
-            font-weight: 400;
-            margin-inline-start: 1px;
-        }
-    }
+    grid-area: sidenav;
 
     *> {
         width: calc(100% - 2 * var(--spacepx-s));
         margin: 0 auto;
-    }
-
-    .header-input {
-        margin: 7px 0px 0px 13px;
-
-        .input-svg-container {
-            position: relative;
-
-            >:nth-child(1) {
-                position: absolute;
-                height: 15px;
-                width: 15px;
-                top: 7px;
-                color: white;
-                left: 5px;
-                margin-inline-start: 7px;
-            }
-        }
-
-        input {
-            color: whitesmoke;
-            padding: 0 0.8rem 0 3rem;
-            font-size: 0.85rem;
-            border-radius: 4px;
-            height: 30px;
-            background-color: #242424;
-            border: none;
-        }
     }
 
     &.collapsed {
@@ -107,20 +68,20 @@
         .sidenav-header {
             justify-content: space-between;
             align-items: start;
-            height: 2.25rem;
             padding: 12px var(--spacepx-sm) calc(var(--spacepx-sm) / 2);
 
             .btn-sidenav-toggle {
                 font-size: var(--spacerem-sm);
                 padding: var(--spacepx-s);
-                margin: 0;
+                margin: 0px 0 0 -6px;
                 font-weight: bold;
                 background-color: transparent;
+
             }
 
             .btn-create-station {
                 justify-content: space-evenly;
-                border-radius: var(--spacerem-sm);
+                border-radius: calc(var(--spacerem-sm) *2);
                 width: calc(var(--spacepx-sm) * 5);
                 margin: 0 8px 0 0;
                 width: 100px;
@@ -128,24 +89,74 @@
                 height: 2.25rem;
                 padding: 0.5rem 1rem;
                 background-color: var(--clr2);
+                gap: 6px;
+
 
                 svg {
-                    margin-inline-end: calc(var(--spacerem-sm) / 4);
                     width: 16px;
                     flex-shrink: 0;
+                }
+
+                .btn-create-station-text {
+                    display: grid;
+                    font-size: 12px;
+                    align-items: center;
                 }
 
                 &:hover {
                     transition: 0.3s;
                     background-color: var(--clr1)
                 }
+
             }
 
+        }
+
+        .button-playlist {
+            margin: 0px 0px 4px 10px;
+
+            .playlist {
+                padding: 8px 10px;
+                border-radius: 9999px;
+                background-color: white;
+                color: black;
+                font-weight: 400;
+            }
         }
 
         .sidenav-filter-sort {
             height: 34px;
             justify-content: space-between;
+        }
+
+        .header-input {
+            margin: 0px 0px 0px 16px;
+
+            .input-svg-container {
+                position: relative;
+
+                >:nth-child(1) {
+                    position: absolute;
+                    height: 15px;
+                    width: 15px;
+                    top: 7px;
+                    color: white;
+                    left: 5px;
+                    margin-inline-start: 4px;
+                }
+            }
+
+            input {
+                color: whitesmoke;
+                width: 46%;
+                height: 32px;
+                padding: 0 0px 0 32px;
+                border-radius: 4px;
+
+                font-size: 0.85rem;
+                background-color: #242424;
+                border: none;
+            }
         }
 
     }
