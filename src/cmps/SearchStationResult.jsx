@@ -1,50 +1,54 @@
-export function SearchStationResult({ videos = [], onVideoClick, onAddSong }) {
-    if (!Array.isArray(videos)) videos = []
+import { useDispatch } from "react-redux";
+import { addSong } from "../store/actions/player.actions";
 
-    return (
-        <section className="songs-list grid">
-            {videos.map((video, index) => (
-                <div
-                    key={video.id || index}
-                    className="songs-list-row grid video-item"
-                    onClick={() => onVideoClick(video)}
-                >
-                    <div className="song-list-number-res">{index + 1}</div>
+export function SearchStationResult({ videos = [], onVideoClick }) {
+  const dispatch = useDispatch();
+  const safeVideos = Array.isArray(videos) ? videos : [];
 
-                    <div className="song-list-title-res flex">
-                        <img
-                            src={video.thumbnail}
-                            alt={video.title}
-                            className="song-img"
-                            width="40"
-                            height="40"
-                        />
-                        <div className="song-info-text-res grid">
-                            <span className="song-title">{video.title}</span>
-                            {video.artist && <span className="song-artist">{video.artist}</span>}
-                        </div>
-                    </div>
+  return (
+    <section className="songs-list grid">
+      {safeVideos.map((video, index) => (
+        <div
+          key={video.id || index}
+          className="songs-list-row grid video-item"
+          onClick={() => onVideoClick(video)}
+        >
+          <div className="song-list-number-res">{index + 1}</div>
 
-                    <div className="song-list-album-res">{video.album || "--"}</div>
+          <div className="song-list-title-res flex">
+            <img
+              src={video.thumbnail}
+              alt={video.title}
+              className="song-img"
+              width="40"
+              height="40"
+            />
+            <div className="song-info-text-res grid">
+              <span className="song-title">{video.title}</span>
+              {video.artist && <span className="song-artist">{video.artist}</span>}
+            </div>
+          </div>
 
-                    <div className="song-list-duration-res">{video.duration || "--:--"}</div>
+          <div className="song-list-album-res">{video.album || "--"}</div>
+          <div className="song-list-duration-res">{video.duration || "--:--"}</div>
 
-                    <div className="hover-btns-actions-res flex">
-                        <button
-                            className="btn-song-add"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                onAddSong(video);
-                            }}
-                        >
-                            Add
-                        </button>
-                    </div>
-                </div>
-            ))}
-        </section>
-    )
+          <div className="hover-btns-actions-res flex">
+            <button
+  className="btn-song-add"
+  onClick={(e) => {
+    e.stopPropagation();
+    dispatch(addSong(video)); 
+  }}
+>
+  Add
+</button>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
 }
+
 
 
 
