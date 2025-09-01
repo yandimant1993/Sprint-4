@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from 'react-redux'
+import { useNavigate } from "react-router-dom"
 
 import { addStation, setFilter } from '../store/actions/station.actions'
 import { SideNavHeader } from "./SideNavHeader"
@@ -8,7 +9,6 @@ import { SortStation } from "./SortStation"
 import { StationFilter } from "./StationFilter"
 import { UserStationList } from "./UserStationList"
 import { stationService } from "../services/station"
-import { useNavigate } from "react-router"
 import { userService } from "../services/user"
 
 export function SideNav() {

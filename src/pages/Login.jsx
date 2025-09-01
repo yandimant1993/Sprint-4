@@ -1,6 +1,4 @@
-import { Outlet, useNavigate } from 'react-router'
-import { NavLink } from 'react-router-dom'
-
+import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import { userService } from '../services/user'

@@ -1,51 +1,43 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { removeSong, setCurrentSong } from '../store/actions/player.actions';
+import { useSelector } from 'react-redux'
 import { useState } from "react"
-import { Svgs } from "./Svgs"
+import {
+   removeSong,
+   setCurrentSong,
+   setIsPlaying,
+   setCurrentStation
+} from '../store/actions/player.actions'
+import { truncateWords, getRelativeTime } from '../services/util.service'
 import { userService } from '../services/user'
+import { Svgs } from "./Svgs"
 
+export function StationSongsList({ onToggleLikedSong, songs, onRemoveSong }) {
+   const currentStation = useSelector(state => state.playerModule.currentStation)
+   const currentSong = useSelector(state => state.playerModule.currentSong)
+   const isPlaying = useSelector(state => state.playerModule.isPlaying)
 
-export function StationSongsList({ onToggleLikedSong, onSelectSong, songs, isPlaying, onPlayPause }) {
    const [hoveredIndex, setHoveredIndex] = useState(null)
-   const dispatch = useDispatch()
    const user = userService.getLoggedinUser()
 
    function isLiked(songId) {
       return user?.likedSongs?.some(likedSong => likedSong.id === songId)
    }
 
-
    function handleRemove(songId) {
-      dispatch(removeSong(songId))
+      removeSong(songId)
    }
 
-
-   function handleSongClick(song) {
-      if (onSelectSong) onSelectSong(song.youtubeVideoId)
-      dispatch(setCurrentSong(song))
+   function handleSongClick(song, station) {
+      if (currentSong?.id === song.id && currentStation?._id === station._id) {
+         // toggle play/pause if the same song/station
+         setIsPlaying(!isPlaying)
+      } else {
+         // switch song + station and play
+         setCurrentStation(station)
+         setCurrentSong(song)
+         setIsPlaying(true)
+      }
    }
-
-   function truncateWords(text, limit) {
-      if (!text) return ""
-      const words = text.split(" ")
-      if (words.length <= limit) return text
-      return words.slice(0, limit).join(" ") + "..."
-   }
-
-   function getRelativeTime(dateStr) {
-      const date = new Date(dateStr)
-      const diff = Date.now() - date.getTime()
-      const minutes = Math.floor(diff / 1000 / 60)
-      if (minutes < 1) return 'just now'
-      if (minutes < 60) return `${minutes} min ago`
-      const hours = Math.floor(minutes / 60)
-      if (hours < 24) return `${hours} hours ago`
-      const days = Math.floor(hours / 24)
-      return `${days} day${days > 1 ? 's' : ''} ago`
-   }
-
-   console.log('songs:', songs)
-   console.log('Check youtubeVideoIds:', songs.map(s => s.youtubeVideoId))
+   
    return (
       <section className="songs-list grid">
          <div className="songs-list-header grid">
@@ -55,64 +47,73 @@ export function StationSongsList({ onToggleLikedSong, onSelectSong, songs, isPla
             <div className="song-list-date">Date Added</div>
             <div className="song-list-duration">{Svgs.durationIcon}</div>
          </div>
-         {songs.map((song, index) => (
-            <div
-               className="songs-list-row grid"
-               key={song.youtubeVideoId}
-               onMouseEnter={() => setHoveredIndex(index)}
-               onMouseLeave={() => setHoveredIndex(null)}
-               onClick={() => handleSongClick(song)}
-            >
-               <div className="song-list-number">
-                  {hoveredIndex === index ? Svgs.play : index + 1}
-               </div>
 
-               <div className="song-list-title flex">
-                  <img src={song.imgUrl} alt={song.title} width="40" height="40" className="song-img" />
-                  <div className="song-info-text grid">
-                     <span className="song-title">{truncateWords(song.title, 10)}</span>
-                     <span className="song-artist">{song.artist}</span>
+         {songs.map((song, index) => {
+            const isActive = currentSong?.id === song.id && currentStation
+            return (
+               <div
+                  className={`songs-list-row grid ${isActive ? 'active' : ''}`}
+                  key={song.youtubeVideoId}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleSongClick(song, song.station)}
+               >
+                  <div className="song-list-number">
+                     {isActive && isPlaying
+                        ? Svgs.equalizer
+                        : hoveredIndex === index
+                           ? Svgs.play
+                           : index + 1}
+                  </div>
+
+                  <div className="song-list-title flex">
+                     <img src={song.imgUrl} alt={song.title} width="40" height="40" className="song-img" />
+                     <div className="song-info-text grid">
+                        <span className="song-title">{truncateWords(song.title, 10)}</span>
+                        <span className="song-artist">{song.artist}</span>
+                     </div>
+                  </div>
+                  <div className="song-list-album">{song.album}</div>
+                  <div className="song-list-date">{getRelativeTime(song.dateAdded)}</div>
+                  <div className="song-list-duration">{song.duration || '--:--'}</div>
+
+                  <div className="hover-btns-actions flex">
+                     {isLiked(song.id) ? (
+                        <button
+                           className="btn-song-toggle-liked check-positive"
+                           onClick={(e) => {
+                              e.stopPropagation()
+                              onToggleLikedSong(song)
+                           }}
+                        >
+                           {Svgs.checkIcon}
+                        </button>
+                     ) : (
+                        <button
+                           className="btn-song-toggle-liked"
+                           onClick={(e) => {
+                              e.stopPropagation()
+                              onToggleLikedSong(song)
+                           }}
+                        >
+                           {Svgs.addIcon}
+                        </button>
+                     )}
+                     <button
+                        className="btn-song-remove"
+                        onClick={(e) => {
+                           e.stopPropagation()
+                           handleRemove(song.id)
+                        }}
+                     >
+                        {Svgs.threeDotsIcon}
+                     </button>
                   </div>
                </div>
-               <div className="song-list-album">{song.album}</div>
-               <div className="song-list-date">{getRelativeTime(song.dateAdded)}</div>
-               <div className="song-list-duration">{song.duration || '--:--'}</div>
-               <div className="hover-btns-actions flex">
-                  {isLiked(song.id) ? (
-                     <button
-                        className="btn-song-toggle-liked check-positive"
-                        onClick={(e) => {
-                           e.stopPropagation()
-                           onToggleLikedSong(song)
-                        }}
-                     >
-                        {Svgs.checkIcon}
-                     </button>
-                  ) : (
-                     <button
-                        className="btn-song-toggle-liked"
-                        onClick={(e) => {
-                           e.stopPropagation()
-                           onToggleLikedSong(song)
-                        }}
-                     >
-                        {Svgs.addIcon}
-                     </button>
-                  )}
-                  <button
-                     className="btn-song-remove"
-                     onClick={(e) => {
-                        e.stopPropagation()
-                        handleRemove(song.id)
-                     }}
-                  >
-                     {Svgs.threeDotsIcon}
-                  </button>
-               </div>
-            </div>
-         ))}
+            )
+         })}
       </section>
-   );
+   )
 }
 
 

@@ -1,5 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
-import { useNavigate } from 'react-router'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
