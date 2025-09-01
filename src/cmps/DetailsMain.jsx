@@ -128,7 +128,6 @@
 
 
 import { useState } from "react"
-
 import { ContextMenu } from "./ContextMenu"
 import { StationSongsList } from "./StationSongsList"
 
@@ -196,7 +195,7 @@ export function DetailsMain({
                 </div>
             )}
 
-            <StationSongsList songs={songs} onRemoveSong={onRemoveSong} onToggleLikedSong={onToggleLikedSong} />
+            <StationSongsList songs={songs} onRemoveSong={onRemoveSong} onToggleLikedSong={onToggleLikedSong} onPlayPause={onPlayPause} isPlaying={isPlaying} />
         </>
     )
 }

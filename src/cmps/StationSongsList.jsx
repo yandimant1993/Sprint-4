@@ -5,9 +5,8 @@ import { Svgs } from "./Svgs"
 import { userService } from '../services/user'
 
 
-export function StationSongsList({ onToggleLikedSong, onSelectSong,songs }) {
+export function StationSongsList({ onToggleLikedSong, onSelectSong, songs, isPlaying, onPlayPause }) {
    const [hoveredIndex, setHoveredIndex] = useState(null)
-   // const songs = useSelector(state => state.playerModule.songs || [])
    const dispatch = useDispatch()
    const user = userService.getLoggedinUser()
 
@@ -26,6 +25,13 @@ export function StationSongsList({ onToggleLikedSong, onSelectSong,songs }) {
       dispatch(setCurrentSong(song))
    }
 
+   function truncateWords(text, limit) {
+      if (!text) return ""
+      const words = text.split(" ")
+      if (words.length <= limit) return text
+      return words.slice(0, limit).join(" ") + "..."
+   }
+
    function getRelativeTime(dateStr) {
       const date = new Date(dateStr)
       const diff = Date.now() - date.getTime()
@@ -37,8 +43,9 @@ export function StationSongsList({ onToggleLikedSong, onSelectSong,songs }) {
       const days = Math.floor(hours / 24)
       return `${days} day${days > 1 ? 's' : ''} ago`
    }
-   
-   console.log('songs:',songs)
+
+   console.log('songs:', songs)
+   console.log('Check youtubeVideoIds:', songs.map(s => s.youtubeVideoId))
    return (
       <section className="songs-list grid">
          <div className="songs-list-header grid">
@@ -51,7 +58,7 @@ export function StationSongsList({ onToggleLikedSong, onSelectSong,songs }) {
          {songs.map((song, index) => (
             <div
                className="songs-list-row grid"
-               key={song.id || index}
+               key={song.youtubeVideoId}
                onMouseEnter={() => setHoveredIndex(index)}
                onMouseLeave={() => setHoveredIndex(null)}
                onClick={() => handleSongClick(song)}
@@ -59,10 +66,11 @@ export function StationSongsList({ onToggleLikedSong, onSelectSong,songs }) {
                <div className="song-list-number">
                   {hoveredIndex === index ? Svgs.play : index + 1}
                </div>
+
                <div className="song-list-title flex">
                   <img src={song.imgUrl} alt={song.title} width="40" height="40" className="song-img" />
                   <div className="song-info-text grid">
-                     <span className="song-title">{song.title}</span>
+                     <span className="song-title">{truncateWords(song.title, 10)}</span>
                      <span className="song-artist">{song.artist}</span>
                   </div>
                </div>
