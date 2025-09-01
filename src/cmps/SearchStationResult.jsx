@@ -8,33 +8,28 @@ export function SearchStationResult({ videos = [], onVideoClick,stationId  }) {
   const safeVideos = Array.isArray(videos) ? videos : [];
 
   return (
-    <section className="songs-list grid">
+    <section className="songs-list-res grid">
       {safeVideos.map((video, index) => (
         <div
           key={video.id || index}
-          className="songs-list-row grid video-item"
+          className="songs-list-row-res grid video-item"
           onClick={() => onVideoClick(video)}
         >
-          <div className="song-list-number-res">{index + 1}</div>
-
-          <div className="song-list-title-res flex">
+          <div className="song-list-snippet-res grid">
             <img
               src={video.thumbnail}
               alt={video.title}
-              className="song-img"
+              className="song-img-res"
               width="40"
               height="40"
             />
             <div className="song-info-text-res grid">
-              <span className="song-title">{video.title}</span>
-              {video.artist && <span className="song-artist">{video.artist}</span>}
+              <span className="song-title-res">{video.title}</span>
+              {video.artist && <span className="song-artist-res">{video.artist}</span>}
             </div>
           </div>
-
           <div className="song-list-album-res">{video.album || "--"}</div>
-          <div className="song-list-duration-res">{video.duration || "--:--"}</div>
-
-          <div className="hover-btns-actions-res flex">
+          <div className="btn-add-song-res flex">
             <button
   className="btn-song-add"
   onClick={(e) => {

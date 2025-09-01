@@ -1,7 +1,7 @@
 .details-search-container {
     width: 100%;
     height: fit-content;
-    padding: 0 24px 24px 24px;
+    padding: 0 0px 0px 24px;
     margin-block-start: -22px;
 
     .search-welcome-header {
@@ -46,6 +46,49 @@
 
         &::placeholder {
             color: #b3b3b3;
+        }
+
+    }
+
+    .songs-list-res {
+        width: 100%;
+
+        .songs-list-row-res {
+            position: relative;
+            grid-template-columns: 790px 500px 1fr;
+            grid-auto-flow: column;
+            gap: var(--spacepx-sm);
+            border-radius: 4px;
+            cursor: pointer;
+            padding-inline-start: 8px;
+
+            .song-list-snippet-res {
+                grid-auto-flow: column;
+                grid-template-columns: auto 1fr;
+                gap: 16px;
+
+                .song-img-res {
+                    outline: 1px solid aqua;
+                }
+
+                .song-info-text-res {
+
+                    .song-title-res {
+                        line-height: 1.2;
+                    }
+
+                    .song-artist-res {
+                        line-height: 1.2;
+                    }
+                }
+
+                .song-list-album-res {}
+
+                .btn-add-song-res {
+                    justify-self: end;
+                }
+
+            }
         }
     }
 }

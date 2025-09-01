@@ -19,7 +19,7 @@ export function UserStationList({ stations, isExpanded, likedStation }) {
     return (
         <ul className="user-list">
             <li className={`user-station ${isExpanded ? 'collapsed' : ''}`} key={likedStation._id} onClick={() => onNavigate(likedStation)}>
-                <img src={likedStation.stationImgUrl || './assets/img/liked-songs.jpg'} alt={likedStation.name} className="user-station-img" />
+                <img src={likedStation.stationImgUrl || './assets/img/liked-songs.jpg'} alt={likedStation.name || 'Playlist image'} className="user-station-img" />
                 {isExpanded && likedStation && (
                     <div className="user-station-details flex">
 
