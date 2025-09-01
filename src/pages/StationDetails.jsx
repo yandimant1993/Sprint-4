@@ -181,7 +181,11 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
   if (!station) return null
 
   const bgStyle = {
-    background: `linear-gradient(to bottom, rgba(141, 128, 128, 0.27), rgba(0, 0, 0, 0.75)), rgb(${bgColor[0]}, ${bgColor[1]}, ${bgColor[2]})`,
+    background: `linear-gradient(
+      to bottom,
+      rgba(${bgColor[0]}, ${bgColor[1]}, ${bgColor[2]}, 0.3),
+      rgba(0, 0, 0, 0.75)
+    )`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   }

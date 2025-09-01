@@ -20,7 +20,7 @@
 //     const isCreator = loggedinUser?._id === station.createdBy?._id
 //     const numOfSongs = station.songs?.length || 0
 //     const stationDuration = userService.getTotalSongsDuration(station)
-   
+
 //     useEffect(() => {
 //         const img = imgRef.current
 
@@ -238,7 +238,7 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
           description={description}
           setDescription={setDescription}
           dominantColor={dominantColor}
-          setDominantColor={() => {}}
+          setDominantColor={() => { }}
         />
       )}
     </section>
