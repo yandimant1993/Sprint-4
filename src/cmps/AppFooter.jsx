@@ -52,7 +52,7 @@ export function AppFooter({ searchedVideoId }) {
 		<footer className="app-footer full">
 			<div className="footer-content">
 				<div className="footer-left grid"><SongPreview /></div>
-				<div className="footer-center">
+				<div className="footer-center grid">
 					<Controller
 						player={playerRef.current}
 						currentTime={currentTime}
