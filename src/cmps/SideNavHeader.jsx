@@ -17,7 +17,7 @@ export function SideNavHeader({ setIsExpanded, isExpanded, createStation }) {
 				</button>
 			</section>
 			<div className="button-playlist">
-				<button className="playlist">PlayLists</button>
+				<button className="playlist btn">Playlists</button>
 			</div>
 			<div className="header-input">
 				<div className="input-svg-container">

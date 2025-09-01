@@ -126,9 +126,11 @@
             .playlist {
                 padding: 8px 10px;
                 border-radius: 9999px;
-                background-color: white;
-                color: black;
                 font-weight: 400;
+
+                &:hover {
+                    background-color: var(--clr1);
+                }
             }
         }
 
@@ -167,6 +169,9 @@
             }
         }
 
+        .sidenav-no-stations {
+            padding: 0 0 0 16px;
+        }
     }
 
 }

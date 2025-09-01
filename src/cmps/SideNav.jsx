@@ -45,7 +45,7 @@ export function SideNav() {
                 {/* <StationFilter filterBy={filterBy} onSetFilter={setFilter} /> */}
                 {/* <SortStation /> */}
             </div>
-            {(!userStations.length && !likedStation) ? <span>No playlists found</span> : <UserStationList stations={userStations} likedStation={likedStation} isExpanded={isExpanded} />}
+            {(!userStations.length && !likedStation) ? <span className="sidenav-no-stations">No playlists found</span> : <UserStationList stations={userStations} likedStation={likedStation} isExpanded={isExpanded} />}
         </section>
     )
 }
