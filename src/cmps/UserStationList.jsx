@@ -14,11 +14,16 @@ export function UserStationList({ stations, isExpanded, likedStation }) {
     function onNavigate(userStation) {
         navigate(`/station/${userStation._id}`)
     }
+    if (!likedStation) {
+        console.warn("likedStation prop is missing in UserStationList")
+        return null
+    }
 
-    console.log('likedStation: ',likedStation)
+    console.log('likedStation: ', likedStation)
     return (
         <ul className="user-list">
             <li className={`user-station ${isExpanded ? 'collapsed' : ''}`} key={likedStation._id} onClick={() => onNavigate(likedStation)}>
+                <img src={likedStation.stationImgUrl || './assets/img/liked-songs.jpg'} alt={likedStation.name || 'stationImage'} className="user-station-img" />
                 <img src={likedStation.stationImgUrl || './assets/img/liked-songs.jpg'} alt={likedStation.name || 'Playlist image'} className="user-station-img" />
                 {isExpanded && likedStation && (
                     <div className="user-station-details flex">

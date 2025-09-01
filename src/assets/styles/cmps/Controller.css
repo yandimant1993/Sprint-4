@@ -72,33 +72,31 @@
 
 .progress-fill,
 .volume-fill {
-    display: grid;
     position: absolute;
     top: 0;
-    left: 8px;
+    left: 0;
     bottom: 0;
     height: 100%;
     background-color: #ffffff;
     border-radius: 999px;
-    align-content: center;
-    justify-content: end;
 }
 
-.volume-fill{
+.volume-fill {
     left: 0;
 }
 
 .progress-fill::after,
 .volume-fill::after {
     content: "";
-    width: 13px;
-    height: 13px;
+    position: absolute;
     right: 0;
-    display: none;
-    background-color: rgb(255, 255, 255);
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 14px;
+    height: 14px;
+    background: #fff;
     border-radius: 50%;
 }
-
 
 .progress-bar:hover .progress-fill::after,
 .volume-bar:hover .volume-fill::after {
