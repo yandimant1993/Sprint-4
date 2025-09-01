@@ -21,11 +21,10 @@
 
         .sidenav-header {
             height: fit-content;
+            margin-block: 7px 16px;
+            gap: 16px;
             align-items: center;
             flex-direction: column;
-
-            margin-block: -2px 15px;
-            gap: 26px;
 
             .btn-create-station {
                 display: grid;
@@ -37,6 +36,7 @@
 
             :first-child {
                 height: calc(var(--spacerem-sm)*1.5);
+                background: transparent;
             }
 
             :nth-child(2) {
@@ -55,11 +55,19 @@
 
         .sidenav-filter-sort {
             height: 0;
+            margin: 0 0 20px 0;
         }
 
         .button-playlist,
         .header-input {
             display: none;
+        }
+
+        .user-list {
+            width: 90%;
+            margin: -22px auto;
+            padding: 0px;
+            justify-content: center;
         }
 
     }

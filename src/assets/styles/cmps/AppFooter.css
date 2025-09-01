@@ -49,6 +49,7 @@
 
             .current-song-title {
                 align-self: end;
+                color: var(--white);
             }
 
             .current-song-artist {
