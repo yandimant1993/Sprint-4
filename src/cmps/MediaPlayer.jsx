@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { useSelector } from "react-redux"
 import YouTube from 'react-youtube'
-import { setPlaying, setCurrentTime, setDuration } from "../store/actions/player.actions"
+import { setIsPlaying , setCurrentTime, setDuration } from "../store/actions/player.actions"
 
 export function MediaPlayer({ videoId: propVideoId, onReady, onTimeUpdate, onDurationChange }) {
 

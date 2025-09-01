@@ -55,10 +55,10 @@ export function AppFooter({ searchedVideoId }) {
 				<div className="footer-center grid">
 					<Controller
 						player={playerRef.current}
-						currentTime={currentTime}
-						duration={duration}
-						onTimeUpdate={handleTimeUpdate}
-						onProgressChange={handleProgressChange}
+						// currentTime={currentTime}
+						// duration={duration}
+						// onTimeUpdate={handleTimeUpdate}
+						// onProgressChange={handleProgressChange}
 						onNext={playNext}
 						onPrev={playPrev}
 					/>
