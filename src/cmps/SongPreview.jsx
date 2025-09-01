@@ -1,15 +1,15 @@
 import React from 'react'
+import { Svgs } from './Svgs'
 
 export function SongPreview() {
     const currentSong = {
-        title: "כנפיים | טונה מארח את מרגול | Coke Studio #1",
+        title: "כנפיים | טונה מארח את מרגול",
         artist: "Tuna",
         image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
     }
-
     return (
-        <div className="song-preview">
-            <div className="song-image">
+        <div className="current-song-container grid">
+            <div className="current-song-image">
                 <img
                     src={currentSong.image}
                     alt={currentSong.title}
@@ -18,14 +18,12 @@ export function SongPreview() {
                     }}
                 />
             </div>
-            <div className="song-info">
-                <div className="song-title">{currentSong.title}</div>
-                <div className="song-artist-container">
-                    <span className="song-artist">{currentSong.artist}</span>
-                    <button className="add-song-btn" title="Add to Library">
-                        <img src="/src/assets/spotify-icons/add-like.svg" alt="Add" />
-                    </button>
-                </div>
+            <div className="current-song-info grid">
+                <span className="current-song-title">{currentSong.title}</span>
+                <span className="current-song-artist">{currentSong.artist}</span>
+            </div>
+            <div className="btn-add-current-song grid">
+                {Svgs.addIcon}
             </div>
         </div>
     )

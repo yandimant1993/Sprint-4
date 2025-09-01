@@ -51,7 +51,7 @@ export function AppFooter({ searchedVideoId }) {
 	return (
 		<footer className="app-footer full">
 			<div className="footer-content">
-				<div className="footer-left"><SongPreview /></div>
+				<div className="footer-left grid"><SongPreview /></div>
 				<div className="footer-center">
 					<Controller
 						player={playerRef.current}

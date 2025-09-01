@@ -5,7 +5,6 @@
     justify-content: center;
 
     min-height: 5rem;
-    padding: 0 var(--spacepx-sm);
     background-color: #000000;
 }
 
@@ -25,6 +24,46 @@
     justify-content: flex-start;
     align-items: center;
     min-width: 0;
+
+    .current-song-container {
+        grid-auto-flow: column;
+        min-height: 56px;
+        margin-inline-start: 8px;
+        margin-block-end: 8px;
+        gap: 16px;
+
+        .current-song-image {
+            height: 56px;
+            width: 56px;
+
+            img {
+                height: 100%;
+                width: 100%;
+                border-radius: 4px;
+                object-fit: cover;
+            }
+        }
+
+        .current-song-info {
+
+            .current-song-title {
+                align-self: end;
+            }
+
+            .current-song-artist {
+                font-size: 0.875rem;
+            }
+        }
+
+        .btn-add-current-song {
+            height: 18px;
+            width: 18px;
+            margin: 0 0 0 6px;
+            padding: 0;
+            align-self: center;
+        }
+
+    }
 }
 
 .footer-center {
