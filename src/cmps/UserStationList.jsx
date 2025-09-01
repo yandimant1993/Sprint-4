@@ -15,6 +15,10 @@ export function UserStationList({ stations, isExpanded, likedStation }) {
     function onNavigate(userStation) {
         navigate(`/station/${userStation._id}`)
     }
+    if (!likedStation) {
+        console.warn("likedStation prop is missing in UserStationList")
+        return null
+    }
 
     console.log('likedStation: ', likedStation)
     return (
