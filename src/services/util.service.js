@@ -51,3 +51,39 @@ export function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
 }
+
+  export function getRelativeTime(dateStr) {
+      const date = new Date(dateStr)
+      const diff = Date.now() - date.getTime()
+      const seconds = Math.floor(diff / 1000)
+      const minutes = Math.floor(seconds / 60)
+      const hours = Math.floor(minutes / 60)
+      const days = Math.floor(hours / 24)
+      const years = Math.floor(days / 365)
+
+      if (years > 0) return `${years} year${years > 1 ? 's' : ''} ago`
+      if (days > 30) return `${Math.floor(days / 30)} month${Math.floor(days / 30) > 1 ? 's' : ''} ago`
+      if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`
+      if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`
+      if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
+      return `just now`
+   }
+
+//    export  function getRelativeTime(dateStr) {
+//       const date = new Date(dateStr)
+//       const diff = Date.now() - date.getTime()
+//       const minutes = Math.floor(diff / 1000 / 60)
+//       if (minutes < 1) return 'just now'
+//       if (minutes < 60) return `${minutes} min ago`
+//       const hours = Math.floor(minutes / 60)
+//       if (hours < 24) return `${hours} hours ago`
+//       const days = Math.floor(hours / 24)
+//       return `${days} day${days > 1 ? 's' : ''} ago`
+//    }
+
+export  function truncateWords(text, limit) {
+      if (!text) return ""
+      const words = text.split(" ")
+      if (words.length <= limit) return text
+      return words.slice(0, limit).join(" ") + "..."
+   }

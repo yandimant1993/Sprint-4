@@ -2,6 +2,7 @@ import { stationService } from '../../services/station'
 import { store } from '../store'
 import { ADD_STATION, REMOVE_STATION, SET_STATIONS, SET_STATION, UPDATE_STATION, ADD_STATION_MSG, SET_FILTER_BY } from '../reducers/station.reducer'
 
+// plural
 export async function loadStations() {
     try {
         const { filterBy } = store.getState().stationModule
@@ -13,6 +14,7 @@ export async function loadStations() {
     }
 }
 
+// singular
 export async function loadStation(stationId) {
     try {
         const station = await stationService.getById(stationId)
@@ -48,6 +50,7 @@ export async function updateStation(station) {
     try {
         const savedStation = await stationService.save(station)
         store.dispatch(getCmdUpdateStation(savedStation))
+        console.log('savedStation: ',savedStation)
         return savedStation
     } catch (err) {
         console.log('Cannot save station', err)

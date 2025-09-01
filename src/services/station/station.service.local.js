@@ -4,7 +4,6 @@ import { makeId } from '../util.service'
 import { userService } from '../user'
 
 const STORAGE_KEY = 'station'
-// const USER_STATION_KEY = 'user'
 
 export const stationService = {
     query,
@@ -15,6 +14,7 @@ export const stationService = {
     getUserStations,
     removeSong,
     addSong,
+    toggleLikedSongs
 }
 window.cs = stationService
 
@@ -52,23 +52,9 @@ async function getById(stationId) {
     }
 }
 
-// async function getById(stationId) {
-//     if (!stationId) throw new Error('Station ID is required')
-//     try {
-//         const station = await storageService.get(STORAGE_KEY, stationId)
-//         if (station) return station
-//     } catch { }
-//     try {
-//         const station = await storageService.get(USER_STATION_KEY, stationId)
-//         if (station) return station
-//     } catch { }
-
-//     throw new Error(`Station with ID ${stationId} not found in system or user stations`)
-// }
-
 async function getUserStations() {
-    const { _id: userId } = userService.getLoggedinUser()
     try {
+        const { _id: userId } = userService.getLoggedinUser()
         const stations = await query()
         const userStations = stations.filter(station => station.createdBy._id === userId)
         return userStations
@@ -85,29 +71,50 @@ async function remove(stationId) {
     }
 }
 
-// async function remove(stationId, type = 'system') {
-//     const key = type === 'system' ? STORAGE_KEY : USER_STATION_KEY
-//     try {
-//         await storageService.remove(key, stationId)
-//     } catch (err) {
-//         throw new Error(`Remove failed, cannot find entity with id: ${stationId} in: ${key}`)
-//     }
-// }
+async function toggleLikedSongs(song) {
+    const loggedinUser = userService.getLoggedinUser()
+    if (!loggedinUser) throw new Error('No logged-in user found')
+    const user = await storageService.get('user', loggedinUser._id)
+    if (!user.likedSongIds) user.likedSongIds = []
+    console.log('song: ', song)
+    console.log('song.id: ', song.id)
+    // const songIdx = user.likedSongIds.findIndex(likedSong => likedSong.id === song.id)
+    const isLiked = user.likedSongIds.includes(song.id)
+    if (isLiked) {
+        user.likedSongIds = user.likedSongIds.filter(sId => sId !== song.id)
+        console.log(`Removed "${song.title}" from likedSongIds`)
+    } else {
+        user.likedSongIds.push(song.id)
+        console.log(`Added "${song.title}" to likedSongIds`)
+    }
 
-async function removeSong(songId, stationId) {
-    const station = await getById(stationId) // get all the stations
+    const updatedUser = await storageService.put('user', user)
+    const method = isLiked ? 'removeSong' : 'addSong'
+    const savedStation = await stationService[method](song, loggedinUser.likedStationId)
+    userService.saveLoggedinUser(updatedUser)
+
+    return savedStation
+}
+
+async function removeSong(song, stationId) {
+    console.log('stationId: ', stationId)
+    const station = await getById(stationId)
     console.log('station', station)
-    station.songs = station.songs.filter(song => song.id !== songId)
+    station.songs = station.songs.filter(s => s.id !== song.id)
     const savedStation = await save(station)
+    console.log('savedStation: ', savedStation)
     return savedStation
 }
 
 async function addSong(song, stationId) {
+    console.log('stationId: ', stationId)
+    console.log('song: ', song)
     const station = await getById(stationId)
     console.log('station', station)
     // if (!station) throw new Error('Station not found!')
     station.songs.push(song)
     const savedStation = await save(station)
+    console.log('savedStation: ', savedStation)
     return savedStation
 }
 
@@ -146,7 +153,7 @@ async function addStationMsg(stationId, txt) {
 async function _createStations() {
     try {
         let stations = await storageService.query(STORAGE_KEY) || []
-        if (stations.filter(({type}) => type !== 'liked').length > 0) return
+        if (stations.filter(({ type }) => type !== 'liked').length > 0) return
 
         stations.push(
             {

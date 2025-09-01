@@ -11,7 +11,7 @@ export const SET_IS_PLAYING = 'SET_IS_PLAYING'
 export const ADD_SONG = 'ADD_SONG'
 export const REMOVE_SONG = 'REMOVE_SONG'
 
-const savedSongs = JSON.parse(localStorage.getItem('songs') || '[]');
+// const savedSongs = JSON.parse(localStorage.getItem('songs') || '[]');
 
 const initialState = {
     isPlaying: false,
@@ -21,7 +21,7 @@ const initialState = {
     isMuted: false,
     player: null,
     currentStation: null,
-    songs: savedSongs,
+    // songs: savedSongs,
 }
 
 export function playerReducer(state = initialState, action = {}) {
@@ -29,9 +29,9 @@ export function playerReducer(state = initialState, action = {}) {
         case SET_PLAYER:
             return { ...state, player: action.player }
 
-        case SET_PLAYING:
-            if (state.player) action.isPlaying ? state.player.playVideo() : state.player.pauseVideo()
-            return { ...state, isPlaying: action.isPlaying }
+        // case SET_PLAYING:
+        //     if (state.player) action.isPlaying ? state.player.playVideo() : state.player.pauseVideo()
+        //     return { ...state, isPlaying: action.isPlaying }
 
         case SET_CURRENT_TIME:
             if (state.player) state.player.seekTo(action.time, true)

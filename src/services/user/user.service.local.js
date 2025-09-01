@@ -13,7 +13,6 @@ export const userService = {
     getLoggedinUser,
     saveLoggedinUser,
     getUserStations,
-    toggleLikedSongs
 }
 
 async function getUsers() {
@@ -89,36 +88,6 @@ function saveLoggedinUser(user) {
 
 function getUserStations(userId) {
     return getById(userId).then(user => user.stations || [])
-}
-
-async function toggleLikedSongs(song) {
-    const loggedinUser = getLoggedinUser()
-    console.log('loggedinUser: ', loggedinUser)
-    if (!loggedinUser) throw new Error('No logged-in user found')
-
-    const user = await storageService.get('user', loggedinUser._id)
-    if (!user.likedSongIds) user.likedSongIds = []
-
-    // const songIdx = user.likedSongIds.findIndex(likedSong => likedSong.id === song.id)
-    const isLiked = user.likedSongIds.includes(song.id)
-    console.log('isLiked: ', isLiked)
-
-    if (isLiked) {
-        user.likedSongIds = user.likedSongIds.filter(sId => sId !== song.id)
-        console.log(`Removed "${song.title}" from likedSongIds`)
-    } else {
-        user.likedSongIds.push(song.id)
-        console.log(`Added "${song.title}" to likedSongIds`)
-    }
-
-    console.log('user: ', user)
-
-    const updatedUser = await storageService.put('user', user)
-    const method = isLiked ? 'removeSong' : 'addSong'
-    const savedStation = await stationService[method](song, loggedinUser.likedStationId)
-    saveLoggedinUser(updatedUser)
-
-    return savedStation
 }
 
 // To quickly create an admin user, uncomment the next line
