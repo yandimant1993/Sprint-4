@@ -214,7 +214,6 @@ export function StationDetails({ onSelectVideo, videos, handleVideoClick }) {
       />
 
       <br />
-      <h1>Let's find something for your playlist</h1>
       <SearchDetailsSongs onSelectVideo={onSelectVideo} stationId={stationId} />
       {/* <SearchStationResult videos={videos} onVideoClick={handleVideoClick} stationId={stationId} /> */}
     </section>

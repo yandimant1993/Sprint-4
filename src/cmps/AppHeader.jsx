@@ -5,14 +5,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { setFilter } from '../store/actions/station.actions'
+import { userService } from '../services/user'
 import { SearchStationSongs } from './SearchStationSong'
 
-
 export function AppHeader({ onSelectVideo }) {
-	const user = null 
-	const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
-
 	const navigate = useNavigate()
+	const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
+	const user = userService.getLoggedinUser()
 
 	async function onLogout() {
 		try {

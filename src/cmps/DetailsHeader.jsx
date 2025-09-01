@@ -162,13 +162,13 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
   const isCreator = loggedinUser?._id === station.createdBy?._id
   const numOfSongs = station.songs?.length || 0
   const stationDuration = userService.getTotalSongsDuration(station)
+  const headerBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.75)), rgb(${dominantColor.join(',')})`
 
   useEffect(() => {
     setEditedName(station.name || '')
     setDescription(station.description || '')
   }, [station])
 
-  const headerBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.75)), rgb(${dominantColor.join(',')})`
 
   async function handleSave(ev) {
     ev?.preventDefault?.()
@@ -219,10 +219,15 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
         </div>
         <div className="station-creator flex">
           <p className="station-details-info">
-            <span className="station-creator-name">{creatorName}&nbsp;•&nbsp;</span>
-            <span className="station-info">
-              {numOfSongs} {numOfSongs === 1 ? 'Song' : 'Songs'}, {stationDuration}
-            </span>
+            <span className="station-creator-name">{creatorName}</span>
+            {numOfSongs > 0 && (
+              <>
+                <span className="station-creator-name">&nbsp;•&nbsp;</span>
+                <span className="station-info">
+                  {numOfSongs} {numOfSongs === 1 ? 'Song' : 'Songs'}, {stationDuration}
+                </span>
+              </>
+            )}
           </p>
         </div>
       </div>
