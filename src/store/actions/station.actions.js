@@ -1,6 +1,6 @@
 import { stationService } from '../../services/station'
 import { store } from '../store'
-import { ADD_STATION, REMOVE_STATION, SET_STATIONS, SET_STATION, UPDATE_STATION, ADD_STATION_MSG, SET_FILTER_BY } from '../reducers/station.reducer'
+import { ADD_STATION, REMOVE_STATION, SET_STATIONS, SET_STATION, UPDATE_STATION, SET_FILTER_BY, ADD_STATION_SONG, REMOVE_STATION_SONG } from '../reducers/station.reducer'
 
 // plural
 export async function loadStations() {
@@ -48,21 +48,32 @@ export async function addStation(station) {
 
 export async function updateStation(station) {
     try {
-        const savedStation = await stationService.save(station)
-        store.dispatch(getCmdUpdateStation(savedStation))
-        console.log('savedStation: ',savedStation)
-        return savedStation
+        // const savedStation = await stationService.save(station)
+        store.dispatch(getCmdUpdateStation(station))
+        console.log('savedStation: ',station)
+        return station
     } catch (err) {
         console.log('Cannot save station', err)
         throw err
     }
 }
 
-export async function addStationMsg(stationId, txt) {
+export async function addStationSong(stationId, song) {
     try {
-        const msg = await stationService.addStationMsg(stationId, txt)
-        store.dispatch(getCmdAddStationMsg(msg))
-        return msg
+        const addedSong = await stationService.addSong(stationId, song)
+        store.dispatch(getCmdAddStationSong(addedSong))
+        return addedSong
+    } catch (err) {
+        console.log('Cannot add station msg', err)
+        throw err
+    }
+}
+
+export async function removeStationSong(stationId, songId) {
+    try {
+        const removedSongId = await stationService.removeSong(stationId, songId)
+        store.dispatch(getCmdRemoveStationSong(removedSongId))
+        return removedSongId
     } catch (err) {
         console.log('Cannot add station msg', err)
         throw err
@@ -104,10 +115,16 @@ function getCmdUpdateStation(station) {
         station
     }
 }
-function getCmdAddStationMsg(msg) {
+function getCmdAddStationSong(song) {
     return {
-        type: ADD_STATION_MSG,
-        msg
+        type: ADD_STATION_SONG,
+        song
+    }
+}
+function getCmdRemoveStationSong(songId) {
+    return {
+        type: REMOVE_STATION_SONG,
+        songId
     }
 }
 

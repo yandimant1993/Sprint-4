@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getVideos } from "../services/player/youtube.service"
 import { SearchStationResult } from './SearchStationResult'
 
-export function SearchDetailsSongs({ onSelectVideo, stationId }) {
+export function SearchDetailsSongs({ addSong,onSelectVideo, stationId }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ term: '' })
     const [videos, setVideos] = useState([])
 
@@ -32,26 +32,27 @@ export function SearchDetailsSongs({ onSelectVideo, stationId }) {
 
     return (
         <section className="details-search-container">
-        <h1 className="search-welcome-header">Let's find something for your playlist</h1>
-        <div className="search-details-song">
-            <div className="search-details-input">
-                <img src="/src/assets/spotify-icons/search-iocn-input.svg" alt="Search" className="search-icon" />
-                <input
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Search for songs or episodes"
-                    className="search-details-input"
-                    name="term"
-                    value={filterByToEdit.term}
+            <h1 className="search-welcome-header">Let's find something for your playlist</h1>
+            <div className="search-details-song">
+                <div className="search-details-input">
+                    <img src="/src/assets/spotify-icons/search-iocn-input.svg" alt="Search" className="search-icon" />
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        placeholder="Search for songs or episodes"
+                        className="search-details-input"
+                        name="term"
+                        value={filterByToEdit.term}
                     />
-            </div>
+                </div>
 
-            <SearchStationResult
-                videos={videos}
-                onVideoClick={handleVideoClick}
-                stationId={stationId}
+                <SearchStationResult
+                    addSong={addSong}
+                    videos={videos}
+                    onVideoClick={handleVideoClick}
+                    stationId={stationId}
                 />
-        </div>
-                </section>
+            </div>
+        </section>
     )
 }

@@ -76,8 +76,8 @@ async function toggleLikedSongs(song) {
     if (!loggedinUser) throw new Error('No logged-in user found')
     const user = await storageService.get('user', loggedinUser._id)
     if (!user.likedSongIds) user.likedSongIds = []
-    console.log('song: ', song)
-    console.log('song.id: ', song.id)
+    // console.log('song: ', song)
+    // console.log('song.id: ', song.id)
     // const songIdx = user.likedSongIds.findIndex(likedSong => likedSong.id === song.id)
     const isLiked = user.likedSongIds.includes(song.id)
     if (isLiked) {
@@ -90,35 +90,30 @@ async function toggleLikedSongs(song) {
 
     const updatedUser = await storageService.put('user', user)
     const method = isLiked ? 'removeSong' : 'addSong'
-    const savedStation = await stationService[method](song, loggedinUser.likedStationId)
+    song = isLiked ? song.id : song
+    const savedStation = await stationService[method](loggedinUser.likedStationId, song)
     userService.saveLoggedinUser(updatedUser)
 
     return savedStation
 }
 
-async function removeSong(song, stationId) {
-    console.log('stationId: ', stationId)
+async function removeSong(stationId ,songId) {
     const station = await getById(stationId)
-    console.log('station', station)
-    station.songs = station.songs.filter(s => s.id !== song.id)
-    const savedStation = await save(station)
-    console.log('savedStation: ', savedStation)
-    return savedStation
+    station.songs = station.songs.filter(s => s.id !== songId)
+    await save(station)
+    return songId
 }
 
-async function addSong(song, stationId) {
-    console.log('stationId: ', stationId)
-    console.log('song: ', song)
+async function addSong(stationId, song) {
     const station = await getById(stationId)
-    console.log('station', station)
     // if (!station) throw new Error('Station not found!')
     station.songs.push(song)
-    const savedStation = await save(station)
-    console.log('savedStation: ', savedStation)
-    return savedStation
+    await save(station)
+    return song
 }
 
 async function save(station) {
+    console.log('station',station)
     const { _id, fullname, imgUrl } = userService.getLoggedinUser()
 
     try {

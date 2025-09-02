@@ -10,7 +10,7 @@ import { truncateWords, getRelativeTime } from '../services/util.service'
 import { userService } from '../services/user'
 import { Svgs } from "./Svgs"
 
-export function StationSongsList({ onToggleLikedSong, songs, onRemoveSong }) {
+export function StationSongsList({ onToggleLikedSong, songs, removeSong }) {
    const currentStation = useSelector(state => state.playerModule.currentStation)
    const currentSong = useSelector(state => state.playerModule.currentSong)
    const isPlaying = useSelector(state => state.playerModule.isPlaying)
@@ -19,7 +19,7 @@ export function StationSongsList({ onToggleLikedSong, songs, onRemoveSong }) {
    const user = userService.getLoggedinUser()
 
    function isLiked(songId) {
-      return user?.likedSongs?.some(likedSong => likedSong.id === songId)
+      return user?.likedSongsIds?.includes(songId)
    }
 
    function handleRemove(songId) {
