@@ -10,6 +10,8 @@ export const SET_IS_PLAYING = 'SET_IS_PLAYING'
 export const SET_IS_ACTIVE = 'SET_IS_ACTIVE'
 export const ADD_SONG = 'ADD_SONG'
 export const REMOVE_SONG = 'REMOVE_SONG'
+export const NEXT_SONG = 'NEXT_SONG'
+export const PREV_SONG = 'PREV_SONG'
 
 // const savedSongs = JSON.parse(localStorage.getItem('songs') || '[]');
 
@@ -17,14 +19,13 @@ const initialState = {
     isPlaying: false,
     isActive: false,
     isMuted: false,
-    currentSongs: [],
+    currentStationSongs: [],
     currentSong: {},
     currentTime: 0,
     duration: 0,
     currentIndex: 0,
     volume: 50,
-    player: null,
-    // currentStation: null,
+    // player: null,
 }
 
 export function playerReducer(state = initialState, action = {}) {
@@ -52,21 +53,26 @@ export function playerReducer(state = initialState, action = {}) {
             return { ...state, isMuted: !state.isMuted }
 
         case SET_CURRENT_STATION:
-            return { ...state, currentStation: action.station }
+            return { ...state, currentStationSongs: action.station }
 
         // case SET_CURRENT_SONG:
-        //     return { ...state, currentSong: action.song }
-
+        //     return {
+        //         ...state,
+        //         currentSong: action.song,
+        //         currentIndex: action.currentIndex ?? 0,
+        //         currentStationSongs: action.currentStationSongs,
+        //         isPlaying: action.isPlaying,
+        //         isActive: true,
+        //     }
         case SET_CURRENT_SONG:
+            console.log('action.song: ',action.song)
             return {
                 ...state,
-                currentSong: action.activeSong,
-                currentIndex: action.currentIndex,
-                currentStation: action.currentStation,
-                isPlaying: action.isPlaying,
+                currentSong: action.song
             }
 
         case SET_IS_PLAYING:
+            console.log('Hi')
             return { ...state, isPlaying: action.isPlaying }
 
         case SET_IS_ACTIVE:
@@ -83,6 +89,21 @@ export function playerReducer(state = initialState, action = {}) {
             localStorage.setItem('songs', JSON.stringify(filteredSongs));
             return { ...state, songs: filteredSongs };
 
+        case NEXT_SONG:
+            return {
+                ...state,
+                currentIndex: action.index,
+                activeSong: state.currentSongs[action.index] || {},
+                isActive: true,
+            }
+
+        case PREV_SONG:
+            return {
+                ...state,
+                currentIndex: action.index,
+                activeSong: state.currentSongs[action.index] || {},
+                isActive: true,
+            }
         default:
             return state
     }

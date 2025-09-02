@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
-import { prevSong, nextSong } from '../store/actions/player.actions'
+import { prevSong, nextSong, setPlayer } from '../store/actions/player.actions'
 import { SongPreview } from './SongPreview'
 import { MediaPlayer } from './MediaPlayer'
 import { Controller } from './Controller'
@@ -10,45 +10,49 @@ import { RightControls } from './RightControls'
 export function AppFooter({ searchedVideoId }) {
 	const playerRef = useRef(null)
 	// const { currentStation, currentSong, isPlaying, currentIndex, isActive } = useSelector(state => state.playerModule)
-	const { currentStation, isPlaying, isActive } = useSelector(state => state.playerModule)
+	const isActive = useSelector(state => state.playerModule.isActive)
+	const isPlaying = useSelector(state => state.playerModule.isPlaying)
+	const currentStation = useSelector(state => state.playerModule.currentStation)
+	const currentSong = useSelector(state => state.playerModule.currentSong)
+	console.log('currentSong: ',currentSong)
 	// const currentStation = useSelector(state => state.playerModule.currentStation)
-	// const currentSong = useSelector(state => state.playerModule.currentSong)
 	// const isPlaying = useSelector(state => state.playerModule.isPlaying)
 	// const currentIndex = useSelector(state => state.playerModule.currentIndex)
 	// console.log('player.store:', currentStation, currentSong, isPlaying, currentIndex);
-	const playlist = [
-		{ _id: '1', name: 'Song 1', youtubeVideoId: 'JCcwNwmxu44' },
-		{ _id: '2', name: 'Song 2', youtubeVideoId: 'dGy04XN9Spw' },
-		{ _id: '3', name: 'Song 3', youtubeVideoId: 'lP0EWIkQl1w' },
-	]
+	// const playlist = [
+	// 	{ _id: '1', name: 'Song 1', youtubeVideoId: 'JCcwNwmxu44' },
+	// 	{ _id: '2', name: 'Song 2', youtubeVideoId: 'dGy04XN9Spw' },
+	// 	{ _id: '3', name: 'Song 3', youtubeVideoId: 'lP0EWIkQl1w' },
+	// ]
 
-	const [videoToPlay, setVideoToPlay] = useState(searchedVideoId || playlist[0].youtubeVideoId)
+	// const [videoToPlay, setVideoToPlay] = useState(searchedVideoId || playlist[0].youtubeVideoId)
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
 	const [duration, setDuration] = useState(0)
 
-	const currentSong = playlist[currentIndex]
+	// const currentSong = playlist[currentIndex]
 
-	useEffect(() => {
-		const newVideo = searchedVideoId || currentSong.youtubeVideoId
-		if (newVideo !== videoToPlay) {
-			setVideoToPlay(newVideo)
-		}
-	}, [currentSong, currentStation])
+	// useEffect(() => {
+	// 	const newVideo = searchedVideoId || currentSong.youtubeVideoId
+	// 	if (newVideo !== videoToPlay) {
+	// 		setVideoToPlay(newVideo)
+	// 	}
+	// }, [currentSong, currentStation])
 
 	const handlePlayerReady = (playerInstance) => {
 		playerRef.current = playerInstance
+		setPlayer(playerInstance)
 	}
 
-	useEffect(() => {
-		if (playerRef.current && videoToPlay) {
-			const currentPlayerVideoId = playerRef.current.getVideoData()?.video_id
-			if (currentPlayerVideoId !== videoToPlay) {
-				playerRef.current.loadVideoById(videoToPlay)
-				playerRef.current.playVideo()
-			}
-		}
-	}, [videoToPlay])
+	// useEffect(() => {
+	// 	if (playerRef.current && videoToPlay) {
+	// 		const currentPlayerVideoId = playerRef.current.getVideoData()?.video_id
+	// 		if (currentPlayerVideoId !== videoToPlay) {
+	// 			playerRef.current.loadVideoById(videoToPlay)
+	// 			playerRef.current.playVideo()
+	// 		}
+	// 	}
+	// }, [videoToPlay])
 
 	const handleTimeUpdate = (time) => setCurrentTime(time)
 	const handleDurationChange = (videoDuration) => setDuration(videoDuration)
@@ -95,7 +99,7 @@ export function AppFooter({ searchedVideoId }) {
 			</div>
 
 			<MediaPlayer
-				videoId={videoToPlay}
+				videoId={currentSong.id}
 				onReady={handlePlayerReady}
 				onTimeUpdate={handleTimeUpdate}
 				onDurationChange={handleDurationChange}

@@ -3,33 +3,31 @@
 import { useState } from "react"
 import { useSelector } from 'react-redux'
 
-import { setIsPlaying, setCurrentStation } from '../store/actions/player.actions'
+import { setIsPlaying, setCurrentStation, setCurrentSong } from '../store/actions/player.actions'
 import { updateStation } from '../store/actions/station.actions'
 import { userService } from '../services/user'
 import { stationService } from "../services/station/station.service.local"
 import { StationSongsList } from "./StationSongsList"
 import { ContextMenu } from "./ContextMenu"
 import { Svgs } from '../cmps/Svgs'
+
 export function DetailsMain({
     station,
-    songs,
     removeSong,
     onDeleteStation,
     isDeleteModalOpen,
     setIsDeleteModalOpen,
     handleContextMenu
 }) {
-    const currentStation = useSelector(state => state.playerModule.currentStation)
-    const isPlaying = useSelector(state => state.playerModule.isPlaying)
+    const { currentStation, isPlaying } = useSelector(state => state.playerModule)
+
     const [menuOpen, setMenuOpen] = useState(false)
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 })
-    const handlePlayPause = () => {
-        if (currentStation?._id === station._id) {
-            setIsPlaying()
-        } else {
-            setCurrentStation(station)
-            setIsPlaying(true)
-        }
+
+    function handlePlayPause() {
+        setCurrentStation(station)
+        setCurrentSong(song, station.songs, index)
+        setIsPlaying(!isPlaying)
     }
 
     function handleContextMenu(ev) {
@@ -41,7 +39,6 @@ export function DetailsMain({
     async function onToggleLikedSong(song) {
         try {
             const updatedStation = await stationService.toggleLikedSongs(song)
-            // console.log('updatedStation: ', updatedStation)
             updateStation(updatedStation)
         } catch (err) {
             console.error('Failed to toggle liked song:', err)
@@ -90,7 +87,7 @@ export function DetailsMain({
                 </div>
             )}
 
-            <StationSongsList songs={station.songs} removeSong={removeSong} onToggleLikedSong={onToggleLikedSong} />
+            <StationSongsList station={station} removeSong={removeSong} onToggleLikedSong={onToggleLikedSong} />
         </>
     )
 }

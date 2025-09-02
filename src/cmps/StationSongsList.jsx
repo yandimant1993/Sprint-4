@@ -1,22 +1,20 @@
 import { useSelector } from 'react-redux'
 import { useState } from "react"
-import {
-   removeSong,
-   setCurrentSong,
-   setIsPlaying,
-   setCurrentStation
-} from '../store/actions/player.actions'
+import { setCurrentSong, setIsPlaying } from '../store/actions/player.actions'
 import { truncateWords, getRelativeTime } from '../services/util.service'
 import { userService } from '../services/user'
+import { stationService } from '../services/station'
 import { Svgs } from "./Svgs"
 
-export function StationSongsList({ onToggleLikedSong, songs, removeSong }) {
+export function StationSongsList({ onToggleLikedSong, station, removeSong }) {
    const currentStation = useSelector(state => state.playerModule.currentStation)
    const currentSong = useSelector(state => state.playerModule.currentSong)
    const isPlaying = useSelector(state => state.playerModule.isPlaying)
 
    const [hoveredIndex, setHoveredIndex] = useState(null)
+
    const user = userService.getLoggedinUser()
+   const songs = station.songs
 
    function isLiked(songId) {
       return user?.likedSongsIds?.includes(songId)
@@ -26,16 +24,15 @@ export function StationSongsList({ onToggleLikedSong, songs, removeSong }) {
       removeSong(songId)
    }
 
-   function handleSongClick(song, station) {
-      if (currentSong?.id === song.id && currentStation?._id === station._id) {
-         // toggle play/pause if the same song/station
-         setIsPlaying(!isPlaying)
-      } else {
-         // switch song + station and play
-         setCurrentStation(station)
-         setCurrentSong(song)
-         setIsPlaying(true)
-      }
+   // async function handleSongClick(station, song) {
+   //    await stationService.getSongFromStation(station._id, song.id)
+   //    const index = station.songs.findIndex(s => s.id === song.id)
+   //    setCurrentSong(song, station.songs, index)
+   //    setIsPlaying(!isPlaying)
+   // }
+
+   async function handleSongClick(song) {
+      setCurrentSong(song)
    }
 
    return (
@@ -53,10 +50,10 @@ export function StationSongsList({ onToggleLikedSong, songs, removeSong }) {
             return (
                <div
                   className={`songs-list-row grid ${isActive ? 'active' : ''}`}
-                  key={song.youtubeVideoId}
+                  key={song.id}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  onClick={() => handleSongClick(song, song.station)}
+                  onClick={() => handleSongClick(song)}
                >
                   <div className="song-list-number">
                      {isActive && isPlaying

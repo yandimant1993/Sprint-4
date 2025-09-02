@@ -10,11 +10,12 @@ export const stationService = {
     getById,
     save,
     remove,
-    addStationMsg,
+    // addStationMsg,
     getUserStations,
     removeSong,
     addSong,
-    toggleLikedSongs
+    toggleLikedSongs,
+    getSongFromStation
 }
 window.cs = stationService
 
@@ -97,7 +98,7 @@ async function toggleLikedSongs(song) {
     return savedStation
 }
 
-async function removeSong(stationId ,songId) {
+async function removeSong(stationId, songId) {
     const station = await getById(stationId)
     station.songs = station.songs.filter(s => s.id !== songId)
     await save(station)
@@ -113,7 +114,7 @@ async function addSong(stationId, song) {
 }
 
 async function save(station) {
-    console.log('station',station)
+    console.log('station', station)
     const { _id, fullname, imgUrl } = userService.getLoggedinUser()
 
     try {
@@ -130,20 +131,35 @@ async function save(station) {
     }
 }
 
-async function addStationMsg(stationId, txt) {
-    // Later, this is all done by the backend
-    const station = await getById(stationId)
+async function getSongFromStation(stationId, songId) {
+    try {
+        const station = await getById(stationId)
+        if (!station) throw new Error('Station not found')
 
-    const msg = {
-        id: makeId(),
-        by: userService.getLoggedinUser(),
-        txt
+        const songs = station.songs || []
+        const song = songs.find(s => s.id === songId)
+        if (!song) throw new Error('Song not found')
+            return {song, songs}
+    } catch (err) {
+        console.log('Error getting songs from station', err)
+        throw err
     }
-    station.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, station)
-
-    return msg
 }
+
+// async function addStationMsg(stationId, txt) {
+//     // Later, this is all done by the backend
+//     const station = await getById(stationId)
+
+//     const msg = {
+//         id: makeId(),
+//         by: userService.getLoggedinUser(),
+//         txt
+//     }
+//     station.msgs.push(msg)
+//     await storageService.put(STORAGE_KEY, station)
+
+//     return msg
+// }
 
 async function _createStations() {
     try {

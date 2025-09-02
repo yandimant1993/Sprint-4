@@ -110,7 +110,6 @@ import { setIsPlaying, setCurrentTime } from '../store/actions/player.actions'
 
 // export function MediaController({ onNext, onPrev }) {
 // const player = useSelector(state => state.playerModule.player)
-// const isPlaying = useSelector(state => state.playerModule.isPlaying)
 // const currentStation = useSelector(state => state.playerModule.currentStation)
 // const currentTime = useSelector(state => state.playerModule.currentTime)
 // const duration = useSelector(state => state.playerModule.duration)
@@ -123,20 +122,20 @@ import { setIsPlaying, setCurrentTime } from '../store/actions/player.actions'
 // export function MediaController({ activeSong, currentTime, duration, onProgressChange, onNext, onPrev, isPlaying }) {
 export function MediaController({ activeSong, currentTime, duration, onProgressChange, onNext, onPrev }) {
     const player = useSelector(storeState => storeState.playerModule.player)
+    const isPlaying = useSelector(state => state.playerModule.isPlaying)
 
-    const [isPlaying, setIsPlaying] = useState(false)
     const [isShuffled, setIsShuffled] = useState(false)
     const [isRepeating, setIsRepeating] = useState(false)
 
-    const ref = useRef(null)
+    // const ref = useRef(null)
 
-    if (ref.current) {
-        if (isPlaying) {
-            ref.current.play();
-        } else {
-            ref.current.pause();
-        }
-    }
+    // if (ref.current) {
+    //     if (isPlaying) {
+    //         ref.current.play();
+    //     } else {
+    //         ref.current.pause();
+    //     }
+    // }
 
     // useEffect(() => {
     //     if (!player) return
@@ -157,7 +156,6 @@ export function MediaController({ activeSong, currentTime, duration, onProgressC
     }
 
     function handlePlayPause() {
-        console.log('hi');
         setIsPlaying(!isPlaying)
     }
 
