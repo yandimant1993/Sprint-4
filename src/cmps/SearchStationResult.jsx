@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { stationService } from "../services/station";
 // import { userService } from "../services/user";
 
-export function SearchStationResult({ videos = [], onVideoClick,stationId  }) {
+export function SearchStationResult({ addSong , videos = [], onVideoClick,stationId  }) {
   const dispatch = useDispatch();
   const safeVideos = Array.isArray(videos) ? videos : [];
 
@@ -34,7 +34,7 @@ export function SearchStationResult({ videos = [], onVideoClick,stationId  }) {
   className="btn-song-add"
   onClick={(e) => {
     e.stopPropagation();
-   stationService.addSong(video,stationId)
+   addSong(video)
   }}
 >
   Add

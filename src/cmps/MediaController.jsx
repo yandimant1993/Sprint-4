@@ -146,6 +146,7 @@ export function MediaController({ onNext, onPrev }) {
     }
 
     function handlePlayPause() {
+        console.log('hi');
         setIsPlaying(!isPlaying)
     }
 
@@ -176,7 +177,7 @@ export function MediaController({ onNext, onPrev }) {
                     className="control-btn play-pause"
                     onClick={handlePlayPause}
                     title={isPlaying ? 'Pause' : 'Play'}
-                    disabled={!player || !currentSong}
+                    // disabled={!player || !currentSong}
                 >
                     {isPlaying ? (
                         <img src="/src/assets/spotify-icons/pause.svg" alt="Pause" />

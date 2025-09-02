@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import ColorThief from 'colorthief'
 
-import { loadStation, removeStation, updateStation } from '../store/actions/station.actions'
+import { addStationSong, loadStation, removeStation, removeStationSong, updateStation } from '../store/actions/station.actions'
 
 import { DetailsHeader } from '../cmps/DetailsHeader'
 import { DetailsMain } from '../cmps/DetailsMain'
@@ -16,16 +16,19 @@ export function StationDetails({ onSelectVideo }) {
   const station = useSelector(storeState => storeState.stationModule.station)
 
   const [bgColor, setBgColor] = useState([40, 40, 40])
-  const [songs, setSongs] = useState([])
+  // const [songs, setSongs] = useState([])
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
 
   useEffect(() => {
     loadStation(stationId)
-    console.log('StaionDetails rendered updated')
   }, [stationId])
 
+  // useEffect(() => {
+  //   if (station?.songs) setSongs(station.songs)
+  // }, [station?.songs])
+
   useEffect(() => {
-    if (station?.songs) setSongs(station.songs)
+    // if (station?.songs) setSongs(station.songs)
     if (!station?.stationImgUrl) return
     const img = new Image()
     img.crossOrigin = "anonymous"
@@ -39,7 +42,7 @@ export function StationDetails({ onSelectVideo }) {
         console.warn("Color extraction failed:", err)
       }
     }
-  }, [station?.stationImgUrl, station?.songs])
+  }, [station?.stationImgUrl])
 
   async function onDeleteStation() {
     if (!station?._id) return
@@ -51,19 +54,23 @@ export function StationDetails({ onSelectVideo }) {
     }
   }
 
-  // async function onRemoveSong(songId) {
-  //   try {
-  //     const updatedStation = await stationService.removeSong(songId, station._id)
-  //     setSongs(updatedStation.songs)
-  //   } catch (error) {
-  //     console.error('Failed to delete song!', error)
-  //   }
-  // }
+  async function onAddStationSong(song) {
+    try {
+      const savedSong = await addStationSong(stationId, song)
+      console.log('savedSong', savedSong)
+    } catch (err) {
+      console.log('Cannot save song', err)
+    }
+  }
 
-  // function onAddSong(song) {
-  //   const updatedStation = { ...station, songs: [...station.songs, song] }
-  //   updateStation(updatedStation)
-  // }
+  async function onRemoveStationSong(songId) {
+    try {
+      const removedSongId = await removeStationSong(stationId, songId)
+      console.log('removedSongId', removedSongId)
+    } catch (err) {
+      console.log('Cannot save song', err)
+    }
+  }
 
   if (!station) return null
 
@@ -88,14 +95,15 @@ export function StationDetails({ onSelectVideo }) {
 
       <DetailsMain
         station={station}
-        songs={songs}
+        // songs={songs}
+        removeSong={onRemoveStationSong}
         onDeleteStation={onDeleteStation}
         isDeleteModalOpen={isDeleteModalOpen}
         setIsDeleteModalOpen={setIsDeleteModalOpen}
         dominantColor={bgColor}
       />
 
-      <SearchDetailsSongs onSelectVideo={onSelectVideo} stationId={stationId} />
+      <SearchDetailsSongs addSong={onAddStationSong} onSelectVideo={onSelectVideo} stationId={stationId} />
     </section>
   )
 }

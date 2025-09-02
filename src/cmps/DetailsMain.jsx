@@ -13,7 +13,7 @@ import { Svgs } from '../cmps/Svgs'
 export function DetailsMain({
     station,
     songs,
-    onRemoveSong,
+    removeSong,
     onDeleteStation,
     isDeleteModalOpen,
     setIsDeleteModalOpen,
@@ -41,7 +41,7 @@ export function DetailsMain({
     async function onToggleLikedSong(song) {
         try {
             const updatedStation = await stationService.toggleLikedSongs(song)
-            console.log('updatedStation: ', updatedStation)
+            // console.log('updatedStation: ', updatedStation)
             updateStation(updatedStation)
         } catch (err) {
             console.error('Failed to toggle liked song:', err)
@@ -90,7 +90,7 @@ export function DetailsMain({
                 </div>
             )}
 
-            <StationSongsList songs={songs} onRemoveSong={onRemoveSong} onToggleLikedSong={onToggleLikedSong} />
+            <StationSongsList songs={station.songs} removeSong={removeSong} onToggleLikedSong={onToggleLikedSong} />
         </>
     )
 }
