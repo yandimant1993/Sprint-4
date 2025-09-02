@@ -41,9 +41,11 @@
         }
 
         .search-icon {
+            height: 30px;
+            width: 30px;
             position: absolute;
-            left: 10px;
-            top: 50%;
+            left: 8px;
+            top: 30%;
             transform: translateY(-50%);
             width: 32px;
             filter: brightness(0) saturate(100%) invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.7) contrast(1);
@@ -51,6 +53,7 @@
 
         .songs-list-res {
             width: 100%;
+            padding: 24px 0px 0px 0px;
 
             .songs-list-row-res {
                 padding: 0px;
@@ -63,17 +66,19 @@
                 cursor: pointer;
 
                 .song-list-snippet-res {
+                    padding: 0px 0px 0px 16px;
                     display: grid;
                     grid-auto-flow: column;
                     grid-template-columns: auto 1fr;
                     gap: 16px;
 
                     .song-img-res {
-                        outline: 1px solid aqua;
+                        /* outline: 1px solid aqua; */
                     }
 
                     .song-info-text-res {
                         .song-title-res {
+                            color: white;
                             line-height: 1.2;
                         }
 

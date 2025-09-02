@@ -1,6 +1,7 @@
 .songs-list {
     grid-auto-flow: row;
-    padding-inline: calc(var(--spacepx-sm)*1.8);
+    /* padding-inline: calc(var(--spacepx-sm)*1.8); */
+    padding: 0px 24px 0px 24px;
 
     /* only header */
     .songs-list-header {
