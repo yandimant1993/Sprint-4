@@ -3,11 +3,11 @@ import { stationService } from '../../services/station/station.service.local'
 import { storageService } from '../../services/async-storage.service'
 import { showErrorMsg } from '../../services/event-bus.service'
 
-export const SET_CURRENT_STATION = 'SET_CURRENT_STATION'
-export const SET_CURRENT_SONG = 'SET_CURRENT_SONG'
-export const SET_IS_PLAYING = 'SET_IS_PLAYING'
-export const ADD_SONG = 'ADD_SONG'
-export const REMOVE_SONG = 'REMOVE_SONG'
+// export const SET_CURRENT_STATION = 'SET_CURRENT_STATION'
+// export const SET_CURRENT_SONG = 'SET_CURRENT_SONG'
+// export const SET_IS_PLAYING = 'SET_IS_PLAYING'
+// export const ADD_SONG = 'ADD_SONG'
+// export const REMOVE_SONG = 'REMOVE_SONG'
 
 export function setPlayer(player) {
     store.dispatch({ type: 'SET_PLAYER', player })
@@ -24,7 +24,7 @@ export function setVolume(volume) {
 
 export async function setCurrentStation(station) {
     try {
-        store.dispatch({ type: SET_CURRENT_STATION, station })
+        store.dispatch({ type: 'SET_CURRENT_STATION', station })
         await storageService.saveAll('player', { currentStation: station })
     } catch (err) {
         showErrorMsg('Cannot set current station')
@@ -53,7 +53,7 @@ export async function setIsPlaying(isPlaying) {
         const current = state.playerModule.isPlaying
         const next = typeof isPlaying === 'boolean' ? isPlaying : !current
 
-        store.dispatch({ type: SET_IS_PLAYING, isPlaying: next })
+        store.dispatch({ type: 'SET_IS_PLAYING', isPlaying: next })
 
         const player = state.playerModule.player
         if (player) next ? player.playVideo() : player.pauseVideo()
@@ -67,7 +67,7 @@ export async function setIsPlaying(isPlaying) {
 
 export async function setCurrentSong(song) {
     try {
-        store.dispatch({ type: SET_CURRENT_SONG, song })
+        store.dispatch({ type: 'SET_CURRENT_SONG', song })
         // Optional: persist song if desired
     } catch (err) {
         showErrorMsg('Cannot set current song')
@@ -78,7 +78,7 @@ export async function setCurrentSong(song) {
 export async function addSong(song, stationId) {
     try {
         const updatedStation = await stationService.addSong(song, stationId)
-        store.dispatch({ type: ADD_SONG, song })
+        store.dispatch({ type: 'ADD_SONG', song })
         return updatedStation
     } catch (err) {
         showErrorMsg('Cannot add song')
@@ -90,7 +90,7 @@ export async function addSong(song, stationId) {
 export async function removeSong(songId, stationId) {
     try {
         const updatedStation = await stationService.removeSong(songId, stationId)
-        store.dispatch({ type: REMOVE_SONG, songId })
+        store.dispatch({ type: 'REMOVE_SONG', songId })
         return updatedStation
     } catch (err) {
         showErrorMsg('Cannot remove song')
@@ -115,6 +115,59 @@ export async function toggleMute() {
     } catch (err) {
         showErrorMsg('Cannot toggle mute')
         console.error('player.actions: err in toggleMute', err)
+    }
+}
+
+export async function nextSong() {
+    const state = store.getState()
+    const { currentStation, currentIndex } = state.playerModule
+    if (!currentStation?._id) return
+
+    const nextIndex = (currentIndex + 1) % currentStation.songs.length
+    await setSongByIndex(currentStation._id, nextIndex)
+}
+
+export async function prevSong() {
+    const state = store.getState()
+    const { currentStation, currentIndex } = state.playerModule
+    if (!currentStation?._id) return
+
+    const prevIndex = (currentIndex - 1 + currentStation.songs.length) % currentStation.songs.length
+    await setSongByIndex(currentStation._id, prevIndex)
+}
+
+export async function setSongByIndex(stationId, songIndex) {
+    try {
+        const state = store.getState()
+        const station = state.stationModule.stations.find(st => st._id === stationId)
+
+        if (!station) throw new Error('Station not found')
+        if (!station.songs || !station.songs.length) throw new Error('Station has no songs')
+
+        const song = station.songs[songIndex]
+        if (!song) throw new Error('Song index out of range')
+
+        // Handle wrapped { track } case
+        const activeSong = song.track ? song.track : song
+
+        store.dispatch({
+            type: SET_CURRENT_SONG,
+            activeSong,
+            currentIndex: songIndex,
+            currentStation: station,
+            isPlaying: true,
+        })
+
+        // Persist player state
+        await storageService.saveAll('player', {
+            activeSong,
+            currentIndex: songIndex,
+            stationId,
+        })
+
+    } catch (err) {
+        showErrorMsg('Cannot set current song')
+        console.error('player.actions: err in setSongByIndex', err)
     }
 }
 

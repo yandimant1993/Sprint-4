@@ -1,5 +1,3 @@
-import { SET_CURRENT_SONG } from "../actions/player.actions"
-
 export const SET_PLAYER = 'SET_PLAYER'
 export const SET_PLAYING = 'SET_PLAYING'
 export const SET_CURRENT_TIME = 'SET_CURRENT_TIME'
@@ -7,6 +5,7 @@ export const SET_DURATION = 'SET_DURATION'
 export const SET_VOLUME = 'SET_VOLUME'
 export const TOGGLE_MUTE = 'TOGGLE_MUTE'
 export const SET_CURRENT_STATION = 'SET_CURRENT_STATION'
+export const SET_CURRENT_SONG = 'SET_CURRENT_SONG'
 export const SET_IS_PLAYING = 'SET_IS_PLAYING'
 export const ADD_SONG = 'ADD_SONG'
 export const REMOVE_SONG = 'REMOVE_SONG'
@@ -20,8 +19,10 @@ const initialState = {
     volume: 50,
     isMuted: false,
     player: null,
-    currentStation: null,
-    // songs: savedSongs,
+    // currentStation: null,
+    currentStation: {},
+    currentSong: {},
+    currentIndex: 0
 }
 
 export function playerReducer(state = initialState, action = {}) {
@@ -51,10 +52,16 @@ export function playerReducer(state = initialState, action = {}) {
         case SET_CURRENT_STATION:
             return { ...state, currentStation: action.station }
 
+        // case SET_CURRENT_SONG:
+        //     return { ...state, currentSong: action.song }
+
         case SET_CURRENT_SONG:
             return {
                 ...state,
-                currentSong: action.song
+                currentSong: action.activeSong,
+                currentIndex: action.currentIndex,
+                currentStation: action.currentStation,
+                isPlaying: action.isPlaying,
             }
 
         case SET_IS_PLAYING:
