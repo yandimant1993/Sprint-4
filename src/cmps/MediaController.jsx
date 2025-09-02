@@ -104,8 +104,8 @@
 //     )
 // }
 
-import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, useState, useRef } from 'react'
+import { useSelector } from 'react-redux'
 import { setIsPlaying, setCurrentTime } from '../store/actions/player.actions'
 
 // export function MediaController({ onNext, onPrev }) {
@@ -120,31 +120,34 @@ import { setIsPlaying, setCurrentTime } from '../store/actions/player.actions'
 //         state.playerModule
 //     }))
 
-export function MediaController({ activeSong, currentTime, duration, onProgressChange, onNext, onPrev, isPlaying, }) {
+// export function MediaController({ activeSong, currentTime, duration, onProgressChange, onNext, onPrev, isPlaying }) {
+export function MediaController({ activeSong, currentTime, duration, onProgressChange, onNext, onPrev }) {
+    const player = useSelector(storeState => storeState.playerModule.player)
+
     const [isPlaying, setIsPlaying] = useState(false)
     const [isShuffled, setIsShuffled] = useState(false)
     const [isRepeating, setIsRepeating] = useState(false)
 
     const ref = useRef(null)
 
-    // if (ref.current) {
-    //     if (isPlaying) {
-    //         ref.current.play();
-    //     } else {
-    //         ref.current.pause();
-    //     }
-    // }
-    
-    useEffect(() => {
-        if (!player) return
-        if (isPlaying) player.playVideo()
-        else player.pauseVideo()
-    }, [isPlaying, player])
+    if (ref.current) {
+        if (isPlaying) {
+            ref.current.play();
+        } else {
+            ref.current.pause();
+        }
+    }
 
-    useEffect(() => {
-        if (!player || !currentSong) return
-        player.loadVideoById(currentSong.videoId)
-    }, [currentSong, player])
+    // useEffect(() => {
+    //     if (!player) return
+    //     if (isPlaying) player.playVideo()
+    //     else player.pauseVideo()
+    // }, [isPlaying, player])
+
+    // useEffect(() => {
+    //     if (!player || !currentSong) return
+    //     player.loadVideoById(currentSong.videoId)
+    // }, [currentSong, player])
 
     function formatTime(seconds) {
         if (!seconds && seconds !== 0) return "0:00"
@@ -185,7 +188,7 @@ export function MediaController({ activeSong, currentTime, duration, onProgressC
                     className="control-btn play-pause"
                     onClick={handlePlayPause}
                     title={isPlaying ? 'Pause' : 'Play'}
-                    // disabled={!player || !currentSong}
+                // disabled={!player || !currentSong}
                 >
                     {isPlaying ? (
                         <img src="/src/assets/spotify-icons/pause.svg" alt="Pause" />
