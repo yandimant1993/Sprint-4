@@ -1,31 +1,40 @@
 import { useState, useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux'
+
+import { prevSong, nextSong } from '../store/actions/player.actions'
 import { SongPreview } from './SongPreview'
 import { MediaPlayer } from './MediaPlayer'
 import { Controller } from './Controller'
 import { RightControls } from './RightControls'
 
 export function AppFooter({ searchedVideoId }) {
+	const playerRef = useRef(null)
+	// const { currentStation, currentSong, isPlaying, currentIndex, isActive } = useSelector(state => state.playerModule)
+	const { currentStation, isPlaying, isActive } = useSelector(state => state.playerModule)
+	// const currentStation = useSelector(state => state.playerModule.currentStation)
+	// const currentSong = useSelector(state => state.playerModule.currentSong)
+	// const isPlaying = useSelector(state => state.playerModule.isPlaying)
+	// const currentIndex = useSelector(state => state.playerModule.currentIndex)
+	// console.log('player.store:', currentStation, currentSong, isPlaying, currentIndex);
 	const playlist = [
 		{ _id: '1', name: 'Song 1', youtubeVideoId: 'JCcwNwmxu44' },
 		{ _id: '2', name: 'Song 2', youtubeVideoId: 'dGy04XN9Spw' },
 		{ _id: '3', name: 'Song 3', youtubeVideoId: 'lP0EWIkQl1w' },
 	]
 
-	const [currentIndex, setCurrentIndex] = useState(0)
 	const [videoToPlay, setVideoToPlay] = useState(searchedVideoId || playlist[0].youtubeVideoId)
-	const playerRef = useRef(null)
+	const [currentIndex, setCurrentIndex] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
 	const [duration, setDuration] = useState(0)
 
 	const currentSong = playlist[currentIndex]
-
 
 	useEffect(() => {
 		const newVideo = searchedVideoId || currentSong.youtubeVideoId
 		if (newVideo !== videoToPlay) {
 			setVideoToPlay(newVideo)
 		}
-	}, [searchedVideoId, currentIndex])
+	}, [currentSong, currentStation])
 
 	const handlePlayerReady = (playerInstance) => {
 		playerRef.current = playerInstance
@@ -48,19 +57,36 @@ export function AppFooter({ searchedVideoId }) {
 	const playNext = () => setCurrentIndex((currentIndex + 1) % playlist.length)
 	const playPrev = () => setCurrentIndex((currentIndex - 1 + playlist.length) % playlist.length)
 
+	// function handleNext() {
+	// 	if (!currentStation?._id) return
+	// 	nextSong()
+	// }
+	// function handlePrev() {
+	// 	if (!currentStation?._id) return
+	// 	prevSong()
+	// }
+
 	return (
 		<footer className="app-footer full">
 			<div className="footer-content">
-				<div className="footer-left grid"><SongPreview /></div>
+				<div className="footer-left grid">
+					<SongPreview
+						currentSong={currentSong}
+						isPlaying={isPlaying}
+						isActive={isActive}
+					/>
+				</div>
 				<div className="footer-center grid">
 					<Controller
 						player={playerRef.current}
-						// currentTime={currentTime}
-						// duration={duration}
-						// onTimeUpdate={handleTimeUpdate}
-						// onProgressChange={handleProgressChange}
+						currentTime={currentTime}
+						duration={duration}
+						onTimeUpdate={handleTimeUpdate}
+						onProgressChange={handleProgressChange}
 						onNext={playNext}
 						onPrev={playPrev}
+					// onNext={handleNext}
+					// onPrev={handlePrev}
 					/>
 				</div>
 				<div className="footer-right">

@@ -37,7 +37,7 @@ export function StationSongsList({ onToggleLikedSong, songs, onRemoveSong }) {
          setIsPlaying(true)
       }
    }
-   
+
    return (
       <section className="songs-list grid">
          <div className="songs-list-header grid">
@@ -48,7 +48,7 @@ export function StationSongsList({ onToggleLikedSong, songs, onRemoveSong }) {
             <div className="song-list-duration">{Svgs.durationIcon}</div>
          </div>
 
-         {songs.map((song, index) => {
+         {songs?.map((song, index) => {
             const isActive = currentSong?.id === song.id && currentStation
             return (
                <div

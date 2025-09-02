@@ -7,6 +7,7 @@ export const TOGGLE_MUTE = 'TOGGLE_MUTE'
 export const SET_CURRENT_STATION = 'SET_CURRENT_STATION'
 export const SET_CURRENT_SONG = 'SET_CURRENT_SONG'
 export const SET_IS_PLAYING = 'SET_IS_PLAYING'
+export const SET_IS_ACTIVE = 'SET_IS_ACTIVE'
 export const ADD_SONG = 'ADD_SONG'
 export const REMOVE_SONG = 'REMOVE_SONG'
 
@@ -14,15 +15,16 @@ export const REMOVE_SONG = 'REMOVE_SONG'
 
 const initialState = {
     isPlaying: false,
+    isActive: false,
+    isMuted: false,
+    currentSongs: [],
+    currentSong: {},
     currentTime: 0,
     duration: 0,
+    currentIndex: 0,
     volume: 50,
-    isMuted: false,
     player: null,
     // currentStation: null,
-    currentStation: {},
-    currentSong: {},
-    currentIndex: 0
 }
 
 export function playerReducer(state = initialState, action = {}) {
@@ -67,6 +69,9 @@ export function playerReducer(state = initialState, action = {}) {
         case SET_IS_PLAYING:
             return { ...state, isPlaying: action.isPlaying }
 
+        case SET_IS_ACTIVE:
+            return { ...state, isActive: action.isActive }
+
         case ADD_SONG:
             if (state.songs.some(s => s.id === action.song.id)) return state;
             const newSongs = [...state.songs, action.song];
@@ -82,8 +87,6 @@ export function playerReducer(state = initialState, action = {}) {
             return state
     }
 }
-
-
 
 // export const SET_PLAYER = 'SET_PLAYER'
 // export const SET_PLAYING = 'SET_PLAYING'

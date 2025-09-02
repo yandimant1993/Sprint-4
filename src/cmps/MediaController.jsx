@@ -104,29 +104,37 @@
 //     )
 // }
 
-
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setIsPlaying, setCurrentTime } from '../store/actions/player.actions'
 
-export function MediaController({ onNext, onPrev }) {
-    // const player = useSelector(state => state.playerModule.player)
-    // const isPlaying = useSelector(state => state.playerModule.isPlaying)
-    // const currentStation = useSelector(state => state.playerModule.currentStation)
-    // const currentTime = useSelector(state => state.playerModule.currentTime)
-    // const duration = useSelector(state => state.playerModule.duration)
+// export function MediaController({ onNext, onPrev }) {
+// const player = useSelector(state => state.playerModule.player)
+// const isPlaying = useSelector(state => state.playerModule.isPlaying)
+// const currentStation = useSelector(state => state.playerModule.currentStation)
+// const currentTime = useSelector(state => state.playerModule.currentTime)
+// const duration = useSelector(state => state.playerModule.duration)
 
-    const { player, currentSong, isPlaying, currentTime, duration } = useSelector(
-        state => ({
-            player: state.playerModule.player,
-            currentSong: state.playerModule.currentSong,
-            isPlaying: state.playerModule.isPlaying,
-            currentTime: state.playerModule.currentTime,
-            duration: state.playerModule.duration,
-        }))
+// const { player, currentSong, isPlaying, currentTime, duration } = useSelector(
+//     state => ({
+//         state.playerModule
+//     }))
+
+export function MediaController({ activeSong, currentTime, duration, onProgressChange, onNext, onPrev, isPlaying, }) {
+    const [isPlaying, setIsPlaying] = useState(false)
     const [isShuffled, setIsShuffled] = useState(false)
     const [isRepeating, setIsRepeating] = useState(false)
-// console.log('player: ',player)
+
+    const ref = useRef(null)
+
+    // if (ref.current) {
+    //     if (isPlaying) {
+    //         ref.current.play();
+    //     } else {
+    //         ref.current.pause();
+    //     }
+    // }
+    
     useEffect(() => {
         if (!player) return
         if (isPlaying) player.playVideo()
