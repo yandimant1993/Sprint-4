@@ -7,6 +7,23 @@ export function SearchStationResult({ addSong , videos = [], onVideoClick,statio
   const dispatch = useDispatch();
   const safeVideos = Array.isArray(videos) ? videos : [];
 
+
+
+  function shortenTitle(title, maxLength = 60) {
+  if (title.length <= maxLength) return title;
+
+  const words = title.split(' ');
+  let shortTitle = '';
+
+  for (let word of words) {
+    if ((shortTitle + ' ' + word).trim().length > maxLength) break;
+    shortTitle += (shortTitle ? ' ' : '') + word;
+  }
+
+
+  return shortTitle;
+}
+
   return (
     <section className="songs-list-res grid">
       {safeVideos.map((video, index) => (
@@ -17,14 +34,14 @@ export function SearchStationResult({ addSong , videos = [], onVideoClick,statio
         >
           <div className="song-list-snippet-res grid">
             <img
-              src={video.thumbnail}
+              src={video.imgUrl}
               alt={video.title}
               className="song-img-res"
               width="40"
               height="40"
             />
             <div className="song-info-text-res grid">
-              <span className="song-title-res">{video.title}</span>
+              <span className="song-title-res">{shortenTitle(video.title)}</span>
               {video.artist && <span className="song-artist-res">{video.artist}</span>}
             </div>
           </div>
