@@ -44,10 +44,10 @@ export function SearchStationSongs({ onSelectVideo }) {
                 />
             </div>
 
-            <SearchHeaderResults
+            {/* <SearchHeaderResults
                 videos={videos}
                 onVideoClick={handleVideoClick}
-            />
+            /> */}
         </div>
     )
 }
