@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import YouTube from 'react-youtube'
 import { setPlayer, setIsPlaying, setDuration } from "../store/actions/player.actions"
 
-export function MediaPlayer({ onReady, onTimeUpdate, setCurrentTime, setDuration }) {
+export function MediaPlayer({ onReady, onTimeUpdate, setCurrentTime }) {
     const playerRef = useRef(null)
 
     const isPlaying = useSelector(store => store.playerModule.isPlaying)
@@ -65,12 +65,12 @@ export function MediaPlayer({ onReady, onTimeUpdate, setCurrentTime, setDuration
     function onReady(event) {
         playerRef.current = event.target
         setPlayer(event.target)
-
-        const videoDuration = event.target.getDuration()
-        if (videoDuration) {
-            setPlayer(event.target)
-            setDuration(videoDuration)
-        }
+        // setDuration(currentSong.duration)
+        // const videoDuration = event.target.getDuration()
+        // if (videoDuration) {
+        //     setPlayer(event.target)
+        //     setDuration(videoDuration)
+        // }
     }
 
     function onStateChange(event) {

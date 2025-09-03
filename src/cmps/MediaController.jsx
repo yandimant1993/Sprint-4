@@ -28,8 +28,6 @@ export function MediaController({ currentTime, onProgressChange, onNext, onPrev 
         if (onProgressChange) onProgressChange(newTime)
     }
 
-    console.log('Redux duration: ', duration)
-
     const progressPercentage = duration ? (currentTime / duration) * 100 : 0
     return (
         <div className="media-controller">

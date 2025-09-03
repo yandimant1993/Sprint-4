@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router"
+import { setIsPlaying, setCurrentSong, setCurrentStation } from '../store/actions/player.actions'
 import { userService } from "../services/user"
 import { Svgs } from "./Svgs"
 
 export function UserStationList({ stations, isExpanded, likedStation }) {
     const navigate = useNavigate()
+    const isPlaying = useSelector(state => state.playerModule.isPlaying)
     const [isPinned, setIsPinned] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
 
@@ -18,6 +20,12 @@ export function UserStationList({ stations, isExpanded, likedStation }) {
     if (!likedStation) {
         console.warn("likedStation prop is missing in UserStationList")
         return null
+    }
+
+    function handlePlayPause(station) {
+        setCurrentStation(station)
+        setCurrentSong(station.song[0])
+        setIsPlaying(!isPlaying)
     }
 
     console.log('likedStation: ', likedStation)
