@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { useSelector } from 'react-redux'
 
-import { setIsPlaying, setCurrentStation, setCurrentSong } from '../store/actions/player.actions'
+import { setIsPlaying, setCurrentSong } from '../store/actions/player.actions'
 import { updateStation } from '../store/actions/station.actions'
 import { userService } from '../services/user'
 import { stationService } from "../services/station/station.service.local"
@@ -19,14 +19,14 @@ export function DetailsMain({
     setIsDeleteModalOpen,
     handleContextMenu
 }) {
-    const { currentStation, isPlaying } = useSelector(state => state.playerModule)
+    const isPlaying = useSelector(state => state.isPlaying)
 
     const [menuOpen, setMenuOpen] = useState(false)
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 })
 
     function handlePlayPause() {
         setCurrentStation(station)
-        setCurrentSong(song, station.songs, index)
+        setCurrentSong(station.song[0])
         setIsPlaying(!isPlaying)
     }
 

@@ -29,7 +29,6 @@ export function SearchDetailsSongs({ addSong,onSelectVideo, stationId }) {
     function handleVideoClick(video) {
         if (onSelectVideo) onSelectVideo(video.id)
     }
-
     return (
         <section className="details-search-container">
             <h1 className="search-welcome-header">Let's find something for your playlist</h1>

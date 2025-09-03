@@ -32,20 +32,54 @@ export async function setCurrentStation(station) {
     }
 }
 
+// export async function setIsPlaying(isPlaying) {
+//     try {
+//         if (store.getState().playerModule.player) {
+//             isPlaying
+//                 ? store.getState().playerModule.player.playVideo()
+//                 : store.getState().playerModule.player.pauseVideo()
+//         }
+//         store.dispatch({ type: 'SET_IS_PLAYING', isPlaying })
+//         // await storageService.saveAll('player', { isPlaying })
+//     } catch (err) {
+//         showErrorMsg('Cannot set playing state')
+//         console.error('player.actions: err in setIsPlaying', err)
+//     }
+// }
+
+// export async function setIsPlaying(isPlaying) {
+//     try {
+//         const player = store.getState().playerModule.player
+//         if (player) {
+//             if (isPlaying) player.playVideo()
+//             else player.pauseVideo()
+//         }
+//         store.dispatch({ type: 'SET_IS_PLAYING', isPlaying })
+//     } catch (err) {
+//         showErrorMsg('Cannot set playing state')
+//         console.error('player.actions: err in setIsPlaying', err)
+//     }
+// }
+
 export async function setIsPlaying(isPlaying) {
     try {
-        if (store.getState().playerModule.player) {
-            isPlaying
-                ? store.getState().playerModule.player.playVideo()
-                : store.getState().playerModule.player.pauseVideo()
-        }
+        const player = store.getState().playerModule.player
         store.dispatch({ type: 'SET_IS_PLAYING', isPlaying })
-        // await storageService.saveAll('player', { isPlaying })
+
+        if (!player) return
+
+        if (isPlaying) {
+            player.playVideo()
+        } else {
+            player.pauseVideo()
+        }
+
     } catch (err) {
         showErrorMsg('Cannot set playing state')
         console.error('player.actions: err in setIsPlaying', err)
     }
 }
+
 
 // export async function setIsPlaying(isPlaying) {
 //     try {
@@ -79,7 +113,7 @@ export async function setIsPlaying(isPlaying) {
 
 export async function setCurrentSong(song) {
     try {
-        store.dispatch({ type: 'SET_CURRENT_SONG', song})
+        store.dispatch({ type: 'SET_CURRENT_SONG', song })
     } catch (err) {
         showErrorMsg('Cannot set current song')
         console.error('player.actions: err in setCurrentSong', err)

@@ -1,74 +1,46 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
-import { prevSong, nextSong, setPlayer } from '../store/actions/player.actions'
+import { setPlayer } from '../store/actions/player.actions'
 import { SongPreview } from './SongPreview'
 import { MediaPlayer } from './MediaPlayer'
 import { Controller } from './Controller'
 import { RightControls } from './RightControls'
 
-export function AppFooter({ searchedVideoId }) {
+export function AppFooter() {
 	const playerRef = useRef(null)
-	// const { currentStation, currentSong, isPlaying, currentIndex, isActive } = useSelector(state => state.playerModule)
-	const isActive = useSelector(state => state.playerModule.isActive)
 	const isPlaying = useSelector(state => state.playerModule.isPlaying)
-	const currentStation = useSelector(state => state.playerModule.currentStation)
 	const currentSong = useSelector(state => state.playerModule.currentSong)
-	console.log('currentSong: ',currentSong)
-	// const currentStation = useSelector(state => state.playerModule.currentStation)
-	// const isPlaying = useSelector(state => state.playerModule.isPlaying)
-	// const currentIndex = useSelector(state => state.playerModule.currentIndex)
-	// console.log('player.store:', currentStation, currentSong, isPlaying, currentIndex);
-	// const playlist = [
-	// 	{ _id: '1', name: 'Song 1', youtubeVideoId: 'JCcwNwmxu44' },
-	// 	{ _id: '2', name: 'Song 2', youtubeVideoId: 'dGy04XN9Spw' },
-	// 	{ _id: '3', name: 'Song 3', youtubeVideoId: 'lP0EWIkQl1w' },
-	// ]
 
-	// const [videoToPlay, setVideoToPlay] = useState(searchedVideoId || playlist[0].youtubeVideoId)
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
-	const [duration, setDuration] = useState(0)
+	// const [duration, setDuration] = useState(0)
 
-	// const currentSong = playlist[currentIndex]
-
-	// useEffect(() => {
-	// 	const newVideo = searchedVideoId || currentSong.youtubeVideoId
-	// 	if (newVideo !== videoToPlay) {
-	// 		setVideoToPlay(newVideo)
-	// 	}
-	// }, [currentSong, currentStation])
-
-	const handlePlayerReady = (playerInstance) => {
+	function handlePlayerReady(playerInstance) {
 		playerRef.current = playerInstance
 		setPlayer(playerInstance)
 	}
 
-	// useEffect(() => {
-	// 	if (playerRef.current && videoToPlay) {
-	// 		const currentPlayerVideoId = playerRef.current.getVideoData()?.video_id
-	// 		if (currentPlayerVideoId !== videoToPlay) {
-	// 			playerRef.current.loadVideoById(videoToPlay)
-	// 			playerRef.current.playVideo()
-	// 		}
-	// 	}
-	// }, [videoToPlay])
+	useEffect(() => {
+		if (playerRef.current && currentSong) {
+			const currentPlayerSongId = playerRef.current.getVideoData()?.video_id
+			if (currentPlayerSongId !== currentSong) {
+				playerRef.current.loadVideoById(currentSong)
+				playerRef.current.playVideo()
+			}
+		}
+	}, [currentSong])
 
 	const handleTimeUpdate = (time) => setCurrentTime(time)
-	const handleDurationChange = (videoDuration) => setDuration(videoDuration)
-	const handleProgressChange = (newTime) => setCurrentTime(newTime)
 
+	function handleDurationChange() {
+		setDuration(currentSong.duration)
+		console.log('currentSong.duration: ', currentSong.duration)
+	}
+
+	// const handleProgressChange = (newTime) => setCurrentTime(newTime)
 	const playNext = () => setCurrentIndex((currentIndex + 1) % playlist.length)
 	const playPrev = () => setCurrentIndex((currentIndex - 1 + playlist.length) % playlist.length)
-
-	// function handleNext() {
-	// 	if (!currentStation?._id) return
-	// 	nextSong()
-	// }
-	// function handlePrev() {
-	// 	if (!currentStation?._id) return
-	// 	prevSong()
-	// }
 
 	return (
 		<footer className="app-footer full">
@@ -77,16 +49,15 @@ export function AppFooter({ searchedVideoId }) {
 					<SongPreview
 						currentSong={currentSong}
 						isPlaying={isPlaying}
-						isActive={isActive}
 					/>
 				</div>
 				<div className="footer-center grid">
 					<Controller
 						player={playerRef.current}
 						currentTime={currentTime}
-						duration={duration}
+						// duration={duration}
 						onTimeUpdate={handleTimeUpdate}
-						onProgressChange={handleProgressChange}
+						// onProgressChange={handleProgressChange}
 						onNext={playNext}
 						onPrev={playPrev}
 					// onNext={handleNext}
@@ -100,6 +71,7 @@ export function AppFooter({ searchedVideoId }) {
 
 			<MediaPlayer
 				videoId={currentSong.id}
+				playerRef={playerRef}
 				onReady={handlePlayerReady}
 				onTimeUpdate={handleTimeUpdate}
 				onDurationChange={handleDurationChange}
