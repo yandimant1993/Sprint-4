@@ -97,6 +97,33 @@ async function toggleLikedSongs(song) {
     return savedStation
 }
 
+// async function toggleLikedSongs(song) {
+//     const loggedinUser = userService.getLoggedinUser()
+//     if (!loggedinUser) throw new Error('No logged-in user found')
+//     const user = await storageService.get('user', loggedinUser._id)
+//     if (!user.likedSongIds) user.likedSongIds = []
+//     // console.log('song: ', song)
+//     // console.log('song.id: ', song.id)
+//     // const songIdx = user.likedSongIds.findIndex(likedSong => likedSong.id === song.id)
+//     const isLiked = user.likedSongIds.includes(song.id)
+//     if (isLiked) {
+//         user.likedSongIds = user.likedSongIds.filter(sId => sId !== song.id)
+//         console.log(`Removed "${song.title}" from likedSongIds`)
+//     } else {
+//         user.likedSongIds.push(song.id)
+//         console.log(`Added "${song.title}" to likedSongIds`)
+//     }
+
+//     const updatedUser = await storageService.put('user', user)
+//     userService.saveLoggedinUser(updatedUser)
+
+//     const method = isLiked ? 'removeSong' : 'addSong'
+//     song = isLiked ? song.id : song
+//     const savedStation = await stationService[method](loggedinUser.likedStationId, song)
+
+//     return savedStation
+// }
+
 async function removeSong(stationId, songId) {
     const station = await getById(stationId)
     station.songs = station.songs.filter(s => s.id !== songId)

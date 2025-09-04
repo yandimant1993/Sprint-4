@@ -47,8 +47,7 @@ export function MediaController({ currentTime, onProgressChange, onNext, onPrev 
                     <img src="/src/assets/spotify-icons/shuffle.svg" alt="Shuffle" />
                 </button>
 
-                <button className="control-btn previous" title="Previous" onClick={onPrev}></button>
-                <button className="control-btn previous" onClick={onPrev}>
+                <button className="control-btn previous" title="Previous" onClick={onPrev}>
                     <img src="/src/assets/spotify-icons/previous.svg" alt="Previous" />
                 </button>
 
@@ -67,14 +66,14 @@ export function MediaController({ currentTime, onProgressChange, onNext, onPrev 
                 <button className="control-btn next" title="Next" onClick={onNext}>
                     <img src="/src/assets/spotify-icons/next.svg" alt="Next" />
                 </button>
+                <button
+                    className={`control-btn repeat ${isRepeating ? 'active' : ''}`}
+                    onClick={() => setIsRepeating(!isRepeating)}
+                    title="Repeat"
+                >
+                    <img src="/src/assets/spotify-icons/repeat.svg" alt="Repeat" />
+                </button>
             </div>
-            <button
-                className={`control-btn repeat ${isRepeating ? 'active' : ''}`}
-                onClick={() => setIsRepeating(!isRepeating)}
-                title="Repeat"
-            >
-                <img src="/src/assets/spotify-icons/repeat.svg" alt="Repeat" />
-            </button>
             <div className="progress-container">
                 <span className="time current">{formatTime(currentTime)}</span>
                 <div className="progress-bar">

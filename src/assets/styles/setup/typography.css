@@ -1,6 +1,7 @@
 @font-face {
-    font-family: circularsp;
+    font-family: spotify-heb;
     src: url(../../fonts/circularsp/circularsp-heb.woff2);
+    unicode-range: U+0590-05FF;
 }
 
 @font-face {

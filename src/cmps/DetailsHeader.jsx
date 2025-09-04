@@ -196,14 +196,16 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
               : { backgroundColor: `rgb(${dominantColor.join(',')})` }
           }
         >
-          <div className="station-img-edit flex">
-            {isHovered && (
-              <>
-                {Svgs.editIcon}
-                <span className="station-img-edit-text">Choose Photo</span>
-              </>
-            )}
-            {!station.stationImgUrl && !isHovered && Svgs.stationNewImg}
+          <div className='station-img-hover-cover'>
+            <div className="station-img-edit flex">
+              {isHovered && (
+                <>
+                  {Svgs.editIcon}
+                  <span className="station-img-edit-text">Choose Photo</span>
+                </>
+              )}
+              {!station.stationImgUrl && !isHovered && Svgs.stationNewImg}
+            </div>
           </div>
         </div>
       </div>

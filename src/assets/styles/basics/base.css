@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: spotifymix-regular;
+    font-family: spotifymix-regular, spotify-heb;
 }
 
 /* scroll bar css */
@@ -28,6 +28,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
+
 /*  */
 h1,
 h2,
@@ -79,5 +80,5 @@ object {
     background-color: var(--clr1);
     color: var(--gray2);
     border: none;
-    font-family: spotifymix-regular;
+    font-family: spotifymix-regular, spotify-heb, sans-serif;
 }
