@@ -307,7 +307,7 @@ async function _createStations() {
                     }
                 ]
             },
-        )
+        ]
         await storageService.saveAll(STORAGE_KEY, stations)
         console.log('stations successfully added to localStorage')
     } catch (err) {
