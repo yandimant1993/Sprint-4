@@ -59,7 +59,7 @@ async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://randomuser.me/api/portraits/men/42.jpg'
     let user = await storageService.post('user', userCred)
     saveLoggedinUser(user)
-    const {_id: stationId} =  await stationService.save({...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked', stationImgUrl: './src/assets/img/liked-songs.jpg'})
+    const { _id: stationId } = await stationService.save({ ...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked', stationImgUrl: './src/assets/img/liked-songs.jpg' })
     user.likedStationId = stationId
     user = await storageService.put('user', userCred)
     return saveLoggedinUser(user)
@@ -107,7 +107,7 @@ async function _createAdmin() {
 }
 
 async function _createUsers() {
-    const station = await stationService.save({ ...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked', stationImgUrl: './src/assets/img/liked-songs.jpg'})
+    const station = await stationService.save({ ...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked', stationImgUrl: './src/assets/img/liked-songs.jpg' })
     const likedStationId = station._id
     const users = [
         {

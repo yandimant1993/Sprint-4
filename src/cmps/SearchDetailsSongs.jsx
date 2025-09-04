@@ -21,6 +21,7 @@ export function SearchDetailsSongs({ addSong,onSelectVideo, stationId }) {
         const timeoutId = setTimeout(fetchVideos, 500)
         return () => clearTimeout(timeoutId)
     }, [filterByToEdit.term])
+    
     function handleChange({ target }) {
         const { value, name: field } = target
         setFilterByToEdit(prev => ({ ...prev, [field]: value }))
@@ -38,9 +39,10 @@ export function SearchDetailsSongs({ addSong,onSelectVideo, stationId }) {
                     <input
                         onChange={handleChange}
                         type="text"
-                        placeholder="Search for songs or episodes"
+                        placeholder="Search for songs"
                         className="search-details-input"
                         name="term"
+                        autocomplete="off"
                         value={filterByToEdit.term}
                     />
                 </div>
