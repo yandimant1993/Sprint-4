@@ -1,0 +1,242 @@
+[
+    {
+        "_id": "64f1cdd298b8c2a1d4a12f3a",
+        "name": "Late Night Loops",
+        "description": "Ed Sheeran and acoustic guitars on the beach. Songs that feel like vacation",
+        "tags": [
+            "Chill",
+            "Lofi",
+            "Beats"
+        ],
+        "createdBy": {
+            "_id": "u103",
+            "fullname": "Ava Stone",
+            "imgUrl": "https://randomuser.me/api/portraits/women/70.jpg"
+        },
+        "addedAt": 1724476800000,
+        "type": "system",
+        "likedByUsers": [],
+        "stationImgUrl": "https://picsum.photos/seed/late-night/300/300",
+        "songs": [
+            {
+                "id": "s001",
+                "artist": "Luffi",
+                "title": "Sunset Drive",
+                "album": "Lofi Nights",
+                "dateAdded": "2025-08-01T12:30:00Z",
+                "duration": "3:24",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s002",
+                "artist": "Kyortush",
+                "title": "Rainy Nights",
+                "album": "Quiet Storm",
+                "dateAdded": "2025-08-05T09:15:00Z",
+                "duration": "4:12",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s003",
+                "artist": "Leeroy Jenkins",
+                "title": "Electric Feel",
+                "album": "Indie Classics",
+                "dateAdded": "2025-08-10T14:05:00Z",
+                "duration": "3:49",
+                "imgUrl": "https://placehold.co/40x40"
+            }
+        ]
+    },
+    {
+        "_id": "64f1cee298b8c2a1d4a12f3b",
+        "name": "Morning Boost",
+        "description": "Energetic pop and EDM tracks to start your day",
+        "tags": [
+            "Pop",
+            "EDM",
+            "Energy"
+        ],
+        "createdBy": {
+            "_id": "u104",
+            "fullname": "Liam Carter",
+            "imgUrl": "https://randomuser.me/api/portraits/men/12.jpg"
+        },
+        "addedAt": 1724576800000,
+        "type": "system",
+        "likedByUsers": [],
+        "stationImgUrl": "https://picsum.photos/seed/morning-boost/300/300",
+        "songs": [
+            {
+                "id": "s004",
+                "artist": "Zara Larsson",
+                "title": "Rise Up",
+                "album": "Daylight",
+                "dateAdded": "2025-08-12T09:20:00Z",
+                "duration": "3:14",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s005",
+                "artist": "Kygo",
+                "title": "Higher Love",
+                "album": "Cloud Nine",
+                "dateAdded": "2025-08-13T10:10:00Z",
+                "duration": "3:45",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s006",
+                "artist": "Avicii",
+                "title": "Wake Me Up",
+                "album": "True",
+                "dateAdded": "2025-08-14T08:00:00Z",
+                "duration": "4:09",
+                "imgUrl": "https://placehold.co/40x40"
+            }
+        ]
+    },
+    {
+        "_id": "64f1cf1298b8c2a1d4a12f3c",
+        "name": "Focus Beats",
+        "description": "Stay productive with instrumental hip-hop and chillhop",
+        "tags": [
+            "Focus",
+            "Instrumental",
+            "Chillhop"
+        ],
+        "createdBy": {
+            "_id": "u105",
+            "fullname": "Sophia Lee",
+            "imgUrl": "https://randomuser.me/api/portraits/women/45.jpg"
+        },
+        "addedAt": 1724676800000,
+        "type": "system",
+        "likedByUsers": [],
+        "stationImgUrl": "https://picsum.photos/seed/focus-beats/300/300",
+        "songs": [
+            {
+                "id": "s007",
+                "artist": "Nujabes",
+                "title": "Feather",
+                "album": "Modal Soul",
+                "dateAdded": "2025-08-15T13:00:00Z",
+                "duration": "3:50",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s008",
+                "artist": "Jinsang",
+                "title": "Affection",
+                "album": "Life",
+                "dateAdded": "2025-08-16T14:10:00Z",
+                "duration": "2:47",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s009",
+                "artist": "Idealism",
+                "title": "Snowfall",
+                "album": "Hiraeth",
+                "dateAdded": "2025-08-17T11:30:00Z",
+                "duration": "3:12",
+                "imgUrl": "https://placehold.co/40x40"
+            }
+        ]
+    },
+    {
+        "_id": "64f1cf5098b8c2a1d4a12f3d",
+        "name": "Rock Legends",
+        "description": "Classic rock anthems from the 70s and 80s",
+        "tags": [
+            "Rock",
+            "Classic",
+            "Legends"
+        ],
+        "createdBy": {
+            "_id": "u106",
+            "fullname": "Noah Mitchell",
+            "imgUrl": "https://randomuser.me/api/portraits/men/29.jpg"
+        },
+        "addedAt": 1724776800000,
+        "type": "system",
+        "likedByUsers": [],
+        "stationImgUrl": "https://picsum.photos/seed/rock-legends/300/300",
+        "songs": [
+            {
+                "id": "s010",
+                "artist": "Queen",
+                "title": "Bohemian Rhapsody",
+                "album": "A Night at the Opera",
+                "dateAdded": "2025-08-18T18:00:00Z",
+                "duration": "5:55",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s011",
+                "artist": "Led Zeppelin",
+                "title": "Stairway to Heaven",
+                "album": "Led Zeppelin IV",
+                "dateAdded": "2025-08-19T20:30:00Z",
+                "duration": "8:02",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s012",
+                "artist": "The Rolling Stones",
+                "title": "Paint It Black",
+                "album": "Aftermath",
+                "dateAdded": "2025-08-20T16:45:00Z",
+                "duration": "3:44",
+                "imgUrl": "https://placehold.co/40x40"
+            }
+        ]
+    },
+    {
+        "_id": "64f1cf9598b8c2a1d4a12f3e",
+        "name": "Latin Vibes",
+        "description": "Dance to reggaeton, salsa and Latin pop hits",
+        "tags": [
+            "Latin",
+            "Dance",
+            "Reggaeton"
+        ],
+        "createdBy": {
+            "_id": "u107",
+            "fullname": "Camila Reyes",
+            "imgUrl": "https://randomuser.me/api/portraits/women/34.jpg"
+        },
+        "addedAt": 1724876800000,
+        "type": "system",
+        "likedByUsers": [],
+        "stationImgUrl": "https://picsum.photos/seed/latin-vibes/300/300",
+        "songs": [
+            {
+                "id": "s013",
+                "artist": "J Balvin",
+                "title": "Mi Gente",
+                "album": "Vibras",
+                "dateAdded": "2025-08-21T21:00:00Z",
+                "duration": "3:05",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s014",
+                "artist": "Bad Bunny",
+                "title": "Tití Me Preguntó",
+                "album": "Un Verano Sin Ti",
+                "dateAdded": "2025-08-22T19:15:00Z",
+                "duration": "4:00",
+                "imgUrl": "https://placehold.co/40x40"
+            },
+            {
+                "id": "s015",
+                "artist": "Shakira",
+                "title": "Hips Don't Lie",
+                "album": "Oral Fixation, Vol. 2",
+                "dateAdded": "2025-08-23T12:20:00Z",
+                "duration": "3:38",
+                "imgUrl": "https://placehold.co/40x40"
+            }
+        ]
+    }
+]
