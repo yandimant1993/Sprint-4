@@ -4,7 +4,7 @@
 }
 
 body{
-    font-family: spotifymix-regular;
+    font-family: spotifymix-regular, spotify-heb;
 }
 
 h1,
@@ -57,5 +57,5 @@ object {
     background-color: var(--clr1);
     color: var(--gray2);
     border: none;
-    font-family: spotifymix-regular;
+    font-family: spotifymix-regular, spotify-heb, sans-serif;
 }
