@@ -26,6 +26,8 @@ async function getUsers() {
     // }
 }
 
+// _createUsers()
+
 
 async function getById(userId) {
     return await storageService.get('user', userId)
@@ -55,7 +57,7 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-    if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    if (!userCred.imgUrl) userCred.imgUrl = 'https://randomuser.me/api/portraits/men/42.jpg'
     let user = await storageService.post('user', userCred)
     saveLoggedinUser(user)
     const {_id: stationId} =  await stationService.save({...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked', stationImgUrl: './src/assets/img/liked-songs.jpg'})
