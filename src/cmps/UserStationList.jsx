@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from "react-router"
 import { setIsPlaying, setCurrentSong, setCurrentStation } from '../store/actions/player.actions'
 import { userService } from "../services/user"

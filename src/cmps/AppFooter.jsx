@@ -57,7 +57,7 @@ export function AppFooter() {
 						currentTime={currentTime}
 						// duration={duration}
 						onTimeUpdate={handleTimeUpdate}
-						// onProgressChange={handleProgressChange}
+						onProgressChange={setCurrentTime}
 						onNext={playNext}
 						onPrev={playPrev}
 					// onNext={handleNext}
@@ -65,7 +65,7 @@ export function AppFooter() {
 					/>
 				</div>
 				<div className="footer-right">
-					<RightControls player={playerRef.current} />
+					<RightControls />
 				</div>
 			</div>
 

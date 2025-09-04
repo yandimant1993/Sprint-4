@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
+import { useSelector } from "react-redux"
 
-
-export function RightControls({ player }) {
+export function RightControls() {
     const [volume, setVolume] = useState(50)
     const [isMuted, setIsMuted] = useState(false)
 
+     const player = useSelector(state => state.playerModule.player)
+console.log('player: ',player)
     const handleVolumeChange = (e) => {
         if (!player) return
         const newVolume = parseInt(e.target.value)

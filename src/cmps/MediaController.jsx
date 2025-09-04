@@ -21,6 +21,13 @@ export function MediaController({ currentTime, onProgressChange, onNext, onPrev 
         return `${mins}:${secs.toString().padStart(2, '0')}`
     }
 
+    // function handleProgressChange(e) {
+    //     if (!player || !duration) return
+    //     const newTime = (e.target.value / 100) * duration
+    //     player.seekTo(newTime, true)
+    //     if (onProgressChange) onProgressChange(newTime)
+    // }
+
     function handleProgressChange(e) {
         if (!player || !duration) return
         const newTime = (e.target.value / 100) * duration
@@ -58,10 +65,12 @@ export function MediaController({ currentTime, onProgressChange, onNext, onPrev 
                 <div className="progress-bar">
                     <input
                         type="range"
+                        className="progress-slider"
                         min="0"
                         max="100"
                         value={progressPercentage}
                         onChange={handleProgressChange}
+                        disabled={!player}
                     />
                     <div className="progress-fill" style={{ width: `${progressPercentage}%` }} />
                 </div>
