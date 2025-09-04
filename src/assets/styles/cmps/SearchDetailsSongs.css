@@ -17,6 +17,9 @@
         text-align: left;
 
         .search-details-input {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            /* place-self: center; */
             width: 100%;
             max-width: 400px;
             height: 40px;
@@ -27,26 +30,40 @@
             color: #ffffff;
             font-size: 0.875rem;
             outline: none;
+            position: relative;
             transition: background-color 0.3s ease, box-shadow 0.3s, border 0.3s;
 
             img {
                 padding: 0;
                 margin: 0;
                 height: 30px;
+
             }
+
+            /* input {
+                background-color: transparent; 
+                border: none;
+                outline: none;
+                color: #de0202;
+                font-size: 0.875rem;
+                width: 100%;
+            } */
 
             &::placeholder {
                 color: #b3b3b3;
             }
         }
+        
 
         .search-icon {
             height: 30px;
             width: 30px;
-            position: absolute;
-            left: 8px;
-            top: 30%;
-            transform: translateY(-50%);
+            /* position: absolute; */
+            /* left: 8px; */
+            /* top: 30%; */
+            /* transform: translateY(-50%); */
+            z-index: 1;
+
             width: 32px;
             filter: brightness(0) saturate(100%) invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.7) contrast(1);
         }

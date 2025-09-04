@@ -36,6 +36,7 @@
             height: calc(3* var(--spacepx-sm));
             width: calc(3* var(--spacepx-sm));
             border-radius: var(--spacerem-s);
+            object-fit: cover;
         }
 
         .user-station-details {

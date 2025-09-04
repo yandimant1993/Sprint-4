@@ -41,6 +41,8 @@ export function SearchStationSongs({ onSelectVideo }) {
                     className="search-input"
                     name="term"
                     value={filterByToEdit.term}
+                    autocomplete="off"
+
                 />
             </div>
 

@@ -11,7 +11,6 @@ export function AppHeader({ onSelectVideo }) {
 	const navigate = useNavigate()
 	const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
 	const user = userService.getLoggedinUser()
-
 	async function onLogout() {
 		try {
 			await logout()
@@ -21,11 +20,12 @@ export function AppHeader({ onSelectVideo }) {
 			showErrorMsg('Cannot logout')
 		}
 	}
-
+	
 	function onSetFilter(filterBy) {
 		setFilter(filterBy)
 	}
-
+	
+	console.log('user:',user)
 	return (
 		<header className="app-header full">
 
