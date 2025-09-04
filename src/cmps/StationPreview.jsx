@@ -14,12 +14,21 @@ export function StationPreview({ station }) {
         setIsPlaying(!isPlaying)
     }
 
-    function truncateWords(text, limit) {
-        if (!text) return ""
-        const words = text.split(" ")
-        if (words.length <= limit) return text
-        return words.slice(0, limit).join(" ") + "..."
+function truncateWords(text, limit) {
+    if (!text) return "";
+    const words = text.split(" ");
+    if (words.length <= limit) return text;
+    let truncated = words.slice(0, limit).join(" ");
+    const lastWord = words[limit - 1];
+    const maxLastWordLength = 5; 
+    if (lastWord.length > maxLastWordLength) {
+        truncated = words.slice(0, limit - 1).join(" ") + "...";
+    } else {
+        truncated += "...";
     }
+    return truncated;
+}
+
 
     const isThisStationPlaying = currentStationId === station._id && isPlaying
     return (

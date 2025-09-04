@@ -192,6 +192,7 @@ async function _createStations() {
         let stations = await storageService.query(STORAGE_KEY) || []
         if (stations.filter(({ type }) => type !== 'liked').length > 0) return
         const stationJson = [
+
             {
                 "_id": "64f1cdd298b8c2a1d4a12f3a",
                 "name": "Late Night Loops",
@@ -352,6 +353,77 @@ async function _createStations() {
                         "dateAdded": "2025-08-17T11:30:00Z",
                         "duration": "3:12",
                         "imgUrl": "https://placehold.co/40x40"
+                    }
+                ]
+            },
+            {
+                "_id": "station_coldplay_001",
+                "name": "Coldplay Essentials",
+                "description": "תחנה עם הלהיטים הגדולים של Coldplay, כולל A Sky Full of Stars.",
+                "tags": ["Coldplay", "Rock", "Pop", "Hits"],
+                "createdBy": {
+                    "_id": "u200",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/2.jpg"
+                },
+                "addedAt": 1693843200000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://img.youtube.com/vi/VPRjCeoBqrI/hqdefault.jpg",
+                "songs": [
+                    {
+                        "id": "VPRjCeoBqrI",
+                        "artist": "Coldplay",
+                        "title": "A Sky Full of Stars",
+                        "album": "Ghost Stories",
+                        "dateAdded": "2025-09-04T19:30:00Z",
+                        "duration": "4:28",
+                        "imgUrl": "https://img.youtube.com/vi/VPRjCeoBqrI/hqdefault.jpg"
+                    },
+                    {
+                        "id": "dvgZkm1xWPE",
+                        "artist": "Coldplay",
+                        "title": "Viva La Vida",
+                        "album": "Viva La Vida or Death and All His Friends",
+                        "dateAdded": "2025-09-04T19:30:00Z",
+                        "duration": "4:02",
+                        "imgUrl": "https://img.youtube.com/vi/dvgZkm1xWPE/hqdefault.jpg"
+                    },
+                    {
+                        "id": "yKNxeF4KMsY",
+                        "artist": "Coldplay",
+                        "title": "Yellow",
+                        "album": "Parachutes",
+                        "dateAdded": "2025-09-04T19:30:00Z",
+                        "duration": "4:26",
+                        "imgUrl": "https://img.youtube.com/vi/yKNxeF4KMsY/hqdefault.jpg"
+                    },
+                    {
+                        "id": "RB-RcX5DS5A",
+                        "artist": "Coldplay",
+                        "title": "Fix You",
+                        "album": "X&Y",
+                        "dateAdded": "2025-09-04T19:30:00Z",
+                        "duration": "4:55",
+                        "imgUrl": "https://img.youtube.com/vi/RB-RcX5DS5A/hqdefault.jpg"
+                    },
+                    {
+                        "id": "k4V3Mo61fJM",
+                        "artist": "Coldplay",
+                        "title": "Paradise",
+                        "album": "Mylo Xyloto",
+                        "dateAdded": "2025-09-04T19:30:00Z",
+                        "duration": "4:38",
+                        "imgUrl": "https://img.youtube.com/vi/k4V3Mo61fJM/hqdefault.jpg"
+                    },
+                    {
+                        "id": "1G4isv_Fylg",
+                        "artist": "Coldplay",
+                        "title": "The Scientist",
+                        "album": "A Rush of Blood to the Head",
+                        "dateAdded": "2025-09-04T19:30:00Z",
+                        "duration": "5:09",
+                        "imgUrl": "https://img.youtube.com/vi/1G4isv_Fylg/hqdefault.jpg"
                     }
                 ]
             },
