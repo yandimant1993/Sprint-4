@@ -19,7 +19,7 @@
     
     & img {
         border-radius: 7px;
-        width: 171.5px;
+        max-width: 171.5px;
         height: 171.5px
     }
     

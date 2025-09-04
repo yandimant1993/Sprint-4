@@ -41,8 +41,8 @@ export function SearchStationResult({ addSong , videos = [], onVideoClick,statio
               height="40"
             />
             <div className="song-info-text-res grid">
-              <span className="song-title-res">{shortenTitle(video.title)}</span>
-              {video.artist && <span className="song-artist-res">{video.artist}</span>}
+              <span className="song-title-res ellipses">{shortenTitle(video.title)}</span>
+              {video.artist && <span className="song-artist-res ellipses">{video.artist}</span>}
             </div>
           </div>
           <div className="song-list-album-res">{video.album || "--"}</div>

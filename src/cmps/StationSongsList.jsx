@@ -47,7 +47,7 @@ export function StationSongsList({ onToggleLikedSong, station, removeSong }) {
             <div className="song-list-number">#</div>
             <div className="song-list-title">Title</div>
             <div className="song-list-album">Album</div>
-            <div className="song-list-date">Date Added</div>
+            <div className="song-list-date ellipses">Date Added</div>
             <div className="song-list-duration">{Svgs.durationIcon}</div>
          </div>
 
@@ -61,7 +61,7 @@ export function StationSongsList({ onToggleLikedSong, station, removeSong }) {
                   onMouseLeave={() => setHoveredIndex(null)}
                   onClick={() => handlePlayPause(song)}
                >
-                  <div className="song-list-number">
+                  <div className="station-song-list-number">
                      {isActive && isCurrentStation && isPlaying
                         ? <EqualizerBars width={16} height={16} fill="var(--clr-lightgreen)" />
                         : hoveredIndex === index
@@ -69,16 +69,16 @@ export function StationSongsList({ onToggleLikedSong, station, removeSong }) {
                            : index + 1}
                   </div>
 
-                  <div className="song-list-title flex">
+                  <div className="station-song-list-title flex">
                      <img src={song.imgUrl} alt={song.title} width="40" height="40" className="song-img" />
-                     <div className="song-info-text grid">
-                        <span className="song-title">{truncateWords(song.title, 10)}</span>
-                        <span className="song-artist">{song.artist}</span>
+                     <div className="station-song-info-text grid">
+                        <span className="station-song-title ellipses">{truncateWords(song.title, 10)}</span>
+                        <span className="station-song-artist ellipses">{song.artist}</span>
                      </div>
                   </div>
-                  <div className="song-list-album">{song.album}</div>
-                  <div className="song-list-date">{getRelativeTime(song.dateAdded)}</div>
-                  <div className="song-list-duration">{song.duration || '--:--'}</div>
+                  <div className="station-song-list-album">{song.album}</div>
+                  <div className="station-song-list-date">{getRelativeTime(song.dateAdded)}</div>
+                  <div className="station-song-list-duration">{song.duration || '--:--'}</div>
 
                   <div className="hover-btns-actions flex">
                      {isLiked(song.id) ? (

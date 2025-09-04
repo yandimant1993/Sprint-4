@@ -29,6 +29,16 @@
     background-color: blue;
 } */
 
+/* text */
+.ellipses {
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    /* &.white-space-nowrap {
+        white-space: nowrap;
+    } */
+}
+
 /* Simple and useful CSS Debugging Technique */
 .debug * {
     outline: 1px solid gold

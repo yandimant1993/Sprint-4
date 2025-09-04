@@ -213,7 +213,7 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
       <div className="details-header-text grid">
         <p className="station-type">Public Playlist</p>
         <div
-          className="details-station station-name"
+          className="details-station station-name ellipses"
           onClick={() => isCreator && setIsModalOpen(true)}
           style={{ cursor: isCreator ? 'pointer' : 'default' }}
         >

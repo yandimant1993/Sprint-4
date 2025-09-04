@@ -1,5 +1,4 @@
 .songs-list {
-    grid-auto-flow: row;
     /* padding-inline: calc(var(--spacepx-sm)*1.8); */
     padding: 0px 24px 0px 24px;
 
@@ -24,7 +23,7 @@
     .songs-list-row {
         min-height: calc(var(--spacerem-sm) * 3.375);
 
-        .song-list-number {
+        .station-song-list-number {
             position: relative;
 
             svg {
@@ -39,7 +38,7 @@
             }
         }
 
-        .song-list-title {
+        .station-song-list-title {
             min-height: 44px;
             align-items: center;
 
@@ -47,19 +46,21 @@
                 margin-inline: 5px 12px;
             }
 
-            .song-info-text {
-                .song-title {
+            .station-song-info-text {
+                .station-song-title {
                     font-size: 1rem;
+                    white-space: nowrap;
                 }
 
-                .song-artist {
-                    font-size: 0.875rem;
+                .station-song-artist {
                     margin-block-end: 2px;
+                    font-size: 0.875rem;
+                    white-space: nowrap;
                 }
             }
         }
 
-        .song-list-duration {
+        .station-song-list-duration {
             margin-inline-end: 8px;
         }
 
@@ -108,12 +109,12 @@
             font-size: calc(var(--spacerem-sm) * 0.875);
         }
 
-        .song-list-number {
+        .song-list-number.station-song-list-number {
             font-size: 1rem;
             justify-self: start;
         }
 
-        .song-list-title {
+        .song-list-title.station-song-list-title {
             justify-self: start;
             margin-inline-start: 4px;
             gap: 12px;
@@ -123,20 +124,24 @@
             }
         }
 
-        .song-list-album {
+        .song-list-album,
+        .station-song-list-album {
             justify-self: start;
         }
 
-        .song-list-date {
+        .song-list-date,
+        .station-song-list-date {
             justify-self: start;
         }
 
-        .song-list-duration {
+        .song-list-duration,
+        .station-song-list-duration {
             justify-self: end;
             margin-inline-end: 26px;
         }
 
-        .song-list-display {
+        .song-list-display,
+        .station-song-list-display {
             display: none;
         }
 

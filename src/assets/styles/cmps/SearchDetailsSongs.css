@@ -59,7 +59,7 @@
                 padding: 0px;
                 position: relative;
                 display: grid;
-                grid-template-columns: 790px 500px 1fr;
+                grid-template-columns: 1fr 1fr auto;
                 grid-auto-flow: column;
                 gap: var(--spacepx-sm);
                 border-radius: 4px;
@@ -72,17 +72,16 @@
                     grid-template-columns: auto 1fr;
                     gap: 16px;
 
-                    .song-img-res {
-                        /* outline: 1px solid aqua; */
-                    }
-
                     .song-info-text-res {
+
                         .song-title-res {
+                            white-space: nowrap;
                             color: white;
                             line-height: 1.2;
                         }
 
                         .song-artist-res {
+                            white-space: nowrap;
                             line-height: 1.2;
                         }
                     }

@@ -29,7 +29,7 @@ export function RootCmp() {
 
     return (
         <Provider store={store}>
-            <div className="app-container">
+            <div className="app-container grid">
                 <AppHeader onSelectVideo={setSearchedVideoId} />
                 <UserMsg />
                 <SideNav />

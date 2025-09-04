@@ -4,7 +4,6 @@
     grid-column: 1;
     border-radius: var(--spacerem-s);
     background-color: var(--clr4);
-    grid-area: sidenav;
 
     *> {
         width: calc(100% - 2 * var(--spacepx-s));
@@ -174,10 +173,4 @@
         }
     }
 
-}
-
-@media (max-width: 624px) {
-    .sidenav-container {
-        display: none;
-    }
 }

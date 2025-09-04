@@ -28,7 +28,6 @@ export function SideNav() {
         station => station.type !== 'liked' && station.createdBy?._id === userId
     )
 
-    console.log('userStations', userStations)
     const likedStation = stations.find(station => station._id === userLikedStation)
 
     async function onCreateStation() {
