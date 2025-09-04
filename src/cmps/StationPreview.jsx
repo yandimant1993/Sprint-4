@@ -1,5 +1,5 @@
 import { Svgs } from "./Svgs"
-import { setCurrentStation, setIsPlaying } from "../store/actions/player.actions"
+import { setCurrentStation, setIsPlaying, setCurrentSong } from "../store/actions/player.actions"
 import { useSelector } from "react-redux"
 
 export function StationPreview({ station }) {
@@ -7,14 +7,11 @@ export function StationPreview({ station }) {
     const currentStation = useSelector(state => state.playerModule.currentStation)
     const isPlaying = useSelector(state => state.playerModule.isPlaying)
 
-
-    const handlePlayPause = (ev) => {
-        if (currentStation?._id === station._id) {
-            setIsPlaying(!isPlaying)
-        } else {
-            setCurrentStation(station)
-            setIsPlaying(true)
-        }
+    function handlePlayPause() {
+        setCurrentStation(station)
+        setCurrentSong(station.song[0])
+        setIsPlaying(!isPlaying)
+        console.log('station, station.song[0], isPlaying: ', station, station.song[0], isPlaying)
     }
 
     function truncateWords(text, limit) {

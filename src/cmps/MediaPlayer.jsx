@@ -1,62 +1,84 @@
-import React, { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useSelector } from "react-redux"
 import YouTube from 'react-youtube'
-import { setIsPlaying, setCurrentTime, setDuration } from "../store/actions/player.actions"
+import { setPlayer, setIsPlaying, setDuration } from "../store/actions/player.actions"
 
-export function MediaPlayer({ videoId: propVideoId, onReady, onTimeUpdate, onDurationChange }) {
-
-    // const currentStation = useSelector(store => store.playerModule.currentStation)
-    // console.log('currentStation: ',currentStation)
-    const isPlaying = useSelector(store => store.playerModule.isPlaying)
-
+export function MediaPlayer({ onReady, onTimeUpdate, setCurrentTime }) {
     const playerRef = useRef(null)
-    const [currentTimeLocal, setCurrentTimeLocal] = useState(0)
-    const [durationLocal, setDurationLocal] = useState(0)
 
-    // const videoId = propVideoId || currentStation?.youtubeVideoId
-    // console.log('videoId: ',videoId)
+    const isPlaying = useSelector(store => store.playerModule.isPlaying)
+    const currentSong = useSelector(store => store.playerModule.currentSong)
+
+    // const [currentTimeLocal, setCurrentTimeLocal] = useState(0)
+    // const [durationLocal, setDurationLocal] = useState(0)
+
+    useEffect(() => {
+        if (!playerRef.current || !currentSong) return
+        playerRef.current.loadVideoById(currentSong.id)
+    }, [currentSong])
 
     useEffect(() => {
         if (!playerRef.current) return
-        if (propVideoId && !isPlaying) {
-            playerRef.current.playVideo()
-            setIsPlaying(true)
-        } else {
-            playerRef.current.pauseVideo()
-        }
-    }, [isPlaying, propVideoId])
+        const interval = setInterval(() => {
+            const time = playerRef.current.getCurrentTime?.()
+            if (time !== undefined && onTimeUpdate) onTimeUpdate(time)
+        }, 1000)
+        return () => clearInterval(interval)
+    }, [onTimeUpdate])
 
-    useEffect(() => {
-        setCurrentTime(currentTimeLocal)
-        if (onTimeUpdate) onTimeUpdate(currentTimeLocal)
-    }, [currentTimeLocal])
+    // useEffect(() => {
+    //     return () => {
+    //         if (playerRef.current?._timeInterval) clearInterval(playerRef.current._timeInterval)
+    //     }
+    // }, [])
 
-    useEffect(() => {
-        setDuration(durationLocal)
-        if (onDurationChange) onDurationChange(durationLocal)
-    }, [durationLocal])
+    // const handleReady = (event) => {
+    //     playerRef.current = event.target
+    //     if (onReady) onReady(event.target)
+    //     setDurationLocal(currentSong.duration)
+    // }
 
-    const handleReady = (event) => {
-        playerRef.current = event.target
-        if (onReady) onReady(event.target)
+    // const handleStateChange = (event) => {
+    //     if (event.data === 1) {
+    //         const interval = setInterval(() => {
+    //             if (playerRef.current?.getCurrentTime) {
+    //                 const time = playerRef.current.getCurrentTime()
+    //                 setCurrentTimeLocal(time)
+    //             }
+    //         }, 500)
+    //         playerRef.current._timeInterval = interval
+    //     } else {
+    //         if (playerRef.current?._timeInterval) {
+    //             clearInterval(playerRef.current._timeInterval)
+    //         }
+    //     }
+    // }
 
-        const videoDuration = event.target.getDuration()
-        setDurationLocal(videoDuration)
+    function onReady(event) {
+        setPlayer(event.target)
     }
 
-    const handleStateChange = (event) => {
-        if (event.data === 1) {
-            const interval = setInterval(() => {
-                if (playerRef.current?.getCurrentTime) {
-                    const time = playerRef.current.getCurrentTime()
-                    setCurrentTimeLocal(time)
-                }
-            }, 500)
-            playerRef.current._timeInterval = interval
-        } else {
-            if (playerRef.current?._timeInterval) {
-                clearInterval(playerRef.current._timeInterval)
-            }
+    // function onReady(event) {
+    //     playerRef.current = event.target
+    //     setPlayer(event.target)
+
+    function onReady(event) {
+        playerRef.current = event.target
+        setPlayer(event.target)
+        // setDuration(currentSong.duration)
+        // const videoDuration = event.target.getDuration()
+        // if (videoDuration) {
+        //     setPlayer(event.target)
+        //     setDuration(videoDuration)
+        // }
+    }
+
+    function onStateChange(event) {
+        const state = event.data
+        if (state === 1) {
+            setIsPlaying(true)
+        } else if (state === 2 || state === 0) {
+            setIsPlaying(false)
         }
     }
 
@@ -75,24 +97,17 @@ export function MediaPlayer({ videoId: propVideoId, onReady, onTimeUpdate, onDur
         },
     }
 
-    useEffect(() => {
-        return () => {
-            if (playerRef.current?._timeInterval) clearInterval(playerRef.current._timeInterval)
-        }
-    }, [])
-
     // if (!propVideoId) return <p>No video available</p>
 
     return (
         <div className="media-player">
             <YouTube
-                videoId={propVideoId}
+                videoId={currentSong?.id}
                 opts={opts}
-                onReady={handleReady}
-                onStateChange={handleStateChange}
+                onReady={onReady}
+                onStateChange={onStateChange}
             />
             <div className="player-placeholder"></div>
-            {/* {currentStation && <h3>Playing: {currentStation.name}</h3>} */}
         </div>
     )
 }

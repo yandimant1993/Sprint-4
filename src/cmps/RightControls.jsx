@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useSelector } from "react-redux"
 
-
-export function RightControls({ player }) {
+export function RightControls() {
+    const player = useSelector(state => state.playerModule.player)
     const [volume, setVolume] = useState(50)
     const [isMuted, setIsMuted] = useState(false)
 
@@ -31,7 +32,6 @@ export function RightControls({ player }) {
             player.setVolume(volume)
         }
     }, [player, volume])
-
 
     return (
         <div className="right-controls">

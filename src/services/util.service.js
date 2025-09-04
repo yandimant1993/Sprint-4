@@ -87,3 +87,11 @@ export  function truncateWords(text, limit) {
       if (words.length <= limit) return text
       return words.slice(0, limit).join(" ") + "..."
    }
+
+  export function parseDuration(str) {
+  if (!str) return 0
+  const parts = str.split(":").map(Number)
+  if (parts.length === 2) return parts[0] * 60 + parts[1]   // mm:ss
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2] // hh:mm:ss
+  return 0
+}

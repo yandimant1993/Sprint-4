@@ -19,7 +19,6 @@
 .songs-list-row:hover,
 .video-item:hover {
     background-color: var(--clr1);
-    transform: translateY(-1px);
 }
 
 .song-list-title-res,

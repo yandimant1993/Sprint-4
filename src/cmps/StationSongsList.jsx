@@ -5,6 +5,7 @@ import { truncateWords, getRelativeTime } from '../services/util.service'
 import { userService } from '../services/user'
 import { stationService } from '../services/station'
 import { Svgs } from "./Svgs"
+import { EqualizerBars } from './utilCmps/EqualizerBars'
 
 export function StationSongsList({ onToggleLikedSong, station, removeSong }) {
    const currentStation = useSelector(state => state.playerModule.currentStation)
@@ -31,9 +32,14 @@ export function StationSongsList({ onToggleLikedSong, station, removeSong }) {
    //    setIsPlaying(!isPlaying)
    // }
 
-   async function handleSongClick(song) {
+   async function handlePlayPause(song) {
       setCurrentSong(song)
+      setIsPlaying()
+
    }
+
+   // const isActiveSong = currentSong?.id === song.id;
+   const isCurrentStation = currentStation?._id === station._id;
 
    return (
       <section className="songs-list grid">
@@ -46,18 +52,18 @@ export function StationSongsList({ onToggleLikedSong, station, removeSong }) {
          </div>
 
          {songs?.map((song, index) => {
-            const isActive = currentSong?.id === song.id && currentStation
+            const isActive = currentSong?.id === song.id
             return (
                <div
                   className={`songs-list-row grid ${isActive ? 'active' : ''}`}
                   key={song.id}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  onClick={() => handleSongClick(song)}
+                  onClick={() => handlePlayPause(song)}
                >
                   <div className="song-list-number">
-                     {isActive && isPlaying
-                        ? Svgs.equalizer
+                     {isActive && isCurrentStation && isPlaying
+                        ? <EqualizerBars width={16} height={16} fill="var(--clr-lightgreen)" />
                         : hoveredIndex === index
                            ? Svgs.play
                            : index + 1}
