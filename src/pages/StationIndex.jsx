@@ -35,7 +35,6 @@ export function StationIndex() {
             showErrorMsg('Cannot update station')
         }
     }
-
     return (
         <section className="station-list-container">
             <StationList

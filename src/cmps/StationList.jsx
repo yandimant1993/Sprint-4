@@ -20,11 +20,9 @@ export function StationList({ stations }) {
         }
     })
 
-
     const filteredUserStations = stations.filter(station => station.type === 'system')
-    console.log('filteredUserStations', filteredUserStations)
+    // console.log('filteredUserStations', filteredUserStations)
     const sectionCount = 8
-
     if (!stations) return <p>Loading...</p>
     // return (
     //     <>

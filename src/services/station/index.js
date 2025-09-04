@@ -16,7 +16,7 @@ function getEmptyStation() {
         // createdBy: '',
         likedByUsers: [],
         type: 'user',
-        stationImgUrl: 'https://placebear.com/80/80'
+        stationImgUrl: ''
     }
     count++
     return station

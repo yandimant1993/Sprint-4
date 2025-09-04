@@ -39,7 +39,6 @@ function remove(userId) {
 
 async function update({ _id, score }) {
     const user = await storageService.get('user', _id)
-    user.score = score
     await storageService.put('user', user)
 
     // When admin updates other user's details, do not update loggedinUser

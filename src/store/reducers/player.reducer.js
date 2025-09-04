@@ -18,6 +18,7 @@ export const PREV_SONG = 'PREV_SONG'
 const initialState = {
     isPlaying: false,
     isActive: false,
+    currentStationId: null,
     currentStationSongs: [],
     currentSong: {},
     currentIndex: 0,
@@ -30,8 +31,15 @@ export function playerReducer(state = initialState, action = {}) {
         case SET_PLAYER:
             return { ...state, player: action.player }
 
+        // case SET_CURRENT_STATION:
+        //     return { ...state, currentStationSongs: action.station }
+
         case SET_CURRENT_STATION:
-            return { ...state, currentStationSongs: action.station }
+            return {
+                ...state,
+                currentStationId: action.station._id,
+                currentStationSongs: action.station.songs
+            }
 
         case SET_CURRENT_SONG:
             return {

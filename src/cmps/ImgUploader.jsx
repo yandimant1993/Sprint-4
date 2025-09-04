@@ -9,13 +9,23 @@ export function ImgUploader({ onUploaded = null }) {
   })
   const [isUploading, setIsUploading] = useState(false)
 
+  // async function uploadImg(ev) {
+  //   setIsUploading(true)
+  //   const { secure_url, height, width } = await uploadService.uploadImgLocal(ev)
+  //   setImgData({ imgUrl: secure_url, width, height })
+  //   setIsUploading(false)
+  //   onUploaded && onUploaded(imgData)
+  //   console.log('imgData: ', imgData)
+  // }
+
   async function uploadImg(ev) {
     setIsUploading(true)
     const { secure_url, height, width } = await uploadService.uploadImgLocal(ev)
-    setImgData({ imgUrl: secure_url, width, height })
+    const newImgData = { imgUrl: secure_url, width, height }
+    setImgData(newImgData)
     setIsUploading(false)
-    onUploaded && onUploaded(imgData)
-    console.log('imgData: ', imgData)
+    onUploaded && onUploaded(secure_url)
+    console.log('uploaded image url: ', secure_url)
   }
 
   function getUploadLabel() {
