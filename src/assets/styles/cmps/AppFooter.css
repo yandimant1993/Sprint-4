@@ -153,6 +153,7 @@
     display: flex;
     align-items: center;
     gap: .5rem;
+    padding-inline-end: 8px;
 }
 
 .right-controls .control-btn {
