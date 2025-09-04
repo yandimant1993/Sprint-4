@@ -24,8 +24,11 @@ export function SideNav() {
     //     </section>
     // )
     const { _id: userId, likedStationId: userLikedStation } = loggedinUser
-    const userStations = stations.filter(station => station.type !== 'liked' && station.createdBy._id === userId)
-    console.log('userStations',userStations)
+    const userStations = stations.filter(
+        station => station.type !== 'liked' && station.createdBy?._id === userId
+    )
+
+    console.log('userStations', userStations)
     const likedStation = stations.find(station => station._id === userLikedStation)
 
     async function onCreateStation() {

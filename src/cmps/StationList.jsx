@@ -14,7 +14,15 @@ export function StationList({ stations }) {
         return station.owner?._id === user._id
     }
 
+    stations.forEach((station, idx) => {
+        if (!station.createdBy || !station.createdBy._id) {
+            console.warn(`❌ Station #${idx} is missing createdBy._id:`, station)
+        }
+    })
+
+
     const filteredUserStations = stations.filter(station => station.type === 'system')
+    console.log('filteredUserStations', filteredUserStations)
     const sectionCount = 8
 
     if (!stations) return <p>Loading...</p>
@@ -37,7 +45,6 @@ export function StationList({ stations }) {
 
     //     </>
     // )
-
     return (
         <>
             <StationSection
