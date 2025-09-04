@@ -96,11 +96,13 @@
     height: 14px;
     background: #fff;
     border-radius: 50%;
+    opacity: 0;
 }
 
 .progress-bar:hover .progress-fill::after,
 .volume-bar:hover .volume-fill::after {
     display: block;
+    opacity: 1;
 }
 
 .progress-bar:hover .progress-fill,
