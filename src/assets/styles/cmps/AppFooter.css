@@ -1,6 +1,58 @@
-@media (max-width: 700px) {}
+@media (max-width: 624px) {
+    .app-footer{
+        width: 90vw;
 
-@media (min-width: 1300px) {}
+        justify-self: center;
+
+        .footer-content {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr auto;
+            grid-template-areas:
+            "left right"
+            "center center";
+            
+            .footer-left {
+                grid-template-columns: auto 1fr;
+                
+                .btn-add-current-song {
+                    display: none;
+                }
+            }
+            
+            .footer-center.grid {
+                .media-controls {
+                    display: none;
+                }
+                
+                .progress-container {
+                    
+                    :nth-child(1),
+                    :nth-child(3) {
+                        display: none;
+                    }
+                    
+                    .progress-bar {
+                        
+                    }
+                }
+            }
+            
+            .footer-right {}
+        }
+    }
+}
+
+@media (min-width: 624px) {
+    .footer-content {
+        grid-template-columns: 1fr minmax(360px, 2fr) 1fr;
+
+        .footer-center.grid {
+            .progress-container {
+                grid-template-columns: auto 1fr auto;
+            }
+        }
+    }
+}
 
 /* starting a play */
 .app-footer {
@@ -16,7 +68,6 @@
     width: 100%;
     gap: .6rem;
 
-    grid-template-columns: 1fr minmax(360px, 2fr) 1fr;
     grid-template-areas: "left center right";
     align-items: center;
 }
@@ -82,7 +133,7 @@
     grid-area: center;
 
     .progress-container {
-        grid-template-columns: auto 1fr auto;
+
         align-items: center;
         gap: 4px;
         width: 85.5%;
@@ -101,7 +152,6 @@
         display: flex;
         align-items: center;
     }
-
 
 }
 
@@ -221,26 +271,4 @@
 
 .player-placeholder {
     display: none;
-}
-
-@media (max-width: 680px) {
-    .app-footer .footer-content {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-            "left right"
-            "center center";
-        row-gap: .8rem;
-    }
-
-    .media-controls {
-        gap: .6rem;
-    }
-
-    .progress-container {
-        max-width: 500px;
-    }
-
-    /* .volume-slider {
-        width: 80px;
-    } */
 }

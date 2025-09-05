@@ -227,30 +227,3 @@
     cursor: pointer;
     border: none;
 }
-
-
-@media (max-width: 768px) {
-    .media-controller {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    /* .control-btn img {
-        width: 18px;
-        height: 18px;
-    } */
-
-    /* .control-btn.play-pause {
-        width: 36px;
-        height: 36px;
-    } */
-
-    /* .progress-container {
-        max-width: 300px;
-    } */
-
-
-    .volume-bar {
-        width: 80px;
-    }
-}

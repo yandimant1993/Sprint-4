@@ -1,5 +1,49 @@
+@media (max-width: 624px) {
+    .station-details {
+        .details-header-container {
+            flex-direction: column;
+
+            .btn-station-img-container {
+                width: 65vw;
+                aspect-ratio: 1;
+                align-self: center;
+            }
+
+            .details-header-text {
+                width: 100%;
+
+                .station-type {
+                    display: none;
+                }
+
+                .details-station.station-name {
+                    font-size: 2rem;
+
+                    .station-details-info {
+
+                        &:nth-child(1) {
+                            display: block;
+                        }
+
+                        &:nth-child(2) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 624px) {
+
+    .details-station.station-name {
+        font-size: calc(var(--spacerem-sm)*6);
+    }
+}
+
 .station-details {
-    min-width: 500px;
+    /* min-width: 500px; */
     background-color: var(--clr4);
     border-radius: var(--spacerem-s);
     overflow: auto;
@@ -86,7 +130,7 @@
                 white-space: nowrap;
                 margin: 0 0 8px 0;
                 line-height: 1.2;
-                font-size: calc(var(--spacerem-sm)*6);
+
                 font-family: spotifymix-title;
                 font-weight: 800;
             }

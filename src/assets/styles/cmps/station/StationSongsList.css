@@ -1,3 +1,44 @@
+@media (max-width: 624px) {
+    .songs-list {
+
+        .songs-list-header {
+            display: none;
+        }
+
+        .songs-list-row.grid {
+
+            .station-song-list-number,
+            .station-song-list-album,
+            .station-song-list-date,
+            .station-song-list-duration {
+                display: none;
+            }
+
+            .station-song-list-title{
+                gap: 16px;
+
+                .station-song-info-text{
+                    max-width: 50vw;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 624px) {
+    .songs-list-row {
+        grid-template-columns: calc(var(--spacerem-s)*1.2) 53fr 42fr 25fr 10fr;
+        padding-inline: var(--spacepx-sm);
+
+        .station-song-list-title {
+
+            img {
+                margin-inline: 5px 12px;
+            }
+        }
+    }
+}
+
 .songs-list {
     /* padding-inline: calc(var(--spacepx-sm)*1.8); */
     padding: 0px 24px 0px 24px;
@@ -41,10 +82,6 @@
         .station-song-list-title {
             min-height: 44px;
             align-items: center;
-
-            img {
-                margin-inline: 5px 12px;
-            }
 
             .station-song-info-text {
                 .station-song-title {
@@ -97,11 +134,11 @@
     .songs-list-row {
         position: relative;
         width: 100%;
-        padding-inline: var(--spacepx-sm);
+
         border-radius: 4px;
 
         grid-auto-flow: column;
-        grid-template-columns: calc(var(--spacerem-s)*1.2) 53fr 42fr 25fr 10fr;
+
         gap: var(--spacepx-sm);
         align-items: center;
 

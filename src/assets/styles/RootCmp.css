@@ -1,17 +1,14 @@
 .app-container {
-    /* grid-auto-columns: auto 1fr; */
-    /* grid-template-columns: minmax(0, min(50vw, 420px)); */
-    /* grid-auto-rows: auto 1fr auto; */
     height: 100vh;
-    padding: calc(var(--spacepx-sm) / 2);
-    margin: calc(-1 * var(--spacepx-sm) / 2);
-    gap: calc(var(--spacepx-sm) / 2);
-
-    /* grid-template-areas:
-        "header header"
-        "sidenav main"
-        "footer footer"; */
-
     background-color: var(--clr5);
     color: var(--gray2);
+}
+
+@media (min-width: 624px) {
+    .app-container {
+        padding: calc(var(--spacepx-sm) / 2);
+        /* margin: calc(-1 * var(--spacepx-sm) / 2); */
+        gap: calc(var(--spacepx-sm) / 2);
+
+    }
 }

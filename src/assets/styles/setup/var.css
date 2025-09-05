@@ -27,4 +27,9 @@
 
   /* scale */
   --scale-s: 1.05;
+
+  /* screen size */
+  --mobile: 624px;
+  --tablet: 980px;
+  --desktop: 1400px
 }
