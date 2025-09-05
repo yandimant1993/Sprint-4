@@ -34,7 +34,7 @@ export function RightControls() {
     }, [player, volume])
 
     return (
-        <div className="right-controls">
+        <div className="right-controls grid">
             <button className="control-btn microphone" title="Microphone">
                 <img src="/src/assets/spotify-icons/now-playing.svg" alt="Microphone" />
                 {/* <div className="active-dot"></div> */}

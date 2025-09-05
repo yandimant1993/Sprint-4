@@ -74,7 +74,7 @@ export function MediaController({ currentTime, onProgressChange, onNext, onPrev 
                     <img src="/src/assets/spotify-icons/repeat.svg" alt="Repeat" />
                 </button>
             </div>
-            <div className="progress-container">
+            <div className="progress-container grid">
                 <span className="time current">{formatTime(currentTime)}</span>
                 <div className="progress-bar">
                     <input

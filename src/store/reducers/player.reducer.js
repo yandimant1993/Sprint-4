@@ -38,6 +38,7 @@ export function playerReducer(state = initialState, action = {}) {
             return {
                 ...state,
                 currentStationId: action.station._id,
+                currentIndex: 0,
                 currentStationSongs: action.station.songs
             }
 

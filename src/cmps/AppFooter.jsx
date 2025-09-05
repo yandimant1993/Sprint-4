@@ -43,8 +43,8 @@ export function AppFooter() {
 	const playPrev = () => setCurrentIndex((currentIndex - 1 + playlist.length) % playlist.length)
 
 	return (
-		<footer className="app-footer full">
-			<div className="footer-content">
+		<footer className="app-footer flex">
+			<div className="footer-content grid">
 				<div className="footer-left grid">
 					<SongPreview
 						currentSong={currentSong}
@@ -64,7 +64,7 @@ export function AppFooter() {
 					// onPrev={handlePrev}
 					/>
 				</div>
-				<div className="footer-right">
+				<div className="footer-right flex">
 					<RightControls />
 				</div>
 			</div>

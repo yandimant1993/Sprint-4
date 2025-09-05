@@ -42,7 +42,7 @@ export function SearchDetailsSongs({ addSong,onSelectVideo, stationId }) {
                         placeholder="Search for songs"
                         className="search-details-input"
                         name="term"
-                        autocomplete="off"
+                        autoComplete="off"
                         value={filterByToEdit.term}
                     />
                 </div>

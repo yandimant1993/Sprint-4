@@ -137,7 +137,6 @@
         .song-list-duration,
         .station-song-list-duration {
             justify-self: end;
-            margin-inline-end: 26px;
         }
 
         .song-list-display,

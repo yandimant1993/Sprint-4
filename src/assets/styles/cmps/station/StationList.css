@@ -51,7 +51,7 @@
     flex-grow: 1;
     padding: 12px 28px 28px 28px;
     /* background-color: var(--gray2, #b3b3b3); */
-    background-color: var(--clr4, #121212);
+    /* background-color: var(--clr4, #121212); */
     border-radius: 8px;
     overflow-y: auto;
     overflow-x: hidden;

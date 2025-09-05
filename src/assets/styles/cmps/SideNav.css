@@ -68,7 +68,6 @@
             padding: 0px;
             justify-content: center;
         }
-
     }
 
     &.expanded {
@@ -114,13 +113,11 @@
                     transition: 0.3s;
                     background-color: var(--clr1)
                 }
-
             }
-
         }
 
         .button-playlist {
-            margin: 0px 0px 4px 10px;
+            margin: 0px 0px 8px 10px;
 
             .playlist {
                 padding: 8px 10px;
