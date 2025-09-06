@@ -14,10 +14,14 @@
                 display: none;
             }
 
-            .station-song-list-title{
+            .station-song-list-title {
                 gap: 16px;
 
-                .station-song-info-text{
+                .song-img {
+                    object-fit: cover;
+                }
+
+                .station-song-info-text {
                     max-width: 50vw;
                 }
             }
@@ -26,15 +30,33 @@
 }
 
 @media (min-width: 624px) {
+
+    .songs-list-header,
     .songs-list-row {
         grid-template-columns: calc(var(--spacerem-s)*1.2) 53fr 42fr 25fr 10fr;
         padding-inline: var(--spacepx-sm);
+        
+        .song-list-number,
+        .station-song-list-number {
+            padding-inline-start: 4px;
+        }
+    }
+    .songs-list-header {
+        margin-block-end: 14px;
+    }
+
+    .songs-list-row {
 
         .station-song-list-title {
 
             img {
                 margin-inline: 5px 12px;
             }
+        }
+
+        .song-list-title,
+        .station-song-list-title {
+            margin-inline-start: 4px;
         }
     }
 }
@@ -47,7 +69,7 @@
     .songs-list-header {
         min-height: 36px;
         border-block-end: 1px solid var(--clr1);
-        margin-block-end: calc(var(--spacepx-s)*2);
+        /* margin-block-end: calc(var(--spacepx-s)*2); */
 
         .song-list-duration {
             margin-inline-end: 10px;
@@ -80,13 +102,16 @@
         }
 
         .station-song-list-title {
+            min-width: 200px;
             min-height: 44px;
             align-items: center;
 
             .station-song-info-text {
                 .station-song-title {
+                    /* min-width: 150px; */
                     font-size: 1rem;
                     white-space: nowrap;
+                    color: var(--white);
                 }
 
                 .station-song-artist {
@@ -146,14 +171,17 @@
             font-size: calc(var(--spacerem-sm) * 0.875);
         }
 
-        .song-list-number.station-song-list-number {
+        .song-list-number,
+        .station-song-list-number {
+            font-variant-numeric: tabular-nums;
             font-size: 1rem;
             justify-self: start;
         }
 
-        .song-list-title.station-song-list-title {
+        .song-list-title,
+        .station-song-list-title {
             justify-self: start;
-            margin-inline-start: 4px;
+            /* margin-inline-start: 4px; */
             gap: 12px;
 
             img {
@@ -173,6 +201,7 @@
 
         .song-list-duration,
         .station-song-list-duration {
+            font-variant-numeric: tabular-nums;
             justify-self: end;
         }
 

@@ -1,3 +1,10 @@
+@media (max-width: 624px) {
+
+}
+
+@media (min-width: 624px) {
+}
+
 .media-controller {
     display: flex;
     align-items: center;

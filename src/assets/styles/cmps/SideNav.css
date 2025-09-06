@@ -6,7 +6,8 @@
 
 @media (min-width: 624px) {
     .sidenav-container {
-        width: 420px;
+        max-width: 50vw;
+        /* min-width: 30vw; */
         height: 100%;
         grid-column: 1;
         border-radius: var(--spacerem-s);
@@ -176,5 +177,11 @@
                 padding: 0 0 0 16px;
             }
         }
+    }
+}
+
+@media (min-width: 1080px) {
+    .sidenav-container{
+          width: 420px;
     }
 }

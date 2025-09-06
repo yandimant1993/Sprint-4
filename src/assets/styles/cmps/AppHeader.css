@@ -34,6 +34,15 @@
             display: flex;
             gap: 0.5rem;
         }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-inline-start: 4px;
+
+        }
     }
 
     .header-center {
@@ -53,10 +62,11 @@
     }
 
     .search-icon {
-        position: absolute;
-        left: 10px;
+        /* left: 10px;
         top: 50%;
-        transform: translateY(-50%);
+        position: absolute;
+        transform: translateY(-50%); */
+        /* margin-inline-start: 4px; */
         width: 45px;
         filter: brightness(0) saturate(100%) invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.7) contrast(1);
     }
