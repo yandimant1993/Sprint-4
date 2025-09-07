@@ -370,7 +370,7 @@ async function _createStations() {
                 "addedAt": 1693843200000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "https://img.youtube.com/vi/VPRjCeoBqrI/hqdefault.jpg",
+                "stationImgUrl": "public/img/spotifly-albums-images/ab67616100005174af59d106f14ea71effc76195.png",
                 "songs": [
                     {
                         "id": "VPRjCeoBqrI",
@@ -878,7 +878,7 @@ async function _createStations() {
                 "addedAt": 1724897800000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d000048514718e2b124f79258be7bc452.png",
+                "stationImgUrl": "public/img/spotifly-albums-images/ab67656300005f1f4588f2866266641d7d36b3f6.png",
                 "songs": [
                     {
                         "id": "s035",
@@ -904,7 +904,7 @@ async function _createStations() {
                 "addedAt": 1724898800000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d00004851f84e1700d7b6ba0d479205a4.png",
+                "stationImgUrl": "public/img/spotifly-albums-images/ab6766630000db5bb090a1d78b87b61d3fb3f11c.png",
                 "songs": [
                     {
                         "id": "s036",
@@ -930,7 +930,7 @@ async function _createStations() {
                 "addedAt": 1724899800000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d00004851b5d4b4ed17ec86c4b3944af2.png",
+                "stationImgUrl": "public/img/spotifly-albums-images/ab67656300005f1fe95585764a934a57f34692a5.png",
                 "songs": [
                     {
                         "id": "s037",
@@ -956,7 +956,7 @@ async function _createStations() {
                 "addedAt": 1724900800000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d00004851ee07023115f822012390d2a0.png",
+                "stationImgUrl": "public/img/spotifly-albums-images/ab67656300005f1f71c5d1e1ef9350a805cb15e4.png",
                 "songs": [
                     {
                         "id": "s038",
@@ -982,7 +982,7 @@ async function _createStations() {
                 "addedAt": 1724901800000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d000048519b19c107109de740bad72df5.png",
+                "stationImgUrl": "public/img/spotifly-albums-images/ab6766630000db5b31af55ae628c8ec30ddc0f07.png",
                 "songs": [
                     {
                         "id": "s039",
@@ -1008,7 +1008,7 @@ async function _createStations() {
                 "addedAt": 1724902800000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d000048513e082d95832d0ee56241b8ce.png",
+                "stationImgUrl": "public/img/spotifly-albums-images/ab67656300005f1fe65cd30cfb9f8e0e9252930c.png",
                 "songs": [
                     {
                         "id": "s040",
@@ -1098,9 +1098,645 @@ async function _createStations() {
                         "imgUrl": "https://placehold.co/40x40"
                     }
                 ]
+            },
+            {
+                "_id": "pl001",
+                "name": "Morning Boost",
+                "description": "Energetic pop and EDM tracks to start your day",
+                "tags": ["Pop", "EDM", "Energy"],
+                "createdBy": {
+                    "_id": "u001",
+                    "fullname": "Liam Carter",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/12.jpg"
+                },
+                "addedAt": 1724576800000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "public/img/spotifly-albums-images/ab67706c0000da847a9861f10d1d9d127a3e8f7f.png",
+                "songs": [
+                    { "id": "aqz-KE-bpKQ", "artist": "Zedd, Maren Morris, Grey", "title": "The Middle", "album": "The Middle", "dateAdded": "2025-08-12T09:20:00Z", "duration": "3:04", "imgUrl": "https://i.scdn.co/image/ab67616d00004851b1c2d7f6e3e7a7a1e6a1a1a1a" },
+                    { "id": "gocwRvLhDf8", "artist": "Calvin Harris", "title": "Summer", "album": "Motion", "dateAdded": "2025-08-13T10:10:00Z", "duration": "3:44", "imgUrl": "https://i.scdn.co/image/ab67616d00004851c2c2d7f6e3e7a7a1e6a1a1a1a" },
+                    { "id": "fHI8X4OXluQ", "artist": "Dua Lipa", "title": "Don't Start Now", "album": "Future Nostalgia", "dateAdded": "2025-08-14T08:00:00Z", "duration": "3:03", "imgUrl": "https://i.scdn.co/image/ab67616d00004851d3c2d7f6e3e7a7a1e6a1a1a1a" }
+                ]
+            },
+            {
+                "_id": "pl002",
+                "name": "Chill Vibes",
+                "description": "Relaxing tunes for a calm afternoon",
+                "tags": ["Chill", "Lo-fi", "Acoustic"],
+                "createdBy": { "_id": "u002", "fullname": "Ella Smith", "imgUrl": "https://randomuser.me/api/portraits/women/34.jpg" },
+                "addedAt": 1724576801000, "type": "system", "likedByUsers": [], "stationImgUrl": "public/img/spotifly-albums-images/ab67706f00000002dfd98f9d0cddbb9f43f2710a.png",
+                "songs": [
+                    { "id": "5qap5aO4i9A", "artist": "Lo-fi Beats", "title": "Chillhop Essentials", "album": "Chillhop", "dateAdded": "2025-08-15T10:00:00Z", "duration": "2:30", "imgUrl": "https://i.scdn.co/image/ab67616d00004851e1c2d7f6e3e7a7a1e6a1a1a1a" },
+                    { "id": "DWcJFNfaw9c", "artist": "Lofi Girl", "title": "Dreaming", "album": "Lofi Dreams", "dateAdded": "2025-08-16T11:00:00Z", "duration": "2:45", "imgUrl": "https://i.scdn.co/image/ab67616d00004851f1c2d7f6e3e7a7a1e6a1a1a1a" },
+                    { "id": "hHW1oY26kxQ", "artist": "Joakim Karud", "title": "Luvly", "album": "Luvly", "dateAdded": "2025-08-17T09:00:00Z", "duration": "3:10", "imgUrl": "https://i.scdn.co/image/ab67616d0000485201c2d7f6e3e7a7a1e6a1a1a1a" }
+                ]
+            },
+            {
+                "_id": "pl003",
+                "name": "Rock Legends",
+                "description": "Classic and modern rock hits",
+                "tags": ["Rock", "Classic", "Alternative"],
+                "createdBy": { "_id": "u003", "fullname": "Jack Turner", "imgUrl": "https://randomuser.me/api/portraits/men/45.jpg" },
+                "addedAt": 1724576802000, "type": "system", "likedByUsers": [], "stationImgUrl": "public/img/spotifly-albums-images/ab6766630000db5b7b1d7e08068759037c202190.png",
+                "songs": [
+                    { "id": "fJ9rUzIMcZQ", "artist": "Queen", "title": "Bohemian Rhapsody", "album": "A Night at the Opera", "dateAdded": "2025-08-18T08:00:00Z", "duration": "5:55", "imgUrl": "https://i.scdn.co/image/ab67616d0000485211c2d7f6e3e7a7a1e6a1a1a1a" },
+                    { "id": "ktvTqknDobU", "artist": "Imagine Dragons", "title": "Believer", "album": "Evolve", "dateAdded": "2025-08-19T09:00:00Z", "duration": "3:24", "imgUrl": "https://i.scdn.co/image/ab67616d0000485221c2d7f6e3e7a7a1e6a1a1a1a" },
+                    { "id": "hTWKbfoikeg", "artist": "Nirvana", "title": "Smells Like Teen Spirit", "album": "Nevermind", "dateAdded": "2025-08-20T10:00:00Z", "duration": "5:01", "imgUrl": "https://i.scdn.co/image/ab67616d0000485231c2d7f6e3e7a7a1e6a1a1a1a" }
+                ]
+            },
+            {
+                "_id": "station_indie_001",
+                "name": "Indie Chillwave",
+                "description": "מוזיקה אינדי רגועה עם נגיעות של אלקטרוניקה, מושלמת לרגעים של רוגע.",
+                "tags": ["Indie", "Chillwave", "Electronic"],
+                "createdBy": {
+                    "_id": "u201",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/3.jpg"
+                },
+                "addedAt": 1693843200000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "public/img/spotifly-albums-images/ab6766630000db5b40df13f64e2194130e522164.png",
+                "songs": [
+                    {
+                        "id": "7ZtUUg6BKyo",
+                        "title": "Sunset Lover",
+                        "artist": "Petit Biscuit",
+                        "album": "Presence",
+                        "imgUrl": "https://i.ytimg.com/vi/7ZtUUg6BKyo/maxresdefault.jpg",
+                        "duration": "3:58",
+                        "dateAdded": "2025-08-01T10:00:00Z"
+                    },
+                    {
+                        "id": "x3tWHeWEd5s",
+                        "title": "Night Owl",
+                        "artist": "Galimatias",
+                        "album": "Single",
+                        "imgUrl": "https://i.ytimg.com/vi/x3tWHeWEd5s/maxresdefault.jpg",
+                        "duration": "4:12",
+                        "dateAdded": "2025-08-02T11:00:00Z"
+                    },
+                    {
+                        "id": "nOubjLM9Cbc",
+                        "title": "Cold Little Heart",
+                        "artist": "Michael Kiwanuka",
+                        "album": "Love & Hate",
+                        "imgUrl": "https://i.ytimg.com/vi/nOubjLM9Cbc/maxresdefault.jpg",
+                        "duration": "10:13",
+                        "dateAdded": "2025-08-03T09:30:00Z"
+                    }
+                ]
+            },
+            {
+                "_id": "station_rock_001",
+                "name": "Classic Rock Revival",
+                "description": "להיטים קלאסיים עם טוויסט מודרני, לחובבי הרוק של פעם.",
+                "tags": ["Rock", "Classic", "Hits"],
+                "createdBy": {
+                    "_id": "u202",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/4.jpg"
+                },
+                "addedAt": 1693843200000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "public/img/spotifly-albums-images/ab6766630000db5bb1a97e93ce07b3f6bd119c8c.png",
+                "songs": [
+                    {
+                        "id": "bpOSxM0rNPM",
+                        "title": "Do I Wanna Know?",
+                        "artist": "Arctic Monkeys",
+                        "album": "AM",
+                        "imgUrl": "https://i.ytimg.com/vi/bpOSxM0rNPM/maxresdefault.jpg",
+                        "duration": "4:32",
+                        "dateAdded": "2025-08-04T12:00:00Z"
+                    },
+                    {
+                        "id": "GhCXAiNz9Jo",
+                        "title": "Take Me Out",
+                        "artist": "Franz Ferdinand",
+                        "album": "Franz Ferdinand",
+                        "imgUrl": "https://i.ytimg.com/vi/GhCXAiNz9Jo/maxresdefault.jpg",
+                        "duration": "3:57",
+                        "dateAdded": "2025-08-05T10:30:00Z"
+                    },
+                    {
+                        "id": "SBjQ9tuuTJQ",
+                        "title": "The Pretender",
+                        "artist": "Foo Fighters",
+                        "album": "Echoes, Silence, Patience & Grace",
+                        "imgUrl": "https://i.ytimg.com/vi/SBjQ9tuuTJQ/maxresdefault.jpg",
+                        "duration": "4:29",
+                        "dateAdded": "2025-08-06T09:00:00Z"
+                    }
+                ]
+            },
+            {
+                "_id": "station_pop_001",
+                "name": "Pop Hits 2025",
+                "description": "הלהיטים הגדולים של השנה, מהפופ העולמי.",
+                "tags": ["Pop", "Hits", "Top Charts"],
+                "createdBy": {
+                    "_id": "u203",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/5.jpg"
+                },
+                "addedAt": 1693843200000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "public/img/spotifly-albums-images/ab6766630000db5bb090a1d78b87b61d3fb3f11c.png",
+                "songs": [
+                    {
+                        "id": "fHI8X4OXluQ",
+                        "title": "Blinding Lights",
+                        "artist": "The Weeknd",
+                        "album": "After Hours",
+                        "imgUrl": "https://i.ytimg.com/vi/fHI8X4OXluQ/maxresdefault.jpg",
+                        "duration": "3:20",
+                        "dateAdded": "2025-08-07T10:00:00Z"
+                    },
+                    {
+                        "id": "TUVcZfQe-Kw",
+                        "title": "Levitating",
+                        "artist": "Dua Lipa",
+                        "album": "Future Nostalgia",
+                        "imgUrl": "https://i.ytimg.com/vi/TUVcZfQe-Kw/maxresdefault.jpg",
+                        "duration": "3:23",
+                        "dateAdded": "2025-08-08T11:00:00Z"
+                    },
+                    {
+                        "id": "gNi_6U5Pm_o",
+                        "title": "Good 4 U",
+                        "artist": "Olivia Rodrigo",
+                        "album": "SOUR",
+                        "imgUrl": "https://i.ytimg.com/vi/gNi_6U5Pm_o/maxresdefault.jpg",
+                        "duration": "2:58",
+                        "dateAdded": "2025-08-09T09:30:00Z"
+                    }
+                ]
+            },
+            {
+                "_id": "station_jazz_001",
+                "name": "Jazz & Blues Collection",
+                "description": "אוסף של יצירות ג'אז ובלוז קלאסיות, לאוהבי הסגנון.",
+                "tags": ["Jazz", "Blues", "Classic"],
+                "createdBy": {
+                    "_id": "u204",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/6.jpg"
+                },
+                "addedAt": 1693843200000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "public/img/spotifly-albums-images/ab6775700000ee85149b6ea19de454d68685f039.png",
+                "songs": [
+                    {
+                        "id": "vmDDOFXSgAs",
+                        "title": "Take Five",
+                        "artist": "Dave Brubeck",
+                        "album": "Time Out",
+                        "imgUrl": "https://i.ytimg.com/vi/vmDDOFXSgAs/maxresdefault.jpg",
+                        "duration": "5:24",
+                        "dateAdded": "2025-08-10T10:00:00Z"
+                    },
+                    {
+                        "id": "OfJRX-8SXOs",
+                        "title": "Feeling Good",
+                        "artist": "Nina Simone",
+                        "album": "I Put a Spell on You",
+                        "imgUrl": "https://i.ytimg.com/vi/OfJRX-8SXOs/maxresdefault.jpg",
+                        "duration": "2:54",
+                        "dateAdded": "2025-08-11T11:00:00Z"
+                    },
+                    {
+                        "id": "4fk2prKnYnI",
+                        "title": "The Thrill Is Gone",
+                        "artist": "B.B. King",
+                        "album": "Completely Well",
+                        "imgUrl": "https://i.ytimg.com/vi/4fk2prKnYnI/maxresdefault.jpg",
+                        "duration": "5:24",
+                        "dateAdded": "2025-08-12T09:30:00Z"
+                    }
+                ]
+            },
+            {
+                "_id": "station_ed_sheeran_001",
+                "name": "Ed Sheeran Hits",
+                "description": "להיטים גדולים של אד שירן מכל הזמנים.",
+                "tags": ["Pop", "Acoustic", "Hits"],
+                "createdBy": {
+                    "_id": "u201",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/3.jpg"
+                },
+                "addedAt": 1693843201000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d00001e02ba5db46f4b838ef6027e6f96.png",
+                "songs": [
+                    {
+                        "id": "JGwWNGJdvx8",
+                        "artist": "Ed Sheeran",
+                        "title": "Shape of You",
+                        "album": "÷ (Divide)",
+                        "dateAdded": "2025-08-12T09:20:00Z",
+                        "duration": "3:53",
+                        "imgUrl": "https://i.ytimg.com/vi/JGwWNGJdvx8/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_beyonce_001",
+                "name": "Beyoncé Vibes",
+                "description": "הלהיטים הגדולים של ביונסה.",
+                "tags": ["R&B", "Pop", "Queen B"],
+                "createdBy": {
+                    "_id": "u202",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/4.jpg"
+                },
+                "addedAt": 1693843210000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "public/img/spotifly-albums-images/en (21).png",
+                "songs": [
+                    {
+                        "id": "WDZJPJV__bQ",
+                        "artist": "Beyoncé",
+                        "title": "Halo",
+                        "album": "I Am... Sasha Fierce",
+                        "dateAdded": "2025-08-13T09:20:00Z",
+                        "duration": "3:45",
+                        "imgUrl": "https://i.ytimg.com/vi/WDZJPJV__bQ/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_marshmello_001",
+                "name": "Marshmello EDM",
+                "description": "סט לוהט של Marshmello עם הקלאסיקות הגדולות.",
+                "tags": ["EDM", "Dance", "Electronic"],
+                "createdBy": {
+                    "_id": "u203",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/5.jpg"
+                },
+                "addedAt": 1693843220000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/A57B7B6w3kw/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "A57B7B6w3kw",
+                        "artist": "Marshmello ft. Bastille",
+                        "title": "Happier",
+                        "album": "Joytime II",
+                        "dateAdded": "2025-08-14T09:20:00Z",
+                        "duration": "3:34",
+                        "imgUrl": "https://i.ytimg.com/vi/A57B7B6w3kw/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_weeknd_001",
+                "name": "The Weeknd Essentials",
+                "description": "הכי טוב של דה וויקנד.",
+                "tags": ["R&B", "Pop", "Synthwave"],
+                "createdBy": {
+                    "_id": "u204",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/6.jpg"
+                },
+                "addedAt": 1693843230000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/fHI8X4OXluQ/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "fHI8X4OXluQ",
+                        "artist": "The Weeknd",
+                        "title": "Blinding Lights",
+                        "album": "After Hours",
+                        "dateAdded": "2025-08-15T09:20:00Z",
+                        "duration": "3:22",
+                        "imgUrl": "https://i.ytimg.com/vi/fHI8X4OXluQ/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_billie_001",
+                "name": "Billie Eilish Mood",
+                "description": "שירים מובילים של בילי אייליש.",
+                "tags": ["Pop", "Alternative", "Indie"],
+                "createdBy": {
+                    "_id": "u205",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/7.jpg"
+                },
+                "addedAt": 1693843240000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/viimfQi_pUw/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "viimfQi_pUw",
+                        "artist": "Billie Eilish",
+                        "title": "bad guy",
+                        "album": "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?",
+                        "dateAdded": "2025-08-16T09:20:00Z",
+                        "duration": "3:14",
+                        "imgUrl": "https://i.ytimg.com/vi/viimfQi_pUw/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_postmalone_001",
+                "name": "Post Malone Chill",
+                "description": "הלהיטים המרגיעים של פוסט מאלון.",
+                "tags": ["Hip-Hop", "Rap", "Chill"],
+                "createdBy": {
+                    "_id": "u206",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/8.jpg"
+                },
+                "addedAt": 1693843250000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/au2n7VVGv_c/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "au2n7VVGv_c",
+                        "artist": "Post Malone, Swae Lee",
+                        "title": "Sunflower",
+                        "album": "Spider-Man: Into the Spider-Verse",
+                        "dateAdded": "2025-08-17T09:20:00Z",
+                        "duration": "2:38",
+                        "imgUrl": "https://i.ytimg.com/vi/au2n7VVGv_c/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_davidguetta_001",
+                "name": "David Guetta Party",
+                "description": "להיטי מסיבות של דיוויד גואטה.",
+                "tags": ["EDM", "Dance", "Party"],
+                "createdBy": {
+                    "_id": "u207",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/9.jpg"
+                },
+                "addedAt": 1693843260000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d00001e0259b8b957f164ce660919f1f4ab67616d00001e02888241dbe5fdf3de9cb3d12fab67616d00001e0292b32435efed601fc8f1045dab67616d00001e02b526ba531c80ed208cd428ed.png",
+                "songs": [
+                    {
+                        "id": "HPUJhx-XK4o",
+                        "artist": "David Guetta ft. Sia",
+                        "title": "Titanium",
+                        "album": "Nothing but the Beat",
+                        "dateAdded": "2025-08-18T09:20:00Z",
+                        "duration": "4:05",
+                        "imgUrl": "https://i.ytimg.com/vi/HPUJhx-XK4o/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_shakira_001",
+                "name": "Shakira Dance",
+                "description": "שירים קצביים של שאקירה לריקודים.",
+                "tags": ["Pop", "Latin", "Dance"],
+                "createdBy": {
+                    "_id": "u208",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/10.jpg"
+                },
+                "addedAt": 1693843270000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/pRpeEdMmmQ0/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "pRpeEdMmmQ0",
+                        "artist": "Shakira",
+                        "title": "Waka Waka (This Time for Africa)",
+                        "album": "Listen Up! The Official 2010 FIFA World Cup Album",
+                        "dateAdded": "2025-08-19T09:20:00Z",
+                        "duration": "3:31",
+                        "imgUrl": "https://i.ytimg.com/vi/pRpeEdMmmQ0/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_taylor_001",
+                "name": "Taylor Swift Collection",
+                "description": "מיטב הלהיטים של טיילור סוויפט מכל התקופות.",
+                "tags": ["Pop", "Country", "Hits"],
+                "createdBy": {
+                    "_id": "u209",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/11.jpg"
+                },
+                "addedAt": 1693843280000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/3tmd-ClpJxA/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "3tmd-ClpJxA",
+                        "artist": "Taylor Swift",
+                        "title": "Shake It Off",
+                        "album": "1989",
+                        "dateAdded": "2025-08-20T09:20:00Z",
+                        "duration": "4:02",
+                        "imgUrl": "https://i.ytimg.com/vi/3tmd-ClpJxA/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_drake_001",
+                "name": "Drake Top Tracks",
+                "description": "הראפר הקנדי עם הלהיטים הכי גדולים שלו.",
+                "tags": ["Hip-Hop", "Rap", "Pop"],
+                "createdBy": {
+                    "_id": "u210",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/12.jpg"
+                },
+                "addedAt": 1693843290000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/xpVfcZ0ZcFM/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "xpVfcZ0ZcFM",
+                        "artist": "Drake",
+                        "title": "Hotline Bling",
+                        "album": "Views",
+                        "dateAdded": "2025-08-21T09:20:00Z",
+                        "duration": "4:55",
+                        "imgUrl": "https://i.ytimg.com/vi/xpVfcZ0ZcFM/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_imagine_001",
+                "name": "Imagine Dragons Power",
+                "description": "אנרגיה מטורפת עם Imagine Dragons.",
+                "tags": ["Rock", "Alternative", "Pop"],
+                "createdBy": {
+                    "_id": "u211",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/13.jpg"
+                },
+                "addedAt": 1693843300000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/7wtfhZwyrcc/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "7wtfhZwyrcc",
+                        "artist": "Imagine Dragons",
+                        "title": "Believer",
+                        "album": "Evolve",
+                        "dateAdded": "2025-08-22T09:20:00Z",
+                        "duration": "3:24",
+                        "imgUrl": "https://i.ytimg.com/vi/7wtfhZwyrcc/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_ariana_001",
+                "name": "Ariana Grande Hits",
+                "description": "הקול של אריאנה גרנדה בלהיטים הגדולים ביותר.",
+                "tags": ["Pop", "R&B", "Dance"],
+                "createdBy": {
+                    "_id": "u212",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/14.jpg"
+                },
+                "addedAt": 1693843310000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/ffxKSjUwKdU/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "ffxKSjUwKdU",
+                        "artist": "Ariana Grande",
+                        "title": "No Tears Left To Cry",
+                        "album": "Sweetener",
+                        "dateAdded": "2025-08-23T09:20:00Z",
+                        "duration": "3:58",
+                        "imgUrl": "https://i.ytimg.com/vi/ffxKSjUwKdU/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_bruno_001",
+                "name": "Bruno Mars Groove",
+                "description": "שירי גרוב וריקודים של ברונו מארס.",
+                "tags": ["Pop", "Funk", "Soul"],
+                "createdBy": {
+                    "_id": "u213",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/15.jpg"
+                },
+                "addedAt": 1693843320000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/OPf0YbXqDm0/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "OPf0YbXqDm0",
+                        "artist": "Bruno Mars",
+                        "title": "Uptown Funk",
+                        "album": "Uptown Special",
+                        "dateAdded": "2025-08-24T09:20:00Z",
+                        "duration": "4:31",
+                        "imgUrl": "https://i.ytimg.com/vi/OPf0YbXqDm0/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_eminem_001",
+                "name": "Eminem Classics",
+                "description": "הלהיטים הכי חזקים של אמינם.",
+                "tags": ["Rap", "Hip-Hop", "Classic"],
+                "createdBy": {
+                    "_id": "u214",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/16.jpg"
+                },
+                "addedAt": 1693843330000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/_Yhyp-_hX2s/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "_Yhyp-_hX2s",
+                        "artist": "Eminem",
+                        "title": "Lose Yourself",
+                        "album": "8 Mile",
+                        "dateAdded": "2025-08-25T09:20:00Z",
+                        "duration": "5:24",
+                        "imgUrl": "https://i.ytimg.com/vi/_Yhyp-_hX2s/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_celine_001",
+                "name": "Celine Dion Ballads",
+                "description": "בלדות אגדיות של סלין דיון.",
+                "tags": ["Pop", "Ballad", "Classic"],
+                "createdBy": {
+                    "_id": "u215",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/17.jpg"
+                },
+                "addedAt": 1693843340000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/lYx06V1a3pk/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "lYx06V1a3pk",
+                        "artist": "Celine Dion",
+                        "title": "My Heart Will Go On",
+                        "album": "Let's Talk About Love",
+                        "dateAdded": "2025-08-26T09:20:00Z",
+                        "duration": "4:41",
+                        "imgUrl": "https://i.ytimg.com/vi/lYx06V1a3pk/hqdefault.jpg"
+                    }
+                ]
+            },
+            {
+                "_id": "station_shawn_001",
+                "name": "Shawn Mendes Pop",
+                "description": "הלהיטים הגדולים של שון מנדס.",
+                "tags": ["Pop", "Acoustic", "Hits"],
+                "createdBy": {
+                    "_id": "u216",
+                    "fullname": "Music Bot",
+                    "imgUrl": "https://randomuser.me/api/portraits/lego/18.jpg"
+                },
+                "addedAt": 1693843350000,
+                "type": "system",
+                "likedByUsers": [],
+                "stationImgUrl": "https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg",
+                "songs": [
+                    {
+                        "id": "kJQP7kiw5Fk",
+                        "artist": "Shawn Mendes & Camila Cabello",
+                        "title": "Señorita",
+                        "album": "Shawn Mendes (Deluxe)",
+                        "dateAdded": "2025-08-27T09:20:00Z",
+                        "duration": "3:11",
+                        "imgUrl": "https://i.ytimg.com/vi/kJQP7kiw5Fk/hqdefault.jpg"
+                    }
+                ]
             }
-
-
         ]
         stations.push(...stationJson)
         await storageService.saveAll(STORAGE_KEY, stations)
