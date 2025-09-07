@@ -6,6 +6,7 @@ import { SongPreview } from './SongPreview'
 import { MediaPlayer } from './MediaPlayer'
 import { Controller } from './Controller'
 import { RightControls } from './RightControls'
+import { MobileNav } from './MobileNav'
 
 export function AppFooter() {
 	const playerRef = useRef(null)
@@ -67,6 +68,7 @@ export function AppFooter() {
 				<div className="footer-right flex">
 					<RightControls />
 				</div>
+				<MobileNav />
 			</div>
 
 			<MediaPlayer

@@ -65,11 +65,17 @@ export function UserStationList({ stations, isExpanded, likedStation }) {
                     key={userStation._id}
                     onClick={() => onNavigate(userStation)}
                 >
-                    <img
-                        src={userStation.stationImgUrl || './assets/img/default-station.jpg'}
-                        alt={userStation.name || 'Playlist Image'}
-                        className="user-station-img"
-                    />
+                    {userStation.stationImgUrl ? (
+                        <img
+                            src={userStation.stationImgUrl}
+                            alt={userStation.name || 'Playlist Image'}
+                            className="user-station-img"
+                        />
+                    ) : (
+                        <div className="user-station-img no-img-default grid" role='image'>
+                            {Svgs.stationNewImg}
+                        </div>
+                    )}
                     {isExpanded && (
                         <div className="user-station-details flex">
                             <div className="user-station-name">{userStation.name || 'Untitled Station'}</div>

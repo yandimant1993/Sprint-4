@@ -33,14 +33,21 @@
 
     .songs-list-header,
     .songs-list-row {
-        grid-template-columns: calc(var(--spacerem-s)*1.2) 53fr 42fr 25fr 10fr;
+        grid-template-columns: calc(var(--spacerem-sm)*1.2) 53fr 42fr 25fr 10fr;
         padding-inline: var(--spacepx-sm);
-        
+
         .song-list-number,
         .station-song-list-number {
+            width: var(--spacerem-sm);
             padding-inline-start: 4px;
+            
+            svg {
+                padding: 0 0 0 0;
+                margin: 0 0 0 4px;
+            }
         }
     }
+
     .songs-list-header {
         margin-block-end: 14px;
     }
@@ -72,8 +79,8 @@
         /* margin-block-end: calc(var(--spacepx-s)*2); */
 
         .song-list-duration {
-            margin-inline-end: 10px;
-            place-items: center;
+            /* margin-inline-end: 10px; */
+            /* place-items: center; */
             display: grid;
 
             svg {
@@ -122,16 +129,17 @@
             }
         }
 
-        .station-song-list-duration {
+        /* .station-song-list-duration {
             margin-inline-end: 8px;
-        }
+        } */
 
         &:hover {
             background-color: var(--clr1);
 
             .hover-btns-actions {
                 gap: 53px;
-                inset-inline-end: 5px;
+                /* inset-inline-end: 5px; */
+                inset-inline-end: 0;
                 opacity: 1;
                 pointer-events: auto;
 
@@ -202,7 +210,7 @@
         .song-list-duration,
         .station-song-list-duration {
             font-variant-numeric: tabular-nums;
-            justify-self: end;
+            justify-self: center;
         }
 
         .song-list-display,
@@ -212,7 +220,7 @@
 
         .hover-btns-actions {
             position: absolute;
-            inset-inline-end: 12px;
+            /* inset-inline-end: 12px; */
             gap: 8px;
             opacity: 1;
             pointer-events: none;

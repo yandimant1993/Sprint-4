@@ -18,8 +18,11 @@ export function StationSongsList({ onToggleLikedSong, station, removeSong }) {
    const songs = station.songs
 
    function isLiked(songId) {
-      return user?.likedSongId?.includes(songId)
+      return user?.likedSongIds?.includes(songId)
    }
+   // function isLiked(songId) {
+   //    return user?.likedSongId?.includes(songId)
+   // }
 
    function handleRemove(songId) {
       removeSong(songId)

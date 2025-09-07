@@ -29,7 +29,11 @@ export function StationDetails({ onSelectVideo }) {
 
   useEffect(() => {
     // if (station?.songs) setSongs(station.songs)
-    if (!station?.stationImgUrl) return
+    if (!station?.stationImgUrl) {
+      setBgColor([40, 40, 40])
+      return
+    }
+    
     const img = new Image()
     img.crossOrigin = "anonymous"
     img.src = station.stationImgUrl
@@ -42,7 +46,8 @@ export function StationDetails({ onSelectVideo }) {
         console.warn("Color extraction failed:", err)
       }
     }
-  }, [station?.stationImgUrl])
+  }, [stationId, station?.stationImgUrl])
+  // }, [station?.stationImgUrl])
 
   async function onDeleteStation() {
     if (!station?._id) return

@@ -37,7 +37,6 @@ export function DetailsMain({
 
     async function onToggleLikedSong(song) {
         try {
-            
             const updatedStation = await stationService.toggleLikedSongs(song)
             updateStation(updatedStation)
         } catch (err) {
