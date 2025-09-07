@@ -11,8 +11,8 @@ export function StationSongsList({ onToggleLikedSong, station, removeSong }) {
    const currentStation = useSelector(state => state.playerModule.currentStation)
    const currentSong = useSelector(state => state.playerModule.currentSong)
    const isPlaying = useSelector(state => state.playerModule.isPlaying)
-
    const [hoveredIndex, setHoveredIndex] = useState(null)
+   console.log('Hi')
 
    const user = userService.getLoggedinUser()
    const songs = station.songs

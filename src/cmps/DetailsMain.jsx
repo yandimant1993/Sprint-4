@@ -24,7 +24,7 @@ export function DetailsMain({
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 })
 
     function handlePlayPause() {
-        setCurrentStation(station)
+        // setCurrentStation(station)
         setCurrentSong(station.song[0])
         setIsPlaying(!isPlaying)
     }

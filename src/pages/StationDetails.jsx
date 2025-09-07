@@ -14,6 +14,7 @@ export function StationDetails({ onSelectVideo }) {
   const navigate = useNavigate()
   const { stationId } = useParams()
   const station = useSelector(storeState => storeState.stationModule.station)
+  const stations = useSelector(storeState => storeState.stationModule.stations)
 
   const [bgColor, setBgColor] = useState([40, 40, 40])
   // const [songs, setSongs] = useState([])
