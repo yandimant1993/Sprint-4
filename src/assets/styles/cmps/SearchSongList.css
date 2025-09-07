@@ -67,8 +67,12 @@
     justify-self: start;
 }
 
-.song-list-duration-res,
+/* .song-list-duration-res,
 .song-list-duration {
+    justify-self: end;
+    margin-inline-end: 26px;
+} */
+.song-list-duration-res {
     justify-self: end;
     margin-inline-end: 26px;
 }

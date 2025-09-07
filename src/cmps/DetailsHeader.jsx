@@ -169,7 +169,6 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
     setDescription(station.description || '')
   }, [station])
 
-
   async function handleSave(ev) {
     ev?.preventDefault?.()
     try {
@@ -180,6 +179,7 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
       console.error('Failed to update station:', err)
     }
   }
+console.log('station.stationImgUrl: ',station.stationImgUrl)
 
   return (
     <section className="details-header-container flex" style={{ background: headerBackground }}>

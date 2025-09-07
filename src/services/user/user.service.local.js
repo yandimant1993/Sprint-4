@@ -1,5 +1,7 @@
 import { storageService } from '../async-storage.service'
 import { stationService } from '../station'
+import likedSongsImg from '../../assets/img/liked-songs.jpg'
+
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
@@ -59,7 +61,7 @@ async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://randomuser.me/api/portraits/men/42.jpg'
     let user = await storageService.post('user', userCred)
     saveLoggedinUser(user)
-    const { _id: stationId } = await stationService.save({ ...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked', stationImgUrl: './src/assets/img/liked-songs.jpg' })
+    const { _id: stationId } = await stationService.save({ ...stationService.getEmptyStation(), name: 'Liked Songs', type: 'liked', stationImgUrl: likedSongsImg })
     user.likedStationId = stationId
     user = await storageService.put('user', userCred)
     return saveLoggedinUser(user)

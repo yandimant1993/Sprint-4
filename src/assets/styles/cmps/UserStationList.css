@@ -16,6 +16,10 @@
 
         &:hover {
             background-color: var(--clr2);
+
+            .no-img-default {
+                background-color: var(--clr3);
+            }
         }
 
         .svg-play {
@@ -35,8 +39,19 @@
         .user-station-img {
             height: calc(3* var(--spacepx-sm));
             width: calc(3* var(--spacepx-sm));
-            border-radius: var(--spacerem-s);
+            border-radius: 4px;
             object-fit: cover;
+
+        }
+
+        .no-img-default {
+            background-color: var(--clr1);
+
+            svg {
+                width: 50%;
+                height: 50%;
+                place-self: center;
+            }
         }
 
         .user-station-details {

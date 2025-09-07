@@ -131,9 +131,11 @@
                     padding: 8px 10px;
                     border-radius: 9999px;
                     font-weight: 400;
+                background-color: var(--clr1);
+
 
                     &:hover {
-                        background-color: var(--clr1);
+                        background-color: #424242;
                     }
                 }
             }
