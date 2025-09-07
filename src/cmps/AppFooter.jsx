@@ -11,11 +11,13 @@ import { MobileNav } from './MobileNav'
 export function AppFooter() {
 	const playerRef = useRef(null)
 	const isPlaying = useSelector(state => state.playerModule.isPlaying)
+	// const currentSong = useSelector(state => state.playerModule.currentSong)
 	const currentSong = useSelector(state => state.playerModule.currentSong)
-
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
 	// const [duration, setDuration] = useState(0)
+
+	console.log('currentSong: ', currentSong)
 
 	function handlePlayerReady(playerInstance) {
 		playerRef.current = playerInstance

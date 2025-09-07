@@ -92,6 +92,7 @@ async function toggleLikedSongs(song) {
     const method = isLiked ? 'removeSong' : 'addSong'
     song = isLiked ? song.id : song
     const savedStation = await stationService[method](loggedinUser.likedStationId, song)
+    console.log('savedStation: ',savedStation)
     userService.saveLoggedinUser(updatedUser)
 
     return savedStation
@@ -127,16 +128,16 @@ async function toggleLikedSongs(song) {
 async function removeSong(stationId, songId) {
     const station = await getById(stationId)
     station.songs = station.songs.filter(s => s.id !== songId)
-    await save(station)
-    return songId
+    const savedStation = await save(station)
+    return savedStation
 }
 
 async function addSong(stationId, song) {
     const station = await getById(stationId)
     // if (!station) throw new Error('Station not found!')
     station.songs.push(song)
-    await save(station)
-    return song
+    const savedStation = await save(station)
+    return savedStation
 }
 
 async function save(station) {

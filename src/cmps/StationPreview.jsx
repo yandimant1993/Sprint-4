@@ -9,7 +9,7 @@ export function StationPreview({ station }) {
 
     function handlePlayPause(station) {
         const currentSong = station.songs[0]
-        setCurrentStation(station)
+        // setCurrentStation(station)
         setCurrentSong(currentSong)
         setIsPlaying(!isPlaying)
     }

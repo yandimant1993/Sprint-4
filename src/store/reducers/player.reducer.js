@@ -26,6 +26,16 @@ const initialState = {
     currentTime: 0,
 }
 
+//   currentSong: {
+//         id: "CC5ca6Hsb2Q",
+//         title: "Robert Miles - Children [Dream Version]",
+//         artist: "Robert Miles",
+//         album: "Album 1",
+//         dateAdded: "2025-09-07T14:02:57.198Z",
+//         duration: 453000,
+//         imgUrl: "https://i.ytimg.com/vi/CC5ca6Hsb2Q/mqdefault.jpg"
+//     },
+
 export function playerReducer(state = initialState, action = {}) {
     switch (action.type) {
         case SET_PLAYER:
