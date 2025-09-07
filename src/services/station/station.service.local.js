@@ -277,7 +277,7 @@ async function _createStations() {
                 "addedAt": 1724576800000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d0000e1a34527df178b5b5172e7c4711c.png",
+                "stationImgUrl": "/img/spotifly-albums-images/ab67616d0000e1a34527df178b5b5172e7c4711c.png",
                 "songs": [
                     {
                         "id": "s004",
@@ -325,7 +325,7 @@ async function _createStations() {
                 "addedAt": 1724676800000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d00001e02726d48d93d02e1271774f023.png",
+                "stationImgUrl": "/img/spotifly-albums-images/ab67616d00001e02726d48d93d02e1271774f023.png",
                 "songs": [
                     {
                         "id": "s007",
@@ -369,7 +369,7 @@ async function _createStations() {
                 "addedAt": 1693843200000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616100005174af59d106f14ea71effc76195.png",
+                "stationImgUrl": "/img/spotifly-albums-images/ab67616100005174af59d106f14ea71effc76195.png",
                 "songs": [
                     {
                         "id": "VPRjCeoBqrI",

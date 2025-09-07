@@ -164,7 +164,7 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
   const numOfSongs = station.songs?.length || 0
   const stationDuration = userService.getTotalSongsDuration(station)
   const headerBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.75)), rgb(${dominantColor.join(',')})`
-
+  console.log('station', station)
   useEffect(() => {
     setEditedName(station.name || '')
     setDescription(station.description || '')
@@ -181,7 +181,7 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
       console.error('Failed to update station:', err)
     }
   }
-console.log('station.stationImgUrl: ',station.stationImgUrl)
+  console.log('station.stationImgUrl: ', station.stationImgUrl)
 
   return (
     <section className="details-header-container flex" style={{ background: headerBackground }}>
