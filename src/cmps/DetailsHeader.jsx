@@ -150,6 +150,7 @@
 import { useState, useEffect } from 'react'
 import { EditStationDetails } from './EditStationDetails.jsx'
 import { userService } from '../services/user'
+import { stationService } from '../services/station/station.service.local.js'
 
 export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
   const [isHovered, setIsHovered] = useState(false)
@@ -174,6 +175,7 @@ export function DetailsHeader({ station, dominantColor, Svgs, onSave }) {
     try {
       const updatedStation = { ...station, name: editedName, description }
       await onSave(updatedStation)
+      await stationService.save(updatedStation)
       setIsModalOpen(false)
     } catch (err) {
       console.error('Failed to update station:', err)
