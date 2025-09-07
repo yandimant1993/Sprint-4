@@ -1,17 +1,22 @@
 @media (max-width: 624px) {
     .app-footer {
-        width: 90vw;
+        width: 94vw;
+        border-radius: 4px;
         position: fixed;
         inset: auto 8px 40px 8px;
         justify-self: center;
+        z-index: 100;
 
         .footer-content {
-            padding: 8px 8px 0 8px;
+            padding: 8px 8px 0 10px;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr auto;
             grid-template-areas:
                 "left right"
-                "center center";
+                "center center"
+                "footernav footernav";
+            background-color: #000000;
+
 
             .footer-left {
                 grid-template-columns: auto 1fr;
@@ -65,40 +70,66 @@
                     }
                 }
             }
+
+            .footer-nav {
+                grid-auto-flow: column;
+                grid-template-columns: repeat(5, 1fr);
+                grid-area: footernav;
+                background-color: transparent;
+
+                .btn-nav {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
         }
     }
 }
 
 @media (min-width: 624px) {
-    .footer-content {
-        grid-template-columns: 1fr minmax(360px, 2fr) 1fr;
+    .app-footer {
+        min-height: 5rem;
+        background-color: #000000;
 
-        .footer-left {
+        .footer-content {
+            grid-template-columns: 1fr minmax(360px, 2fr) 1fr;
 
-            .current-song-image {
-                height: 56px;
-                width: 56px;
+            .footer-left {
+
+                .current-song-container {
+                    min-height: 56px;
+                }
+
+                .current-song-image {
+                    height: 56px;
+                    width: 56px;
+                }
+            }
+
+            .footer-center.grid {
+                padding-block-end: 8px;
+                gap: 6px;
+
+                .progress-container {
+                    grid-template-columns: auto 1fr auto;
+                }
             }
         }
 
-        .footer-center.grid {
-            padding-block-end: 8px;
-            gap: 6px;
-
-            .progress-container {
-                grid-template-columns: auto 1fr auto;
-            }
+        .footer-nav {
+            display: none;
         }
     }
 }
+
 
 /* starting a play */
 .app-footer {
     align-items: center;
     justify-content: center;
 
-    min-height: 5rem;
-    background-color: #000000;
+    /* min-height: 5rem; */
+    /* background-color: #000000; */
     margin-block-end: -8px;
 }
 
@@ -118,7 +149,7 @@
 
     .current-song-container {
         grid-auto-flow: column;
-        min-height: 56px;
+        /* min-height: 56px; */
         margin-inline-start: 8px;
         margin-block-end: 8px;
         gap: 16px;
