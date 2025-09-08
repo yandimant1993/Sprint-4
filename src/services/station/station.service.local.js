@@ -360,7 +360,7 @@ async function _createStations() {
             {
                 "_id": "station_coldplay_001",
                 "name": "Coldplay Essentials",
-                "description": "תחנה עם הלהיטים הגדולים של Coldplay, כולל A Sky Full of Stars.",
+                "description": "best coldplay hits 2025",
                 "tags": ["Coldplay", "Rock", "Pop", "Hits"],
                 "createdBy": {
                     "_id": "u200",
@@ -1490,7 +1490,7 @@ async function _createStations() {
                 "addedAt": 1693843260000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "public/img/spotifly-albums-images/ab67616d00001e0259b8b957f164ce660919f1f4ab67616d00001e02888241dbe5fdf3de9cb3d12fab67616d00001e0292b32435efed601fc8f1045dab67616d00001e02b526ba531c80ed208cd428ed.png",
+                "stationImgUrl": "public/img/spotifly-albums-images/ab67706f0000000292af799a11403259b8474500.png",
                 "songs": [
                     {
                         "id": "HPUJhx-XK4o",
@@ -1698,7 +1698,7 @@ async function _createStations() {
                 "addedAt": 1693843340000,
                 "type": "system",
                 "likedByUsers": [],
-                "stationImgUrl": "https://i.ytimg.com/vi/lYx06V1a3pk/maxresdefault.jpg",
+                "stationImgUrl": "public/img/spotifly-albums-images/en (22).png",
                 "songs": [
                     {
                         "id": "lYx06V1a3pk",
